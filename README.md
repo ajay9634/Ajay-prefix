@@ -38,6 +38,7 @@ read help.txt from relative folder
 # safe or not
 it's definitely safe, I scanned all files before adding to Ajay prefix.
 i got these files from trusted source so don't worry.
+but don't install if you have trust issue.
 
 # move game save data to Ajay prefix
 
