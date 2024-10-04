@@ -1,5 +1,7 @@
 # Ajay-prefix
-You can install Ajay Prefix in mobox , winlator and other x64, wow64 pc emu. 
+You can install Ajay Prefix in mobox wow64 , winlator and other x64, wow64 pc emu.
+
+note- it's not supported in only x86 emu like Exagear, mobox box86 etc.
 
 # What is Ajay prefix?
 prefix= game save location to d drive/Ajay_prefix/save_data + start menu + bug fix
