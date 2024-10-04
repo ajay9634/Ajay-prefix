@@ -46,7 +46,8 @@ if you were playing games before installing the Ajay prefix then you need to mov
 
 - winlator proot and winlator glibc turnip, zink, virgl files are available in Meg
 
-# note - I don't compile turnip zink virgl or wine, i add wcp from existing source.
+# note
+I don't compile turnip zink virgl or wine, i add wcp from existing source.
 
 # other help (discord group)
 you can ask help in Emuplay0 discord
