@@ -17,6 +17,11 @@ open prefix.exe as archive and extract to drive D then install prefix for curren
 
 (watch installation video in mega folder)
 
+# Link of Ajay prefix v10.12
+changelog will be available only in mega folder
+
+https://mega.nz/folder/K7IkxZqT#PkShFyVjR3jZnXZIeDq3zw
+
 # Features of Ajay prefix -
 
 - save game location to d drive/Ajay_prefix/save_data , you can uninstall emu without any worry but remember some games save game to game folder or different location. you need to backup that save manually.
