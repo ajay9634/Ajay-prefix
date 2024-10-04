@@ -4,15 +4,26 @@ You can install Ajay Prefix in mobox , winlator and other x64, wow64 pc emu.
 # What is Ajay prefix?
 prefix= game save location to d drive/Ajay_prefix/save_data + start menu + bug fix
 
+# installation of Ajay prefix
+Automatic installation: 
+
+run prefix.exe from any location.
+
+ Manually installation:
+
+open prefix.exe as archive and extract to drive D then install prefix for current container.bat
+
+(watch installation video in mega folder)
+
 # Features of Ajay prefix -
 
 - save game location to d drive/Ajay_prefix/save_data , you can uninstall emu without any worry but remember some games save game to game folder or different location. you need to backup that save manually.
 -  most necessary files like different wined3d, dxvk , vkd3d , vc redist ,physx ,openal and many more
 - custom wined3d install feature and other necessary features
-- dosbox emu fast version, Adobe flash player ,media player classic old version and some video codecs and nany more
+- dosbox emu fast version, Adobe flash player ,media player classic old version and some video codecs and many more
 - xaudio, faudio and some other dsound dlls
-- custom mono gecko and net framework installation option from start menu
-- Resources files protection from virus
+- custom mono gecko and net framework installation option from the start menu
+- Resources files protection from the virus
 
 # some special features help
 read help.txt from relative folder
@@ -26,7 +37,7 @@ if you were playing games before installing the Ajay prefix then you need to mov
 
 # wcp Files for winlator glibc
 
-- these wcp files are available only in Mega folder
+- these wcp files are available in Mega folder
 
 # Turnip zink for all winlator
 
