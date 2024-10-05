@@ -47,7 +47,7 @@ if you were playing games before installing the Ajay prefix then you need to mov
 
 # wcp Files collection for winlator glibc
 
-- these wcp files are available in one drive folder
+- these wcp files are available in one drive
 
 # Turnip zink virgl collection for all winlator
 
