@@ -18,9 +18,10 @@ open prefix.exe as archive and extract to drive D then install prefix for curren
 (watch installation video in mega folder)
 
 # Link of Ajay prefix v10.12
-changelog will be available only in mega folder
+changelog will be available only in one drive folder
 
-https://mega.nz/folder/K7IkxZqT#PkShFyVjR3jZnXZIeDq3zw
+(https://1drv.ms/f/s!AqVdYkqy3AO01Rcz8NJOSckhg35k
+)
 
 # Features of Ajay prefix -
 
@@ -46,11 +47,11 @@ if you were playing games before installing the Ajay prefix then you need to mov
 
 # wcp Files collection for winlator glibc
 
-- these wcp files are available in Mega folder
+- these wcp files are available in one drive folder
 
 # Turnip zink virgl collection for all winlator
 
-- winlator proot and winlator glibc turnip, zink, virgl files are available in Meg
+- winlator proot and winlator glibc turnip, zink, virgl files are available in one drive
 
 # note
 I don't compile turnip zink virgl or wine, i add wcp from existing source.
