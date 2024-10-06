@@ -61,6 +61,10 @@ you can ask help in Emuplay0 discord
 
 https://discord.gg/XpbEp3dWv3
 
+# Support me
+you can support me by subscribing my youtube channel and watching the videos.
+https://youtube.com/@EMUPLAY0?si=TA9tOZx49eZa4OuN
+
 ========================================
 
 Third party Credits -
