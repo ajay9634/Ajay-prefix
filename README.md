@@ -47,11 +47,13 @@ if you were playing games before installing the Ajay prefix then you need to mov
 
 # wcp Files collection for winlator glibc
 
-- these wcp files are available in one drive
+- these wcp files are available in this release section
+
+  https://github.com/ajay9634/Ajay-prefix/releases/tag/Graphics_driver
 
 # Turnip zink virgl collection for all winlator
 
-- winlator proot and winlator glibc turnip, zink, virgl files are available in one drive
+- winlator proot and winlator glibc turnip, zink, virgl files are available in this Release section
 
 # note
 I don't compile turnip zink virgl or wine, i add wcp from existing source.
