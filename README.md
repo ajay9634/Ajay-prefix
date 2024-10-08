@@ -1,12 +1,15 @@
 # Ajay-prefix
+
 You can install Ajay Prefix in mobox wow64 , winlator and other x64, wow64 pc emu.
 
 note- it's not supported in only x86 emu like Exagear, mobox box86 etc.
 
 # What is Ajay prefix?
+
 prefix= game save location to d drive/Ajay_prefix/save_data + start menu + bug fix
 
 # installation of Ajay prefix
+
 Automatic installation: 
 
 run prefix.exe from any location.
@@ -15,13 +18,17 @@ run prefix.exe from any location.
 
 open prefix.exe as archive and extract to drive D then install prefix for current container.bat
 
-(watch installation video in mega folder)
+installation guide video - https://youtu.be/vZJVvWMKeW0?si=FxBNxqv-frcs4rvM
+
+# move game save data to Ajay prefix
+
+if you were playing games before installing the Ajay prefix then you need to move game save from drive C/users/... to drive D/Ajay_prefix/save_data/users/...
 
 # Link of Ajay prefix v10.12
-changelog will be available only in one drive folder
 
-(https://1drv.ms/f/s!AqVdYkqy3AO01Rcz8NJOSckhg35k
-)
+Ajay prefix is available in this Release section.
+
+
 
 # Features of Ajay prefix -
 
@@ -40,10 +47,6 @@ read help.txt from relative folder
 it's definitely safe, I scanned all files before adding to Ajay prefix.
 i got these files from trusted source so don't worry.
 but don't install if you have trust issue.
-
-# move game save data to Ajay prefix
-
-if you were playing games before installing the Ajay prefix then you need to move game save from drive C/users/... to drive D/Ajay_prefix/save_data/users/...
 
 # d3d wcp Files collection for winlator glibc
 - these wcp files are available in this release section
