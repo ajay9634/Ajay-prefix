@@ -28,7 +28,7 @@ if you were playing games before installing the Ajay prefix then you need to mov
 
 Ajay prefix is available in this Release section.
 
-
+https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 
 # Features of Ajay prefix -
 
