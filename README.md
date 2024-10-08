@@ -46,7 +46,9 @@ but don't install if you have trust issue.
 if you were playing games before installing the Ajay prefix then you need to move game save from drive C/users/... to drive D/Ajay_prefix/save_data/users/...
 
 # d3d wcp Files collection for winlator glibc
-
+- these wcp files are available in this release section
+  
+https://github.com/ajay9634/Ajay-prefix/releases/tag/D3d_wcp
 
 # Turnip Zink virgl wcp collection for winlator glibc
 
@@ -54,9 +56,10 @@ if you were playing games before installing the Ajay prefix then you need to mov
 
   https://github.com/ajay9634/Ajay-prefix/releases/tag/Graphics_driver
 
-# Turnip zink virgl collection for all winlator
+# Turnip zink virgl exe collection for all winlator
 
-- winlator proot and winlator glibc turnip, zink, virgl files are available in this Release section
+- winlator proot and winlator glibc turnip, zink, virgl exe files are available in this Release section
+  
   https://github.com/ajay9634/Ajay-prefix/releases/tag/graphics_driver_exe
 
 # note
