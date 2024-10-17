@@ -67,7 +67,7 @@ https://github.com/ajay9634/Ajay-prefix/releases/tag/D3d_wcp
 
 # wine wcp for winlator glibc
 
-Link-
+wine wcp are available in this Release section.
 
 https://github.com/ajay9634/Ajay-prefix/releases/tag/Wine_wcp
 
