@@ -24,7 +24,7 @@ installation guide video - https://youtu.be/vZJVvWMKeW0?si=FxBNxqv-frcs4rvM
 
 if you were playing games before installing the Ajay prefix then you need to move game save from drive C/users/... to drive D/Ajay_prefix/save_data/users/...
 
-# Link of Ajay prefix v10.12
+# Link of Ajay prefix v10.12 hotfix
 
 Ajay prefix is available in this Release section.
 
@@ -64,6 +64,12 @@ https://github.com/ajay9634/Ajay-prefix/releases/tag/D3d_wcp
 - winlator proot and winlator glibc turnip, zink, virgl exe files are available in this Release section
   
   https://github.com/ajay9634/Ajay-prefix/releases/tag/graphics_driver_exe
+
+# wine wcp for winlator glibc
+
+Link-
+
+https://github.com/ajay9634/Ajay-prefix/releases/tag/Wine_wcp
 
 # note
 I don't compile turnip zink virgl or wine, i add wcp from existing source.
