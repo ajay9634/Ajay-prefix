@@ -18,7 +18,7 @@ run prefix.exe from any location.
 
 open prefix.exe as archive and extract to drive D then install prefix for current container.bat
 
-installation guide video - https://youtu.be/vZJVvWMKeW0?si=FxBNxqv-frcs4rvM
+installation guide video - [watch](https://youtu.be/vZJVvWMKeW0?si=FxBNxqv-frcs4rvM)
 
 # move game save data to Ajay prefix
 
