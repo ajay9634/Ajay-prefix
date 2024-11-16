@@ -67,7 +67,7 @@ but don't install if you have trust issue.
 
 # wine wcp for winlator glibc
 
-wine wcp are available in this Release section.
+- wine wcp are available in this Release section.
 
 [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Wine_wcp)
 
