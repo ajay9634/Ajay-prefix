@@ -77,7 +77,7 @@ I don't compile turnip zink virgl or wine, i add wcp from existing source.
 # other help (discord group)
 you can ask help in Emuplay0 discord
 
-https://discord.gg/XpbEp3dWv3
+[Emuplay0 discord](https://discord.gg/XpbEp3dWv3)
 
 # Support me
 you can support me by subscribing my youtube channel and watching the videos.
