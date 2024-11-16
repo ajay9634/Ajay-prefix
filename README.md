@@ -51,7 +51,7 @@ but don't install if you have trust issue.
 # d3d wcp Files collection for winlator glibc
 - these wcp files are available in this release section
   
-[Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/D3d_wcp)
+  [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/D3d_wcp)
 
 # Turnip Zink virgl wcp collection for winlator glibc
 
@@ -69,7 +69,7 @@ but don't install if you have trust issue.
 
 - wine wcp are available in this Release section.
 
-[Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Wine_wcp)
+  [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Wine_wcp)
 
 # note
 I don't compile turnip zink virgl or wine, i add wcp from existing source.
