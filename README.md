@@ -28,7 +28,7 @@ if you were playing games before installing the Ajay prefix then you need to mov
 
 Ajay prefix is available in this Release section.
 
-https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
+[Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
 
 # Features of Ajay prefix -
 
@@ -51,25 +51,25 @@ but don't install if you have trust issue.
 # d3d wcp Files collection for winlator glibc
 - these wcp files are available in this release section
   
-https://github.com/ajay9634/Ajay-prefix/releases/tag/D3d_wcp
+[Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/D3d_wcp)
 
 # Turnip Zink virgl wcp collection for winlator glibc
 
 - these wcp files are available in this release section
 
-  https://github.com/ajay9634/Ajay-prefix/releases/tag/Graphics_driver
+  [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Graphics_driver)
 
 # Turnip zink virgl exe collection for all winlator
 
 - winlator proot and winlator glibc turnip, zink, virgl exe files are available in this Release section
   
-  https://github.com/ajay9634/Ajay-prefix/releases/tag/graphics_driver_exe
+  [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/graphics_driver_exe)
 
 # wine wcp for winlator glibc
 
 wine wcp are available in this Release section.
 
-https://github.com/ajay9634/Ajay-prefix/releases/tag/Wine_wcp
+[Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Wine_wcp)
 
 # note
 I don't compile turnip zink virgl or wine, i add wcp from existing source.
@@ -81,7 +81,7 @@ https://discord.gg/XpbEp3dWv3
 
 # Support me
 you can support me by subscribing my youtube channel and watching the videos.
-https://youtube.com/@EMUPLAY0?si=TA9tOZx49eZa4OuN
+[My YT channel](https://youtube.com/@EMUPLAY0?si=TA9tOZx49eZa4OuN)
 
 ========================================
 
