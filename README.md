@@ -24,7 +24,7 @@ installation guide video - [watch](https://youtu.be/vZJVvWMKeW0?si=FxBNxqv-frcs4
 
 if you were playing games before installing the Ajay prefix then you need to move game save from drive C/users/... to drive D/Ajay_prefix/save_data/users/...
 
-# Link of Ajay prefix v10.13
+# Link of Ajay prefix v10.13 hotfix2
 
 Ajay prefix is available in this Release section.
 
@@ -48,7 +48,14 @@ it's definitely safe, I scanned all files before adding to Ajay prefix.
 i got these files from trusted source so don't worry.
 but don't install if you have trust issue.
 
+# Steam Patch and online Steam installer with Fonts fixed
+
+- Tested in winlator glibc cmod
+
+  [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Steam_Patch)
+
 # d3d wcp Files collection for winlator glibc
+
 - these wcp files are available in this release section
   
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/D3d_wcp)
