@@ -24,7 +24,7 @@ installation guide video - [watch](https://youtu.be/vZJVvWMKeW0?si=FxBNxqv-frcs4
 
 if you were playing games before installing the Ajay prefix then you need to move game save from drive C/users/... to drive D/Ajay_prefix/save_data/users/...
 
-# Link of Ajay prefix v10.13 hotfix2
+# Link of Ajay prefix v10.13 hotfix3
 
 Ajay prefix is available in this Release section.
 
