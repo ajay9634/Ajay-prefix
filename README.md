@@ -54,6 +54,10 @@ but don't install if you have trust issue.
 
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Steam_Patch)
 
+# Box64 wcp for winlator glibc
+
+  [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Box64_wcp)
+
 # d3d wcp Files collection for winlator glibc
 
 - these wcp files are available in this release section
