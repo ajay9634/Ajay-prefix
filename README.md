@@ -56,7 +56,7 @@ but don't install if you have trust issue.
 
 # Box64 wcp for winlator glibc
 
-  [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Box64_wcp)
+   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Box64_wcp)
 
 # d3d wcp Files collection for winlator glibc
 
