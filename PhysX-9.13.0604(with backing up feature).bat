@@ -1,6 +1,7 @@
 @echo off
 color 0a
 echo cmd made by Ajay
+del PhysX-9.13.0604-SystemSoftware-Legacy.msi
 IF EXIST "PhysX-9.13.0604-SystemSoftware-Legacy.din" (
     copy PhysX-9.13.0604-SystemSoftware-Legacy.din PhysX-9.13.0604-SystemSoftware-Legacy.msi
     ECHO copying...
