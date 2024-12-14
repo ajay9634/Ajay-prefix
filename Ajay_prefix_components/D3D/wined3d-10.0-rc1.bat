@@ -1,7 +1,7 @@
 @echo off
 color 0a
 set installname=%~n0
-echo cmd made by Ajay
+echo script made by Ajay
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
 mkdir "D:/Ajay_prefix/wget_files/temp"
 IF EXIST "D:/Ajay_prefix/wget_files/d3d/%installname%_64.zip" (   D:\Ajay_prefix\.Resources\winrar.exe x D:\Ajay_prefix\wget_files\d3d\%installname%_64.zip D:\Ajay_prefix\wget_files\temp\ -r -y >NUL 2>&1
