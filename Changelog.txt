@@ -1,0 +1,12 @@
+# Ajay prefix components future Changelog -
+
+- add dxvk and vkd3d
+- add Net framework 
+- add fonts fix
+- add some winetricks packages
+- and many more
+
+# Ajay prefix components current Changelog (15 Dec 2024) -
+
+- added some wined3d
+- added some physx from winetricks links
