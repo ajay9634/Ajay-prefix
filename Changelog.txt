@@ -2,7 +2,7 @@
 
 - add dxvk and vkd3d
 - add Net framework 
-- add fonts package of different languages
+- add fonts packages of different languages
 - add some winetricks packages
 - and many more
 
