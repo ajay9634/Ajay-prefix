@@ -6,7 +6,7 @@ echo ==================================
 echo .
 echo Now choose an option -
 echo .
-ECHO 1. install Net framework 4 official
+ECHO 1. install Net framework 4.0 official
 ECHO 2. Cancel or exit
 set choice=
 set /p choice=Type the number to print text.
