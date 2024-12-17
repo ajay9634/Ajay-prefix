@@ -1,12 +1,14 @@
 # Ajay prefix components future Changelog -
 
 - add dxvk and vkd3d
-- add Net framework 
 - add fonts packages of different languages
 - add some winetricks packages
 - and many more
 
-# Ajay prefix components current Changelog (15 Dec 2024) -
+# Ajay prefix components current Changelog (17 Dec 2024) -
 
 - added some wined3d
 - added some physx from winetricks links
+- added java (jre 8u311)
+- added net framework 4 and 4.5.2
+
