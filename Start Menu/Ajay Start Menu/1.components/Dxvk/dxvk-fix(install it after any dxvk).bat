@@ -6,6 +6,7 @@ copy /s /y C:\windows\system32\d3d10core.dll C:\windows\system32\d3d10.dll /E /H
 copy /s /y C:\windows\system32\d3d10core.dll C:\windows\system32\d3d10_1.dll /E /H /C /I
 copy /s /y C:\windows\syswow64\d3d10core.dll C:\windows\syswow64\d3d10.dll /E /H /C /I
 copy /s /y C:\windows\syswow64\d3d10core.dll C:\windows\syswow64\d3d10_1.dll /E /H /C /I
+echo installed
 
 
 echo ************************************************
