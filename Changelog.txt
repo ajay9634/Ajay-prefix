@@ -5,6 +5,11 @@
 - add some winetricks packages
 - and many more
 ==================================================================
+# Ajay prefix components changelog (19 dec 2024)
+
+- added some dxvk
+- added Mangohud (wip) by coffincolors for winlator glibc 
+==================================================================
 # Ajay prefix components changelog (18 Dec 2024)
 
 - added some vkd3d
