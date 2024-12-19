@@ -53,10 +53,8 @@ IF NOT EXIST "D:\Ajay_prefix\wget_files\Files\Winlator_Cmod_MangoHud_WIP.7z" (
 :: Simulate download progress only for subsequent parts
 
 color 1f
-echo *** Extracting ...***
-D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\Winlator_Cmod_MangoHud_WIP.7z -oD:\Ajay_prefix\wget_files\temp\ -r -y >NUL 2>&1
-echo *** installing...***
-Xcopy /s /y D:\Ajay_prefix\wget_files\temp\usr\ Z:\ /E /H /C /I
+echo *** installing ...***
+D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\temp\Winlator_Cmod_MangoHud_WIP.7z -oZ:\ -r -y >NUL 2>&1
 
 
 echo ************************************************
