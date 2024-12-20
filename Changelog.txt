@@ -1,9 +1,8 @@
-# Ajay prefix components future Changelog -
+# Ajay prefix components Changelog (20 dec 2024)
 
-- add dxvk
-- add fonts packages of different languages
-- add some winetricks packages
-- and many more
+- added net framework 2.0 and net framework 4.8
+- added win7,mscoree.reg (install it before installing any net framework)
+
 ==================================================================
 # Ajay prefix components changelog (19 dec 2024)
 
