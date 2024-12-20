@@ -1,6 +1,6 @@
 # Ajay prefix components Changelog (20 dec 2024)
 
-- added dot20 and dotnet48
+- added dotnet20 and dotnet48
 - added win7,mscoree.reg (install it before installing any net framework)
 - fixed dotnet 472 script
 ==================================================================
