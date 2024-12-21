@@ -1,5 +1,25 @@
 @echo off
-color 0a
+color 1f
+echo *** Note - This file is huge (almost 175 mb) ***
+echo .
+echo Do you want to install dotnet40 pre-installed ?
+echo [1] Yes
+echo [2] No (Cancel)
+echo.
+set /p userChoice="Enter your choice (1 or 2): "
+
+IF "%userChoice%"=="2" (
+    echo *** Cancelled by user. Exiting script. ***
+    pause
+    exit /b
+)
+
+IF NOT "%userChoice%"=="1" (
+    echo *** Invalid input. Please enter 1 or 2. Exiting script. ***
+    pause
+    exit /b
+)
+echo *** You selected Yes. Continuing... ***
 echo *** This is going to take some minutes....***
 echo *** deleting temp files...***
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
