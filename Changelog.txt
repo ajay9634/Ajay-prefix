@@ -1,3 +1,8 @@
+# Ajay prefix components Changelog (21 dec 2024)
+
+- updated dotnet40 (pre-installed)
+- added dxvk 2.5.2 script
+==================================================================
 # Ajay prefix components Changelog (20 dec 2024)
 
 - added dotnet20 and dotnet48
