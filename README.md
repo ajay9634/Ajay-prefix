@@ -48,6 +48,12 @@ it's definitely safe, I scanned all files before adding to Ajay prefix.
 i got these files from trusted source so don't worry.
 but don't install if you have trust issue.
 
+# limit
+
+- may break container in some other emu
+- may break steam
+- may break some games
+
 # Steam Patch and online Steam installer with Fonts fixed
 
 - Tested in winlator glibc cmod
