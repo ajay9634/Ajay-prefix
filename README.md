@@ -51,7 +51,6 @@ but don't install if you have trust issue.
 # limit
 
 - may break container in some other emu
-- may break steam
 - may break some games
 
 # Steam Patch and online Steam installer with Fonts fixed
