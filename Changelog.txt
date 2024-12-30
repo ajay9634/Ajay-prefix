@@ -1,18 +1,27 @@
+# Ajay prefix components Changelog (30 Dec 2024)
+
+- added "install missing dlls as skip" option
+- added Games registry fixes and other options 
+
+==================================================================
 # Ajay prefix components Changelog (21 dec 2024)
 
 - updated dotnet40 (pre-installed)
 - added dxvk 2.5.2 script
+
 ==================================================================
 # Ajay prefix components Changelog (20 dec 2024)
 
 - added dotnet20 and dotnet48
 - added win7,mscoree.reg (install it before installing any net framework)
 - fixed dotnet 472 script
+
 ==================================================================
 # Ajay prefix components changelog (19 dec 2024)
 
 - added some dxvk
 - added Mangohud (wip) by coffincolors for winlator glibc 
+
 ==================================================================
 # Ajay prefix components changelog (18 Dec 2024)
 
