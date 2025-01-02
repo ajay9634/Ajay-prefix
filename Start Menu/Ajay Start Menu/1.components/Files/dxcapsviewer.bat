@@ -13,7 +13,7 @@ color 0A
 echo.
 echo *** Downloading dxcapsviewer.7z  ***
 IF NOT EXIST "D:\Ajay_prefix\wget_files\Files\dxcapsviewer.7z" (
-    wget -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/winlator-ajay/main/My-files/dxcapsviewer.7z
+    wget -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/dxcapsviewer.7z
     copy /s /y D:\Ajay_prefix\wget_files\temp\dxcapsviewer.7z D:\Ajay_prefix\wget_files\Files\dxcapsviewer.7z /E /H /C /I
 ) ELSE (
     ECHO dxcapsviewer file already exists.
