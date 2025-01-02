@@ -119,4 +119,8 @@ echo Extracting...
 D:\Ajay_prefix\.Resources\winrar.exe x D:\Ajay_prefix\wget_files\NET\Net_framework_4.0.part01.rar C:\
 echo.
 echo *** Running the installer ***
-Start /wait C:/windows/temp/install.bat
+IF EXIST "C:\windows\temp\install.bat" (
+    START /WAIT C:\windows\temp\install.bat
+) ELSE (
+    START /WAIT C:\install.bat
+)
