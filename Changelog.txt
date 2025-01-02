@@ -1,3 +1,9 @@
+# Ajay prefix components changelog (2 Jan 2025)
+
+- updated all scripts
+
+==================================================================
+
 # Ajay prefix components Changelog (30 Dec 2024)
 
 - added "install missing dlls as skip" option
