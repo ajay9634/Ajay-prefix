@@ -8,7 +8,7 @@ color 0A
 echo.
 echo *** Downloading ResourceHacker ***
 IF NOT EXIST "D:\Ajay_prefix\wget_files\Files\ResourceHacker.7z" (
-    wget -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/winlator-ajay/main/My-files/ResourceHacker.7z
+    wget -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/ResourceHacker.7z
     copy /s /y D:\Ajay_prefix\wget_files\temp\ResourceHacker.7z D:\Ajay_prefix\wget_files\Files\ResourceHacker.7z /E /H /C /I
 ) ELSE (
     ECHO ResourceHacker already exists.
