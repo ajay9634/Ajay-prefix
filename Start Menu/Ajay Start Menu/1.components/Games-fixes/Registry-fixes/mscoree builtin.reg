@@ -1,0 +1,9 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Wine\DllOverrides]
+
+"ngen.exe"="builtin"
+"regsvcs.exe"="builtin"
+"mscorsvw.exe"="builtin"
+"fusion"="builtin"
+"mscoree"="builtin"
