@@ -1,6 +1,7 @@
 # Ajay prefix components changelog (4 jan 2025)
 - updated msgbox scripts
 - added dxvk stripped
+- added mscoree native and builtin reg
 ==================================================================
 
 # Ajay prefix components changelog (2 Jan 2025)
