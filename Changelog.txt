@@ -1,4 +1,11 @@
+# Ajay Prefix components changelog (5 jan 2025)
+
+- added force Install vcredist 2019 option
+
+==================================================================
+
 # Ajay prefix components changelog (4 jan 2025)
+
 - updated msgbox scripts
 - added dxvk stripped
 - added mscoree native and builtin reg
