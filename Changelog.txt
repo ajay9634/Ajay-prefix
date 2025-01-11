@@ -1,3 +1,11 @@
+# Ajay Prefix components changelog (11 jan 2025)
+
+- added dxvk sarek 1.10.6
+- added arx fatalis patch - arx-libertatis-1.2.1
+- added "delete downloaded files.bat" for 1.components
+
+==================================================================
+
 # Ajay Prefix components changelog (5 jan 2025)
 
 - added force Install vcredist 2019 option
