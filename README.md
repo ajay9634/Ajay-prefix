@@ -25,7 +25,8 @@ Run Ajay prefix.exe from any location.
 Open Ajay prefix.exe as archive and extract to drive D then run "Install_prefix_for_current_container.bat"
 
 - installation guide video -
-[![YouTube Video Title](https://img.youtube.com/vi/6Hllf7mEinmCT0Nn/0.jpg)](https://youtu.be/NXCquIv8D4c?si=6Hllf7mEinmCT0Nn)
+[![Ajay Prefix Installation Video](https://img.youtube.com/vi/NXCquIv8D4c/0.jpg)](https://www.youtube.com/watch?v=NXCquIv8D4c)
+
 # move game save data to Ajay prefix
 
 if you were playing games before installing the Ajay prefix then you need to move game save from drive C/users/... to drive D/Ajay_prefix/save_data/users/...
