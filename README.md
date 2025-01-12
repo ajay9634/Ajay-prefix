@@ -61,44 +61,46 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 - It may break some games.
 
 ---
-# Steam Patch and online Steam installer with Fonts fixed
+## Extra Stuff
+
+### Steam Patch and online Steam installer with Fonts fixed
 
 - Tested in winlator glibc cmod
 
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Steam_Patch)
 
-# Box64 wcp for winlator glibc
+### Box64 wcp for winlator glibc
 
    [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Box64_wcp)
 
-# d3d wcp Files collection for winlator glibc
+### d3d wcp Files collection for winlator glibc
 
 - these wcp files are available in this release section
   
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/D3d_wcp)
 
-# Turnip Zink virgl wcp collection for winlator glibc
+### Turnip Zink virgl wcp collection for winlator glibc
 
 - these wcp files are available in this release section
 
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Graphics_driver)
 
-# Turnip zink virgl exe collection for all winlator
+### Turnip zink virgl exe collection for all winlator
 
 - winlator proot and winlator glibc turnip, zink, virgl exe files are available in this Release section
   
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/graphics_driver_exe)
 
-# wine wcp for winlator glibc
+### wine wcp for winlator glibc
 
 - wine wcp are available in this Release section.
 
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Wine_wcp)
 
-# note
+## note
 I don't compile turnip zink virgl or wine, i add wcp from existing source.
 
-# other help (discord group)
+ other help (discord group)
 you can ask help in Emuplay0 discord
 
 [Emuplay0 discord](https://discord.gg/XpbEp3dWv3)
