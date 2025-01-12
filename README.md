@@ -6,11 +6,15 @@ You can install Ajay Prefix in mobox wow64 , winlator and other x64, wow64 pc em
 _Note- it's not supported in x86 emu like Exagear, mobox box86 etc.
 Exagear mod Ajay has it's own Ajay prefix which can save game data to Ajay prefix_
 
-# What is Ajay prefix?
+# ✨ What is Ajay prefix?
 
-prefix= game save location to d drive/Ajay_prefix/save_data + start menu + bug fix
+[Ajay prefix = game save location to d drive/Ajay_prefix/save_data + Start menu + bug fix]
 
-# installation of Ajay prefix
+It has multiple fixes which are needed in many Games.
+
+_Note - If it breaks anything, let me know in issues_
+
+# ✨ installation of Ajay prefix
 
 Automatic installation: 
 
