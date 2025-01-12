@@ -63,29 +63,29 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 ---
 # ✨_Necessary Stuff_
 
-### ✅_Steam Patch and online Steam installer with Fonts fixed_
+### ✅ Steam Patch and online Steam installer with Fonts fixed
 
 - Tested in winlator glibc cmod
 
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Steam_Patch)
 
-### ✅_Box64 wcp for winlator glibc_
+### ✅ Box64 wcp for winlator glibc
 
    [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Box64_wcp)
 
-### ✅_d3d wcp Files collection for winlator glibc_
+### ✅ d3d wcp Files collection for winlator glibc
   
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/D3d_wcp)
 
-### ✅_Turnip Zink virgl wcp collection for winlator glibc_
+### ✅ Turnip Zink virgl wcp collection for winlator glibc
 
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Graphics_driver)
 
-### ✅_Turnip zink virgl exe collection for all winlator_
+### ✅ Turnip zink virgl exe collection for all winlator
   
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/graphics_driver_exe)
 
-### ✅_wine wcp for winlator glibc_
+### ✅ wine wcp for winlator glibc
 
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Wine_wcp)
 
