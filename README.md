@@ -63,8 +63,12 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 ---
 # ✨ _Necessary Env variables
 
-### VKD3D FPS HUD
+#### VKD3D FPS HUD
     VK_INSTANCE_LAYERS=VK_LAYER_MESA_overlay
+
+#### BOX64 DYNAREC Performance Improve
+   
+    BOX64_DYNAREC_PAUSE=0
 
 # ✨ _Necessary Stuff_
 
