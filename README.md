@@ -66,9 +66,12 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 #### VKD3D FPS HUD
     VK_INSTANCE_LAYERS=VK_LAYER_MESA_overlay
 
-#### BOX64 DYNAREC (+Performance)
+#### BOX64 Env (+Performance)
    
     BOX64_DYNAREC_PAUSE=0
+    BOX64_DYNAREC_WEAKBARRIER=1
+    BOX64_FPU_MODE=1
+    BOX64_NOCACHE=1
 
 # ✨ _Necessary Stuff_
 
