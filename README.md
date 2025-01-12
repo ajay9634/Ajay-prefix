@@ -61,57 +61,50 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 - It may break some games.
 
 ---
-# _Extra Stuff_
+# ✨_Necessary Stuff_
 
-### _Steam Patch and online Steam installer with Fonts fixed_
+### ✅_Steam Patch and online Steam installer with Fonts fixed_
 
 - Tested in winlator glibc cmod
 
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Steam_Patch)
 
-### _Box64 wcp for winlator glibc_
+### ✅_Box64 wcp for winlator glibc_
 
    [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Box64_wcp)
 
-### _d3d wcp Files collection for winlator glibc_
-
-- these wcp files are available in this release section
+### ✅_d3d wcp Files collection for winlator glibc_
   
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/D3d_wcp)
 
-### _Turnip Zink virgl wcp collection for winlator glibc_
-
-- these wcp files are available in this release section
+### ✅_Turnip Zink virgl wcp collection for winlator glibc_
 
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Graphics_driver)
 
-### _Turnip zink virgl exe collection for all winlator_
-
-- winlator proot and winlator glibc turnip, zink, virgl exe files are available in this Release section
+### ✅_Turnip zink virgl exe collection for all winlator_
   
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/graphics_driver_exe)
 
-### _wine wcp for winlator glibc_
-
-- wine wcp are available in this Release section.
+### ✅_wine wcp for winlator glibc_
 
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Wine_wcp)
 
-# note
-I don't compile turnip zink virgl or wine, i add wcp from existing source.
+## ⚠️ _Note_
 
- other help (discord group)
-you can ask help in Emuplay0 discord
+- I don't compile turnip zink virgl or wine, I add wcp from existing source.
 
-[Emuplay0 discord](https://discord.gg/XpbEp3dWv3)
+ - Other help (discord group)
+  you can ask help in Emuplay0 discord
 
-# Support me
-you can support me by subscribing my youtube channel and watching the videos.
+  [Emuplay0 discord](https://discord.gg/XpbEp3dWv3)
+
+## 💲 _Support me_
+You can support me by subscribing my youtube channel and watching the videos.
 [My YT channel](https://youtube.com/@EMUPLAY0?si=TA9tOZx49eZa4OuN)
 
 ========================================
 
-Third party Credits -
+### Third party Credits -
 
 - files from winlator 
 - files from mobox
