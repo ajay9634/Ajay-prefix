@@ -1,4 +1,4 @@
-![logo](
+![logo](https://github.com/ajay9634/Ajay-prefix/blob/main/.github/logo.jpg)
 # 💥 Ajay-prefix
 
 You can install Ajay Prefix in mobox wow64 , winlator and other x64, wow64 pc emu.
