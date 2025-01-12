@@ -71,6 +71,8 @@ I got these files from trusted source so don't worry, Don't install it if you ha
     BOX64_DYNAREC_PAUSE=0
 
     BOX64_DYNAREC_WEAKBARRIER=1
+
+    BOX64_MAX_CPU=4
     
     BOX64_FPU_MODE=1
     
