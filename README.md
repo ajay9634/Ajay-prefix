@@ -27,38 +27,37 @@ Open Ajay prefix.exe as archive and extract to drive D then run "Install_prefix_
 - Installation guide video -
 [![Ajay Prefix Installation Video](https://img.youtube.com/vi/NXCquIv8D4c/0.jpg)](https://www.youtube.com/watch?v=NXCquIv8D4c)
 
-# move game save data to Ajay prefix
+# ⚠️ Move game save data to Ajay prefix
 
 if you were playing games before installing the Ajay prefix then you need to move game save from drive C/users/... to drive D/Ajay_prefix/save_data/users/...
 
-# Link of Ajay prefix v10.14 hotfix
+# 🔗 Link of Ajay prefix v10.14 hotfix
 
 Ajay prefix is available in this Release section.
 
 [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
 
-# Features of Ajay prefix -
+# ✨ Features of Ajay prefix -
 
-- save game location to d drive/Ajay_prefix/save_data , you can uninstall emu without any worry but remember some games save game to game folder or different location. you need to backup that save manually.
--  most necessary files like different wined3d, dxvk , vkd3d , vc redist ,physx ,openal and many more
-- custom wined3d install feature and other necessary features
-- dosbox emu fast version, Adobe flash player ,media player classic old version and some video codecs and many more
-- xaudio, faudio and some other dsound dlls
-- custom mono gecko and net framework installation option from the start menu
+- Save game location to d drive/Ajay_prefix/save_data , you can uninstall emu without any worry but remember some games save game to game folder or different location. you need to backup that save manually.
+-  Most necessary files like different wined3d, dxvk , vkd3d , vc redist ,physx ,openal and many more
+- Custom wined3d install feature and other necessary features
+- Dosbox emu fast version, Adobe flash player ,media player classic old version and some video codecs and many more
+- Xaudio, Faudio and some other dsound dlls
+- Custom mono gecko and net framework installation option from the start menu
 - Resources files protection from the virus
 
-# some special features help
-read help.txt from relative folder
+# ✨ Some special features help
+- Read help.txt from relative folder
 
-# safe or not
-it's definitely safe, I scanned all files before adding to Ajay prefix.
-i got these files from trusted source so don't worry.
-but don't install if you have trust issue.
+# 🛡️ Safe ?
+- It's definitely safe, I scanned all files before adding to Ajay prefix.
+I got these files from trusted source so don't worry, Don't install it if you have trust issues.
 
-# limit
+# ⚠️ limit
 
-- may break container in some other emu
-- may break some games
+- It may break container in some other emu.
+- It may break some games.
 
 # Steam Patch and online Steam installer with Fonts fixed
 
