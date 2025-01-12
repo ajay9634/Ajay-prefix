@@ -61,7 +61,10 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 - It may break some games.
 
 ---
-# ✨_Necessary Stuff_
+# ✨ _Necessary Env variable_
+
+
+# ✨ _Necessary Stuff_
 
 ### ✅ Steam Patch and online Steam installer with Fonts fixed
 
