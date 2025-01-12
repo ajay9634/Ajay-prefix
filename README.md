@@ -14,7 +14,7 @@ It has multiple fixes which are needed in many Games.
 
 _Note - If it breaks anything, let me know in issues_
 
-# ✨ installation of Ajay prefix
+# ✨ Installation of Ajay prefix
 
 - Automatic installation: 
 
@@ -24,7 +24,7 @@ Run Ajay prefix.exe from any location.
 
 Open Ajay prefix.exe as archive and extract to drive D then run "Install_prefix_for_current_container.bat"
 
-- installation guide video -
+- Installation guide video -
 [![Ajay Prefix Installation Video](https://img.youtube.com/vi/NXCquIv8D4c/0.jpg)](https://www.youtube.com/watch?v=NXCquIv8D4c)
 
 # move game save data to Ajay prefix
