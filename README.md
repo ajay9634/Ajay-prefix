@@ -1,4 +1,5 @@
 ![logo](https://github.com/ajay9634/Ajay-prefix/blob/main/.github/logo.jpg)
+---
 # 💥 Ajay-prefix
 
 You can install Ajay Prefix in mobox wow64 , winlator and other x64, wow64 pc emu.
@@ -59,6 +60,7 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 - It may break container in some other emu.
 - It may break some games.
 
+---
 # Steam Patch and online Steam installer with Fonts fixed
 
 - Tested in winlator glibc cmod
