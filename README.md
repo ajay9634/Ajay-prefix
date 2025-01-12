@@ -78,6 +78,9 @@ I got these files from trusted source so don't worry, Don't install it if you ha
     
     BOX64_USE_GLIBC=1
     
+    BOX64_THREADING=1
+
+    BOX64_SKIP_SIGSEGV=1
 
 # ✨ _Necessary Stuff_
 
