@@ -62,7 +62,8 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 
 ---
 # ✨ _Necessary Env variable_
-
+- VKD3D FPS HUD - _VK_INSTANCE_LAYERS=
+VK_LAYER_MESA_overlay_
 
 # ✨ _Necessary Stuff_
 
