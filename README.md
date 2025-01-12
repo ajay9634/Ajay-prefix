@@ -82,6 +82,13 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 
     BOX64_SKIP_SIGSEGV=1
 
+#### MESA Env
+    MESA_VK_WSI_DEBUG=(sw
+
+    MESA_GLTHREAD=true
+
+    
+
 # ✨ _Necessary Stuff_
 
 ### ✅ Steam Patch and online Steam installer with Fonts fixed
