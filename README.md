@@ -16,15 +16,15 @@ _Note - If it breaks anything, let me know in issues_
 
 # ✨ installation of Ajay prefix
 
-Automatic installation: 
+- Automatic installation: 
 
-run prefix.exe from any location.
+Run Ajay prefix.exe from any location.
 
- Manually installation:
+ - Manually installation:
 
-open prefix.exe as archive and extract to drive D then install prefix for current container.bat
+Open Ajay prefix.exe as archive and extract to drive D then run "Install_prefix_for_current_container.bat"
 
-installation guide video - [watch](https://youtu.be/NXCquIv8D4c?si=6Hllf7mEinmCT0Nn)
+- installation guide video - ![watch](https://youtu.be/NXCquIv8D4c?si=6Hllf7mEinmCT0Nn)
 
 # move game save data to Ajay prefix
 
