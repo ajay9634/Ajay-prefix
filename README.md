@@ -59,6 +59,9 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 
 - It may break container in some other emu.
 - It may break some games.
+- It don't backup Steam games save data which are present in "C:/Program Files (x86)/Steam/"
+- It change Game save path  only "C:/users/" to "D:/Ajay_prefix/save_data/users"
+- If some Games are still using "C:/users/" then try "backup and restore drive C users" feature.
 
 ---
 # ✨ _Necessary Env variables_
