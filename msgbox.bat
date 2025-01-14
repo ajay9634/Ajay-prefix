@@ -1,4 +1,13 @@
 @echo off
+@echo off
+if exist "C:\Program Files (x86)\Steam" (
+    echo echo msgbox "Hello! Looks like you are playing Steam games, Backup save files of Steam games manually !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
+cscript /nologo %tmp%\tmp.vbs
+del %tmp%\tmp.vbs
+
+) else (
+    echo 
+)
 mkdir D:\Ajay_prefix\wget_files\d3d 2>nul
 mkdir D:\Ajay_prefix\wget_files\dsound 2>nul
 mkdir D:\Ajay_prefix\wget_files\Files 2>nul
