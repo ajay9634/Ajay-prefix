@@ -30,7 +30,7 @@ _Note - If it breaks anything, let me know in issues_
 
 # ⚠️ Move game save data to Ajay prefix
 
-if you were playing games before installing the Ajay prefix then you need to move game save from drive C/users/... to drive D/Ajay_prefix/save_data/users/...
+If you were playing games before installing the Ajay prefix then you need to move game save from drive C/users/... to drive D/Ajay_prefix/save_data/users/...
 
 # 🔗 Link of Ajay prefix v10.14 hotfix
 
