@@ -1,4 +1,10 @@
 @echo off
+:: downloading timeout fix
+wget -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/timeout.7z
+copy /s /y D:\Ajay_prefix\wget_files\temp\timeout.7z D:\Ajay_prefix\wget_files\Files\timeout.7z /E /H /C /I
+D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\timeout.7z -oC:\windows\ -r -y >NUL 2>&1
+
+
 if exist "C:\Program Files (x86)\Steam" (
     echo msgbox "Hello! Looks like you are playing Steam games, Backup save files of Steam games manually !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
 cscript /nologo %tmp%\tmp.vbs
