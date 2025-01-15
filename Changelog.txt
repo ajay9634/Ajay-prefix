@@ -1,3 +1,8 @@
+# Ajay Prefix components changelog (15 jan 2025)
+- added some theme
+
+==================================================================
+
 # Ajay Prefix components changelog (11 jan 2025)
 
 - added dxvk sarek 1.10.6
