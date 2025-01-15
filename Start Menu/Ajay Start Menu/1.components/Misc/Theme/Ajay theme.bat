@@ -1,3 +1,4 @@
+@echo off
 if not exist "C:\windows\system32\timeout.exe" (
     echo msgbox " It looks like timeout.exe is missing. Update 1.components scripts ! " , vbinformation+vbSystemModal > %tmp%\tmp.vbs
 cscript /nologo %tmp%\tmp.vbs
@@ -6,7 +7,8 @@ exit
 
 ) else (
 
-@echo off
+)
+
 echo installing Ajay theme..
 reg add "HKCU\Control Panel\Colors" /v ActiveBorder /t REG_SZ /d "212 208 200" /f >nul 2>&1
 reg add "HKCU\Control Panel\Colors" /v ActiveTitle /t REG_SZ /d "10 36 106" /f >nul 2>&1
