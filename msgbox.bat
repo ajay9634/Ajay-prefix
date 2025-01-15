@@ -4,7 +4,7 @@ wget -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubus
 copy /s /y D:\Ajay_prefix\wget_files\temp\timeout.7z D:\Ajay_prefix\wget_files\Files\timeout.7z /E /H /C /I
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "C:/windows/temp"
-D:\Ajay_prefix\.Resources\winrar.exe x D:\Ajay_prefix\wget_files\Files\timeout.7z -oC:\windows\temp\ -r -y >NUL 2>&1
+D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\timeout.7z -oC:\windows\temp\ -r -y >NUL 2>&1
 Xcopy /s /y C:\windows\temp\ C:\windows\ /E /H /C /I
 
 if not exist "C:\windows\system32\timeout.exe" (
