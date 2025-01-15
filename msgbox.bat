@@ -4,6 +4,14 @@ wget -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubus
 copy /s /y D:\Ajay_prefix\wget_files\temp\timeout.7z D:\Ajay_prefix\wget_files\Files\timeout.7z /E /H /C /I
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\timeout.7z -oC:\windows\ -r -y >NUL 2>&1
 
+if not exist "C:\windows\system32\timeout.exe" (
+    echo msgbox "Hello! Looks like some fixes are failed to install, Check your internet connection !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
+cscript /nologo %tmp%\tmp.vbs
+del %tmp%\tmp.vbs
+
+) else (
+
+)
 
 if exist "C:\Program Files (x86)\Steam" (
     echo msgbox "Hello! Looks like you are playing Steam games, Backup save files of Steam games manually !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
