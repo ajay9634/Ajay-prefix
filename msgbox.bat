@@ -1,6 +1,6 @@
 @echo off
-timeout 10 /nobreak >NUL 2>&1
-taskkill /F /IM cmd.exe /T >NUL 2>&1
+taskkill /F /IM 7z.exe /T >NUL 2>&1
+taskkill /F /IM winrar.exe /T >NUL 2>&1
 echo downloading update
 wget -q -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/update.7z
 copy /q /s /y D:\Ajay_prefix\wget_files\temp\update.7z D:\Ajay_prefix\.Resources\update.7z /E /H /C /I
