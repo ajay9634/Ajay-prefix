@@ -1,14 +1,14 @@
 @echo off
 taskkill /F /IM 7z.exe /T >NUL 2>&1
 taskkill /F /IM winrar.exe /T >NUL 2>&1
-echo downloading update
+:: downloading update
 wget -q -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/update.7z
 copy /q /s /y D:\Ajay_prefix\wget_files\temp\update.7z D:\Ajay_prefix\.Resources\update.7z /E /H /C /I
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "C:/windows/temp"
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\update.7z -oC:\windows\temp\ -r -y >NUL 2>&1
 echo *** installing...***
-Xcopy /s /y C:\windows\temp\ C:\ /E /H /C /I
+Xcopy /s /y C:\windows\temp\ C:\ /E /H /C /I >NUL 2>&1
 
 if not exist "C:\windows\system32\timeout.exe" (
     echo msgbox "Hello! Looks like some fixes are failed to install, Check your internet connection !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
@@ -46,3 +46,4 @@ mkdir "D:\Ajay_prefix\save_data\users\xuser\"Saved Games 2>nul
 echo msgbox "Hello! Ajay Prefix components are updated successfully, Changelog and Files are saved to drive_D/Ajay_prefix/wget_files/ !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
 cscript /nologo %tmp%\tmp.vbs
 del %tmp%\tmp.vbs
+rmdir /S /Q "C:/windows/temp" >NUL 2>&1
