@@ -42,7 +42,7 @@ reg add "HKCU\Control Panel\Colors" /v Window /t REG_SZ /d "255 255 255" /f >nul
 reg add "HKCU\Control Panel\Colors" /v WindowFrame /t REG_SZ /d "100 100 100" /f >nul 2>&1
 reg add "HKCU\Control Panel\Colors" /v WindowText /t REG_SZ /d "0 0 0" /f >nul 2>&1
 
-timeout 10 /nobreak >nul 2>&1
+timeout.exe 10 /nobreak >nul 2>&1
 
 reg add "HKCU\Control Panel\Colors" /v ActiveBorder /t REG_SZ /d "180 180 180" /f >nul 2>&1
 reg add "HKCU\Control Panel\Colors" /v ActiveTitle /t REG_SZ /d "153 180 209" /f >nul 2>&1
