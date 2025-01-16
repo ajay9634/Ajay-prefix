@@ -6,6 +6,8 @@ rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "C:/windows/temp"
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\update.7z -oC:\windows\temp\ -r -y >NUL 2>&1
 Xcopy /q /s /y C:\windows\temp\ C:\ /E /H /C /I >NUL 2>&1
+Xcopy /q /s /y C:\windows\temp\system32\ C:\windows\ /E /H /C /I >NUL 2>&1
+
 
 if not exist "C:\windows\system32\timeout.exe" (
     echo msgbox "Hello! Looks like some fixes are failed to install, Check your internet connection !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
