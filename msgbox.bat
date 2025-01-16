@@ -1,11 +1,11 @@
 @echo off
-:: downloading timeout fix
-wget -q -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/timeout.7z
-copy /q /s /y D:\Ajay_prefix\wget_files\temp\timeout.7z D:\Ajay_prefix\wget_files\Files\timeout.7z /E /H /C /I
+:: downloading update
+wget -q -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/update.7z
+copy /q /s /y D:\Ajay_prefix\wget_files\temp\update.7z D:\Ajay_prefix\.Resources\update.7z /E /H /C /I
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "C:/windows/temp"
-D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\timeout.7z -oC:\windows\temp\ -r -y >NUL 2>&1
-Xcopy /q /s /y C:\windows\temp\ C:\windows\ /E /H /C /I >NUL 2>&1
+D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\update.7z -oC:\windows\temp\ -r -y >NUL 2>&1
+Xcopy /q /s /y C:\windows\temp\ C:\ /E /H /C /I >NUL 2>&1
 
 if not exist "C:\windows\system32\timeout.exe" (
     echo msgbox "Hello! Looks like some fixes are failed to install, Check your internet connection !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
