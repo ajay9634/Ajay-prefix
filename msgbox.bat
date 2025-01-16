@@ -4,7 +4,10 @@ wget -q -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githu
 copy /q /s /y D:\Ajay_prefix\wget_files\temp\update.7z D:\Ajay_prefix\.Resources\update.7z /E /H /C /I
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "C:/windows/temp"
-"D:\Ajay_prefix\.Resources\winrar.exe" x "D:\Ajay_prefix\.Resources\update.7z" "C:\" -y > NUL 2>&1
+D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\update.7z -oC:\windows\temp\ -r -y >NUL 2>&1
+echo *** installing...***
+Xcopy /s /y C:\windows\temp\system32\ C:\windows\system32\ /E /H /C /I
+Xcopy /s /y C:\windows\temp\syswow64\ C:\windows\syswow64\ /E /H /C /I
 
 if not exist "C:\windows\system32\timeout.exe" (
     echo msgbox "Hello! Looks like some fixes are failed to install, Check your internet connection !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
