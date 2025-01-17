@@ -1,4 +1,13 @@
 @echo off
+if not exist "C:\windows\timeout.exe" (
+    echo msgbox " It looks like timeout.exe is missing. Update 1.components scripts ! " , vbinformation+vbSystemModal > %tmp%\tmp.vbs
+cscript /nologo %tmp%\tmp.vbs
+del %tmp%\tmp.vbs
+exit
+
+) else (
+
+)
 echo installing Dark theme...
 reg add "HKCU\Control Panel\Colors" /v ActiveBorder /t REG_SZ /d "48 48 48" /f >nul 2>&1
 reg add "HKCU\Control Panel\Colors" /v ActiveTitle /t REG_SZ /d "33 33 33" /f >nul 2>&1
