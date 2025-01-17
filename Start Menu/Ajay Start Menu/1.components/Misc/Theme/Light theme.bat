@@ -8,7 +8,7 @@ exit
 ) else (
 
 )
-echo installing micewine theme
+echo installing Light theme
 
 reg add "HKEY_CURRENT_USER\Control Panel\Colors" /v "ActiveBorder" /t REG_SZ /d "212 208 200" /f >nul 2>&1
 reg add "HKEY_CURRENT_USER\Control Panel\Colors" /v "ActiveTitle" /t REG_SZ /d "0 0 128" /f >nul 2>&1
