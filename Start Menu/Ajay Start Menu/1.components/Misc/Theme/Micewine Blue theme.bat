@@ -1,5 +1,5 @@
 @echo off
-if not exist "C:\windows\system32\timeout.exe" (
+if not exist "C:\windows\timeout.exe" (
     echo msgbox " It looks like timeout.exe is missing. Update 1.components scripts ! " , vbinformation+vbSystemModal > %tmp%\tmp.vbs
 cscript /nologo %tmp%\tmp.vbs
 del %tmp%\tmp.vbs
