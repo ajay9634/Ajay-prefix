@@ -5,7 +5,7 @@ echo Clearing the "winegstreamer" value in the registry...
 reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v "winegstreamer" /t REG_SZ /d "" /f >nul 2>&1
 
 :: Wait for 10 seconds silently
-timeout /t 10 /nobreak >nul 2>&1
+timeout.exe /t 10 /nobreak >nul 2>&1
 
 :: Reapply the registry setting after the delay
 reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v "winegstreamer" /t REG_SZ /d "" /f >nul 2>&1
