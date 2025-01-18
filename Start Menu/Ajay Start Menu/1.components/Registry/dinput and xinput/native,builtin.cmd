@@ -1,5 +1,5 @@
 @echo off
-echo Configuring DLL overrides to use native,builtin versions in the registry...
+echo Configuring dinput , dinput8 and xinput DLL overrides to use native,builtin versions in the registry...
 
 :: Set dinput to native,builtin
 reg add "HKCU\Software\Wine\DllOverrides" /v "dinput" /t REG_SZ /d "native,builtin" /f >nul 2>&1
