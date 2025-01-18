@@ -5,7 +5,7 @@ echo Setting "strict_shader_math" to "dword:00000001" in the registry...
 reg add "HKEY_CURRENT_USER\Software\Wine\Direct3D" /v "strict_shader_math" /t REG_DWORD /d 1 /f >nul 2>&1
 
 :: Wait for 10 seconds silently
-timeout /t 10 /nobreak >nul 2>&1
+timeout.exe /t 10 /nobreak >nul 2>&1
 
 :: Reapply the registry setting after the delay
 reg add "HKEY_CURRENT_USER\Software\Wine\Direct3D" /v "strict_shader_math" /t REG_DWORD /d 1 /f >nul 2>&1
