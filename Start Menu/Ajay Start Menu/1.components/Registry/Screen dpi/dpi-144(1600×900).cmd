@@ -8,7 +8,7 @@ reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "FontSmoothing" /t REG_SZ /
 reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "LogPixels" /t REG_DWORD /d 144 /f >nul 2>&1
 
 :: Wait for 10 seconds silently
-timeout /t 10 /nobreak >nul 2>&1
+timeout.exe /t 10 /nobreak >nul 2>&1
 
 :: Reapply the registry settings after the delay
 reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v "FontSmoothing" /t REG_SZ /d "4" /f >nul 2>&1
