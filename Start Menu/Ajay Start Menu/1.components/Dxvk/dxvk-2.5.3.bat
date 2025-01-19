@@ -17,7 +17,7 @@ color 0A
 echo.
 echo *** Downloading %installname%  ***
 IF NOT EXIST "D:\Ajay_prefix\wget_files\d3d\%installname%.tar.gz" (
-    wget -O D:/Ajay_prefix/wget_files/temp/%installname%.tar.gz --progress=dot:mega https://github.com/doitsujin/dxvk/releases/download/v%version%/%installname%.tar.gz
+    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ https://github.com/doitsujin/dxvk/releases/download/v%version%/%installname%.tar.gz
     copy /s /y D:\Ajay_prefix\wget_files\temp\%installname%.tar.gz D:\Ajay_prefix\wget_files\d3d\%installname%.tar.gz /E /H /C /I
 ) ELSE (
     ECHO %installname% file already exists.
