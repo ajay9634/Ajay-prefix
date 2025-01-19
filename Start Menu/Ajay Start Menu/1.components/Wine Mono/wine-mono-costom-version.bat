@@ -46,7 +46,7 @@ IF EXIST "D:/Ajay_prefix/wget_files/temp/wine-mono-%typed_version%-x86.msi" (
 :exist
 color 1f
 IF EXIST "D:/Ajay_prefix/wget_files/mono/wine-mono-%typed_version%-x86.msi" (
-    echo *** Installing... ***
+    echo *** Installing wine mono %typed_version% ... ***
     start /wait msiexec /i "D:/Ajay_prefix/wget_files/mono/wine-mono-%typed_version%-x86.msi" /quiet
     cls
     echo Installation completed successfully.
