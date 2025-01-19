@@ -34,7 +34,7 @@ If you were playing games before installing the Ajay prefix then you need to mov
 
 # ⚠️ Synchronisation of Ajay prefix save data in different Container or Emulator
 
-You need to set drive D location in the same folder , otherwise copy save data manually.
+You need to set drive D location in the same folder otherwise copy save data manually.
 
 # 🔗 Link of Ajay prefix v10.14 hotfix
 
