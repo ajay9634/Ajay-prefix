@@ -17,7 +17,7 @@ color 0A
 echo.
 echo *** Downloading %installname%  ***
 IF NOT EXIST "D:\Ajay_prefix\wget_files\d3d\%installname%.7z" (
-    wget -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/%installname%.7z
+    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/%installname%.7z
     copy /s /y D:\Ajay_prefix\wget_files\temp\%installname%.7z D:\Ajay_prefix\wget_files\d3d\%installname%.7z /E /H /C /I
 ) ELSE (
     ECHO %installname% file already exists.
