@@ -34,7 +34,7 @@ IF NOT EXIST "D:\Ajay_prefix\wget_files\mono\%installname%.msi" (
 :: Install the MSI if it exists
 color 1f
 IF EXIST "D:\Ajay_prefix\wget_files\mono\%installname%.msi" (
-    echo *** Installing... ***
+    echo *** Installing wine mono 9.4.0 ... ***
     start /wait msiexec /i "D:\Ajay_prefix\wget_files\mono\%installname%.msi"
     cls
     echo Installation completed.
