@@ -32,6 +32,10 @@ _Note - If it breaks anything, let me know in issues_
 
 If you were playing games before installing the Ajay prefix then you need to move game save from drive C/users/... to drive D/Ajay_prefix/save_data/users/...
 
+# ⚠️ Synchronisation of Ajay prefix save data in different Container or Emulator
+
+You need to set drive D location in the same folder , otherwise copy save data manually.
+
 # 🔗 Link of Ajay prefix v10.14 hotfix
 
 Ajay prefix is available in this Release section.
