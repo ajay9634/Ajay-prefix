@@ -40,7 +40,8 @@ IF EXIST "D:/Ajay_prefix/wget_files/NET/dotNetFx20_Full_x64.din" (
     echo.
     ECHO ! backup file not found, downloading...
     echo.
-    wget -O "D:/Ajay_prefix/wget_files/temp/dotNetFx20_Full_x64.exe" --progress=dot:mega https://web.archive.org/web/20060509045320/https://download.microsoft.com/download/a/3/f/a3f1bf98-18f3-4036-9b68-8e6de530ce0a/NetFx64.exe
+    wget -P "D:/Ajay_prefix/wget_files/temp/" --progress=dot:mega https://web.archive.org/web/20060509045320/https://download.microsoft.com/download/a/3/f/a3f1bf98-18f3-4036-9b68-8e6de530ce0a/NetFx64.exe
+ren D:/Ajay_prefix/wget_files/temp/NetFx64.exe dotNetFx20_Full_x64.exe
     copy "D:/Ajay_prefix/wget_files/temp/dotNetFx20_Full_x64.exe" "D:/Ajay_prefix/wget_files/NET/dotNetFx20_Full_x64.din"
     echo.
     ECHO *** Download complete, installing...**"
