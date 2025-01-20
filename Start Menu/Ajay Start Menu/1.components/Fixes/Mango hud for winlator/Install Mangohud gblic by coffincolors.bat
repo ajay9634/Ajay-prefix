@@ -55,4 +55,5 @@ D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\temp\Winlator_Cmod_
 echo installed successfully
 
 echo ************************************************
+pause
 
