@@ -13,7 +13,7 @@ color 0A
 echo.
 echo *** Downloading Missing_dlls ***
 IF NOT EXIST "D:\Ajay_prefix\wget_files\Files\Missing_dlls.7z" (
-    wget -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/Missing_dlls.7z
+    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/Missing_dlls.7z
     copy /s /y D:\Ajay_prefix\wget_files\temp\Missing_dlls.7z D:\Ajay_prefix\wget_files\Files\Missing_dlls.7z /E /H /C /I
 ) ELSE (
     ECHO Missing_dlls file already exists.
