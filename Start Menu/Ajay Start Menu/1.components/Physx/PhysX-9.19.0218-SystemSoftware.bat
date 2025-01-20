@@ -39,7 +39,7 @@ IF EXIST "D:/Ajay_prefix/wget_files/physx/PhysX-9.19.0218-SystemSoftware.din" (
     echo.
     ECHO ! backup file not found, downloading...
     echo.
-    wget -O "D:/Ajay_prefix/wget_files/temp/PhysX-9.19.0218-SystemSoftware.exe" --progress=dot:mega D:/Ajay_prefix/wget_files/temp/PhysX-9.19.0218-SystemSoftware.exe https://us.download.nvidia.com/Windows/9.19.0218/PhysX-9.19.0218-SystemSoftware.exe
+    wget -q --show-progress -P "D:/Ajay_prefix/wget_files/temp/" --progress=dot:mega D:/Ajay_prefix/wget_files/temp/PhysX-9.19.0218-SystemSoftware.exe https://us.download.nvidia.com/Windows/9.19.0218/PhysX-9.19.0218-SystemSoftware.exe
     copy "D:/Ajay_prefix/wget_files/temp/PhysX-9.19.0218-SystemSoftware.exe" "D:/Ajay_prefix/wget_files/physx/PhysX-9.19.0218-SystemSoftware.din"
     echo.
     ECHO *** Download complete, installing...**"
