@@ -39,7 +39,7 @@ IF EXIST "D:/Ajay_prefix/wget_files/physx/PhysX-9.13.0604-SystemSoftware-Legacy.
     echo.
     ECHO ! backup file not found, downloading...
     echo.
-    wget -O "D:/Ajay_prefix/wget_files/temp/PhysX-9.13.0604-SystemSoftware-Legacy.msi" --progress=dot:mega https://us.download.nvidia.com/Windows/9.13.0604/PhysX-9.13.0604-SystemSoftware-Legacy.msi
+    wget -q --show-progress -P "D:/Ajay_prefix/wget_files/temp/" --progress=dot:mega https://us.download.nvidia.com/Windows/9.13.0604/PhysX-9.13.0604-SystemSoftware-Legacy.msi
     copy "D:/Ajay_prefix/wget_files/temp/PhysX-9.13.0604-SystemSoftware-Legacy.msi" "D:/Ajay_prefix/wget_files/physx/PhysX-9.13.0604-SystemSoftware-Legacy.din"
     echo.
     ECHO *** Download complete, installing...**"
