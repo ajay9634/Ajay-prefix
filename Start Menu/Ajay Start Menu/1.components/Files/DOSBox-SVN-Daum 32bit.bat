@@ -8,7 +8,7 @@ color 0A
 echo.
 echo *** Downloading DOSBox-SVN-Daum ***
 IF NOT EXIST "D:\Ajay_prefix\wget_files\Files\DOSBox-SVN-Daum.7z" (
-    wget -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/DOSBox-SVN-Daum.7z
+    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/DOSBox-SVN-Daum.7z
     copy /s /y D:\Ajay_prefix\wget_files\temp\DOSBox-SVN-Daum.7z D:\Ajay_prefix\wget_files\Files\DOSBox-SVN-Daum.7z /E /H /C /I
 ) ELSE (
     ECHO DOSBox-SVN-Daum already exists.
