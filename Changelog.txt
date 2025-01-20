@@ -2,7 +2,7 @@
 
 - updated all scripts
 - added vb6 extended setup
-
+- added latest Mangohud compiled by coffincolors 
 ==================================================================
 
 # Ajay Prefix components changelog (14 jan 2025)
