@@ -15,7 +15,7 @@ color 0A
 echo.
 echo *** Downloading xnafx31_redist  ***
 IF NOT EXIST "D:\Ajay_prefix\wget_files\NET\xnafx31_redist.7z" (
-    wget -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/xnafx31_redist.7z
+    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/xnafx31_redist.7z
     copy /s /y D:\Ajay_prefix\wget_files\temp\xnafx31_redist.7z D:\Ajay_prefix\wget_files\NET\xnafx31_redist.7z /E /H /C /I
 ) ELSE (
     ECHO xnafx31_redist file already exists.
