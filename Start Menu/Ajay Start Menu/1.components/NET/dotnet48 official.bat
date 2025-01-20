@@ -40,7 +40,7 @@ IF EXIST "D:/Ajay_prefix/wget_files/NET/dotNetFx48_Full_x86_x64.din" (
     echo.
     ECHO ! backup file not found, downloading...
     echo.
-    wget -P "D:/Ajay_prefix/wget_files/temp/dotNetFx48_Full_x86_x64.exe" --progress=dot:mega https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe
+    wget -P "D:/Ajay_prefix/wget_files/temp/" --progress=dot:mega https://download.visualstudio.microsoft.com/download/pr/7afca223-55d2-470a-8edc-6a1739ae3252/abd170b4b0ec15ad0222a809b761a036/ndp48-x86-x64-allos-enu.exe
 ren D:/Ajay_prefix/wget_files/temp/ndp48-x86-x64-allos-enu.exe dotNetFx48_Full_x86_x64.exe
     copy "D:/Ajay_prefix/wget_files/temp/dotNetFx48_Full_x86_x64.exe" "D:/Ajay_prefix/wget_files/NET/dotNetFx48_Full_x86_x64.din"
     echo.
