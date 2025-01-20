@@ -1,8 +1,17 @@
+# Ajay Prefix components changelog (20 jan 2025)
+
+- updated all scripts
+- added vb6 extended setup
+
+==================================================================
+
 # Ajay Prefix components changelog (14 jan 2025)
 
 - bug fixed
 - added Registry collection
 - converted reg to cmd
+
+==================================================================
 
 # Ajay Prefix components changelog (15 jan 2025)
 - added some theme
