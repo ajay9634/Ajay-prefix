@@ -8,7 +8,7 @@ color 0A
 echo.
 echo *** Downloading flashplayer_32_sa ***
 IF NOT EXIST "D:\Ajay_prefix\wget_files\Files\flashplayer_32_sa.7z" (
-    wget -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/flashplayer_32_sa.7z
+    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/flashplayer_32_sa.7z
     copy /s /y D:\Ajay_prefix\wget_files\temp\flashplayer_32_sa.7z D:\Ajay_prefix\wget_files\Files\flashplayer_32_sa.7z /E /H /C /I
 ) ELSE (
     ECHO flashplayer_32_sa already exists.
