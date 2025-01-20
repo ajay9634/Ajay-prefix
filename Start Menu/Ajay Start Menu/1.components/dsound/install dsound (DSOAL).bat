@@ -13,7 +13,7 @@ color 0A
 echo.
 echo *** Downloading dsound ***
 IF NOT EXIST "D:\Ajay_prefix\wget_files\dsound\dsound.7z" (
-    wget -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/dsound.7z
+    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/dsound.7z
     copy /s /y D:\Ajay_prefix\wget_files\temp\dsound.7z D:\Ajay_prefix\wget_files\dsound\dsound.7z /E /H /C /I
 ) ELSE (
     ECHO dsound file already exists.
