@@ -40,7 +40,7 @@ IF EXIST "D:/Ajay_prefix/wget_files/Game-fixes/arx-libertatis-1.2.1-windows.din"
     echo.
     ECHO ! backup file not found, downloading...
     echo.
-    wget -O "D:/Ajay_prefix/wget_files/temp/arx-libertatis-1.2.1-windows.exe" --progress=dot:mega https://arx-libertatis.org/files/arx-libertatis-1.2.1-windows.exe
+    wget -q --show-progress -P "D:/Ajay_prefix/wget_files/temp/" --progress=dot:mega https://arx-libertatis.org/files/arx-libertatis-1.2.1-windows.exe
     copy "D:/Ajay_prefix/wget_files/temp/arx-libertatis-1.2.1-windows.exe" "D:/Ajay_prefix/wget_files/Game-fixes/arx-libertatis-1.2.1-windows.din"
     echo.
     ECHO *** Download complete, installing...**"
