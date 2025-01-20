@@ -24,7 +24,7 @@ color 0A
 echo.
 echo *** Downloading part02.rar ***
 IF NOT EXIST "D:\Ajay_prefix\wget_files\physx\PhysX_8.04.25_SystemSoftware.part2.rar" (
-    wget -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/PhysX_8.04.25_SystemSoftware.part2.rar
+    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/PhysX_8.04.25_SystemSoftware.part2.rar
     copy /s /y D:\Ajay_prefix\wget_files\temp\PhysX_8.04.25_SystemSoftware.part2.rar D:\Ajay_prefix\wget_files\physx\PhysX_8.04.25_SystemSoftware.part2.rar /E /H /C /I
 ) ELSE (
     ECHO Part 02 already exists.
