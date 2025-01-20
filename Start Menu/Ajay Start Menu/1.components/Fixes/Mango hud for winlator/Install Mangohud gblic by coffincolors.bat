@@ -43,18 +43,18 @@ echo *** script made by Ajay ***
 :: Simulating bold with color and emphasis
 color 0A
 echo.
-echo *** Downloading Winlator_Cmod_MangoHud_WIP  ***
-IF NOT EXIST "D:\Ajay_prefix\wget_files\Files\Winlator_Cmod_MangoHud_WIP.7z" (
-    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/Winlator_Cmod_MangoHud_WIP.7z
+echo *** Downloading Winlator_Cmod_MangoHud  ***
+IF NOT EXIST "D:\Ajay_prefix\wget_files\Files\Winlator_Cmod_MangoHud.7z" (
+    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/Winlator_Cmod_MangoHud.7z
 ) ELSE (
-    ECHO Winlator_Cmod_MangoHud_WIP file already exists.
+    ECHO Winlator_Cmod_MangoHud file already exists.
 )
 
 :: Simulate download progress only for subsequent parts
 
 color 1f
 echo *** installing ...***
-D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\temp\Winlator_Cmod_MangoHud_WIP.7z -oZ:\ -r -y >NUL 2>&1
+D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\temp\Winlator_Cmod_MangoHud.7z -oZ:\ -r -y >NUL 2>&1
 
 
 echo ************************************************
