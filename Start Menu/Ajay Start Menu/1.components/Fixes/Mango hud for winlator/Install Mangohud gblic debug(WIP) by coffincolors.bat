@@ -45,7 +45,7 @@ color 0A
 echo.
 echo *** Downloading Winlator_Cmod_MangoHud_WIP  ***
 IF NOT EXIST "D:\Ajay_prefix\wget_files\Files\Winlator_Cmod_MangoHud_WIP.7z" (
-    wget -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/Winlator_Cmod_MangoHud_WIP.7z
+    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/Winlator_Cmod_MangoHud_WIP.7z
 ) ELSE (
     ECHO Winlator_Cmod_MangoHud_WIP file already exists.
 )
