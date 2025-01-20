@@ -40,7 +40,7 @@ IF EXIST "D:/Ajay_prefix/wget_files/NET/dotNetFx40_Full_x86_x64.din" (
     echo.
     ECHO ! backup file not found, downloading...
     echo.
-    wget -P "D:/Ajay_prefix/wget_files/temp/" --progress=dot:mega https://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe
+    wget -q --show-progress -P "D:/Ajay_prefix/wget_files/temp/" --progress=dot:mega https://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe
     copy "D:/Ajay_prefix/wget_files/temp/dotNetFx40_Full_x86_x64.exe" "D:/Ajay_prefix/wget_files/NET/dotNetFx40_Full_x86_x64.din"
     echo.
     ECHO *** Download complete, installing...**"
