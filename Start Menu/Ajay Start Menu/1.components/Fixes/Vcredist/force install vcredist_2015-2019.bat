@@ -42,7 +42,7 @@ color 0A
 echo.
 echo *** Downloading vc_redist_2015-2019 ***
 IF NOT EXIST "D:\Ajay_prefix\wget_files\Files\vc_redist_2019.7z" (
-    wget -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/vc_redist_2019.7z
+    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/vc_redist_2019.7z
     copy /s /y D:\Ajay_prefix\wget_files\temp\vc_redist_2019.7z D:\Ajay_prefix\wget_files\Files\vc_redist_2019.7z /E /H /C /I
 ) ELSE (
     ECHO vc_redist_2015-2019 already exists.
@@ -53,8 +53,8 @@ color 1f
 echo *** Extracting ...***
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\vc_redist_2019.7z -oD:\Ajay_prefix\wget_files\temp\ -r -y >NUL 2>&1
 
-echo *** installing vcredist_2015-2019 ***
-Start /wait D:\Ajay_prefix\wget_files\temp\vc_redist_2019.x86.exe /repair /passive /norestart
-Start /wait D:\Ajay_prefix\wget_files\temp\vc_redist_2019.x64.exe /repair /passive /norestart
+echo *** install vcredist_2015-2019 manually , make sure you are using official or winlator ajay to prevent errors otherwise uninstall another version of vc redist manually ***
+Start /wait D:\Ajay_prefix\wget_files\temp\vc_redist_2019.x86.exe /repair /norestart
+Start /wait D:\Ajay_prefix\wget_files\temp\vc_redist_2019.x64.exe /repair /norestart
 
 echo ************************************************
