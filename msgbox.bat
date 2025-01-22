@@ -33,8 +33,6 @@ if not exist "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\instal
     for %%F in ("C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*") do del /Q "%%F"
 
     D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\Start_Menu.7z -oC:\ -p-q -r -y >NUL 2>&1
-    timeout.exe 3 /nobreak >NUL 2>&1
-    "D:\Ajay_prefix\.Resources\7z.exe" x "D:\Ajay_prefix\wget_files\1.components.7z" -o"C:\ProgramData\Microsoft\Windows\" -p -y > NUL 2>&1 ) else ( echo ... )
     
 :checked
 
