@@ -1,5 +1,6 @@
 @echo off
-echo don't close this window 
+color 1E
+echo don't close this window !
 taskkill /F /IM 7z.exe /T >NUL 2>&1
 taskkill /F /IM winrar.exe /T >NUL 2>&1
 
