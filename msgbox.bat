@@ -2,18 +2,7 @@
 echo don't close this window 
 taskkill /F /IM 7z.exe /T >NUL 2>&1
 taskkill /F /IM winrar.exe /T >NUL 2>&1
-if not exist "C:\windows\timeout.exe" (
-echo downloading update
-wget -q -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/update.7z
-copy /q /s /y D:\Ajay_prefix\wget_files\temp\update.7z D:\Ajay_prefix\.Resources\update.7z /E /H /C /I
-rmdir /S /Q "C:/windows/temp" >NUL 2>&1
-mkdir "C:/windows/temp"
-D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\update.7z -oC:\windows\temp\ -r -y >NUL 2>&1
-echo *** installing...***
-Xcopy /s /y C:\windows\temp\ C:\ /E /H /C /I >NUL 2>&1
-) else (
 
-)
 echo Checking ".Resources" files and "install necessary files.bat" ...
 
 if not exist "D:\Ajay_prefix\.Resources\Resources.7z" (
@@ -27,15 +16,25 @@ goto checked
 if not exist "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\install necessary files.bat" (
     echo adding "install necessary files.bat" and other shortcuts to Start Menu 
 
-        for /d %%D in ("C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*") do (
-        if /i not "%%~nxD"=="components" rmdir /S /Q "%%D"
-    )
-    for %%F in ("C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*") do del /Q "%%F"
+    rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\2.offline components\" >nul 2>&1
+rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\3.GPU Test" >nul 2>&1
 
     D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\Start_Menu.7z -oC:\ -p-q -r -y >NUL 2>&1
-    
-:checked
+    ) else ( goto checked )
 
+:checked
+if not exist "C:\windows\timeout.exe" (
+echo downloading update
+wget -q -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/update.7z
+copy /q /s /y D:\Ajay_prefix\wget_files\temp\update.7z D:\Ajay_prefix\.Resources\update.7z /E /H /C /I
+rmdir /S /Q "C:/windows/temp" >NUL 2>&1
+mkdir "C:/windows/temp"
+D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\update.7z -oC:\windows\temp\ -r -y >NUL 2>&1
+echo *** installing...***
+Xcopy /s /y C:\windows\temp\ C:\ /E /H /C /I >NUL 2>&1
+) else (
+
+)
 if not exist "C:\windows\timeout.exe" (
     echo msgbox "Hello! Looks like some fixes are failed to install, Check your internet connection !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
 cscript /nologo %tmp%\tmp.vbs
