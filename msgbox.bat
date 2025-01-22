@@ -25,7 +25,7 @@ rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\3.GPU T
 
 :checked
 if not exist "C:\windows\timeout.exe" (
-echo downloading update
+echo downloading update !
 wget -q -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/update.7z
 copy /q /s /y D:\Ajay_prefix\wget_files\temp\update.7z D:\Ajay_prefix\.Resources\update.7z /E /H /C /I
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
