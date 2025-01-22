@@ -27,8 +27,11 @@ goto checked
 if not exist "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\install necessary files.bat" (
     echo adding "install necessary files.bat" and other shortcuts to Start Menu 
 
-    rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\"
- 
+        for /d %%D in ("C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*") do (
+        if /i not "%%~nxD"=="components" rmdir /S /Q "%%D"
+    )
+    for %%F in ("C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*") do del /Q "%%F"
+
     D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\Start_Menu.7z -oC:\ -p-q -r -y >NUL 2>&1
     timeout.exe 3 /nobreak >NUL 2>&1
     "D:\Ajay_prefix\.Resources\7z.exe" x "D:\Ajay_prefix\wget_files\1.components.7z" -o"C:\ProgramData\Microsoft\Windows\" -p -y > NUL 2>&1 ) else ( echo ... )
