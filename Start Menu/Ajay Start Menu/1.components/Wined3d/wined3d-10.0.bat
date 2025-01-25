@@ -14,7 +14,7 @@ echo.
 echo *** Downloading part01.rar ***
 IF NOT EXIST "D:/Ajay_prefix/wget_files/d3d/%installname%_64.zip" (
     wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ https://downloads.fdossena.com/Projects/WineD3D/Builds/WineD3DForWindows_10.0-rc6-x86_64.zip
-    ren D:/Ajay_prefix/wget_files/temp/WineD3DForWindows_10.0-rc6-x86_64.zip %installname%_64.zip
+    ren D:/Ajay_prefix/wget_files/temp/WineD3DForWindows_10.0-x86_64.zip %installname%_64.zip
     copy "D:/Ajay_prefix/wget_files/temp/%installname%_64.zip" "D:/Ajay_prefix/wget_files/d3d/%installname%_64.zip"
     echo Extracting....
     D:\Ajay_prefix\.Resources\winrar.exe x D:\Ajay_prefix\wget_files\d3d\%installname%_64.zip D:\Ajay_prefix\wget_files\temp\ -r -y >NUL 2>&1
@@ -35,7 +35,7 @@ echo.
 echo *** Downloading part02.rar ***
 IF NOT EXIST "D:/Ajay_prefix/wget_files/d3d/%installname%.zip" (
     wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ https://downloads.fdossena.com/Projects/WineD3D/Builds/WineD3DForWindows_10.0-rc6.zip
-    ren D:/Ajay_prefix/wget_files/temp/WineD3DForWindows_10.0-rc6.zip %installname%.zip
+    ren D:/Ajay_prefix/wget_files/temp/WineD3DForWindows_10.0.zip %installname%.zip
     copy "D:/Ajay_prefix/wget_files/temp/%installname%.zip" "D:/Ajay_prefix/wget_files/d3d/%installname%.zip"
     echo Extracting....
     D:\Ajay_prefix\.Resources\winrar.exe x D:\Ajay_prefix\wget_files\d3d\%installname%.zip D:\Ajay_prefix\wget_files\temp\ -r -y >NUL 2>&1
