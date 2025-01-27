@@ -1,3 +1,10 @@
+# Ajay Prefix components changelog (27 jan 2025)
+
+- added ib bat
+- added some codecs
+- added vkd3d 2.14.1 (it will work on winlator glibc)
+
+==================================================================
 # Ajay Prefix components changelog (20 jan 2025)
 
 - updated all scripts
