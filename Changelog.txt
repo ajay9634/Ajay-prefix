@@ -1,3 +1,9 @@
+# Ajay Prefix components changelog (29 jan 2025)
+
+- fixed wined3d,dxvk and other bat for hangover
+
+==================================================================
+
 # Ajay Prefix components changelog (27 jan 2025)
 
 - added ib bat
