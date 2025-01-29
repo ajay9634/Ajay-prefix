@@ -48,4 +48,5 @@ Xcopy /s /y C:\windows\temp\syswow64\ C:\windows\syswow64\ /E /H /C /I
     echo installing 32bit dlls....
 Xcopy /s /y C:\windows\temp\syswow64\ C:\windows\syswow64\ /E /H /C /I
 )
-:: Repeat for other parts...
+
+timeout.exe 5 /nobreak
