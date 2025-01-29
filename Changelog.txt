@@ -1,5 +1,6 @@
 # Ajay Prefix components changelog (29 jan 2025)
 
+- added wrapper for igi 1 and other old games
 - fixed wined3d,dxvk and other bat for hangover
 
 ==================================================================
