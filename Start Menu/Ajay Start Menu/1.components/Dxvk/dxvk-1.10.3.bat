@@ -34,6 +34,4 @@ ren "C:\windows\temp\%installname%\x64" system32
 ren "C:\windows\temp\%installname%\x32" syswow64
 Xcopy /s /y C:\windows\temp\%installname%\system32\ C:\windows\system32\ /E /H /C /I
 Xcopy /s /y C:\windows\temp\%installname%\syswow64\ C:\windows\syswow64\ /E /H /C /I
-
-pause
 echo ************************************************
