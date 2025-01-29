@@ -2,8 +2,10 @@
 color 0a
 echo *** wait....***
 echo *** deleting temp files...***
-rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
-mkdir "D:/Ajay_prefix/wget_files/temp"
+rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+rmdir /S /Q "C:/windows/temp" >NUL 2>&1
+mkdir "C:/windows/temp" >NUL 2>&1
+mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 echo *** deleted temp files ***
 echo .
 echo *** script made by Ajay ***
@@ -24,10 +26,10 @@ IF NOT EXIST "D:\Ajay_prefix\wget_files\d3d\vkd3d-proton-2.14.1.tar.zst" (
 color 1f
 echo *** Extracting ...***
 
-D:\Ajay_prefix\.Resources\winrar.exe x D:\Ajay_prefix\wget_files\d3d\vkd3d-proton-2.14.1.tar.zst D:\Ajay_prefix\wget_files\temp\ -r -y >NUL 2>&1
+D:\Ajay_prefix\.Resources\winrar.exe x D:\Ajay_prefix\wget_files\d3d\vkd3d-proton-2.14.1.tar.zst C:\windows\temp\ -r -y >NUL 2>&1
 echo *** installing...***
-ren D:\Ajay_prefix\wget_files\temp\vkd3d-proton-2.14.1\x64 system32
-ren D:\Ajay_prefix\wget_files\temp\vkd3d-proton-2.14.1\x86 syswow64
-Xcopy /s /y D:\Ajay_prefix\wget_files\temp\vkd3d-proton-2.14.1\ C:\windows\ /E /H /C /I
+ren C:\windows\temp\vkd3d-proton-2.14.1\x64 system32
+ren C:\windows\temp\vkd3d-proton-2.14.1\x86 syswow64
+Xcopy /s /y C:\windows\temp\vkd3d-proton-2.14.1\ C:\windows\ /E /H /C /I
 
-echo.************************************************
+echo ************************************************
