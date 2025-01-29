@@ -27,4 +27,5 @@ D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\dsound\dsound.7z -o
 echo *** installing...***
 Xcopy /s /y D:\Ajay_prefix\wget_files\temp\dsound-stable-wine-9.15\ C:\windows\ /E /H /C /I
 )
-echo.************************************************
+echo ************************************************
+timeout.exe 5 /nobreak
