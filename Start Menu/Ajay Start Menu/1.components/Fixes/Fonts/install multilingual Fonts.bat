@@ -1,8 +1,8 @@
 @echo off
 color 0a
 echo *** deleting temp files...***
-rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
-mkdir "D:/Ajay_prefix/wget_files/temp"
+rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 echo *** deleted temp files ***
 echo .
 echo *** script made by Ajay ***
@@ -35,3 +35,4 @@ D:\Ajay_prefix\.Resources\winrar.exe x D:\Ajay_prefix\wget_files\Files\Fonts.par
 echo.
 echo *** installing to C drive  ***
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\temp\Fonts.7z -oC:\windows\ -r -y >NUL 2>&1
+timeout.exe 5 /nobreak
