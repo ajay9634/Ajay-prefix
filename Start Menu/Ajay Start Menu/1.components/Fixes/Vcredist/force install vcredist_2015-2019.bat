@@ -3,7 +3,7 @@ color 84
 echo Uninstalling VC Redist 2015-2022...
 
 :: Remove temporary folder if it exists
-rmdir /S /Q C:\temp\
+rmdir /S /Q C:\temp\ >NUL 2>&1
 
 :: Extract required files from the archive
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\Resources.7z -oC:\temp *vcredist_2022_x86.exe *vcredist_2022_x64.exe -p-q -r -y >NUL 2>&1
@@ -34,7 +34,7 @@ start /wait C:\temp\Resources\files\vcredist_2022_x86.exe /uninstall /quiet /nor
 start /wait C:\temp\Resources\files\vcredist_2022_x64.exe /uninstall /quiet /norestart
 
 :: Clean up temporary folder
-rmdir /S /Q C:\temp\
+rmdir /S /Q C:\temp\ >NUL 2>&1
 
 echo Uninstalled VC Redist 2015-2022
 
