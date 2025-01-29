@@ -29,26 +29,28 @@ ECHO *** Installing .NET Framework 4.0...***
 echo.
 echo *** Script made by Ajay ***
 echo.
-rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
-mkdir "D:/Ajay_prefix/wget_files/temp"
+rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+rmdir /S /Q "C:/windows/temp" >NUL 2>&1
+mkdir "C:/windows/temp" >NUL 2>&1
+mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 
 :: Check if the .din backup file exists
 IF EXIST "D:/Ajay_prefix/wget_files/NET/dotNetFx40_Full_x86_x64.din" (
     ECHO *** backup file found, Now running the installer...***
-    copy "D:/Ajay_prefix/wget_files/NET/dotNetFx40_Full_x86_x64.din" "D:/Ajay_prefix/wget_files/temp/dotNetFx40_Full_x86_x64.exe"
+    copy "D:/Ajay_prefix/wget_files/NET/dotNetFx40_Full_x86_x64.din" "C:/windows/temp/dotNetFx40_Full_x86_x64.exe"
 ) ELSE (
     echo.
     ECHO ! backup file not found, downloading...
     echo.
-    wget -q --show-progress -P "D:/Ajay_prefix/wget_files/temp/" --progress=dot:mega https://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe
-    copy "D:/Ajay_prefix/wget_files/temp/dotNetFx40_Full_x86_x64.exe" "D:/Ajay_prefix/wget_files/NET/dotNetFx40_Full_x86_x64.din"
+    wget -q --show-progress -P "C:/windows/temp/" --progress=dot:mega https://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe
+    copy "C:/windows/temp/dotNetFx40_Full_x86_x64.exe" "D:/Ajay_prefix/wget_files/NET/dotNetFx40_Full_x86_x64.din"
     echo.
     ECHO *** Download complete, installing...**"
     echo.
 )
 
 :: Run the installer
-Start /wait D:/Ajay_prefix/wget_files/temp/dotNetFx40_Full_x86_x64.exe /passive /norestart
+Start /wait C:/windows/temp/dotNetFx40_Full_x86_x64.exe /passive /norestart
 
 ECHO *******
 exit

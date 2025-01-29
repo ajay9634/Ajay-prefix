@@ -29,27 +29,29 @@ ECHO *** Installing .NET Framework 4.5.2...***
 echo.
 echo *** Script made by Ajay ***
 echo.
-rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
-mkdir "D:/Ajay_prefix/wget_files/temp"
+rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+rmdir /S /Q "C:/windows/temp" >NUL 2>&1
+mkdir "C:/windows/temp" >NUL 2>&1
+mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 
 :: Check if the .din backup file exists
 IF EXIST "D:/Ajay_prefix/wget_files/NET/dotNetFx452_Full_x86_x64.din" (
     ECHO *** backup file found, Now running the installer...***
-    copy "D:/Ajay_prefix/wget_files/NET/dotNetFx452_Full_x86_x64.din" "D:/Ajay_prefix/wget_files/temp/dotNetFx452_Full_x86_x64.exe"
+    copy "D:/Ajay_prefix/wget_files/NET/dotNetFx452_Full_x86_x64.din" "C:/windows/temp/dotNetFx452_Full_x86_x64.exe"
 ) ELSE (
     echo.
     ECHO ! backup file not found, downloading...
     echo.
-    wget -q --show-progress -P "D:/Ajay_prefix/wget_files/temp/" --progress=dot:mega https://download.microsoft.com/download/E/2/1/E21644B5-2DF2-47C2-91BD-63C560427900/NDP452-KB2901907-x86-x64-AllOS-ENU.exe
-ren D:/Ajay_prefix/wget_files/temp/NDP452-KB2901907-x86-x64-AllOS-ENU.exe dotNetFx452_Full_x86_x64.exe
-    copy "D:/Ajay_prefix/wget_files/temp/dotNetFx452_Full_x86_x64.exe" "D:/Ajay_prefix/wget_files/NET/dotNetFx452_Full_x86_x64.din"
+    wget -q --show-progress -P "C:/windows/temp/" --progress=dot:mega https://download.microsoft.com/download/E/2/1/E21644B5-2DF2-47C2-91BD-63C560427900/NDP452-KB2901907-x86-x64-AllOS-ENU.exe
+ren C:/windows/temp/NDP452-KB2901907-x86-x64-AllOS-ENU.exe dotNetFx452_Full_x86_x64.exe
+    copy "C:/windows/temp/dotNetFx452_Full_x86_x64.exe" "D:/Ajay_prefix/wget_files/NET/dotNetFx452_Full_x86_x64.din"
     echo.
     ECHO *** Download complete, installing...**"
     echo.
 )
 
 :: Run the installer
-Start D:/Ajay_prefix/wget_files/temp/dotNetFx452_Full_x86_x64.exe /force /norestart
+Start C:/windows/temp/dotNetFx452_Full_x86_x64.exe /force /norestart
 
 ECHO *******
 exit
