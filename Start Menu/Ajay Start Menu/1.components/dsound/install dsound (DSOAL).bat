@@ -2,8 +2,8 @@
 color 0a
 echo *** wait....***
 echo *** deleting temp files...***
-rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
-mkdir "D:/Ajay_prefix/wget_files/temp"
+rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 echo *** deleted temp files ***
 echo .
 echo *** script made by Ajay ***
@@ -27,4 +27,5 @@ D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\dsound\dsound.7z -o
 echo *** installing...***
 Xcopy /s /y D:\Ajay_prefix\wget_files\temp\dsound6(x64)DSOAL\ C:\windows\ /E /H /C /I
 )
-echo.************************************************
+echo ************************************************
+timeout.exe 5 /nobreak
