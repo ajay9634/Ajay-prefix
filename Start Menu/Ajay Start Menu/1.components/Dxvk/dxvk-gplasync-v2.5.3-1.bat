@@ -32,3 +32,4 @@ Xcopy /s /y D:\Ajay_prefix\wget_files\temp\system32\ C:\windows\system32\ /E /H 
 Xcopy /s /y D:\Ajay_prefix\wget_files\temp\syswow64\ C:\windows\syswow64\ /E /H /C /I
 
 echo ************************************************
+timeout.exe 5 /nobreak

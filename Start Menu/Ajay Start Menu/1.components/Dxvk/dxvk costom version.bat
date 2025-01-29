@@ -40,3 +40,4 @@ Xcopy /s /y C:\windows\temp\dxvk-%version%\system32\ C:\windows\system32\ /E /H 
 Xcopy /s /y C:\windows\temp\dxvk-%version%\syswow64\ C:\windows\syswow64\ /E /H /C /I
 
 echo ************************************************
+timeout.exe 5 /nobreak

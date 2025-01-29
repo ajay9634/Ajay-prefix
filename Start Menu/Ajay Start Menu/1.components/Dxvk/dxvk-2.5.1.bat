@@ -36,3 +36,4 @@ Xcopy /s /y C:\windows\temp\%installname%\system32\ C:\windows\system32\ /E /H /
 Xcopy /s /y C:\windows\temp\%installname%\syswow64\ C:\windows\syswow64\ /E /H /C /I
 
 echo ************************************************
+timeout.exe 5 /nobreak
