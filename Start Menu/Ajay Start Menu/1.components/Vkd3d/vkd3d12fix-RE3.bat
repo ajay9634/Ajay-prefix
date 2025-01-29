@@ -19,8 +19,6 @@ IF NOT EXIST "D:\Ajay_prefix\wget_files\d3d\vkd3d12fix-RE3.7z" (
     ECHO vkd3d12fix-RE3 file already exists.
 )
 
-:: Simulate download progress only for subsequent parts
-
 color 1f
 echo *** Extracting ...***
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\d3d\vkd3d12fix-RE3.7z -oD:\Ajay_prefix\wget_files\temp\ -r -y >NUL 2>&1
@@ -28,4 +26,5 @@ echo *** installing...***
 Xcopy /s /y D:\Ajay_prefix\wget_files\temp\system32\ C:\windows\system32\ /E /H /C /I
 Xcopy /s /y D:\Ajay_prefix\wget_files\temp\syswow64\ C:\windows\syswow64\ /E /H /C /I
 
-echo.************************************************
+echo ************************************************
+timeout.exe 5 /nobreak
