@@ -7,8 +7,8 @@ echo Version: %version%
 color 0a
 echo *** This will fix some games like dmc4 ***
 echo *** deleting temp files...***
-rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
-mkdir "D:/Ajay_prefix/wget_files/temp"
+rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 echo *** deleted temp files ***
 echo .
 echo *** script made by Ajay ***
