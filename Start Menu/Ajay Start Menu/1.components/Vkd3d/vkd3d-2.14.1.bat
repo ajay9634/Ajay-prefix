@@ -33,3 +33,4 @@ ren C:\windows\temp\vkd3d-proton-2.14.1\x86 syswow64
 Xcopy /s /y C:\windows\temp\vkd3d-proton-2.14.1\ C:\windows\ /E /H /C /I
 
 echo ************************************************
+timeout.exe 5 /nobreak
