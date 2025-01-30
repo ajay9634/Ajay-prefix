@@ -2,7 +2,7 @@
 
 You can install Ajay Prefix in mobox wow64 , winlator and other x64, wow64 pc emu.
 
-note- it's not supported in only x86 emu like Exagear, mobox box86 etc.
+note- it's not supported in x86 emu like Exagear, mobox box86 etc.
 
 # What is Ajay prefix?
 
