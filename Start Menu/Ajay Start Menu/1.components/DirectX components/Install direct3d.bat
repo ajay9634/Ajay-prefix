@@ -68,6 +68,6 @@ echo removing temp files
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "C:/windows/temp" >NUL 2>&1
 echo removed temp files !
-echo msgbox "Hello! direct3d is installed successfully. Now install Direct3d native registry !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
+echo msgbox "Hello! direct3d is installed successfully. Now install Direct3d registry as native,builtin !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
 cscript /nologo %tmp%\tmp.vbs
 del %tmp%\tmp.vbs
