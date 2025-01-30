@@ -21,7 +21,7 @@ IF NOT "%userChoice%"=="1" (
 )
 echo *** You selected Yes. Continuing... ***
 
-echo *** This is going to take some minutes....***
+echo *** wait ....***
 echo *** deleting temp files...***
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
