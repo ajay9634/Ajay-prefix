@@ -1,3 +1,8 @@
+# Ajay Prefix components changelog (11 feb 2025)
+
+- added dxwrapper for dx9 games , extract it to game folder
+
+==================================================================
 # Ajay Prefix components changelog (2 feb 2025)
 
 - added more dgvoodoo version for ddraw and dx8 games
