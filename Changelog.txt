@@ -1,3 +1,11 @@
+# Ajay Prefix components changelog (15 feb 2025)
+
+- Added "Remove all VC and other dependencies from winlator.bat" (
+Maybe useful if dependencies are broken or system32 and syswow64 folder are messed up.
+But change container settings like Dxvk version, Direct X builtin to native etc after restarting the container.
+After this you can install all vc redist or necessary files like a fresh container)
+
+==================================================================
 # Ajay Prefix components changelog (11 feb 2025)
 
 - added dxwrapper for dx9 games , extract it to game folder
