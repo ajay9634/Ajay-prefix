@@ -1,3 +1,9 @@
+# Ajay Prefix components changelog (17 feb 2025)
+
+- updated missing_dlls
+- added CD Tools (anyburn, bin2iso ,img2iso etc)
+
+==================================================================
 # Ajay Prefix components changelog (15 feb 2025)
 
 - Added "Remove all VC and other dependencies from winlator.bat" (
