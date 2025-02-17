@@ -2,6 +2,7 @@
 
 - updated missing_dlls
 - added CD Tools (anyburn, bin2iso ,img2iso etc)
+- added dgvoodoo2-v2.8 by lutris , it can fix glide and ddraw games like outlaws etc
 
 ==================================================================
 # Ajay Prefix components changelog (15 feb 2025)
