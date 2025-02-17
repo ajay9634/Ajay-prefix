@@ -77,4 +77,5 @@ echo msgbox "Hello! Ajay Prefix components are updated successfully, Changelog a
 cscript /nologo %tmp%\tmp.vbs
 del %tmp%\tmp.vbs
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
-
+echo opening changelog..
+notepad.exe D:/Ajay_prefix/wget_files/Changelog.txt
