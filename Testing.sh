@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Remove the previous file
-rm -f ~/x
+rm -f testing.sh
 
 # Install termux-am silently
 echo "Installing termux-am..."
