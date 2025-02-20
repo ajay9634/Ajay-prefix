@@ -71,5 +71,5 @@ echo '' >> "$profile_json_path"
 echo '  ]' >> "$profile_json_path"
 echo '}' >> "$profile_json_path"
 
-tar --zstd -cvf "${tarfile%.tar.gz}.tzst" -C "$extract_dir/$subfolder" . && \
+tar --zstd -cvf "${tarfile%.tar.gz}.wcp" -C "$extract_dir/$subfolder" . && \
 rm -rf "$extract_dir/$subfolder"
