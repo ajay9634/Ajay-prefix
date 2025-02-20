@@ -21,3 +21,6 @@ while true; do
 done
 
 echo "Storage permission granted."
+
+pkg update
+pkg install tar
