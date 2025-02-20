@@ -32,4 +32,4 @@ subfolder="$(tar -tzf "$tarfile" | head -1 | cut -d'/' -f1)" && \
 [ -d "$extract_dir/$subfolder/x32" ] && mv "$extract_dir/$subfolder/x32" "$extract_dir/$subfolder/syswow64" && \
 [ -d "$extract_dir/$subfolder/x64" ] && mv "$extract_dir/$subfolder/x64" "$extract_dir/$subfolder/system32" && \
 tar --zstd -cvf "${tarfile%.tar.gz}.tar.zst" -C "$extract_dir/$subfolder" .
-rm -rf "$tarfile"
+rm -rf "$extract_dir"
