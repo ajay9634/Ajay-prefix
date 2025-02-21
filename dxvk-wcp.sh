@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Remove the previous file
-rm -f testing.sh
+rm -f dxvk-wcp.sh
 
 # Install termux-am silently
-echo "Installing termux-am..."
+echo "Please wait ..."
 pkg install termux-am -y &>/dev/null
 
 # Setup storage and wait for permissions
@@ -22,7 +22,7 @@ done
 
 echo "Storage permission granted."
 
-pkg install -y tar
+pkg install -y tar &>/dev/null
 
 
 read -p "Enter full path of the .tar.gz file: " tarfile && \
