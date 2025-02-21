@@ -1,4 +1,3 @@
-!/bin/bash
 
 # Remove the previous file
 rm -f dxvk-wcp.sh
