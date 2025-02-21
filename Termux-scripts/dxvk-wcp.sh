@@ -21,7 +21,7 @@ done
 echo "Storage permission granted."
 
 pkg install -y tar &>/dev/null
-
+pkg install -y zstd &>/dev/null
 
 read -p "Enter full path of the .tar.gz file: " tarfile && \
 extract_dir="$(dirname "$tarfile")" && \
