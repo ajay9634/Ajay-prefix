@@ -22,6 +22,7 @@ done
 echo "Storage permission granted."
 
 pkg install -y tar &>/dev/null
+pkg install -y zstd &>/dev/null
 
 read -p "Enter full path of the .zip file: " zipfile
 read -p "Enter DXVK version: " dxvk_version
