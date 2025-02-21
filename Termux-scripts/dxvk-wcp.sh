@@ -1,7 +1,4 @@
-
-# Remove the previous file
-rm -f dxvk-wcp.sh
-
+rm -f dxvk-wcp.sh &>/dev/null
 # Install termux-am silently
 echo "Please wait ..."
 pkg install termux-am -y &>/dev/null
