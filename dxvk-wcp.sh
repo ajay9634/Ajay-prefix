@@ -31,7 +31,11 @@ tar -xzvf "$tarfile" -C "$extract_dir" && \
 subfolder="$(tar -tzf "$tarfile" | head -1 | cut -d'/' -f1)" && \
 [ -d "$extract_dir/$subfolder/x32" ] && mv "$extract_dir/$subfolder/x32" "$extract_dir/$subfolder/syswow64" && \
 [ -d "$extract_dir/$subfolder/x64" ] && mv "$extract_dir/$subfolder/x64" "$extract_dir/$subfolder/system32" && \
-dxvk_version=$(basename "$tarfile" | sed -E 's/^dxvk-([0-9.]+)\.tar\.gz$/\1/') && \
+dxvk_version=$(basename "$tarfile" | sed -E 's/^dxvk(-[a-zA-Z]+)?-v?([0-9.-]+)\.tar\.gz$/\2/')
+
+[[ "$tarfile" == *"gplasync"* ]] && dxvk_version="$dxvk_version-gplasync"
+[[ "$tarfile" == *"async"* && "$tarfile" != *"gplasync"* ]] && dxvk_version="$dxvk_version-async"
+
 profile_json_path="$extract_dir/$subfolder/profile.json" && \
 
 echo '{' > "$profile_json_path"
@@ -71,5 +75,6 @@ echo '' >> "$profile_json_path"
 echo '  ]' >> "$profile_json_path"
 echo '}' >> "$profile_json_path"
 
-tar --zstd -cvf "${tarfile%.tar.gz}.wcp" -C "$extract_dir/$subfolder" . && \
+# Exclude all .sh files when creating the .wcp archive
+tar --zstd --exclude='*.sh' -cvf "${tarfile%.tar.gz}.wcp" -C "$extract_dir/$subfolder" . && \
 rm -rf "$extract_dir/$subfolder"
