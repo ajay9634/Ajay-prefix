@@ -1,3 +1,6 @@
+!/bin/bash
+
+
 rm -f dxvk-dev-wcp.sh &>/dev/null
 
 # Install termux-am silently
