@@ -1,3 +1,8 @@
+# Ajay Prefix components changelog (22 feb 2025)
+
+- added 'remove non-corefonts.bat' 
+
+==================================================================
 # Ajay Prefix components changelog (17 feb 2025)
 
 - updated missing_dlls
