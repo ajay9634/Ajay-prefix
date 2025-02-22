@@ -46,7 +46,7 @@ echo.
 echo *** installing multilingual Fonts to C drive  ***
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\temp\Fonts.7z -oC:\windows\ -r -y >NUL 2>&1
 
-echo *** installing multilingual Fonts to C drive  ***
+echo *** installing Fonts addon to C drive  ***
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\Fonts_addon.7z -oC:\windows\ -r -y >NUL 2>&1
 
 timeout.exe 5 /nobreak
