@@ -1,3 +1,8 @@
+# Ajay Prefix components changelog (24 feb 2025)
+
+- added auto updating some offline scripts
+- added wine tools (winecfg,taskmgr etc)
+
 ==================================================================
 # Ajay Prefix components changelog (22 feb 2025)
 
