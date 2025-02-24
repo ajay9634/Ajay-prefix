@@ -20,7 +20,7 @@ if not exist "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\instal
     rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\2.offline components\" >nul 2>&1
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\3.GPU Test" >nul 2>&1
 
-    D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\Start_Menu.7z -oC:\ -p -y -r "2.offline components\*" "3.GPU Test\*" >NUL 2>&1
+    D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\Start_Menu.7z -oC:\ -p -y -r >NUL 2>&1
     ) else ( goto checked )
 
 :checked
