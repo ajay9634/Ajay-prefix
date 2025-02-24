@@ -3,7 +3,6 @@ color 1E
 echo don't close this window !
 taskkill /F /IM 7z.exe /T >NUL 2>&1
 taskkill /F /IM winrar.exe /T >NUL 2>&1
-rmdir /S /Q "C:/ProgramData/Microsoft/Windows/Start Menu/Ajay Start Menu/8.Backup and Restore drive C users" >NUL 2>&1
 
 echo Checking ".Resources" files and "install necessary files.bat" ...
 
@@ -20,7 +19,6 @@ if not exist "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\instal
 
     rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\2.offline components\" >nul 2>&1
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\3.GPU Test" >nul 2>&1
-rmdir /S /Q "C:/ProgramData/Microsoft/Windows/Start Menu/Ajay Start Menu/8.Backup and Restore drive C users" >NUL 2>&1
 
     D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\Start_Menu.7z -oC:\ -p -y -r "2.offline components\*" "3.GPU Test\*" >NUL 2>&1
     ) else ( goto checked )
@@ -72,7 +70,6 @@ mkdir "D:\Ajay_prefix\save_data\users\xuser\Documents\My Games" 2>nul
 mkdir "D:\Ajay_prefix\save_data\users\xuser\"Saved Games 2>nul
 cls
 echo *** deleting temp files...***
-rmdir /S /Q "C:/ProgramData/Microsoft/Windows/Start Menu/Ajay Start Menu/8.Backup and Restore drive C users" >NUL 2>&1
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 echo *** deleted temp files ***
