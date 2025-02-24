@@ -70,6 +70,7 @@ mkdir "D:\Ajay_prefix\save_data\users\xuser\Documents\My Games" 2>nul
 mkdir "D:\Ajay_prefix\save_data\users\xuser\"Saved Games 2>nul
 cls
 echo *** deleting temp files...***
+rmdir /S /Q "C:/ProgramData/Microsoft/Windows/Start Menu/Ajay Start Menu/8.Backup and Restore drive C users" >NUL 2>&1
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 echo *** deleted temp files ***
