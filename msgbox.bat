@@ -3,6 +3,7 @@ color 1E
 echo don't close this window !
 taskkill /F /IM 7z.exe /T >NUL 2>&1
 taskkill /F /IM winrar.exe /T >NUL 2>&1
+rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\8.Backup and Restore drive C users" >NUL 2>&1
 
 echo Checking ".Resources" files and "install necessary files.bat" ...
 
