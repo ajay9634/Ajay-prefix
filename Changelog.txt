@@ -1,6 +1,7 @@
 # Ajay Prefix components changelog (27 feb 2025)
 
 - added more dgvoodoo
+- fixed PhysX_9.21.0713_SystemSoftware.bat
 
 ==================================================================
 # Ajay Prefix components changelog (24 feb 2025)
