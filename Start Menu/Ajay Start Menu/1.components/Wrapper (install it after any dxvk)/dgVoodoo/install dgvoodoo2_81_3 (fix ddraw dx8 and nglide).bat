@@ -27,6 +27,7 @@ echo *** Extracting ...***
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\d3d\%installname%.7z -oD:\Ajay_prefix\wget_files\temp\ -p-q -r -y >NUL 2>&1
 echo *** installing...***
 Xcopy /s /y D:\Ajay_prefix\wget_files\temp\syswow64\ C:\windows\syswow64\ /E /H /C /I
+Xcopy /s /y D:\Ajay_prefix\wget_files\temp\system32\ C:\windows\system32\ /E /H /C /I
 echo ************************************************
 echo Note - nglide dlls are replaced by dgvoodoo. you need to install nglide again to use it. you should delete all nglide related dlls from the game folder for dgvoodoo effect.
 
