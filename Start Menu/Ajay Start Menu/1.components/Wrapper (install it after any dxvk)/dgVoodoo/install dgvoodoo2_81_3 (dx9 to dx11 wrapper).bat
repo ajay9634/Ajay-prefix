@@ -6,6 +6,10 @@ echo *** wait....***
 echo *** deleting temp files...***
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
 mkdir "D:/Ajay_prefix/wget_files/temp"
+del "C:\windows\system32\dgVoodooCpl.exe" >NUL 2>&1
+del "C:\windows\syswow64\dgVoodooCpl.exe" >NUL 2>&1
+del "C:\windows\syswow64\dgVoodoo.conf" >NUL 2>&1
+del "C:\windows\system32\dgVoodoo.conf" >NUL 2>&1
 echo *** deleted temp files ***
 echo .
 echo *** script made by Ajay ***
