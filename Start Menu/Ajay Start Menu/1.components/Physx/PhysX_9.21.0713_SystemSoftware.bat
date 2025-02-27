@@ -9,7 +9,7 @@ echo.
 ECHO 1. Install PhysX-9.21.0713-SystemSoftware
 ECHO 2. Cancel or exit
 set choice=
-set /p choice=Type the number to select an option.
+set /p choice=Type the number to select an option-
 if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto install
 if '%choice%'=='2' goto cancel
