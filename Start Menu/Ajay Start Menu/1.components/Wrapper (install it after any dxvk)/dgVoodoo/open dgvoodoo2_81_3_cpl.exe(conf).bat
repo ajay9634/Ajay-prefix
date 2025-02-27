@@ -35,5 +35,5 @@ Xcopy /s /y D:\Ajay_prefix\wget_files\temp\system32\ C:\windows\system32\ /E /H 
 
 echo opening dgVoodoocpl.exe ...
 timeout.exe 3 /nobreak >NUL 2>&1
-Start /wait C:\windows\system32\dgVoodooCpl.exe
-pause
+Start C:\windows\system32\dgVoodooCpl.exe
+exit
