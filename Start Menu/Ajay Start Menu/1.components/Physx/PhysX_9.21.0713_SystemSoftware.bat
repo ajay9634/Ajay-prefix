@@ -35,20 +35,20 @@ mkdir "D:/Ajay_prefix/wget_files/temp"
 IF EXIST "D:/Ajay_prefix/wget_files/physx/PhysX-9.21.0713-SystemSoftware.din" (
     ECHO *** backup file found, Now running the installer...***
     copy "D:/Ajay_prefix/wget_files/physx/PhysX-9.21.0713-SystemSoftware.din" "D:/Ajay_prefix/wget_files/temp/PhysX-9.21.0713-SystemSoftware.exe"
+Start /wait D:/Ajay_prefix/wget_files/temp/PhysX-9.21.0713-SystemSoftware.exe
 ) ELSE (
     echo.
     ECHO ! backup file not found, downloading...
     echo.
     wget -q --show-progress -P "D:/Ajay_prefix/wget_files/temp/" --progress=dot:mega  https://us.download.nvidia.com/Windows/9.21.0713/PhysX_9.21.0713_SystemSoftware.exe
     copy "D:/Ajay_prefix/wget_files/temp/PhysX_9.21.0713_SystemSoftware.exe" "D:/Ajay_prefix/wget_files/physx/PhysX-9.21.0713-SystemSoftware.din"
-    ren D:/Ajay_prefix/wget_files/temp/PhysX_9.21.0713_SystemSoftware.exe PhysX-9.21.0713-SystemSoftware.din
+    
     echo.
     ECHO *** Download complete, installing...**"
     echo.
-)
+Start /wait D:/Ajay_prefix/wget_files/temp/PhysX_9.21.0713_SystemSoftware.exe
 
-:: Run the installer
-Start /wait D:/Ajay_prefix/wget_files/temp/PhysX-9.21.0713-SystemSoftware.exe
+)
 
 ECHO *******
 exit
