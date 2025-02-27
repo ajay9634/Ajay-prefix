@@ -26,6 +26,6 @@ echo *** Extracting ...***
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\dsound\dsound.7z -oD:\Ajay_prefix\wget_files\temp\ -r -y >NUL 2>&1
 echo *** installing...***
 Xcopy /s /y D:\Ajay_prefix\wget_files\temp\WineSound2(505k)32bit\ C:\windows\ /E /H /C /I
-)
+
 echo ************************************************
 timeout.exe 5 /nobreak
