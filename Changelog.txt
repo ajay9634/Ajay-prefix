@@ -1,3 +1,8 @@
+# Ajay Prefix components changelog (27 feb 2025)
+
+- added more dgvoodoo
+
+==================================================================
 # Ajay Prefix components changelog (24 feb 2025)
 
 - added auto updating some offline scripts in current container
