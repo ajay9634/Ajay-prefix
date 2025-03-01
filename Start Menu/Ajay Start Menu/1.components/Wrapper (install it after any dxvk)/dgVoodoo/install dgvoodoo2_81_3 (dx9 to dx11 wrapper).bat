@@ -25,9 +25,19 @@ IF NOT EXIST "D:\Ajay_prefix\wget_files\d3d\%installname%.7z" (
     ECHO %installname% file already exists.
 )
 
+IF NOT EXIST "D:\Ajay_prefix\wget_files\d3d\dgVoodoo2_81_3.7z" (
+    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/dgVoodoo2_81_3.7z
+    copy /s /y D:\Ajay_prefix\wget_files\temp\dgVoodoo2_81_3.7z D:\Ajay_prefix\wget_files\d3d\dgVoodoo2_81_3.7z /E /H /C /I
+) ELSE (
+    ECHO dgVoodoo2_81_3 file already exists.
+)
+
 :: Simulate download progress only for subsequent parts
 color 1f
 echo *** Extracting ...***
+D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\d3d\dgVoodoo2_81_3.7z -oD:\Ajay_prefix\wget_files\temp\ -p-q -y -ir!d3dImm.dll >NUL 2>&1
+
+:: Simulate download progress only for subsequent parts
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\d3d\%installname%.7z -oD:\Ajay_prefix\wget_files\temp\ -p-q -r -y >NUL 2>&1
 echo *** installing...***
 Xcopy /s /y D:\Ajay_prefix\wget_files\temp\syswow64\ C:\windows\syswow64\ /E /H /C /I
