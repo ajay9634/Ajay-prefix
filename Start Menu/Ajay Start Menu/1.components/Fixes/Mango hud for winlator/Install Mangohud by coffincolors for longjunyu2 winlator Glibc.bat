@@ -14,7 +14,7 @@ echo *** Script made by Ajay ***
 
 :: User choice for download
 echo.
-echo Do you want to download and install Winlator_Cmod_MangoHud?
+echo Do you want to download and install Winlator_Cmod_MangoHud for longjunyu2 winlator gblic?
 echo [1] Yes
 echo [2] No (Cancel)
 echo.
