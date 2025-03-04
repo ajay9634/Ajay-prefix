@@ -26,6 +26,7 @@ Ajay prefix wiki - [click here](https://github.com/ajay9634/Ajay-prefix/wiki)
  - **Manually installation:**
 
   Open Ajay prefix.exe as archive  and extract to drive D then run    "Install_prefix_for_current_container.bat"
+  
   ( Note : You can install only start menu by manually installation. Game save data location won't change after this )
 
 - Installation guide video -
