@@ -32,9 +32,9 @@ Ajay prefix wiki - [click here](https://github.com/ajay9634/Ajay-prefix/wiki)
 - Installation guide video -
 [![Ajay Prefix Installation Video](https://img.youtube.com/vi/NXCquIv8D4c/0.jpg)](https://www.youtube.com/watch?v=NXCquIv8D4c)
 
-# Tricky installation
+# ✨ Tricky installation
 
-Some Emu may prevent change in system.reg and user.reg like winlator bionic container etc , It install fine on normal container.
+Some Emu may prevent changes in system.reg and user.reg like winlator bionic container etc , It install fine on normal container.
 
 Here are some methods to install Ajay prefix registry in current container.
 
