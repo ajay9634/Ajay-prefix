@@ -15,7 +15,7 @@ goto checked
 
 
 :necessary_files
-echo updating some offline scripts in current container
+echo updating some offline scripts and necessary files script in current container
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\2.offline components\" >nul 2>&1
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\3.GPU Test" >nul 2>&1
 del "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\install necessary files.bat"
