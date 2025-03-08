@@ -40,7 +40,7 @@ Here are some methods to install Ajay prefix registry in current container.
 
 ### For Winlator bionic container
 
-- Download home.zip from [here](https://github.com/ajay9634/Ajay-prefix/blob/Pre-installed-Ajay-prefix/Files/Winlator-bionic/home.7z) , Extract it then copy home folder to drive Z by wfm , Restart the bionic container then check ajay prefix status. Now you can install Ajay Prefix start menu.
+- Download home.zip from [here](https://github.com/ajay9634/Ajay-prefix/raw/refs/heads/Pre-installed-Ajay-prefix/Files/Winlator-bionic/home.7z) , Extract it then copy home folder to drive Z by wfm , Restart the bionic container then check ajay prefix status. Now you can install Ajay Prefix start menu.
 
 # ⚠️ Move game save data to Ajay prefix
 
