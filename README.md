@@ -32,6 +32,16 @@ Ajay prefix wiki - [click here](https://github.com/ajay9634/Ajay-prefix/wiki)
 - Installation guide video -
 [![Ajay Prefix Installation Video](https://img.youtube.com/vi/NXCquIv8D4c/0.jpg)](https://www.youtube.com/watch?v=NXCquIv8D4c)
 
+# Tricky installation
+
+Some Emu may prevent change in system.reg and user.reg like winlator bionic container etc , It install fine on normal container.
+
+Here are some methods to install Ajay prefix registry in current container.
+
+### For Winlator bionic container
+
+- Download home.zip from here , Extract it then copy home folder to drive Z by wfm
+
 # ⚠️ Move game save data to Ajay prefix
 
 If you were playing games before installing the Ajay prefix then you need to move game save from drive C/users/... to drive D/Ajay_prefix/save_data/users/...
