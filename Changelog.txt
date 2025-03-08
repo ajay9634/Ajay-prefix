@@ -1,6 +1,8 @@
 # Ajay Prefix components changelog (8 march 2025)
 
 - updated offline scripts (necessary files, vc redist etc)
+- added vc redist 2008-2022 uninstall option
+- added check installed vc redist option
 
 # Ajay Prefix components changelog (27 feb 2025)
 
