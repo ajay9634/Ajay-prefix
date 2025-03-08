@@ -4,7 +4,7 @@ echo don't close this window !
 taskkill /F /IM 7z.exe /T >NUL 2>&1
 taskkill /F /IM winrar.exe /T >NUL 2>&1
 
-echo Checking ".Resources" files and "install necessary files.bat" ...
+echo Checking ".Resources" files ...
 
 if not exist "D:\Ajay_prefix\.Resources\Resources.7z" (
     echo msgbox "Hello! Looks like Ajay prefix offline files are missing from d drive , Expect less Start Menu !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
@@ -13,11 +13,11 @@ del %tmp%\tmp.vbs
 goto checked
 ) else ( goto necessary_files )
 
-if not exist "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\install necessary files.bat" (
     echo adding some offline shortcuts to Start Menu 
 
     rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\2.offline components\" >nul 2>&1
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\3.GPU Test" >nul 2>&1
+del "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\install necessary files.bat"
 
     D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\Start_Menu.7z -oC:\ -p-q -y -r "2.offline components" "3.GPU Test*" "Check_Ajay_prefix_status.bat" >NUL 2>&1
     ) else ( goto checked )
@@ -26,7 +26,6 @@ rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\3.GPU T
 echo updating some offline scripts in current container
 rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*Backup and Restore*" >nul 2>&1
 rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*export and import*" >nul 2>&1
-del "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\install necessary files.bat"
 wget -q -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/offline_scripts_update.7z
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\temp\offline_scripts_update.7z -oC:\ -r -y >NUL 2>&1
 
