@@ -155,6 +155,10 @@ You can support me by subscribing my youtube channel and watching the videos.
 
 ========================================
 
+### Main developer of Ajay prefix
+
+- ajay9634 (Emuplay0)
+
 ### Third party Credits -
 
 - files from winlator 
@@ -162,9 +166,14 @@ You can support me by subscribing my youtube channel and watching the videos.
 - files from dxvk GitHub
 - files from wined3d for windows
 - files from Microsoft
-- files from third party
+- files from third party open source
 - sfx by winrar 420
-- Emuplay0 testing team
+- 7z
+- WineHQ
+- Emuplay0 testing teamteam
+- guide by Chatgpt
+
+========================================
 
 
 
