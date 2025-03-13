@@ -1,3 +1,7 @@
+# Ajay Prefix components changelog (13 march 2025)
+
+- added dxvk 2.6
+
 ==================================================================
 # Ajay Prefix components changelog (12 march 2025)
 
