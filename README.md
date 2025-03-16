@@ -19,9 +19,9 @@ Ajay prefix wiki - [click here](https://github.com/ajay9634/Ajay-prefix/wiki)
 
 # ✨ Installation of Ajay prefix
 
-- **Automatic installation:** 
+- ** Partial Automatic installation:** 
 
-  Run Ajay prefix.exe from any location.
+  Run Ajay prefix.exe from any location. Then install bat from drive D/Ajay_prefix/
 
  - **Manually installation:**
 
