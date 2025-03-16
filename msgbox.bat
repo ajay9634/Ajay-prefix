@@ -1,5 +1,6 @@
 @echo off
 color 1E
+title Ajay Start Menu installation
 echo don't close this window !
 taskkill /F /IM 7z.exe /T >NUL 2>&1
 taskkill /F /IM winrar.exe /T >NUL 2>&1
@@ -37,6 +38,7 @@ Xcopy /s /y C:\windows\temp\ C:\ /E /H /C /I >NUL 2>&1
 ) else (
 
 )
+title Ajay Start Menu installation
 if not exist "C:\windows\timeout.exe" (
     echo msgbox "Hello! Looks like some fixes are failed to install, Check your internet connection !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
 cscript /nologo %tmp%\tmp.vbs
@@ -77,5 +79,4 @@ echo msgbox "Hello! Ajay Prefix components are updated successfully, Changelog a
 cscript /nologo %tmp%\tmp.vbs
 del %tmp%\tmp.vbs
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
-echo opening 1.components changelog..
-notepad.exe D:/Ajay_prefix/wget_files/Changelog.txt
+
