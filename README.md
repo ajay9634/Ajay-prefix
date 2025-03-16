@@ -50,7 +50,7 @@ If you were playing games before installing the Ajay prefix then you need to mov
 
 You need to set drive D location in the same folder otherwise copy save data manually.
 
-# 🔗 Link of Ajay prefix v10.16 hotfix
+# 🔗 Link of Ajay prefix v10.16
 
 Ajay prefix is available in this Release section.
 
