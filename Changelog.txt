@@ -1,4 +1,10 @@
 ==================================================================
+Ajay Prefix components changelog (19 march 2025)
+
+- added box64 download option for winlator 10 or above
+- added Backup and Restore option for game desktop or shortcuts
+
+==================================================================
 # Ajay Prefix components changelog (14 march 2025) ( Happy Holi ) ***
 
 - added PhysX_9.09.0814_SystemSoftware(Risen 1).bat
