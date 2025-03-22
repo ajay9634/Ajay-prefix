@@ -1,3 +1,7 @@
+Ajay Prefix components changelog (22 march 2025)
+
+- added sound enable and disable option
+
 ==================================================================
 Ajay Prefix components changelog (19 march 2025)
 
