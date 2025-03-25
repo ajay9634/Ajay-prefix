@@ -1,6 +1,7 @@
 Ajay Prefix components changelog (22 march 2025)
 
 - added nsis-3.11 (SFX maker)
+- added Exe-info-checker
 
 ==================================================================
 Ajay Prefix components changelog (22 march 2025)
