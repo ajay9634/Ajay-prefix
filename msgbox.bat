@@ -71,6 +71,7 @@ mkdir D:\Ajay_prefix\save_data\users\xuser\AppData\Roaming 2>nul
 mkdir D:\Ajay_prefix\save_data\users\xuser\Documents 2>nul
 mkdir "D:\Ajay_prefix\save_data\users\xuser\Documents\My Games" 2>nul
 mkdir "D:\Ajay_prefix\save_data\users\xuser\"Saved Games 2>nul
+copy /Y "C:\windows\timeout.exe" "C:\windows\system32\timeout.exe" >nul 2>&1
 cls
 echo please wait ...
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
