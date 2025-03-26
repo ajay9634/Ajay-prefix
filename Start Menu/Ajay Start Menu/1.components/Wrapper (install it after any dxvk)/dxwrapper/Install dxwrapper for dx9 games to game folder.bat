@@ -32,4 +32,3 @@ timeout.exe /t 1 >nul
 del %tmp%\tmp.vbs
 Start /wait D:\Ajay_prefix\wget_files\temp\dxwrapper-dx9-32bit.exe
 echo ************************************************
-timeout.exe 5 /nobreak
