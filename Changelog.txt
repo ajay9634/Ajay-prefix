@@ -1,7 +1,9 @@
-Ajay Prefix components changelog (22 march 2025)
+Ajay Prefix components changelog (26 march 2025)
 
 - added nsis-3.11 (SFX maker)
 - added Exe-info-checker
+- added wrapper by ThirteenAG
+- updated sfx of dxwrapper dx9
 
 ==================================================================
 Ajay Prefix components changelog (22 march 2025)
