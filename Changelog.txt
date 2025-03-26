@@ -4,6 +4,7 @@ Ajay Prefix components changelog (26 march 2025)
 - added Exe-info-checker
 - added wrapper by ThirteenAG
 - updated sfx of dxwrapper dx9
+- added dxvk-gplasync-v2.6-1
 
 ==================================================================
 Ajay Prefix components changelog (22 march 2025)
