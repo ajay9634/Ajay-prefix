@@ -30,6 +30,6 @@ echo msgbox "Hello! Extract it in game exe folder then you can edit dxwrapper.in
 start /b cscript //nologo %tmp%\tmp.vbs
 timeout.exe /t 1 >nul
 del %tmp%\tmp.vbs
-Start /wait D:\Ajay_prefix\wget_files\temp\dxwrapper-dx9.exe
+Start /wait D:\Ajay_prefix\wget_files\temp\dxwrapper-dx9-32bit.exe
 echo ************************************************
 timeout.exe 5 /nobreak
