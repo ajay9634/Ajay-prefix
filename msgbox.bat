@@ -29,7 +29,7 @@ D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\temp\offline_script
 if not exist "C:\windows\curl.exe" (
 echo downloading update !
 wget -q -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/update.7z
-copy /q /s /y D:\Ajay_prefix\wget_files\temp\update.7z D:\Ajay_prefix\.Resources\update.7z /E /H /C /I
+copy /q /s /y D:\Ajay_prefix\wget_files\temp\update.7z D:\Ajay_prefix\.Resources\update.7z /E /H /C /I >NUL 2>&1
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "C:/windows/temp"
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\update.7z -oC:\windows\temp\ -r -y >NUL 2>&1
@@ -39,7 +39,7 @@ Xcopy /s /y C:\windows\temp\ C:\ /E /H /C /I >NUL 2>&1
 
 )
 title Ajay Start Menu installation
-if not exist "C:\windows\timeout.exe" (
+if not exist "C:\windows\curl.exe" (
     echo msgbox "Hello! Looks like some fixes are failed to install, Check your internet connection !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
 cscript /nologo %tmp%\tmp.vbs
 del %tmp%\tmp.vbs
