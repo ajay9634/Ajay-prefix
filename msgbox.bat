@@ -80,6 +80,3 @@ echo msgbox "Hello! Ajay Prefix components are updated successfully, Changelog a
 start /b cscript //nologo %tmp%\tmp.vbs
 timeout.exe /t 2 >nul
 del %tmp%\tmp.vbs 
-del C:/msgbox.bat >nul 2>&1
-del C:/ajay_prefix.reg >nul 2>&1
-del C:/prefix.bat >nul 2>&1
