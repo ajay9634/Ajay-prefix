@@ -1,5 +1,5 @@
 @echo off
-set "installname=dxwrapper-dx9"
+set "installname=dxwrapper-dx9-32bit"
 :: Remove the prefix "dxvk-" and keep the part after it
 color 0a
 echo *** wait....***
@@ -25,7 +25,10 @@ IF NOT EXIST "D:\Ajay_prefix\wget_files\d3d\%installname%.7z" (
 color 1f
 echo *** Extracting ...***
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\d3d\%installname%.7z -oD:\Ajay_prefix\wget_files\temp\ -p-q -r -y >NUL 2>&1
-echo *** Extract to game folder ...***
+echo msgbox "Hello! Extract it in game exe folder then you can edit dxwrapper.ini !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
+start /b cscript //nologo %tmp%\tmp.vbs
+timeout.exe /t 1 >nul
+del %tmp%\tmp.vbs
 Start /wait D:\Ajay_prefix\wget_files\temp\dxwrapper-dx9.exe
 echo ************************************************
 timeout.exe 5 /nobreak
