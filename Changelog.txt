@@ -1,3 +1,14 @@
+==================================================================
+
+Ajay Prefix components changelog (27 march 2025)
+
+- updated xaudio2_9 (RDR fix) offline script
+- added latest Microsoft xaudio2_9+redist fix , it can fix audio issue in some games
+- added Bruno's d3d8 to d3d9ex wrapper
+
+
+==================================================================
+
 Ajay Prefix components changelog (26 march 2025)
 
 - added nsis-3.11 (SFX maker)
