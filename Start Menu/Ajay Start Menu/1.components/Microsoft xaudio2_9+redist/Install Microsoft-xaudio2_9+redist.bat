@@ -37,8 +37,8 @@ if errorlevel 1 (
 echo .
 echo Now install xaudio2_9+redist-native(enable).cmd
 echo .
-pause
 
 echo ************************************************
 
 timeout.exe 5 /nobreak >NUL 2>&1
+pause
