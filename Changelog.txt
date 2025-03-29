@@ -1,4 +1,10 @@
 ==================================================================
+Ajay Prefix components changelog (29 march 2025)
+
+- updated registry export import scripts
+
+( Note - I updated main offline ajay prefix 10.16.exe , now timeout error is fixed. A message will pop up after running exe )
+==================================================================
 
 Ajay Prefix components changelog (27 march 2025)
 
