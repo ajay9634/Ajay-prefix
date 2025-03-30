@@ -40,8 +40,38 @@ if %errorlevel% neq 0 (
 )
 
 :: Set GitHub API URL
-set "apiURL=https://api.github.com/repos/ajay9634/Ajay-prefix/contents/installable_components/Box64?ref=Winlator-10-stuff"
+:choice
+echo .
+echo Select GitHub to download box64 -
+echo [1] Ajay9634 (old box64)
+echo [2] brunodev85 (latest)
+echo [3] Cancel
+echo .
+set /p userChoice=Enter your choice (1 or 2 or 3): 
 
+IF "%userChoice%"=="1" (
+    echo *** You selected Ajay9634 GitHub ***
+    set "apiURL=https://api.github.com/repos/ajay9634/Ajay-prefix/contents/installable_components/Box64?ref=Winlator-10-stuff"
+goto download
+    exit /b
+)
+
+IF "%userChoice%"=="2" (
+    echo *** You selected brunodev85 GitHub ***
+    set "apiURL=https://api.github.com/repos/brunodev85/winlator/contents/installable_components/box64?ref=main"
+goto download
+    exit /b
+)
+
+IF "%userChoice%"=="3" (
+    echo *** cancelled ***
+    exit /b
+)
+
+echo "wrong input , Please try again "
+goto choice
+
+:download
 :: Fetch folder contents using wget
 echo Fetching folder contents...
 wget -q --output-document=temp.json --header="Accept: application/vnd.github.v3+json" "!apiURL!"
