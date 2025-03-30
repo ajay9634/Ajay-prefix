@@ -10,6 +10,17 @@ mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 echo *** deleted temp files ***
 echo *** Script made by Ajay ***
 
+echo Setting opengl32.dll to native,builtin...
+
+:: Add the registry key
+reg add "HKEY_CURRENT_USER\Software\Wine\DllOverrides" /v "opengl32" /t REG_SZ /d "native,builtin" /f >nul 2>&1
+
+if %errorlevel%==0 (
+    echo Successfully set opengl32.dll to native,builtin.
+) else (
+    echo Failed to set opengl32.dll. set it manually .
+)
+
 :: Downloading d3d8_32bit_v1.38_wrapper_by_ThirteenAG if it doesn't exist
 echo *** Checking for TitaniumGL_2025_02 ***
 IF NOT EXIST "D:\Ajay_prefix\wget_files\d3d\TitaniumGL_2025_02.7z" (
