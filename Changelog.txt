@@ -1,4 +1,11 @@
 ==================================================================
+Ajay Prefix components changelog (30 march 2025)
+
+- updated ThirteenAG wrapper scripts
+- updated "download box64" script , added Bruno's GitHub
+- added opengl wrapper by TitaniumGL , now you can use dx9 in some opengl games like tuxracer
+
+==================================================================
 Ajay Prefix components changelog (29 march 2025)
 
 - updated registry export import scripts
