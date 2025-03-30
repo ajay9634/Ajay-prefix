@@ -1,6 +1,13 @@
 @echo off
 color 0a
 echo *** d3d wrapper by ThirteenAG ***
+echo *** wait....***
+echo *** deleting temp files...***
+rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+rmdir /S /Q "C:/windows/temp" >NUL 2>&1
+mkdir "C:/windows/temp" >NUL 2>&1
+mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+echo *** deleted temp files ***
 echo *** Script made by Ajay ***
 
 :: Downloading d3d9_32bit_v1.60_wrapper_by_ThirteenAG if it doesn't exist
@@ -30,6 +37,6 @@ echo msgbox "Hello! Extract it in game exe folder then you can edit ini !" , vbi
 start /b cscript //nologo %tmp%\tmp.vbs
 timeout.exe /t 1 >nul
 del %tmp%\tmp.vbs
-Start "" D:\Ajay_prefix\wget_files\temp\d3d9_32bit_v1.60_wrapper_by_ThirteenAG.exe
+Start D:\Ajay_prefix\wget_files\temp\d3d9_32bit_v1.60_wrapper_by_ThirteenAG.exe
 
 echo ************************************************
