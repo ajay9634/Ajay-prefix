@@ -1,6 +1,11 @@
 @echo off
 color 0a
 echo *** You can convert zip to exe or you can compile NSIS scripts ***
+echo *** deleting temp files...***
+rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+rmdir /S /Q "C:/windows/temp" >NUL 2>&1
+mkdir "C:/windows/temp" >NUL 2>&1
+mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 echo *** Script made by Ajay ***
 
 :: Downloading NSIS-3.11 if it doesn't exist
