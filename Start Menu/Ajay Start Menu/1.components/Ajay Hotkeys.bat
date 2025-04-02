@@ -1,5 +1,12 @@
 @echo off
 color 0a
+echo *** deleting temp files...***
+rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+rmdir /S /Q "C:/windows/temp" >NUL 2>&1
+mkdir "C:/windows/temp" >NUL 2>&1
+mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+del D:/Ajay_prefix/wget_files/Ajay_Hotkeys.7z >NUL 2>&1
+echo *** deleted temp files ***
 echo *** Script made by Ajay ***
 
 :: Downloading Ajay_Hotkeys if it doesn't exist
