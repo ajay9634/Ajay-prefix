@@ -1,10 +1,11 @@
+==================================================================
 Ajay Prefix components changelog (2 april 2025)
 
 - added Ajay hotkey 
 
 these are combos
 
-; Alt + F1 = Open Command Prompt
+[; Alt + F1 = Open Command Prompt
 ; Alt + F2 = Open Winecfg
 ; Alt + F3 = Open Regedit
 ; Alt + F4 = Close current app (Force Kill)
@@ -15,7 +16,7 @@ these are combos
 ; Alt + F9 = Open Explorer.exe
 ; Alt + F10 = Run ib.exe from D:\InputBridge\Installer\ib.exe
 ; Alt + F11 = Force Fullscreen
-; Alt + F12 = Show Shortcut List
+; Alt + F12 = Show Shortcut List ]
 
 
 ==================================================================
