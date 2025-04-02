@@ -16,7 +16,9 @@ these are combos
 ; Alt + F9 = Open Explorer.exe
 ; Alt + F10 = Run ib.exe from D:\InputBridge\Installer\ib.exe
 ; Alt + F11 = Force Fullscreen
-; Alt + F12 = Show Shortcut List ]
+; Alt + F12 = Show Shortcut List
+; Alt + T = Tilde (~)
+; Alt + B = Backtick (`)
 
 
 ==================================================================
