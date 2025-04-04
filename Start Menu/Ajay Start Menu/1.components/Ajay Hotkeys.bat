@@ -1,6 +1,7 @@
 @echo off
 color 0a
 echo *** deleting temp files...***
+taskkill /f /im Ajay_Hotkeys.exe >nul 2>&1
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "C:/windows/temp" >NUL 2>&1
@@ -32,6 +33,5 @@ IF %ERRORLEVEL% NEQ 0 (
 
 :: Launching the Installer
 echo *** Opening Ajay_Hotkeys ***
-taskkill /f /im Ajay_Hotkeys.exe >nul 2>&1
 Start "" D:\Ajay_prefix\wget_files\temp\Ajay_Hotkeys.exe
 echo ************************************************
