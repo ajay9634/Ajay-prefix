@@ -33,5 +33,5 @@ IF %ERRORLEVEL% NEQ 0 (
 :: Launching the Installer
 echo *** Opening Ajay_Hotkeys ***
 taskkill /f /im Ajay_Hotkeys.exe >nul 2>&1
-Start "D:\Ajay_prefix\wget_files\temp\Ajay_Hotkeys.exe"
+Start "" D:\Ajay_prefix\wget_files\temp\Ajay_Hotkeys.exe
 echo ************************************************
