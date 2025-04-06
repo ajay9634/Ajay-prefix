@@ -104,6 +104,8 @@ I got these files from trusted source so don't worry, Don't install it if you ha
     BOX64_THREADING=1 (default)
 
     BOX64_SKIP_SIGSEGV=1
+
+    BOX64_NOPTHREAD=1 (for single thread games like half life 1 or old rpg games)
     
 ### BOX64 Env ( May improve compatibility or stability )
 
