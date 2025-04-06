@@ -3,7 +3,7 @@ color 1F
 echo "Hello! This is a necessary step before downloading Winlator stuff for winlator 10 or above. You have two options to proceed -"
 echo .
 echo 1 - Rename the drive E path manually and remove 'storage' from the end. (exit)
-echo 2 - Replace the .container file ! (continue this script)
+echo 2 - Download and Replace the .container file with Ajay env ! (continue this script)
 echo .
 set /p choice="Press 2 to continue or 1 to exit: "
 
