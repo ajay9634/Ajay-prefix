@@ -27,4 +27,5 @@ D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\msxml3.7z -oD
 echo *** installing ...***
 Xcopy /s /y D:\Ajay_prefix\wget_files\temp\syswow64\ C:\windows\syswow64\ /E /H /C /I
 Start D:\Ajay_prefix\wget_files\temp\msxml3.msi )
-echo.************************************************
+echo ************************************************
+timeout.exe /t 3 >nul
