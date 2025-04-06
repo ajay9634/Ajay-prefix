@@ -46,7 +46,7 @@ Xcopy /s /y D:\Ajay_prefix\wget_files\temp\system32\ C:\windows\system32\ /E /H 
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\d3d\nGlide210_setup.7z -oD:\Ajay_prefix\wget_files\temp\ -p-q -r -y >NUL 2>&1
 echo installing nglide ...
 Start D:\Ajay_prefix\wget_files\temp\nGlide210_setup.exe /S
-timeout.exe 5 /nobreak >NUL 2>&1
+timeout.exe 3 /nobreak >NUL 2>&1
 echo ************************************************
 
 echo msgbox "Original wined3d and nglide are installed. dgvoodoo and dxwrapper are removed from drive C. You can install dxvk from the Start Menu !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
