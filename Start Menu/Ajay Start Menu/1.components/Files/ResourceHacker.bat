@@ -22,3 +22,4 @@ D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\ResourceHacke
 echo *** opening ResourceHacker ***
 Start D:\Ajay_prefix\wget_files\temp\ResourceHacker.exe
 echo ************************************************
+timeout.exe /t 3 >nul
