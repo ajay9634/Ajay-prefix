@@ -34,6 +34,7 @@ echo *** installing...***
 Xcopy /s /y D:\Ajay_prefix\wget_files\temp\system32\ C:\windows\system32\ /E /H /C /I
 
 echo opening dgVoodoocpl.exe ...
-timeout.exe 3 /nobreak >NUL 2>&1
+timeout.exe 2 /nobreak >NUL 2>&1
 Start C:\windows\system32\dgVoodooCpl.exe
+timeout.exe /t 3 >nul
 exit
