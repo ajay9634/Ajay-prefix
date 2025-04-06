@@ -49,5 +49,6 @@ start /b cscript //nologo %tmp%\tmp.vbs
 timeout.exe /t 1 >nul
 del %tmp%\tmp.vbs
 Start D:\Ajay_prefix\wget_files\temp\TitaniumGL_2025_02_opengl_to_dx9_wrapper.exe
+timeout.exe /t 3 >nul
 
 echo ************************************************
