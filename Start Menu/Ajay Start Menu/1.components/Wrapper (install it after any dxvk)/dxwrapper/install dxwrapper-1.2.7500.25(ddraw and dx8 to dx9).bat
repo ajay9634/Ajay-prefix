@@ -29,5 +29,6 @@ echo *** installing...***
 Xcopy /s /y D:\Ajay_prefix\wget_files\temp\syswow64\ C:\windows\syswow64\ /E /H /C /I
 echo ************************************************
 echo opening config
-timeout.exe 5 /nobreak
+timeout.exe /t 2 >nul
 notepad.exe C:\windows\syswow64\dxwrapper.ini
+timeout.exe /t 3 >nul
