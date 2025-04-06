@@ -32,5 +32,6 @@ D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\d3d\%installname%.7
 echo *** installing...***
 Xcopy /s /y D:\Ajay_prefix\wget_files\temp\syswow64\ C:\windows\syswow64\ /E /H /C /I
 echo ************************************************
-timeout.exe 5 /nobreak
+timeout.exe /t 2 >nul
 Start C:\windows\syswow64\dgvoodooCpl.exe
+timeout.exe /t 3 >nul
