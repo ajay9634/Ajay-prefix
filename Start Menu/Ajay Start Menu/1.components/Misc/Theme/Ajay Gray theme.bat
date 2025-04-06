@@ -77,6 +77,7 @@ reg add "HKCU\Control Panel\Colors" /v Window /t REG_SZ /d "224 229 229" /f >nul
 reg add "HKCU\Control Panel\Colors" /v WindowFrame /t REG_SZ /d "0 0 0" /f >nul 2>&1
 reg add "HKCU\Control Panel\Colors" /v WindowText /t REG_SZ /d "0 0 0" /f >nul 2>&1
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\ThemeManager" /v ThemeActive /t REG_SZ /d 0 /f >nul 2>&1
+timeout.exe /t 3 >nul
 echo msgbox "Hello! Now Restart the container !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
 cscript /nologo %tmp%\tmp.vbs
 del %tmp%\tmp.vbs
