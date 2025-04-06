@@ -5,3 +5,4 @@ if exist "C:\windows\syswow64\dxwrapper.ini" (
     echo Config doesn't exist, install dxwrapper first.
     pause
 )
+timeout.exe /t 3 >nul
