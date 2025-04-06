@@ -27,3 +27,4 @@ D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\msxml4.7z -oD
 echo *** installing ...***
 Start D:\Ajay_prefix\wget_files\temp\msxml4.msi )
 echo ************************************************
+timeout.exe /t 3 >nul
