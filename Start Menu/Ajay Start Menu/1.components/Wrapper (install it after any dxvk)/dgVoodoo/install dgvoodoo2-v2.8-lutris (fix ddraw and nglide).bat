@@ -34,6 +34,7 @@ Xcopy /s /y D:\Ajay_prefix\wget_files\temp\syswow64\ C:\windows\syswow64\ /E /H 
 echo ************************************************
 echo Note - nglide dlls are replaced by dgvoodoo. you need to install nglide again to use it. you should delete all nglide related dlls from the game folder for dgvoodoo effect.
 
-timeout.exe 5 /nobreak
+timeout.exe /t 2 >nul
 notepad.exe C:\windows\syswow64\dgvoodoo.conf
+timeout.exe /t 3 >nul
 pause
