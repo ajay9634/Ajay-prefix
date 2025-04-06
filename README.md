@@ -95,15 +95,33 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 
     BOX64_MAX_CPU=4
     
-    BOX64_FPU_MODE=1
+    BOX64_FPU_MODE=0
     
-    BOX64_NOCACHE=1
+    BOX64_NOCACHE=0
     
     BOX64_USE_GLIBC=1
     
     BOX64_THREADING=1
 
     BOX64_SKIP_SIGSEGV=1
+    
+### BOX64 Env ( May improve compatibility or stability )
+
+    BOX64_FPU_MODE=1
+
+    BOX64_NOCACHE=1
+
+### BOX64 Env ( Fix source engine glitch )
+
+    BOX64_NOCALLRET=1 (slow)
+
+    BOX64_ALLOWMISSINGLIBS=1
+
+    BOX64_FORCEALIGN=1
+
+    BOX64_DYNAREC_DOHOSTTIMING=1
+
+    BOX64_FORCEALIGN=1
 
 #### MESA Env
     MESA_VK_WSI_DEBUG=(sw
