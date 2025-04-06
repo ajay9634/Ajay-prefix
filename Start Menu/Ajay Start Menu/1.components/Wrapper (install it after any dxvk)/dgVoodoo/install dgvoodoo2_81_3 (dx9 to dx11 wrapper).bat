@@ -45,5 +45,5 @@ Xcopy /s /y D:\Ajay_prefix\wget_files\temp\system32\ C:\windows\system32\ /E /H 
 echo ************************************************
 echo Note - you should delete d3d9.dll from the game folder for dgvoodoo effect. it may fix stuck issue in dx9 games.
 
-timeout.exe 5 /nobreak
+timeout.exe /t 3 >nul
 pause
