@@ -87,7 +87,7 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 #### VKD3D FPS HUD
     VK_INSTANCE_LAYERS=VK_LAYER_MESA_overlay
 
-#### BOX64 Env (May improve Performance)
+#### BOX64 Env ( May improve Performance )
    
     BOX64_DYNAREC_PAUSE=0
 
@@ -111,7 +111,7 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 
     BOX64_NOCACHE=1
 
-### BOX64 Env ( Fix source engine glitch )
+### BOX64 Env ( May fix source engine glitch )
 
     BOX64_NOCALLRET=1 (slow)
 
@@ -123,7 +123,7 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 
     BOX64_FORCEALIGN=1
 
-#### MESA Env
+#### MESA Env ( may improve performance )
     MESA_VK_WSI_DEBUG=(sw
 
     MESA_GLTHREAD=true
