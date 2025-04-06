@@ -95,13 +95,13 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 
     BOX64_MAX_CPU=4
     
-    BOX64_FPU_MODE=0
+    BOX64_FPU_MODE=0 (default)
     
     BOX64_NOCACHE=0
     
     BOX64_USE_GLIBC=1
     
-    BOX64_THREADING=1
+    BOX64_THREADING=1 (default)
 
     BOX64_SKIP_SIGSEGV=1
     
