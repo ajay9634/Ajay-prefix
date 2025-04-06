@@ -29,5 +29,5 @@ echo msgbox "Hello! Winrar Extract location should be the game folder, cue and b
 cscript /nologo %tmp%\tmp.vbs
 del %tmp%\tmp.vbs
 Start /wait D:\Ajay_prefix\wget_files\temp\bin2iso.exe
-echo.************************************************
+echo ************************************************
 timeout.exe 3 /nobreak
