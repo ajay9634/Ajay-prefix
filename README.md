@@ -107,13 +107,13 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 
     BOX64_NOPTHREAD=1 (for single thread games like half life 1 or old rpg games)
     
-### BOX64 Env ( May improve compatibility or stability )
+#### BOX64 Env ( May improve compatibility or stability )
 
     BOX64_FPU_MODE=1
 
     BOX64_NOCACHE=1
 
-### BOX64 Env ( May fix source engine glitch )
+#### BOX64 Env ( May fix source engine glitch )
 
     BOX64_NOCALLRET=1 (fix no  rotation bug or aim bug) (If it doesn't work then disable callret from box64 preset)
 
