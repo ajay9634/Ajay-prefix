@@ -31,4 +31,5 @@ start /b cscript //nologo %tmp%\tmp.vbs
 timeout.exe /t 1 >nul
 del %tmp%\tmp.vbs
 Start /wait D:\Ajay_prefix\wget_files\temp\dxwrapper-dx9-32bit.exe
+timeout.exe /t 3 >nul
 echo ************************************************
