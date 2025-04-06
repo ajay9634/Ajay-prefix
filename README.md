@@ -115,7 +115,7 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 
 #### BOX64 Env ( May fix source engine glitch )
 
-    BOX64_NOCALLRET=1 (fix no  rotation bug or aim bug) (If it doesn't work then disable callret from box64 preset)
+    BOX64_NOCALLRET=1 (fix npc rotation bug or aim bug) (If it doesn't work then disable callret from box64 preset)
 
     BOX64_ALLOWMISSINGLIBS=1
 
