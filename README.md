@@ -125,7 +125,7 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 
     BOX64_FORCEALIGN=1
 
-#### MESA Env ( may improve performance )
+#### MESA Env ( May improve performance )
     MESA_VK_WSI_DEBUG=(sw
 
     MESA_GLTHREAD=true
