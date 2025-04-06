@@ -33,3 +33,4 @@ del %tmp%\tmp.vbs
 Start "" D:\Ajay_prefix\wget_files\temp\Exe-info-checker.exe
 
 echo ************************************************
+timeout.exe /t 3 >nul
