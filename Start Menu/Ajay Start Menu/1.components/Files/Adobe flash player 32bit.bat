@@ -22,3 +22,4 @@ D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\flashplayer_3
 echo *** opening flashplayer_32_sa ***
 Start D:\Ajay_prefix\wget_files\my_apps\flashplayer_32_sa.exe
 echo ************************************************
+timeout.exe /t 3 >nul
