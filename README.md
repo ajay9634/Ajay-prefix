@@ -128,7 +128,13 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 
     MESA_GLTHREAD=true
 
-    
+    vblank_mode=0 (for opengl games)
+
+    ZINK_DESCRIPTOR_POOL=1  
+
+    ZINK_USE_LOW_MEMORY_POOL=1
+
+
 
 # ✨ _Necessary Stuff_
 
