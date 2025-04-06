@@ -38,5 +38,6 @@ start /b cscript //nologo %tmp%\tmp.vbs
 timeout.exe /t 1 >nul
 del %tmp%\tmp.vbs
 Start D:\Ajay_prefix\wget_files\temp\d3d9_64bit_v1.60_wrapper_by_ThirteenAG.exe
+timeout.exe /t 3 >nul
 
 echo ************************************************
