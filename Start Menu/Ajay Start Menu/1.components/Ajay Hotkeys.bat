@@ -2,12 +2,12 @@
 color 0a
 echo *** deleting temp files...***
 taskkill /f /t /im Ajay_Hotkeys.exe >NUL 2>&1
-for /f "tokens=2" %a in ('tasklist ^| findstr Ajay_Hotkeys.exe') do taskkill /PID %a /F >NUL 2>&1
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "C:/windows/temp" >NUL 2>&1
 mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 del D:/Ajay_prefix/wget_files/Files/Ajay_Hotkeys.7z >NUL 2>&1
+del C:/windows/Ajay_Hotkeys.exe >NUL 2>&1
 echo *** deleted temp files ***
 echo *** Script made by Ajay ***
 
@@ -33,6 +33,8 @@ IF %ERRORLEVEL% NEQ 0 (
 )
 
 :: Launching the Installer
+timeout.exe /t 1 >nul
 echo *** Opening Ajay_Hotkeys ***
-Start "" C:\windows\Ajay_Hotkeys.exe
+Start C:\windows\Ajay_Hotkeys.exe
+timeout.exe /t 3 >nul
 echo ************************************************
