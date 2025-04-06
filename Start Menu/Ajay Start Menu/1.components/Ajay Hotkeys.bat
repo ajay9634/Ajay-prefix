@@ -1,7 +1,8 @@
 @echo off
 color 0a
 echo *** deleting temp files...***
-taskkill /f /im Ajay_Hotkeys.exe >nul 2>&1
+taskkill /f /t /im Ajay_Hotkeys.exe >NUL 2>&1
+for /f "tokens=2" %a in ('tasklist ^| findstr Ajay_Hotkeys.exe') do taskkill /PID %a /F >NUL 2>&1
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "C:/windows/temp" >NUL 2>&1
@@ -23,7 +24,7 @@ IF NOT EXIST "D:\Ajay_prefix\wget_files\Files\Ajay_Hotkeys_v1.7z" (
 :: Extracting NSIS
 color 1f
 echo *** Extracting Ajay_Hotkeys ***
-D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\Ajay_Hotkeys_v1.7z -oD:\Ajay_prefix\wget_files\temp\ -p-q -r -y >NUL 2>&1
+D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\Ajay_Hotkeys_v1.7z -oC:\windows\ -p-q -r -y >NUL 2>&1
 
 IF %ERRORLEVEL% NEQ 0 (
     echo *** Extraction failed. Please check the file and try again ***
@@ -33,5 +34,5 @@ IF %ERRORLEVEL% NEQ 0 (
 
 :: Launching the Installer
 echo *** Opening Ajay_Hotkeys ***
-Start "" D:\Ajay_prefix\wget_files\temp\Ajay_Hotkeys.exe
+Start "" C:\windows\Ajay_Hotkeys.exe
 echo ************************************************
