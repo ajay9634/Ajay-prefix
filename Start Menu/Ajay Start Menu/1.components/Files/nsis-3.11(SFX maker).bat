@@ -34,3 +34,4 @@ echo *** Opening NSIS-3.11 Setup ***
 Start "" D:\Ajay_prefix\wget_files\temp\nsis-3.11-setup.exe
 
 echo ************************************************
+timeout.exe /t 3 >nul
