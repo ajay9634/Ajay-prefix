@@ -28,3 +28,4 @@ echo *** opening ...***
 Start D:\Ajay_prefix\wget_files\temp\dxcapsviewer.exe
 )
 echo.************************************************
+timeout.exe /t 3 >nul
