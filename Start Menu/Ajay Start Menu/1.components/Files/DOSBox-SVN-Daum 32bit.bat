@@ -22,3 +22,4 @@ D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\DOSBox-SVN-Da
 echo *** opening dosbox-32bit ***
 Start D:\Ajay_prefix\wget_files\my_apps\DOSBox-SVN-Daum\dosbox.exe
 echo ************************************************
+timeout.exe /t 3 >nul
