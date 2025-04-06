@@ -3,7 +3,7 @@
 Ajay Prefix components changelog (6 april 2025)
 
 - updated scripts
-- updated Ajay hotkeys script, after running at first time, you can launch this program by running 'Ajay_hotkeys.exe' in Taskmgr new task in winlator even if you are playing games.
+- updated Ajay hotkeys script, after running for the first time, you can launch this program by running 'Ajay_hotkeys.exe' in Taskmgr new task in winlator even if you are playing games.
 - updated Ajay prefix GitHub readme ( added more env )
 
 ==================================================================
