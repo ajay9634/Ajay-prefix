@@ -20,4 +20,5 @@ D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\AnyBurn.7z -o
 
 echo *** opening AnyBurn ***
 Start D:\Ajay_prefix\wget_files\my_apps\AnyBurn\AnyBurn.exe
+timeout.exe /t 3 >nul
 echo ************************************************
