@@ -130,7 +130,7 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 
     MESA_GLTHREAD=true
 
-    vblank_mode=0 (for opengl games)
+    vblank_mode=0 (for opengl games) (set 1 to fix tearing)
 
     ZINK_DESCRIPTOR_POOL=1  
 
