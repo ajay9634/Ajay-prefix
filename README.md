@@ -111,6 +111,23 @@ I got these files from trusted source so don't worry, Don't install it if you ha
     BOX64_ALLOWMISSINGLIBS=1
 
 
+#### BOX64 Env ( May improve compatibility )
+
+    BOX64_DYNAREC_DIV0=1
+
+    BOX64_DYNAREC_TBB=0
+
+    BOX64_FIX_64BIT_INODES=1
+
+    BOX64_IGNOREINT3=1
+
+    BOX64_RESERVE_HIGH=1 (For launchers )
+
+    BOX64_UNITYPLAYER=1 (Fix unity games)
+
+    BOX64_SYNC_ROUNDING=1 (Fix physics, mismatch behaviour, Subtle precion bugs)
+
+    
 
 #### MESA Env ( May improve performance )
     MESA_VK_WSI_DEBUG=(sw
