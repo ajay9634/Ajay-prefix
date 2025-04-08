@@ -1,3 +1,5 @@
+=================================================================
+
 Ajay Prefix components changelog (8 april 2025)
 
 - added auto check offline files version in "update 1.components scripts.bat" . It will show message, if you are using Ajay prefix 10.16 fix or older
