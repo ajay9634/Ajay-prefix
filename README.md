@@ -95,35 +95,22 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 
     BOX64_MAX_CPU=4
     
-    BOX64_FPU_MODE=0 (default)
+    BOX64_NOBANNER=1
+
+    BOX64_DYNAREC_ALIGNED_ATOMICS=1
+
+    BOX64_DYNAREC_DIRTY=1
+
+    BOX64_RDTSC_1GHZ=1
     
-    BOX64_NOCACHE=0
     
-    BOX64_USE_GLIBC=1
-    
-    BOX64_THREADING=1 (default)
-
-    BOX64_SKIP_SIGSEGV=1
-
-    BOX64_NOPTHREAD=1 (for single thread games like half life 1 or old rpg games)
-    
-#### BOX64 Env ( May improve compatibility or stability )
-
-    BOX64_FPU_MODE=1
-
-    BOX64_NOCACHE=1
-
 #### BOX64 Env ( May fix source engine glitch )
 
-    BOX64_NOCALLRET=1 (fix npc rotation bug or aim bug) (If it doesn't work then disable callret from box64 preset)
+    BOX64_DYNAREC_CALLRET=0 (fix npc rotation bug or aim bug) (If it doesn't work then disable callret from box64 preset)
 
     BOX64_ALLOWMISSINGLIBS=1
 
-    BOX64_FORCEALIGN=1
 
-    BOX64_DYNAREC_DOHOSTTIMING=1
-
-    BOX64_FORCEALIGN=1
 
 #### MESA Env ( May improve performance )
     MESA_VK_WSI_DEBUG=(sw
