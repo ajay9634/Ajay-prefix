@@ -12,7 +12,7 @@ if not exist "D:\Ajay_prefix\.Resources\Resources.7z" (
 cscript /nologo %tmp%\tmp.vbs
 del %tmp%\tmp.vbs
 goto delete_offline_scripts
-) else ( √ )
+) else ( ... )
 
 setlocal enabledelayedexpansion
 
@@ -33,7 +33,7 @@ if not "!date!"=="%expected_date%" (
 start cscript //nologo %tmp%\tmp.vbs
 del %tmp%\tmp.vbs
 ) else (
-    echo Ajay prefix offline Files are up to date. √
+    echo Ajay prefix offline Files are up to date.
 goto necessary_files
 )
 
