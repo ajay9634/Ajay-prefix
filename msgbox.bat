@@ -12,7 +12,7 @@ echo Checking ".Resources" files ...
 
 :: Check if offline resource exists
 if not exist "D:\Ajay_prefix\.Resources\Resources.7z" (
-    echo msgbox "Hello! Looks like Ajay prefix offline files are missing from D drive. Expect limited Start Menu functionality!" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
+    echo msgbox " Hello! Looks like Ajay prefix offline files are missing from D drive.Expect limited Start Menu functionality !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
     cscript //nologo %tmp%\tmp.vbs
     del %tmp%\tmp.vbs
     goto delete_offline_scripts
