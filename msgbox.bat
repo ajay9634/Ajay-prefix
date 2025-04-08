@@ -12,7 +12,7 @@ echo Checking ".Resources" files ...
 
 :: Check if offline resource exists
 if not exist "D:\Ajay_prefix\.Resources\Resources.7z" (
-    echo msgbox " Hello! Looks like Ajay prefix offline files are missing from D drive.Expect limited Start Menu functionality !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
+echo msgbox " Looks like Ajay prefix offline files are missing from D drive." , vbinformation+vbSystemModal > %tmp%\tmp.vbs
     cscript //nologo %tmp%\tmp.vbs
     del %tmp%\tmp.vbs
     goto delete_offline_scripts
@@ -116,8 +116,10 @@ timeout /t 2 >nul
 exit /b
 
 :delete_offline_scripts
+echo Removing offline scripts ....
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\2.offline components" >nul 2>&1
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\3.GPU Test" >nul 2>&1
+rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\6.File manager" >nul 2>&1
 del /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\install necessary files.bat" >nul 2>&1
 goto checked
 
