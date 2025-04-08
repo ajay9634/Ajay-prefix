@@ -2,10 +2,9 @@
 
 Ajay Prefix components changelog (8 april 2025)
 
-- added auto check offline files version in "update 1.components scripts.bat" . It will show message, if you are using Ajay prefix 10.16 fix or older
+- added auto check offline files version in "update 1.components scripts.bat" . It will show a message, if you are not using Ajay prefix 10.16 fix or latest version
 - updated Ajay env .container file
-- updated env on GitHub page
-
+- updated env on Ajay prefix GitHub page
 =================================================================
 
 Ajay Prefix components changelog (6 april 2025)
