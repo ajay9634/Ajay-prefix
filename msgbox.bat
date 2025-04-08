@@ -11,9 +11,31 @@ if not exist "D:\Ajay_prefix\.Resources\Resources.7z" (
     echo msgbox "Hello! Looks like Ajay prefix offline files are missing from d drive , Expect less Start Menu !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
 cscript /nologo %tmp%\tmp.vbs
 del %tmp%\tmp.vbs
-goto checked
-) else ( goto necessary_files )
+goto delete_offline_scripts
+) else ( √ )
 
+setlocal enabledelayedexpansion
+
+set "expected_date=03/29/2025"
+set "file=D:\Ajay_prefix\.Resources\Start_Menu.7z"
+
+rem Get the line from dir command that contains the file info
+for /f "tokens=1-3*" %%a in ('dir "%file%" ^| findstr /i "Start_Menu.7z"') do (
+    set "date=%%a"
+)
+
+rem Compare dates
+if not "!date!"=="%expected_date%" (
+    echo.
+    echo Looks like you're using an old version of the Ajay prefix.
+    echo Please download the latest version from Ajay's GitHub.
+    echo msgbox "Looks like you're using an old version of the Ajay prefix. Please download the latest version from Ajay's GitHub." , vbinformation+vbSystemModal > %tmp%\tmp.vbs
+start cscript //nologo %tmp%\tmp.vbs
+del %tmp%\tmp.vbs
+) else (
+    echo Ajay prefix offline Files are up to date. √
+goto necessary_files
+)
 
 :necessary_files
 echo updating some offline scripts and necessary files script in current container
@@ -80,3 +102,14 @@ echo msgbox "Hello! Ajay Prefix components are updated successfully, Changelog a
 start /b cscript //nologo %tmp%\tmp.vbs
 timeout.exe /t 2 >nul
 del %tmp%\tmp.vbs 
+
+exit /b
+
+:delete_offline_scripts
+rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\2.offline components\" >nul 2>&1
+rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\3.GPU Test" >nul 2>&1
+del "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\install necessary files.bat" >nul 2>&1
+goto checked
+
+exit /b
+
