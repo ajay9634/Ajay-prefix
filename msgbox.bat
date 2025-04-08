@@ -108,7 +108,7 @@ echo Please wait...
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 
-echo msgbox "Hello! Ajay Prefix components are updated successfully. Changelog and files saved to D:/Ajay_prefix/wget_files/!" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
+echo msgbox " All processes are done. Changelog is saved in drive D/Ajay_prefix/wget_files/ !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
 cscript //nologo %tmp%\tmp.vbs
 timeout /t 2 >nul
 del %tmp%\tmp.vbs
