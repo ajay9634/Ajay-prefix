@@ -113,7 +113,7 @@ cscript //nologo %tmp%\tmp.vbs
 timeout /t 2 >nul
 del %tmp%\tmp.vbs
 timeout /t 2 >nul
-exit
+exit /b
 
 :delete_offline_scripts
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\2.offline components" >nul 2>&1
