@@ -112,8 +112,8 @@ echo msgbox "Hello! Ajay Prefix components are updated successfully. Changelog a
 cscript //nologo %tmp%\tmp.vbs
 timeout /t 2 >nul
 del %tmp%\tmp.vbs
-
-exit /b
+timeout /t 2 >nul
+exit
 
 :delete_offline_scripts
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\2.offline components" >nul 2>&1
