@@ -1,5 +1,13 @@
 =================================================================
 
+Ajay Prefix components changelog (9 april 2025)
+
+- updated physx scripts
+- added PhysX_9.23.1019_SystemSoftware (latest)
+- added wined3d, vkd3d, dxvk components for winlator 10
+
+=================================================================
+
 Ajay Prefix components changelog (8 april 2025)
 
 - added auto check offline files version in "update 1.components scripts.bat" . It will show a message, if you are not using Ajay prefix 10.16 fix or latest version
