@@ -139,4 +139,5 @@ if exist "E:\files\installed_components\vkd3d\!selectedFile!" (
 
 :: Cleanup
 del temp.json
+goto choice
 pause
