@@ -3,6 +3,7 @@ color 1f
 echo ==================================
 echo ***** Warning: Uninstall other physx version , This is official setup. it can fix some games.
 echo ==================================
+:choice 
 echo.
 echo *** Now choose an option - ***
 echo.
@@ -15,7 +16,7 @@ if '%choice%'=='1' goto install
 if '%choice%'=='2' goto cancel
 ECHO "%choice%" is not valid, try again
 ECHO.
-goto end
+goto choice
 
 :cancel
 echo.
