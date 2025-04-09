@@ -1,6 +1,4 @@
 @echo off
-color 0a
-@echo off
 color 1f
 echo ==================================
 echo ***** Warning: Uninstall other physx version , This is official setup. it can fix some games.
