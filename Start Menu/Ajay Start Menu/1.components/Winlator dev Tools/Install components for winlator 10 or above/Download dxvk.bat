@@ -141,4 +141,5 @@ if exist "E:\files\installed_components\dxvk\!selectedFile!" (
 
 :: Cleanup
 del temp.json
+goto choice
 pause
