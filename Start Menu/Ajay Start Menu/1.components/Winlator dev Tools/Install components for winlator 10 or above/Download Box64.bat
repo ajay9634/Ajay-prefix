@@ -105,8 +105,8 @@ if "!choice!"=="0" (
 :: Validate choice
 if not defined file[%choice%] (
     echo Invalid choice. Please try again.
-    del temp.json
-    exit /b
+    cls
+    goto choice
 )
 
 set "selectedFile=!file[%choice%]!"
