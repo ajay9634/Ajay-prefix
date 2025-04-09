@@ -43,8 +43,8 @@ if %errorlevel% neq 0 (
 :choice
 echo .
 echo Select GitHub to download wined3d -
-echo [1] Ajay9634 (old wined3d)
-echo [2] brunodev85 (latest)
+echo [1] Ajay9634
+echo [2] brunodev85
 echo [3] Cancel
 echo .
 set /p userChoice=Enter your choice (1 or 2 or 3): 
