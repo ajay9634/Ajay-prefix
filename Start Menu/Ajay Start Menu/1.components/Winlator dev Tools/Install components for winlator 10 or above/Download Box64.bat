@@ -138,4 +138,5 @@ if exist "E:\files\installed_components\Box64\!selectedFile!" (
 
 :: Cleanup
 del temp.json
+goto choice
 pause
