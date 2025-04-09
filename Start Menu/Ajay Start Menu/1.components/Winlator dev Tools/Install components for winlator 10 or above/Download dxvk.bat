@@ -98,6 +98,7 @@ echo.
 set /p choice=Enter the file number to download (or 0 to Back): 
 if "!choice!"=="0" (
     del temp.json
+    cls
     goto choice
     
 )
@@ -106,7 +107,9 @@ if "!choice!"=="0" (
 if not defined file[%choice%] (
     echo Invalid choice. Please try again.
     del temp.json
-    exit /b
+    cls
+    goto choice
+
 )
 
 set "selectedFile=!file[%choice%]!"
