@@ -95,11 +95,10 @@ for /f "tokens=2 delims=:," %%a in ('findstr /C:"\"name\":" temp.json') do (
 
 :: Choose a file to download
 echo.
-set /p choice=Enter the file number to download (or 0 to exit): 
+set /p choice=Enter the file number to download (or 0 to Back): 
 if "!choice!"=="0" (
-    echo Exiting.
     del temp.json
-    exit /b
+    goto choice
 )
 
 :: Validate choice
