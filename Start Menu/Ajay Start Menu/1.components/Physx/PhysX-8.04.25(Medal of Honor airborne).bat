@@ -1,6 +1,31 @@
 @echo off
 color 0a
-echo *** warning - uninstall other physx version  ***
+color 1f
+echo ==================================
+echo ***** Warning: Uninstall other physx version , This is official setup. it can fix some games.
+echo ==================================
+:choice
+echo.
+echo *** Now choose an option - ***
+echo.
+ECHO 1. Install PhysX_8.04.25
+ECHO 2. Cancel or exit
+set choice=
+set /p choice=Type the number to select an option-
+if not '%choice%'=='' set choice=%choice:~0,1%
+if '%choice%'=='1' goto install
+if '%choice%'=='2' goto cancel
+ECHO "%choice%" is not valid, try again
+ECHO.
+goto choice
+
+:cancel
+echo.
+ECHO Installation cancelled. 
+exit
+
+:install
+echo.
 echo *** deleting temp files...***
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
 mkdir "D:/Ajay_prefix/wget_files/temp"
