@@ -108,6 +108,10 @@ echo Please wait...
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 
+if not exist "Z:\home\xuser" (
+    rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\1.components\Winlator dev Tools"
+)    
+
 echo msgbox " All processes are done. Changelog is saved in drive D/Ajay_prefix/wget_files/ !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
 cscript //nologo %tmp%\tmp.vbs
 timeout /t 2 >nul
