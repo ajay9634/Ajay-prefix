@@ -1,0 +1,9 @@
+Try These combination in winlator for virgl games (dx9 and below)
+
+1 -[ wined3d 4.18 + virgl 22.1.7 + backbuffer ]
+
+2 -[ wined3d 4.18 + virgl 22.1.7 + fbo ]
+
+3 -[ wined3d 3.6 + virgl 23.1.9 + backbuffer ]
+
+4 -[ wined3d 3.6 + virgl 23.1.9 + fbo ]
