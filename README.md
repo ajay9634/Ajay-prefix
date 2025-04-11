@@ -97,7 +97,7 @@ I got these files from trusted source so don't worry, Don't install it if you ha
     
     BOX64_NOBANNER=1
 
-    BOX64_DYNAREC_ALIGNED_ATOMICS=1
+    BOX64_DYNAREC_ALIGNED_ATOMICS=1 (games may crash)
 
     BOX64_DYNAREC_DIRTY=1
 
