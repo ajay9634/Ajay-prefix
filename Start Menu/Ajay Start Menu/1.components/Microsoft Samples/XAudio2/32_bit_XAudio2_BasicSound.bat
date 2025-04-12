@@ -36,6 +36,6 @@ echo *** Opening Microsoft Samples ***
 Start /b "" D:\Ajay_prefix\wget_files\temp\Microsoft_Samples\C++\XAudio2\Bin\x86\XAudio2BasicSound.lnk
 
 echo ************************************************
-pause
+timeout.exe /t 3 >nul
 
 
