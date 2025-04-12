@@ -2,6 +2,13 @@
 
 Ajay Prefix components changelog (9 april 2025)
 
+- added some Microsoft Samples from official DXSDK_Jun10.exe ( d3d9,d3d10,d3d11,XAudio2,XACT,XInput, DirectInput )
+- updated some scripts
+
+=================================================================
+
+Ajay Prefix components changelog (9 april 2025)
+
 - updated physx scripts
 - added PhysX_9.23.1019_SystemSoftware (latest)
 - added wined3d, vkd3d, dxvk components for winlator 10
