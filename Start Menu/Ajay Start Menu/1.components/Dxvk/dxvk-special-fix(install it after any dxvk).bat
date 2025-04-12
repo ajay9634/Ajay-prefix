@@ -1,5 +1,5 @@
 @echo off
-echo for dxvk 2.0 and later
+echo Dx10 fix for dxvk 2.0 and later
 set "installname=dxvk-special-fix"
 :: Remove the prefix "dxvk-" and keep the part after it
 set "version=%installname:dxvk-=%"
