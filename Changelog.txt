@@ -2,7 +2,7 @@
 
 Ajay Prefix components changelog (9 april 2025)
 
-- added some Microsoft Samples from official DXSDK_Jun10.exe ( d3d9,d3d10,d3d11,XAudio2,XACT,XInput, DirectInput )
+- added some Microsoft Samples from official DXSDK_Jun10.exe ( d3d9,d3d10,d3d11,XAudio2,XACT,XInput,DirectInput )
 - updated some scripts
 
 =================================================================
