@@ -1,9 +1,29 @@
 @echo off
-echo .
+setlocal EnableDelayedExpansion
+echo Checking Latest available DXVK official version ...
+echo.
+
+:: Download the latest release info from GitHub using wget
+wget -q -O latest.json https://api.github.com/repos/doitsujin/dxvk/releases/latest
+
+:: Extract the version tag using findstr and for loop
+set "latest_version="
+for /f "tokens=2 delims=:" %%A in ('findstr /i "tag_name" latest.json 2^>nul') do (
+    set "ver=%%A"
+    set "ver=!ver:,=!"
+    set "ver=!ver:"=!"
+    set "ver=!ver: =!"
+    set "latest_version=!ver:v=!"
+)
+
+del latest.json >nul 2>&1
+
+echo Latest available DXVK version is: %latest_version%
+echo.
 
 :version_input
-:: Allow the user to type or confirm the version before proceeding
-set /p "version=Type the version [eg 2.4.1]: "
+set /p "version=Type the version [default: %latest_version%]: "
+if "%version%"=="" set "version=%latest_version%"
 
 echo You entered version: %version%
 echo.
@@ -18,19 +38,17 @@ echo *** deleted temp files ***
 echo .
 echo *** script made by Ajay ***
 
-:: Simulating bold with color and emphasis
 color 0A
 echo.
 echo *** Downloading dxvk-%version%  ***
 IF NOT EXIST "D:\Ajay_prefix\wget_files\d3d\dxvk-%version%.tar.gz" (
     wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://github.com/doitsujin/dxvk/releases/download/v%version%/dxvk-%version%.tar.gz
 
-copy /y D:\Ajay_prefix\wget_files\temp\dxvk-%version%.tar.gz D:\Ajay_prefix\wget_files\d3d\dxvk-%version%.tar.gz
+    copy /y D:\Ajay_prefix\wget_files\temp\dxvk-%version%.tar.gz D:\Ajay_prefix\wget_files\d3d\dxvk-%version%.tar.gz
 ) ELSE (
     ECHO dxvk-%version%.tar.gz file already exists.
 )
 
-:: Simulate download progress only for subsequent parts
 color 1f
 echo *** Extracting ...***
 D:\Ajay_prefix\.Resources\winrar.exe x D:\Ajay_prefix\wget_files\d3d\dxvk-%version%.tar.gz C:\windows\temp\ -r -y >NUL 2>&1
