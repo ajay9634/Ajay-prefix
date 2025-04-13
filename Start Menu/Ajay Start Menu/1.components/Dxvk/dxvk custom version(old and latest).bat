@@ -60,6 +60,7 @@ for /f "tokens=2 delims=:" %%A in ('findstr /i "tag_name" all_releases.json 2^>n
 )
 endlocal
 echo.
+timeout.exe 5 /nobreak
 goto version_input
 
 :end
