@@ -7,6 +7,9 @@ Ajay Prefix components changelog (14 april 2025)
 - added dxvk sarek custom version script
 - added dxvk async custom version script
 - added dxvk gplasync custom version script
+- updated wine mono custom version script
+
+
 
 (Note - Now it will download old to latest dxvk release versions. dxvk won't be downloaded again if it's already downloaded once. You can remove downloaded dxvk files from "D:/Ajay_prefix/wget_files/d3d/" ) 
 
