@@ -32,6 +32,7 @@ if not "!date!"=="%expected_date%" (
     echo.
     echo Looks like you're using an old version of the Ajay prefix.
     echo Please download the latest version from Ajay's GitHub.
+    echo The latest version 10.16 fix is uploaded on 29 march 2025.
     echo msgbox "You're using an old version of the Ajay prefix. Please download the latest version from Ajay's GitHub." , vbinformation+vbSystemModal > %tmp%\tmp.vbs
     cscript //nologo %tmp%\tmp.vbs
     del %tmp%\tmp.vbs
