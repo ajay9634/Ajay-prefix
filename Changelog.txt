@@ -1,5 +1,17 @@
 =================================================================
 
+Ajay Prefix components changelog (14 april 2025)
+
+- removed extra scripts of dxvk ( Now less start menu )
+- updated dxvk custom version script
+- added dxvk sarek custom version script
+- added dxvk async custom version script
+- added dxvk gplasync custom version script
+
+(Note - Now it will download old to latest dxvk release versions. dxvk won't be downloaded again if it's already downloaded once. You can remove downloaded dxvk files from "D:/Ajay_prefix/wget_files/d3d/" ) 
+
+=================================================================
+
 Ajay Prefix components changelog (12 april 2025)
 
 - added some Microsoft Samples from official DXSDK_Jun10.exe ( d3d9,d3d10,d3d11,XAudio2,XACT,XInput,DirectInput )
