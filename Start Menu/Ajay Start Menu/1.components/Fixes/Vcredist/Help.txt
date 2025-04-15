@@ -1,0 +1,1 @@
+It will extract missing vc redist dlls which are needed in old games.
