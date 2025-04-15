@@ -1,0 +1,1 @@
+It's also called june 2010 directX setup. XInput, Dinput and dxnt files are not included in this.
