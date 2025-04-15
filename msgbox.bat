@@ -20,20 +20,19 @@ echo msgbox " Looks like Ajay prefix offline files are missing from D drive." , 
     echo Resources.7z found.
 )
 
-:: File date check
-set "expected_date=03/29/2025"
-set "file=D:\Ajay_prefix\.Resources\Start_Menu.7z"
+set "toolpath=D:\Ajay_prefix\.Resources\7z.exe"
+set "archive=D:\Ajay_prefix\.Resources\Start_Menu.7z"
+set "password=-p-q"
+set "expected_folder=8.Backup and Restore drive C users and ProgramData"
 
-for /f "tokens=1-3*" %%a in ('dir "%file%" ^| findstr /i "Start_Menu.7z"') do (
-    set "date=%%a"
-)
-
-if not "!date!"=="%expected_date%" (
+REM Check if expected folder is anywhere in the archive (quietly)
+"%toolpath%" l "%archive%" %password% 2>nul | findstr /I /C:"%expected_folder%" >nul 2>&1
+if errorlevel 1 (
     echo.
-    echo Looks like you're using an old version of the Ajay prefix.
+    echo Looks like you're using an outdated version of the Ajay prefix.
     echo Please download the latest version from Ajay's GitHub.
-    echo The latest version 10.16 fix is uploaded on 29 march 2025.
-    echo msgbox "You're using an old version of the Ajay prefix. Please download the latest version from Ajay's GitHub." , vbinformation+vbSystemModal > %tmp%\tmp.vbs
+    echo The latest version 10.16 fix was uploaded on 29 March 2025.
+    echo msgbox "You're using an outdated version of the Ajay prefix. Please download the latest version from Ajay's GitHub." , vbInformation+vbSystemModal > %tmp%\tmp.vbs
     cscript //nologo %tmp%\tmp.vbs
     del %tmp%\tmp.vbs
 ) else (
