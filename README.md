@@ -170,6 +170,10 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Wine_wcp)
 
+## ⚠️ Notice
+
+I will prioritize updates for Ajay prefix components with limitations and will not upload any wcp or additional files due to limited support and time. I need to focus on fixing my financial situation through a real job.
+
 ## ⚠️ _Note_
 
 - I don't compile turnip zink virgl or wine, I add wcp from existing source.
@@ -180,7 +184,8 @@ I got these files from trusted source so don't worry, Don't install it if you ha
   [Emuplay0 discord](https://discord.gg/XpbEp3dWv3)
 
 ## 💲 _Support me_
-You can support me by subscribing my youtube channel and watching the videos.
+You can support me by subscribing my youtube channel and watching the videos or you can donate money on my kofi.
+
 [My YT channel](https://youtube.com/@EMUPLAY0?si=TA9tOZx49eZa4OuN)
 
 ========================================
