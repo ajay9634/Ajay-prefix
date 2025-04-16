@@ -1,6 +1,14 @@
  ⚠️ Next update is delayed ⚠️
 =================================================================
 
+Ajay Prefix components changelog (16 april 2025)
+
+- fixed dxvk sarek script for gamehub and other emu ( eg,  type v1.10.8 or async-v1.10.8 )
+- updated msgbox.bat (now update message bug is fixed)
+- added "Export applied env variables info as txt.bat"
+
+=================================================================
+
 Ajay Prefix components changelog (14 april 2025)
 
 - removed extra scripts of dxvk ( Now less start menu )
