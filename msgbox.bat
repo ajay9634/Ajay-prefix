@@ -114,7 +114,8 @@ if not exist "Z:\home\xuser" (
 
 echo msgbox "All processes are done. Changelog is saved in drive D:\Ajay_prefix\wget_files!" , vbInformation+vbSystemModal > %tmp%\tmp.vbs
 start "" cscript //nologo %tmp%\tmp.vbs
-timeout /t 6
+timeout /t 5
+echo done !
 taskkill /F /IM cscript.exe /T >nul 2>&1
 del %tmp%\tmp.vbs
 exit /b
