@@ -112,17 +112,11 @@ if not exist "Z:\home\xuser" (
     rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\1.components\Winlator dev Tools"
 )    
 
-:: Create a VBScript file that shows a message and auto-closes in 5 seconds
-echo Set objShell = CreateObject("WScript.Shell") > %tmp%\tmp.vbs
-echo objShell.Popup "All processes are done. Changelog is saved in drive D:\Ajay_prefix\wget_files!", 5, "Info", 64 >> %tmp%\tmp.vbs
-
-:: Run the script without waiting
+echo msgbox "All processes are done. Changelog is saved in drive D:\Ajay_prefix\wget_files!" , vbInformation+vbSystemModal > %tmp%\tmp.vbs
 start "" cscript //nologo %tmp%\tmp.vbs
-
-:: Wait and clean up
-timeout /t 2 >nul
+timeout /t 6
+taskkill /F /IM cscript.exe /T >nul 2>&1
 del %tmp%\tmp.vbs
-timeout /t 2 >nul
 exit /b
 
 :delete_offline_scripts
