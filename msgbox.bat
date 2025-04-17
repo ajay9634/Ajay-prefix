@@ -105,6 +105,8 @@ if exist "C:\windows\timeout.exe" (
 cls
 echo Please wait...
 
+reg add "HKCU\Software\7-Zip\FM" /v ShowRealFileIcons /t REG_DWORD /d 1 /f >nul 2>&1
+
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 
