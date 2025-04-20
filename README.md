@@ -75,6 +75,7 @@ I got these files from trusted source so don't worry, Don't install it if you ha
 
 ## ⚠️ limit
 
+- It needs internet for downloading 1.components files and all Start Menu scripts. If internet is broken then you can use limited Start Menu.
 - It may break container in some other emu.
 - It may break some games.
 - It don't backup Steam games save data which are present in "C:/Program Files (x86)/Steam/"
