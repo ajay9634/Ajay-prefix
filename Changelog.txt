@@ -1,4 +1,9 @@
- ⚠️ Next update is delayed ⚠️
+=================================================================
+Ajay Prefix components changelog (20 april 2025)
+
+- updated Microsoft Samples scripts
+- added GPUInfo by BrunoSX
+
 =================================================================
 
 Ajay Prefix components changelog (16 april 2025)
