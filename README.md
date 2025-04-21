@@ -2,7 +2,7 @@
 ---
 ## 💥 Ajay-prefix
 
-You can install the Ajay Prefix on various platforms such as MoboX WOW64, Winlator, Dark OS, MiceWine, the latest Hangover, GameHub, GameFusion, and other WOW64 PC emulators.
+You can install the Ajay Prefix on various pc emu such as MoboX WOW64, Winlator, Dark OS, MiceWine, the latest Hangover, GameHub, GameFusion, and other WOW64 PC emulators.
 
 > **Note:** Not supported on x86 emulators like ExaGear or Mobox Box86. ExaGear Mod Ajay has a separate Ajay Prefix setup.
 
