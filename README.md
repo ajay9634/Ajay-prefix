@@ -232,10 +232,11 @@ I will prioritize updates for Ajay prefix components with limitations and will n
   
 ## 💲 _Support Me_
 
-You can support me by subscribing to my YouTube channel and watching the videos, or you can donate on my Ko-fi.
+You can support me by subscribing to my YouTube channel and watching the videos, or donating on my Ko-fi.
 
-[My YouTube Channel](https://youtube.com/@EMUPLAY0?si=TA9tOZx49eZa4OuN)  
-[Donate on Ko-fi](https://ko-fi.com)
+[![Subscribe on YouTube](https://img.shields.io/badge/YouTube-Subscribe-red?style=social&logo=youtube)](https://youtube.com/@EMUPLAY0?si=TA9tOZx49eZa4OuN)  
+[![Donate on Ko-fi](https://img.shields.io/badge/Donate-Ko_fi-orange?style=social&logo=ko-fi)](https://ko-fi.com)
+
 ========================================
 
 ### Main Developer of Ajay Prefix
