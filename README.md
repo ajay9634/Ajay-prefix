@@ -2,85 +2,133 @@
 ---
 ## 💥 Ajay-prefix
 
-You can install Ajay Prefix in mobox wow64 , winlator , dark os , micewine , latest hangover , gamehub or gamefusion and other wow64 pc emu.
+You can install the Ajay Prefix on various platforms such as MoboX WOW64, Winlator, Dark OS, MiceWine, the latest Hangover, GameHub, GameFusion, and other WOW64 PC emulators.
 
-_Note- It's not supported in x86 emu like Exagear, mobox box86 etc.
-Exagear mod Ajay has it's own Ajay prefix which can save game data to Ajay prefix_
+> **Note:** Not supported on x86 emulators like ExaGear or Mobox Box86. ExaGear Mod Ajay has a separate Ajay Prefix setup.
+
 
 ## ✨ What is Ajay prefix?
 
-[Ajay prefix = game save location to d drive/Ajay_prefix/save_data + Start menu + bug fix]
+✨ What is Ajay Prefix?
 
-It has multiple fixes which are needed in many Games.
+[Ajay prefix = game save location to D:\Ajay_prefix\save_data + Start menu customization + bug fixes]
 
-_Note - If it breaks anything, let me know in issues_
+It includes multiple fixes needed in many games.
+
+Note: If it causes any issues, please let me know in the issues section.
 
 Ajay prefix wiki - [click here](https://github.com/ajay9634/Ajay-prefix/wiki)
 
 ## ✨ Installation of Ajay prefix
 
-- **Partial Automatic installation:** 
+- **Partial Automatic Installation:**  
+  Run `Ajay_prefix.exe` from any location, then execute the `.bat` file from `D:\Ajay_prefix\` to complete the installation.
 
-  Run Ajay prefix.exe from any location. Then install bat from drive D/Ajay_prefix/
+- **Manual Installation:**  
+  Open `Ajay_prefix.exe` as an archive, extract it to drive D, and then run `Install_prefix_for_current_container.bat`.  
+  **Note:** Running `Install_only_start_menu.bat` will only modify the Start menu, leaving the game save data location unchanged.
 
- - **Manually installation:**
-
-  Open Ajay prefix.exe as archive  and extract to drive D then run    "Install_prefix_for_current_container.bat"
-  
-  ( Note : You can install only start menu by manually installation. Game save data location won't change after this )
-
-- Installation guide video -
+- **Installation Guide Video** -  
 [![Ajay Prefix Installation Video](https://img.youtube.com/vi/NXCquIv8D4c/0.jpg)](https://www.youtube.com/watch?v=NXCquIv8D4c)
 
-## ✨ Tricky installation
+## ✨ Tricky Installation
 
-Some Emu may prevent changes in system.reg and user.reg like winlator bionic container etc , It install fine on normal container.
+Some emulators (like Winlator's Bionic container) may prevent changes to `system.reg` and `user.reg`. However, Ajay Prefix installs fine on standard containers.
 
-Here are some methods to install Ajay prefix registry in current container.
+Here are alternative methods to install the Ajay Prefix registry in the current container:
 
-### For Winlator bionic container
+### For Winlator Bionic Container
 
-- Download home.zip from [here](https://github.com/ajay9634/Ajay-prefix/raw/refs/heads/Pre-installed-Ajay-prefix/Files/Winlator-bionic/home.7z) , Extract it then copy home folder to drive Z by wfm , Restart the bionic container then check ajay prefix status. Now you can install Ajay Prefix start menu.
+- First, run the installation `.bat` file from `D:\Ajay_prefix\`.
+- Then, download `home.zip` from [here](https://github.com/ajay9634/Ajay-prefix/raw/refs/heads/Pre-installed-Ajay-prefix/Files/Winlator-bionic/home.7z).
+- Extract the archive and copy the `home` folder to drive `Z:` using WFM.
+- Restart the Bionic container.
+- Check Ajay Prefix status. You can now install the Ajay Prefix Start Menu.
 
-## ⚠️ Move game save data to Ajay prefix
+## ⚠️ Move Game Save Data to Ajay Prefix
 
-If you were playing games before installing the Ajay prefix then you need to move game save from drive C/users/... to drive D/Ajay_prefix/save_data/users/...
+If you were playing games before installing Ajay Prefix, you need to manually move your game save data from:
 
-## ⚠️ Synchronisation of Ajay prefix save data in different Container or Emulator
+`C:\Users\...`
 
-You need to set drive D location in the same folder otherwise copy save data manually.
+to:
 
-## 🔗 Link of Ajay prefix v10.16
+`D:\Ajay_prefix\save_data\users\...`
 
-Ajay prefix is available in this Release section.
+## ⚠️ Synchronization of Ajay Prefix Save Data Across Different Containers or Emulators
 
-[Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
+To keep your save data in sync, make sure that the `D:` drive location is set to the same folder across all containers or emulators.  
+If that's not possible, you'll need to manually copy the save data between them.
 
-## ✨ Features of Ajay prefix -
+## 🔗 Link to Ajay Prefix v10.16
 
-- Save game location to d drive/Ajay_prefix/save_data , you can uninstall emu without any worry but remember some games save game to game folder or different location. you need to backup that save manually.
--  Most necessary files like different wined3d, dxvk , vkd3d , vc redist ,physx ,openal and many more
-- Custom wined3d install feature and other necessary features
-- Dosbox emu fast version, Adobe flash player ,media player classic old version and some video codecs and many more
-- Xaudio, Faudio and some other dsound dlls
-- Custom mono gecko and net framework installation option from the start menu
-- Resources files protection from the virus
+Ajay Prefix is available in the Releases section.
 
-## ✨ Some special features help
-- Read help.txt from relative folder
+[Download Ajay Prefix v10.16](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
 
-## 🛡️ Safe ?
-- It's definitely safe, I scanned all files before adding to Ajay prefix.
-I got these files from trusted source so don't worry, Don't install it if you have trust issues.
+## ✨ Features of Ajay Prefix
 
-## ⚠️ limit
+- **Save Game Location to D Drive:**  
+  Automatically redirects game saves to `D:\Ajay_prefix\save_data`. You can uninstall the emulator without losing your progress.  
+  *(Note: Some games may save data in their own folders or other locations — backup manually if needed.)*
 
-- It needs internet for downloading 1.components files and all Start Menu scripts. If internet is broken then you can use limited Start Menu.
-- It may break container in some other emu.
-- It may break some games.
-- It don't backup Steam games save data which are present in "C:/Program Files (x86)/Steam/"
-- It change Game save path  only "C:/users/" to "D:/Ajay_prefix/save_data/users"
-- If some Games are still using "C:/users/" then try "backup and restore drive C users" feature.
+- **Essential Runtime Files Included:**  
+  Comes bundled with critical components such as multiple versions of `wined3d`, `DXVK`, `VKD3D`, `VC Redist`, `PhysX`, `OpenAL`, and more.
+
+- **Custom Wined3d Installation & Useful Tweaks:**  
+  Allows easy installation of custom `wined3d` and includes other practical features to improve compatibility.
+
+- **Bundled Tools & Components:**  
+  Includes fast DOSBox emulator, Adobe Flash Player, an older version of Media Player Classic, various video codecs, and more.
+
+- **Audio Support Libraries:**  
+  Pre-includes `XAudio`, `FAudio`, and various `dsound` DLLs for better sound compatibility.
+
+- **Mono, Gecko & .NET Framework Support:**  
+  Install Mono, Gecko, and .NET Framework directly from the Start menu with one click.
+
+- **Multiple Game Wrappers Included:**  
+  Comes with many popular wrappers like `dgVoodoo`, `DXWrapper`, `TitaniumGL`, wrappers by `ThirteenAG`, `d3d8to9`, and more for enhanced compatibility with older games.
+
+- **Microsoft Sample Test Tools:**  
+  Includes official Microsoft samples to test features like DirectX 9/10/11, XInput, DInput, XAudio2, XACT, and more.
+
+- **Experimental Start Menu for Winlator 10+:**  
+  Special start menu for Winlator version 10 and above. Allows direct installation of `DXVK`, `Turnip`, `Box64`, and more into container settings in `.tzst` format.
+
+- **Resource File Protection:**  
+  Safeguards essential resource files from viruses and unauthorized changes.
+
+## ✨ Some Special Features Help
+
+- Read `help.txt` from the relevant folder for additional guidance and instructions.
+- You can also check the [Ajay Prefix Wiki on GitHub](https://github.com/ajay9634/Ajay-prefix/wiki) for detailed documentation and FAQs.
+
+## 🛡️ Is It Safe?
+
+- Yes, it's definitely safe. I have scanned all files before adding them to Ajay Prefix.  
+  All files come from trusted sources, so you can be confident in their integrity.  
+  **However, if you have trust issues, please refrain from installing it.**
+  
+## ⚠️ Limitations
+
+- **Internet Required:**  
+  An internet connection is needed to download component files and all Start Menu scripts. If the internet is unavailable, only the offline version of the Start Menu will be accessible.
+
+- **Potential Emulator Issues:**  
+  It may cause issues or break containers in some other emulators.
+
+- **Possible Game Compatibility Issues:**  
+  It may cause certain games to break or not function properly.
+
+- **No Backup for Steam Game Saves:**  
+  It does not back up Steam game save data located in `C:\Program Files (x86)\Steam\`.
+
+- **Game Save Path Change:**  
+  The game save path is only changed from `C:\Users\` to `D:\Ajay_prefix\save_data\users`.
+
+- **Games Still Using `C:\Users\`:**  
+  If some games continue to use the old save path, try using the "Backup and Restore Drive C Users" feature.
 
 ---
 ## ✨ _Necessary Env variables_
@@ -142,32 +190,31 @@ I got these files from trusted source so don't worry, Don't install it if you ha
     ZINK_USE_LOW_MEMORY_POOL=1
 
 
-
 ## ✨ _Necessary Stuff_
 
-### ✅ Steam Patch and online Steam installer with Fonts fixed
+### ✅ Steam Patch and Online Steam Installer with Fonts Fixed
 
-- Tested in winlator glibc cmod
+- Tested in Winlator GLIBC Cmod
 
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Steam_Patch)
 
-### ✅ Box64 wcp for winlator glibc
+### ✅ Box64 WCP for Winlator GLIBC
 
    [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Box64_wcp)
 
-### ✅ d3d wcp Files collection for winlator glibc
-  
+### ✅ d3d WCP Files Collection for Winlator GLIBC
+
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/D3d_wcp)
 
-### ✅ Turnip Zink virgl wcp collection for winlator glibc
+### ✅ Turnip, Zink, Virgl WCP Collection for Winlator GLIBC
 
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Graphics_driver)
 
-### ✅ Turnip zink virgl exe collection for all winlator
-  
+### ✅ Turnip, Zink, Virgl EXE Collection for All Winlator
+
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/graphics_driver_exe)
 
-### ✅ wine wcp for winlator glibc
+### ✅ Wine WCP for Winlator GLIBC
 
   [Link](https://github.com/ajay9634/Ajay-prefix/releases/tag/Wine_wcp)
 
@@ -177,40 +224,39 @@ I will prioritize updates for Ajay prefix components with limitations and will n
 
 ## ⚠️ _Note_
 
-- I don't compile turnip zink virgl or wine, I add wcp from existing source.
+- I don't compile Turnip, Zink, Virgl, or Wine. I add WCP from existing sources.
 
- - Other help (discord group)
-  you can ask help in Emuplay0 discord
+- **Other Help:**  
+  You can ask for help in the Emuplay0 Discord group.  
+  [![Emuplay0 Discord](https://img.shields.io/badge/Discord-Emuplay0-blue?style=social&logo=discord)](https://discord.gg/XpbEp3dWv3)
+  
+## 💲 _Support Me_
 
-  [Emuplay0 discord](https://discord.gg/XpbEp3dWv3)
+You can support me by subscribing to my YouTube channel and watching the videos, or donating on my Ko-fi.
 
-## 💲 _Support me_
-You can support me by subscribing my youtube channel and watching the videos or you can donate money on my kofi.
-
-[My YT channel](https://youtube.com/@EMUPLAY0?si=TA9tOZx49eZa4OuN)
+[![Subscribe on YouTube](https://img.shields.io/badge/YouTube-Subscribe-red?style=social&logo=youtube)](https://youtube.com/@EMUPLAY0?si=TA9tOZx49eZa4OuN)  
+[![Donate on Ko-fi](https://img.shields.io/badge/Donate-Ko_fi-orange?style=social&logo=ko-fi)](https://ko-fi.com)
 
 ========================================
 
-### Main developer of Ajay prefix
+### Main Developer of Ajay Prefix
 
-- ajay9634 (Emuplay0)
+- **ajay9634 (Emuplay0)**
 
-### Third party Credits -
+### Third-Party Credits
 
-- files from winlator 
-- files from mobox
-- files from dxvk GitHub
-- files from wined3d for windows
-- files from Microsoft
-- files from third party open source
-- sfx by winrar 420
+- Files from Winlator
+- Files from MoBox
+- Files from DXVK GitHub
+- Files from Wined3D for Windows
+- Files from Microsoft
+- Files from third-party open-source projects
+- SFX by WinRAR 420
 - 7z
+- wget
+- curl
 - WineHQ
-- Emuplay0 testing teamteam
-- guide by Chatgpt
+- Emuplay0 Testing Team
+- Guide by ChatGPT
 
 ========================================
-
-
-
-
