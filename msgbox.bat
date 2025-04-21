@@ -93,6 +93,7 @@ mkdir D:\Ajay_prefix\wget_files\temp 2>nul
 mkdir D:\Ajay_prefix\wget_files\my_apps 2>nul
 mkdir D:\Ajay_prefix\save_data\users\Registry_backup 2>nul
 mkdir D:\Ajay_prefix\save_data\users\xuser\AppData\Local 2>nul
+mkdir D:\Ajay_prefix\save_data\users\xuser\AppData\Local\Temp 2>nul
 mkdir D:\Ajay_prefix\save_data\users\xuser\AppData\Roaming 2>nul
 mkdir D:\Ajay_prefix\save_data\users\xuser\Documents 2>nul
 mkdir "D:\Ajay_prefix\save_data\users\xuser\Documents\My Games" 2>nul
