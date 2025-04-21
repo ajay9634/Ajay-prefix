@@ -1,5 +1,6 @@
-# Stuff for Winlator 10 and above
+# Stuff for Winlator 10 and Above
 
-components are uploaded here. You can download directly from source or you can download it by Ajay prefix.
+Components for Winlator 10+ are uploaded here.  
+You can either download them directly from the source or through the Ajay Prefix Start Menu.
 
-Note - I don't compile these files.
+**Note:** I do not compile these files — they are provided from existing sources.
