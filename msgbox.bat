@@ -57,7 +57,7 @@ wget -q -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githu
 
 :: Check if download succeeded
 if exist "D:\Ajay_prefix\wget_files\temp\offline_scripts_update.7z" (
-    echo Cleaning up old components...
+    echo Cleaning up old Start Menu ...
     rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\2.offline components" >NUL 2>&1
     rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\3.GPU Test" >NUL 2>&1
     del /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\install necessary files.bat" >NUL 2>&1
@@ -65,7 +65,7 @@ if exist "D:\Ajay_prefix\wget_files\temp\offline_scripts_update.7z" (
     rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*Backup and Restore*" >nul 2>&1
     rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*export and import*" >nul 2>&1
 
-    echo Extracting archive...
+    echo Extracting latest Start Menu...
     D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\temp\offline_scripts_update.7z -oC:\ -r -y >NUL 2>&1
 ) else (
     echo ERROR: Download failed or file does not exist. Skipping cleanup and extraction.
