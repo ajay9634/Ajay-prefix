@@ -30,7 +30,7 @@ echo *** deleting temp files...***
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
 mkdir "D:/Ajay_prefix/wget_files/temp"
 echo *** deleted temp files ***
-echo .
+echo.
 echo *** script made by Ajay ***
 
 :: Simulating bold with color and emphasis
