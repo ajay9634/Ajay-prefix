@@ -8,7 +8,7 @@ rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
 mkdir "D:/Ajay_prefix/wget_files/temp"
 del "D:/Ajay_prefix/wget_files/d3d/dxwrapper-dx9.7z" >NUL 2>&1
 echo *** deleted temp files ***
-echo .
+echo.
 echo *** script made by Ajay ***
 
 :: Simulating bold with color and emphasis
