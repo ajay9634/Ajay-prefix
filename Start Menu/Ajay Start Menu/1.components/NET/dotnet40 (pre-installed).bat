@@ -1,7 +1,7 @@
 @echo off
 color 1f
 echo *** Warning: Mono and other net framework may conflict with this. This is pre-installed and Tested in wine 8.0.2 kron4ek proot and 9.2 wow64 proot in winlator. Container may break in other wine.Set windows version to 7 in winecfg.This file is huge (almost 175 mb) ***
-echo .
+echo.
 echo Do you want to install dotnet40 pre-installed ?
 echo [1] Yes
 echo [2] No (Cancel)
@@ -26,7 +26,7 @@ echo *** deleting temp files...***
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
 mkdir "D:/Ajay_prefix/wget_files/temp"
 echo *** deleted temp files ***
-echo .
+echo.
 echo *** script made by Ajay ***
 
 :: Simulating bold with color and emphasis
