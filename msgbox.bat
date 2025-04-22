@@ -2,9 +2,14 @@
 setlocal enabledelayedexpansion
 color 1E
 mkdir "%LOCALAPPDATA%\Temp" >NUL 2>&1
-if exist "Z:\home\xuser" (
-    mkdir "C:\users\xuser\AppData\Local\Temp" >NUL 2>&1
-)    
+set "tempPath="%Temp%"
+if not exist "%Temp%" (
+    mkdir "%Temp%"
+    echo Folder created at: "%Temp%"
+) else (
+    echo Folder already exists at: "%Temp%"
+)
+
 title Ajay Start Menu installation
 echo Don't close this window!
 
