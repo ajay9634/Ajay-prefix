@@ -25,7 +25,7 @@ echo You entered version: %version%
 echo.
 color 0a
 echo *** wait....***
-echo .
+echo.
 echo *** script made by Ajay ***
 
 color 0A
