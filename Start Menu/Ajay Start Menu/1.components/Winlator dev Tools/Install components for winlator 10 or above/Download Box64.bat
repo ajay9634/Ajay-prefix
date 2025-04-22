@@ -41,12 +41,12 @@ if %errorlevel% neq 0 (
 
 :: Set GitHub API URL
 :choice
-echo .
+echo.
 echo Select GitHub to download box64 -
 echo [1] Ajay9634 (old box64)
 echo [2] brunodev85 (latest)
 echo [3] Cancel
-echo .
+echo.
 set /p userChoice=Enter your choice (1 or 2 or 3): 
 
 IF "%userChoice%"=="1" (
