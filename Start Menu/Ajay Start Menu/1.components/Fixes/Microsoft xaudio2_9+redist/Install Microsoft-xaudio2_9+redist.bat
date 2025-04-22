@@ -5,7 +5,7 @@ echo *** deleting temp files...***
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 echo *** deleted temp files ***
-echo .
+echo.
 echo *** script made by Ajay ***
 
 :: Simulating bold with color and emphasis
@@ -34,9 +34,9 @@ if errorlevel 1 (
     exit /b
 )
 
-echo .
+echo.
 echo Now install xaudio2_9+redist-native(enable).cmd
-echo .
+echo.
 
 echo ************************************************
 
