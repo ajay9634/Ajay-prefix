@@ -15,7 +15,7 @@ del "C:\windows\syswow64\dxwrapper.dll" >NUL 2>&1
 del "C:\windows\syswow64\dxwrapper.ini" >NUL 2>&1
 
 echo *** deleted temp files ***
-echo .
+echo.
 echo *** script made by Ajay ***
 
 :: Simulating bold with color and emphasis
