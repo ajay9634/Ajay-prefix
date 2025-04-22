@@ -1,7 +1,7 @@
 @echo off
 color 1f
 echo *** Note : This is a part of DirectX . xaudio , xinput , dinput and other dxnt parts aren't included in this package. Install native registry after installing it. ***
-echo .
+echo.
 echo Do you want to install direct3d ?
 echo [1] Yes
 echo [2] No (Cancel)
@@ -28,7 +28,7 @@ rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 mkdir "C:/windows/temp" >NUL 2>&1
 echo *** deleted temp files ***
-echo .
+echo.
 echo *** script made by Ajay ***
 
 :: Simulating bold with color and emphasis
