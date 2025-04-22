@@ -1,12 +1,12 @@
 @echo off
 color 0a
 echo *** Installing VB6-Extended-Setup ***
-echo .
+echo.
 echo *** deleting temp files...***
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 echo *** deleted temp files ***
-echo .
+echo.
 echo *** script made by Ajay ***
 
 :: Simulating bold with color and emphasis
@@ -31,7 +31,7 @@ IF NOT EXIST "D:\Ajay_prefix\wget_files\Files\VB6-Extended-Setup.part2.rar" (
     ECHO Part 02 already exists.
 )
 
-echo .
+echo.
 color 1f
 echo *** Extracting... ***
 D:\Ajay_prefix\.Resources\winrar.exe x D:\Ajay_prefix\wget_files\Files\VB6-Extended-Setup.part1.rar D:\Ajay_prefix\wget_files\temp\
