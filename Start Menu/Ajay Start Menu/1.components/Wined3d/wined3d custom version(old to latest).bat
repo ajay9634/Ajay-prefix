@@ -2,7 +2,7 @@
 color 0a
 set installname=wined3d-
 echo Enter wined3d version (eg 10.3 or 10.3-staging ) ( Note - Minimum value limit 1.6.2 for only syswow64 and 1.7.53 for system32 + syswow64 )
-echo .
+echo.
 set /p version=Enter version: 
 echo Version set to %version%
 echo *** deleting temp files...***
@@ -11,7 +11,7 @@ rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "C:/windows/temp" >NUL 2>&1
 mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 echo *** deleted temp files ***
-echo .
+echo.
 echo *** script made by Ajay ***
 
 :: Simulating bold with color and emphasis
