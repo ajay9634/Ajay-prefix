@@ -5,13 +5,13 @@ rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "C:/windows/temp" >NUL 2>&1
 mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 echo *** deleted temp files ***
-echo .
+echo.
 cls
 echo "Hello! This is a necessary step before downloading Winlator stuff for winlator 10 or above. You have two options to proceed -"
-echo .
+echo.
 echo 1 - Rename the drive E path manually and remove 'storage' from the end. (exit)
 echo 2 - Download and Replace the .container file with Ajay env ! (continue this script)
-echo .
+echo.
 set /p choice="Press 2 to continue or 1 to exit: "
 
 if /i "%choice%"=="1" (
