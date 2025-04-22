@@ -1,5 +1,4 @@
 @echo off
-setlocal enabledelayedexpansion
 color 1E
 mkdir "%LOCALAPPDATA%\Temp" >NUL 2>&1
 mkdir "%Temp%" >NUL 2>&1
