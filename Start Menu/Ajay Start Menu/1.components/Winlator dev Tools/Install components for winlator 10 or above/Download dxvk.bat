@@ -41,12 +41,12 @@ if %errorlevel% neq 0 (
 
 :: Set GitHub API URL
 :choice
-echo .
+echo.
 echo Select GitHub to download dxvk -
 echo [1] Ajay9634
 echo [2] brunodev85
 echo [3] Cancel
-echo .
+echo.
 set /p userChoice=Enter your choice (1 or 2 or 3): 
 
 IF "%userChoice%"=="1" (
