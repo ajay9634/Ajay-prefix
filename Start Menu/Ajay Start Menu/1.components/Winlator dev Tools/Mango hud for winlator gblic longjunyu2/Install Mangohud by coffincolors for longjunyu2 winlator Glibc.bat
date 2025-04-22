@@ -3,11 +3,11 @@ color 7c
 echo *** installing Mangohud ***
 echo.
 echo ******* And add this environmental variable: [MANGOHUD=1] *******
-echo .
+echo.
 echo ******* experiment with MANGOHUD_CONFIG, like: [MANGOHUD_CONFIG=fps_limit=60,ram,gpu_stats=0,engine_version,arch,background_alpha=0 ] *******
-echo .
+echo.
 echo ******* You can create presets in the Z:/home/xuser/.config/MangoHud/ directory. If you know how to do that. *******
-echo .
+echo.
 echo *** Mango HUD compiled by coffincolors ***
 echo.
 echo *** Script made by Ajay ***
@@ -37,7 +37,7 @@ echo *** deleting temp files...***
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 echo *** deleted temp files ***
-echo .
+echo.
 echo *** script made by Ajay ***
 
 :: Simulating bold with color and emphasis
