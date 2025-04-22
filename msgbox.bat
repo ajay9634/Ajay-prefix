@@ -52,17 +52,24 @@ if errorlevel 1 (
 :necessary_files
 echo Updating some offline scripts and necessary files...
 
-:: Clean up old components
-rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\2.offline components" >NUL 2>&1
-rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\3.GPU Test" >NUL 2>&1
-del /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\install necessary files.bat" >NUL 2>&1
-del /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\Check_Ajay_prefix_status.bat" >NUL 2>&1
-rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*Backup and Restore*" >nul 2>&1
-rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*export and import*" >nul 2>&1
-
-:: Download and extract updates
+:: Download the archive
 wget -q -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/offline_scripts_update.7z
-D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\temp\offline_scripts_update.7z -oC:\ -r -y >NUL 2>&1
+
+:: Check if download succeeded
+if exist "D:\Ajay_prefix\wget_files\temp\offline_scripts_update.7z" (
+    echo Cleaning up old components...
+    rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\2.offline components" >NUL 2>&1
+    rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\3.GPU Test" >NUL 2>&1
+    del /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\install necessary files.bat" >NUL 2>&1
+    del /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\Check_Ajay_prefix_status.bat" >NUL 2>&1
+    rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*Backup and Restore*" >nul 2>&1
+    rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*export and import*" >nul 2>&1
+
+    echo Extracting archive...
+    D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\temp\offline_scripts_update.7z -oC:\ -r -y >NUL 2>&1
+) else (
+    echo ERROR: Download failed or file does not exist. Skipping cleanup and extraction.
+)
 
 :checked
 if not exist "C:\windows\curl.exe" (
