@@ -5,7 +5,7 @@ echo *** deleting temp files...***
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 echo *** deleted temp files ***
-echo .
+echo.
 echo *** script made by Ajay ***
 
 :: Simulating bold with color and emphasis
@@ -27,6 +27,6 @@ D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\FAudio-20.7.7
 echo *** installing...***
 Xcopy /s /y D:\Ajay_prefix\wget_files\temp\system32\ C:\windows\system32\ /E /H /C /I
 )
-echo .
+echo.
 echo *** installed FAudio-20.7.7 dlls, Now install FAudio registry ***
 timeout.exe 5 /nobreak
