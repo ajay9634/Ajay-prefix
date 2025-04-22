@@ -12,7 +12,7 @@ del "C:\windows\syswow64\dgVoodoo.conf" >NUL 2>&1
 del "C:\windows\system32\dgVoodoo.conf" >NUL 2>&1
 echo *** deleted temp files ***
 
-echo .
+echo.
 echo *** script made by Ajay ***
 
 :: Simulating bold with color and emphasis
