@@ -45,6 +45,10 @@ Here are alternative methods to install the Ajay Prefix registry in the current 
 - Restart the Bionic container.
 - Check Ajay Prefix status. You can now install the Ajay Prefix Start Menu.
 
+> Note: The official Winlator Bionic version has not been released yet. Please wait for the release from CoffinColors.
+Be aware that any existing forks of Winlator Bionic coffincolors  may contain bugs.
+I will not provide support or fix issues related to these unofficial forks.
+
 ## ⚠️ Move Game Save Data to Ajay Prefix
 
 If you were playing games before installing Ajay Prefix, you need to manually move your game save data from:
