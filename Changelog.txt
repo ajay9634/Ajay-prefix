@@ -1,4 +1,10 @@
 =================================================================
+Ajay Prefix components changelog (23 april 2025)
+
+- added vkd3d-2.14-lutris-fix-ajay
+- added 7z24.09-zstd-x64 ( Easily extract and edit .zst, .zip, .7z, and other archive formats with 7z24.09-zstd-x64)
+
+=================================================================
 Ajay Prefix components changelog (20 april 2025)
 
 - updated Microsoft Samples scripts
