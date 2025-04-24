@@ -1,4 +1,9 @@
 =================================================================
+Ajay Prefix components changelog (24 april 2025)
+
+- added "vkd3d official custom version(old to latest).bat"
+
+=================================================================
 Ajay Prefix components changelog (23 april 2025)
 
 - added vkd3d-2.14-lutris-fix-ajay
