@@ -113,10 +113,47 @@ if exist "C:\windows\timeout.exe" (
 )
 
 cls
-echo Please wait...
+echo adding 7zFM registry
+@echo off
+:: Associate extensions silently with 7-Zip types
+reg add "HKCR\.7z" /ve /d "7-Zip.archive" /f >nul 2>&1
+reg add "HKCR\.xz" /ve /d "7-Zip.archive" /f >nul 2>&1
+reg add "HKCR\.txz" /ve /d "7-Zip.archive" /f >nul 2>&1
+reg add "HKCR\.7z.xz" /ve /d "7-Zip.archive" /f >nul 2>&1
+reg add "HKCR\.tzst" /ve /d "7-Zip.archive" /f >nul 2>&1
+reg add "HKCR\.tar" /ve /d "7-Zip.archive" /f >nul 2>&1
+reg add "HKCR\.gz" /ve /d "7-Zip.archive" /f >nul 2>&1
+reg add "HKCR\.bz2" /ve /d "7-Zip.archive" /f >nul 2>&1
+reg add "HKCR\.lz" /ve /d "7-Zip.archive" /f >nul 2>&1
+reg add "HKCR\.zst" /ve /d "7-Zip.archive" /f >nul 2>&1
+reg add "HKCR\.lzma" /ve /d "7-Zip.archive" /f >nul 2>&1
+reg add "HKCR\.tgz" /ve /d "7-Zip.archive" /f >nul 2>&1
+reg add "HKCR\.tbz2" /ve /d "7-Zip.archive" /f >nul 2>&1
+reg add "HKCR\.tlz" /ve /d "7-Zip.archive" /f >nul 2>&1
+reg add "HKCR\.iso" /ve /d "7-Zip.iso" /f >nul 2>&1
+reg add "HKCR\.rar" /ve /d "7-Zip.archive" /f >nul 2>&1
+reg add "HKCR\.zip" /ve /d "ZIP.archive" /f >nul 2>&1
+
+:: 7-Zip archive type
+reg add "HKCR\7-Zip.archive" /ve /d "Compressed Archive" /f >nul 2>&1
+reg add "HKCR\7-Zip.archive\DefaultIcon" /ve /d "C:\\windows\\7z.dll,2" /f >nul 2>&1
+reg add "HKCR\7-Zip.archive\Shell\Open\Command" /ve /d "\"C:\\windows\\7zFM.exe\" \"%%1\"" /f >nul 2>&1
+
+:: 7-Zip ISO type
+reg add "HKCR\7-Zip.iso" /ve /d "ISO Disk Image" /f >nul 2>&1
+reg add "HKCR\7-Zip.iso\DefaultIcon" /ve /d "C:\\windows\\7z.dll,8" /f >nul 2>&1
+reg add "HKCR\7-Zip.iso\Shell\Open\Command" /ve /d "\"C:\\windows\\7zFM.exe\" \"%%1\"" /f >nul 2>&1
+
+:: ZIP archive using Windows handler
+reg add "HKCR\ZIP.archive" /ve /d "ZIP Archive" /f >nul 2>&1
+reg add "HKCR\ZIP.archive\DefaultIcon" /ve /d "C:\\windows\\System32\\zipfldr.dll,0" /f >nul 2>&1
+reg add "HKCR\ZIP.archive\Shell\Open\Command" /ve /d "C:\\windows\\System32\\cmd.exe /c start zipfldr.dll \"%%1\"" /f >nul 2>&1
 
 reg add "HKCU\Software\7-Zip\FM" /v ShowRealFileIcons /t REG_DWORD /d 1 /f >nul 2>&1
 
+echo Please wait...
+rmdir /S /Q "C:\windows\temp\"
+mkdir "C:/windows/temp" > NUL 2>&1
 rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 
