@@ -1,5 +1,5 @@
 @echo off
-echo [INFO] adding 7zFM registry
+echo [INFO] Adding 7zFM registry
 
 :: Associate extensions silently with 7-Zip types
 reg add "HKCR\.7z" /ve /d "7-Zip.archive" /f >nul 2>&1
