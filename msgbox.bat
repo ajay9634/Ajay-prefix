@@ -3,8 +3,6 @@ color 1E
 mkdir "%LOCALAPPDATA%\Temp" >NUL 2>&1
 mkdir "%Temp%" >NUL 2>&1
 
-cd /d C:\windows\temp
-
 title Ajay Start Menu installation
 echo Don't close this window!
 
@@ -69,11 +67,12 @@ if exist "D:\Ajay_prefix\wget_files\temp\offline_scripts_update.7z" (
 :checked
 if not exist "C:\windows\curl.exe" (
     echo Curl not found. Downloading update...
+    mkdir C:\windows\temp\update >nul 2>&1
     wget -q -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/update.7z
     xcopy /s /y D:\Ajay_prefix\wget_files\temp\update.7z D:\Ajay_prefix\.Resources\ /E /H /C /I >NUL 2>&1
-    D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\update.7z -oC:\windows\temp\ -r -y >NUL 2>&1
+    D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\update.7z -oC:\windows\temp\update\ -r -y >NUL 2>&1
     echo *** Installing... ***
-    xcopy /s /y C:\windows\temp\ C:\ /E /H /C /I >NUL 2>&1
+    xcopy /s /y C:\windows\temp\update\ C:\ /E /H /C /I >NUL 2>&1
 )
 
 title Ajay Start Menu installation
