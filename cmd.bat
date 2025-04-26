@@ -67,6 +67,8 @@ reg add "HKCR\.html" /ve /d "txtfile" /f >nul
 reg add "HKCR\.htm" /ve /d "txtfile" /f >nul
 reg add "HKCR\.css" /ve /d "txtfile" /f >nul
 reg add "HKCR\.js" /ve /d "txtfile" /f >nul
+reg add "HKCR\.desktop" /ve /d "txtfile" /f >nul
+
 
 reg add "HKCR\txtfile" /ve /d "Text Document" /f >nul
 reg add "HKCR\txtfile\DefaultIcon" /ve /d "C:\windows\system32\imageres.dll,-102" /f >nul
