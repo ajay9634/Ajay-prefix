@@ -48,3 +48,28 @@ reg add "HKCR\7-Zip.archive\DefaultIcon" /ve /d "C:\\windows\\7z.dll,2" /f >nul 
 reg add "HKCR\7-Zip.archive\Shell\Open\Command" /ve /d "\"C:\\windows\\7zFM.exe\" \"%%1\"" /f >nul 2>&1
 
 reg add "HKCU\Software\7-Zip\FM" /v ShowRealFileIcons /t REG_DWORD /d 1 /f >nul 2>&1
+
+echo [INFO] Adding Notepad registry
+reg add "HKCR\.txt" /ve /d "txtfile" /f >nul
+reg add "HKCR\.cfg" /ve /d "txtfile" /f >nul
+reg add "HKCR\.conf" /ve /d "txtfile" /f >nul
+reg add "HKCR\.ini" /ve /d "txtfile" /f >nul
+reg add "HKCR\.log" /ve /d "txtfile" /f >nul
+reg add "HKCR\.config" /ve /d "txtfile" /f >nul
+reg add "HKCR\.xml" /ve /d "txtfile" /f >nul
+reg add "HKCR\.json" /ve /d "txtfile" /f >nul
+reg add "HKCR\.yaml" /ve /d "txtfile" /f >nul
+reg add "HKCR\.yml" /ve /d "txtfile" /f >nul
+reg add "HKCR\.csv" /ve /d "txtfile" /f >nul
+reg add "HKCR\.md" /ve /d "txtfile" /f >nul
+reg add "HKCR\.properties" /ve /d "txtfile" /f >nul
+reg add "HKCR\.html" /ve /d "txtfile" /f >nul
+reg add "HKCR\.htm" /ve /d "txtfile" /f >nul
+reg add "HKCR\.css" /ve /d "txtfile" /f >nul
+reg add "HKCR\.js" /ve /d "txtfile" /f >nul
+
+reg add "HKCR\txtfile" /ve /d "Text Document" /f >nul
+reg add "HKCR\txtfile\DefaultIcon" /ve /d "C:\windows\system32\imageres.dll,-102" /f >nul
+reg add "HKCR\txtfile\shell" /f >nul
+reg add "HKCR\txtfile\shell\open" /f >nul
+reg add "HKCR\txtfile\shell\open\command" /ve /d "\"C:\windows\system32\notepad.exe\" \"%%1\"" /f >nul
