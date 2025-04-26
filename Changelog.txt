@@ -1,3 +1,13 @@
+## Ajay prefix v10.17
+
+ Changelog
+
+- Updated installation scripts
+- Bug fixed
+- Updated 7zFM offline files, but registry setup requires internet ( Automatic process)
+
+https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
+
 =================================================================
 Ajay Prefix components changelog (24 april 2025)
 
