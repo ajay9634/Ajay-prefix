@@ -3,6 +3,8 @@ color 1E
 mkdir "%LOCALAPPDATA%\Temp" >NUL 2>&1
 mkdir "%Temp%" >NUL 2>&1
 
+cd /d C:\windows\temp
+
 title Ajay Start Menu installation
 echo Don't close this window!
 
