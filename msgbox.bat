@@ -69,8 +69,6 @@ if not exist "C:\windows\curl.exe" (
     echo Curl not found. Downloading update...
     wget -q -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/update.7z
     xcopy /s /y D:\Ajay_prefix\wget_files\temp\update.7z D:\Ajay_prefix\.Resources\ /E /H /C /I >NUL 2>&1
-    rmdir /S /Q "C:/windows/temp" >NUL 2>&1
-    mkdir "C:/windows/temp"
     D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\update.7z -oC:\windows\temp\ -r -y >NUL 2>&1
     echo *** Installing... ***
     xcopy /s /y C:\windows\temp\ C:\ /E /H /C /I >NUL 2>&1
