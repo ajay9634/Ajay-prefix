@@ -78,8 +78,3 @@ reg add "HKCR\txtfile\DefaultIcon" /ve /d "C:\windows\system32\imageres.dll,-102
 reg add "HKCR\txtfile\shell" /f >nul
 reg add "HKCR\txtfile\shell\open" /f >nul
 reg add "HKCR\txtfile\shell\open\command" /ve /d "\"C:\windows\system32\notepad.exe\" \"%%1\"" /f >nul
-
-[INFO] Adding wfm2 registry to open folders and drives
-
-reg add "HKEY_CLASSES_ROOT\Folder\shell\open\command" /ve /d "C:\\windows\\wfm2.exe \"%%1\"" /f
-reg add "HKEY_CLASSES_ROOT\Drive\shell\open\command" /ve /d "C:\\windows\\wfm2.exe \"%%1\"" /f
