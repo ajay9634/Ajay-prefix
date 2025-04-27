@@ -129,6 +129,9 @@ mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 if not exist "Z:\home\xuser" (
     rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\1.components\Winlator dev Tools"
     rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\6.File manager\Change default wfm for Winlator"
+) else (
+    echo [INFO] Updating TestD3D.exe
+    del Z:/opt/TestD3D.exe > NUL 2>&1
 )    
 
 echo msgbox "All processes are done. Changelog is saved in drive D:\Ajay_prefix\wget_files!" , vbInformation+vbSystemModal > %tmp%\tmp.vbs
