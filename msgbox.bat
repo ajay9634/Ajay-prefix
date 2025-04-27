@@ -118,6 +118,7 @@ cls
 
 reg add "HKEY_CLASSES_ROOT\Folder\shell\open\command" /ve /d "C:\\windows\\wfm2.exe \"%%1\"" /f
 reg add "HKEY_CLASSES_ROOT\Drive\shell\open\command" /ve /d "C:\\windows\\wfm2.exe \"%%1\"" /f
+reg add "HKEY_CLASSES_ROOT\Directory\shell\open\command" /ve /d "C:\\windows\\wfm2.exe \"%%1\"" /f
 
 echo [INFO] Please wait...
 rmdir /S /Q "C:\windows\temp\"
