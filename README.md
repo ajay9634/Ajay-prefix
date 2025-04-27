@@ -31,23 +31,11 @@ Ajay prefix wiki - [click here](https://github.com/ajay9634/Ajay-prefix/wiki)
 - **Installation Guide Video** -  
 [![Ajay Prefix Installation Video](https://img.youtube.com/vi/NXCquIv8D4c/0.jpg)](https://www.youtube.com/watch?v=NXCquIv8D4c)
 
-## ✨ Tricky Installation
+## ✨ Note - 
 
-Some emulators (like Winlator's Bionic container) may prevent changes to `system.reg` and `user.reg`. However, Ajay Prefix installs fine on standard containers.
+Latest winlator bionic unofficial are fixed for Ajay prefix. [commit  jhinzuo fork](https://github.com/jhinzuo/winlator/commit/a56df50efc8541a044a674c1356b6b9481074ff7)  [commit pissblaster dev](wait)
 
-Here are alternative methods to install the Ajay Prefix registry in the current container:
-
-### For Winlator Bionic Container
-
-- First, run the installation `.bat` file from `D:\Ajay_prefix\`.
-- Then, download `home.zip` from [here](https://github.com/ajay9634/Ajay-prefix/raw/refs/heads/Pre-installed-Ajay-prefix/Files/Winlator-bionic/home.7z).
-- Extract the archive and copy the `home` folder to drive `Z:` using WFM.
-- Restart the Bionic container.
-- Check Ajay Prefix status. You can now install the Ajay Prefix Start Menu.
-
-> Note: The official Winlator Bionic version has not been released yet. Please wait for the release from CoffinColors.
-Be aware that any existing forks of Winlator Bionic coffincolors  may contain bugs.
-I will not provide support or fix issues related to these unofficial forks.
+Some emulators (like Winlator's Bionic 
 
 ## ⚠️ Move Game Save Data to Ajay Prefix
 
