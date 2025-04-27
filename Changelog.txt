@@ -9,6 +9,18 @@
 https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 
 =================================================================
+Ajay Prefix Components - Changelog (27 April 2025)
+
+- Added Notepad registry integration for all supported formats (.ini, .config, etc.). Just double-click a file to open it in Notepad.
+(Run 'Install_prefix_for_Current_Container.bat' to apply)
+
+- Added 'Select_Container_Cache_7zFM.bat' and 'Select_Containers_Drive_Root_7zFM.bat' under Winlator Dev Tools in the Start Menu. 
+(Now you can easily access and run games across multiple containers from any container)
+
+- Added WFM2 registry integration.
+(Now all folder and drive shortcuts open in WFM2 instead of Explorer.exe)
+
+=================================================================
 Ajay Prefix components changelog (24 april 2025)
 
 - added "vkd3d official custom version(old to latest).bat"
