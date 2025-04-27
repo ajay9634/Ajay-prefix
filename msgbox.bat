@@ -114,6 +114,10 @@ if exist "C:\windows\timeout.exe" (
 )
 
 cls
+[INFO] Adding wfm2 registry to open folders and drives
+
+reg add "HKEY_CLASSES_ROOT\Folder\shell\open\command" /ve /d "C:\\windows\\wfm2.exe \"%%1\"" /f
+reg add "HKEY_CLASSES_ROOT\Drive\shell\open\command" /ve /d "C:\\windows\\wfm2.exe \"%%1\"" /f
 
 echo [INFO] Please wait...
 rmdir /S /Q "C:\windows\temp\"
