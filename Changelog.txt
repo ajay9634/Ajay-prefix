@@ -1,6 +1,8 @@
-## Ajay prefix v10.17
+## Ajay prefix v10.17 hotfix (28 April 2025)
 
- Changelog
+- replaced dx9 test from Microsoft Samples
+
+old  Changelog
 
 - Updated installation scripts
 - Bug fixed
