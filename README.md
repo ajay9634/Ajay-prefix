@@ -54,7 +54,7 @@ If that's not possible, you'll need to manually copy the save data between them.
 
 Ajay Prefix is available in the Releases section.
 
-[Download Ajay Prefix v10.16](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
+[Download Ajay Prefix v10.17 hotfix](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
 
 ## ✨ Features of Ajay Prefix
 
