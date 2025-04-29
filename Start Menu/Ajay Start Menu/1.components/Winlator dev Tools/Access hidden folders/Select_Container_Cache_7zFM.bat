@@ -8,6 +8,6 @@ for /f "tokens=* delims=0123456789" %%a in ("%user_number%") do (
     goto choice
 )
 
-start "" "C:\\windows\\7zFM.exe" "Z:\\home\\xuser-%user_number%\\.cache\\"
+start "" "C:\windows\7zFM.exe" "Z:\home\xuser-%user_number%\.cache\"
 timeout /t 2 >nul
 exit
