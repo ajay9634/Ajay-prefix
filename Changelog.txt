@@ -11,6 +11,16 @@ old  Changelog
 https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 
 =================================================================
+Ajay Prefix Components - Changelog (29 April 2025)
+
+- Updated **help.txt** in "8. Backup and Restore drive C users and ProgramData."
+- Updated **Backup drive C users and ProgramData.bat.**
+- Updated **Restore drive C data.bat.**
+- Added **Open Backup Location.bat.**
+
+(Now users can backup and restore for all emus. For example, you can backup in the Winlator normal container and then restore in Micewine or the Winlator Bionic container.)
+
+=================================================================
 Ajay Prefix Components - Changelog (27 April 2025)
 
 - Added Notepad registry integration for all supported formats (.ini, .config, etc.). Just double-click a file to open it in Notepad.
