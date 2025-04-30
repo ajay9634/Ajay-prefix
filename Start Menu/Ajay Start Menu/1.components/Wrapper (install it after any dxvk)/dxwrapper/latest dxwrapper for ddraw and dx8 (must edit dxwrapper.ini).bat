@@ -1,4 +1,4 @@
-**@echo off
+@echo off
 :: Paths
 set "PREFIX_DIR=D:\Ajay_prefix"
 set "TEMP_DIR=%PREFIX_DIR%\wget_files\temp"
