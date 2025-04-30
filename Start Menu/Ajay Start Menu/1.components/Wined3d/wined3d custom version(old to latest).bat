@@ -1,6 +1,6 @@
 @echo off
 color 0a
-echo *** downloding wined3d from `https://fdossena.com` ***
+echo *** downloding wined3d from `https://fdossena.com` , VPN maybe needed. ***
 echo.
 set installname=wined3d-
 echo Enter wined3d version (eg 10.3 or 10.3-staging ) ( Note - Minimum value limit 1.6.2 for only syswow64 and 1.7.53 for system32 + syswow64 )
