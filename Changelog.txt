@@ -14,7 +14,9 @@ https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 Ajay Prefix Components - Changelog (30 April 2025)
 
 - updated all wined3d scripts and added wined3d 7.8
-- added dsound of wine 10.0 (may fix sound of some games) 
+- added dsound of wine 10.0 (may fix sound of some games)
+- added latest dxwrapper script
+- updated uninstall wrapper script
 
 =================================================================
 Ajay Prefix Components - Changelog (29 April 2025)
