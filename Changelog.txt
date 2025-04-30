@@ -11,6 +11,11 @@ old  Changelog
 https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 
 =================================================================
+Ajay Prefix Components - Changelog (30 April 2025)
+
+- updated all wined3d scripts and added wined3d 7.8
+
+=================================================================
 Ajay Prefix Components - Changelog (29 April 2025)
 
 - Updated **help.txt** in "8. Backup and Restore drive C users and ProgramData."
