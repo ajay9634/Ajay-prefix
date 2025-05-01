@@ -20,6 +20,6 @@ echo *** Extracting ...***
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\ExplorerSuite.7z -oD:\Ajay_prefix\wget_files\temp\ -r -y >NUL 2>&1
 
 echo *** Opening ExplorerSuite  ***
-Start D:\Ajay_prefix\wget_files\temp\ExplorerSuite.exe
+Start "" D:\Ajay_prefix\wget_files\temp\ExplorerSuite.exe
 echo ************************************************
 timeout.exe /t 3 >nul
