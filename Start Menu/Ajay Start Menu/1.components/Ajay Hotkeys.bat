@@ -35,6 +35,6 @@ IF %ERRORLEVEL% NEQ 0 (
 :: Launching the Installer
 timeout.exe /t 1 >nul
 echo *** Opening Ajay_Hotkeys ***
-Start C:\windows\Ajay_Hotkeys.exe
+Start "" C:\windows\Ajay_Hotkeys.exe
 timeout.exe /t 3 >nul
 echo ************************************************
