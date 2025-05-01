@@ -25,7 +25,7 @@ color 1f
 echo *** Extracting ...***
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\dxcapsviewer.7z -oD:\Ajay_prefix\wget_files\temp\ -r -y >NUL 2>&1
 echo *** opening ...***
-Start D:\Ajay_prefix\wget_files\temp\dxcapsviewer.exe
+Start "" D:\Ajay_prefix\wget_files\temp\dxcapsviewer.exe
 )
 echo.************************************************
 timeout.exe /t 3 >nul
