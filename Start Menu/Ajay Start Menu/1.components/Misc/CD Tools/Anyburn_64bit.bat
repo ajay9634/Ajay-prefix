@@ -19,6 +19,6 @@ echo *** Extracting ...***
 D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\AnyBurn.7z -oD:\Ajay_prefix\wget_files\my_apps\ -p-q -r -y >NUL 2>&1
 
 echo *** opening AnyBurn ***
-Start D:\Ajay_prefix\wget_files\my_apps\AnyBurn\AnyBurn.exe
+Start "" D:\Ajay_prefix\wget_files\my_apps\AnyBurn\AnyBurn.exe
 timeout.exe /t 3 >nul
 echo ************************************************
