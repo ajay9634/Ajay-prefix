@@ -17,21 +17,31 @@ IF NOT EXIST "D:\Ajay_prefix\wget_files\Files\Microsoft_Samples.7z" (
     echo *** File already exists.***
 )
 
+:Run
 :: Extracting Microsoft Samples
 color 1f
-echo *** Extracting Microsoft Samples ***
-D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\Microsoft_Samples.7z -oD:\Ajay_prefix\wget_files\temp2\ -p-q -r -y >NUL 2>&1
-
-IF %ERRORLEVEL% NEQ 0 (
-    echo *** Extraction failed. Please check the file and try again.***
-    pause
-    exit /b
-)
-
-:: Launching the Installer
-:Run
+color 1f
 echo *** Opening Microsoft Samples ***
-Start /b "" D:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XACT\Bin\x86\Tut02_Stream.lnk
+:: Define target and shortcut paths
+set "targetPath=D:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XACT\Bin\x86\Tut02_Stream.exe"
+set "shortcutPath=D:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XACT\Bin\x86\Tut02_Stream.lnk"
+set "workingDir=D:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XACT\Bin\x86"
+
+:: Create a temporary VBScript file
+set "vbsFile=%TEMP%\create_link.vbs"
+> "%vbsFile%" echo Set shell = CreateObject("WScript.Shell")
+>> "%vbsFile%" echo Set shortcut = shell.CreateShortcut("%shortcutPath%")
+>> "%vbsFile%" echo shortcut.TargetPath = "%targetPath%"
+>> "%vbsFile%" echo shortcut.WorkingDirectory = "%workingDir%"
+>> "%vbsFile%" echo shortcut.Save
+
+:: Run the VBScript
+cscript //nologo "%vbsFile%"
+
+:: Clean up
+del "%vbsFile%"
+
+Start ""  D:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XACT\Bin\x86\Tut02_Stream.lnk
 
 echo ************************************************
 timeout.exe /t 3 >nul

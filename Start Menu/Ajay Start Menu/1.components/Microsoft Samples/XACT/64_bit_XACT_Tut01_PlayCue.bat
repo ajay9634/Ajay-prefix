@@ -31,7 +31,26 @@ IF %ERRORLEVEL% NEQ 0 (
 :: Launching the Installer
 :Run
 echo *** Opening Microsoft Samples ***
-Start /b "" D:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XACT\Bin\x64\Tut01_PlayCue.lnk
+:: Define target and shortcut paths
+set "targetPath=D:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XACT\Bin\x64\Tut01_PlayCue.exe"
+set "shortcutPath=D:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XACT\Bin\x64\Tut01_PlayCue.lnk"
+set "workingDir=D:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XACT\Bin\x64"
+
+:: Create a temporary VBScript file
+set "vbsFile=%TEMP%\create_link.vbs"
+> "%vbsFile%" echo Set shell = CreateObject("WScript.Shell")
+>> "%vbsFile%" echo Set shortcut = shell.CreateShortcut("%shortcutPath%")
+>> "%vbsFile%" echo shortcut.TargetPath = "%targetPath%"
+>> "%vbsFile%" echo shortcut.WorkingDirectory = "%workingDir%"
+>> "%vbsFile%" echo shortcut.Save
+
+:: Run the VBScript
+cscript //nologo "%vbsFile%"
+
+:: Clean up
+del "%vbsFile%"
+
+Start ""  D:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XACT\Bin\x64\Tut01_PlayCue.lnk
 
 echo ************************************************
 timeout.exe /t 3 >nul
