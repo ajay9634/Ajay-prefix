@@ -1,14 +1,21 @@
-## Ajay prefix offline v10.17 hotfix (28 April 2025)
+============================================================
+             Ajay Prefix - Offline Changelog
+============================================================
 
-- replaced dx9 test from Microsoft Samples
+Version: v10.17 Hotfix  
+Date:    28 April 2025  
 
-old  Changelog
+Changes:
+  - Replaced DirectX 9 test from Microsoft Samples  
+  - Updated installation scripts  
+  - Fixed various bugs  
+  - Updated 7zFM offline files  
+      
+     * Note: 7zFM Registry setup requires internet (automated process)
 
-- Updated installation scripts
-- Bug fixed
-- Updated 7zFM offline files, but registry setup requires internet ( Automatic process)
+Download:
+  https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 
-https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 
 =================================================================
 Ajay Prefix Components - Changelog (2 May 2025)
