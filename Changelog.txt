@@ -1,4 +1,4 @@
-## Ajay prefix v10.17 hotfix (28 April 2025)
+## Ajay prefix offline v10.17 hotfix (28 April 2025)
 
 - replaced dx9 test from Microsoft Samples
 
@@ -13,7 +13,7 @@ https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 =================================================================
 Ajay Prefix Components - Changelog (2 May 2025)
 
-- fixed XACT abd xaudio scripts of Microsoft Samples 
+- fixed XACT and xaudio scripts of Microsoft Samples 
 
 =================================================================
 Ajay Prefix Components - Changelog (30 April 2025)
