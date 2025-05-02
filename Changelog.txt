@@ -11,6 +11,11 @@ old  Changelog
 https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 
 =================================================================
+Ajay Prefix Components - Changelog (2 May 2025)
+
+- fixed XACT abd xaudio scripts of Microsoft Samples 
+
+=================================================================
 Ajay Prefix Components - Changelog (30 April 2025)
 
 - updated all wined3d scripts and added wined3d 7.8
