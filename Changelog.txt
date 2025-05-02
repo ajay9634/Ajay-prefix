@@ -154,8 +154,8 @@ these are combos
 - updated registry export import scripts
 
 ( Note - I updated the main offline ajay prefix 10.16.exe , now the timeout error is fixed. A message will pop up after running exe )
-==================================================================
 
+==================================================================
 # Ajay Prefix components changelog (27 march 2025)
 
 - updated xaudio2_9 (RDR fix) offline script
@@ -164,7 +164,6 @@ these are combos
 
 
 ==================================================================
-
 # Ajay Prefix components changelog (26 march 2025)
 
 - added nsis-3.11 (SFX maker)
@@ -206,6 +205,7 @@ these are combos
 - added vc redist 2008-2022 uninstall option
 - added check installed vc redist option
 
+==================================================================
 # Ajay Prefix components changelog (27 feb 2025)
 
 - updated dgvoodoo dx9 script
@@ -263,7 +263,6 @@ After this you can install all vc redist or necessary files like a fresh contain
 - added more wined3d
 - added dxwrapper latest version
 ==================================================================
-
 # Ajay Prefix components changelog (27 jan 2025)
 
 - added ib bat
@@ -277,7 +276,6 @@ After this you can install all vc redist or necessary files like a fresh contain
 - added vb6 extended setup
 - added latest Mangohud compiled by coffincolors 
 ==================================================================
-
 # Ajay Prefix components changelog (14 jan 2025)
 
 - bug fixed
@@ -285,12 +283,10 @@ After this you can install all vc redist or necessary files like a fresh contain
 - converted reg to cmd
 
 ==================================================================
-
 # Ajay Prefix components changelog (15 jan 2025)
 - added some theme
 
 ==================================================================
-
 # Ajay Prefix components changelog (11 jan 2025)
 
 - added dxvk sarek 1.10.6
@@ -298,13 +294,11 @@ After this you can install all vc redist or necessary files like a fresh contain
 - added "delete downloaded files.bat" for 1.components
 
 ==================================================================
-
 # Ajay Prefix components changelog (5 jan 2025)
 
 - added force Install vcredist 2019 option
 
 ==================================================================
-
 # Ajay prefix components changelog (4 jan 2025)
 
 - updated msgbox scripts
@@ -317,7 +311,6 @@ After this you can install all vc redist or necessary files like a fresh contain
 - updated all scripts
 
 ==================================================================
-
 # Ajay prefix components Changelog (30 Dec 2024)
 
 - added "install missing dlls as skip" option
