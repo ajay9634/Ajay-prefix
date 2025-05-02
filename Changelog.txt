@@ -1,5 +1,5 @@
 ============================================================
-             Ajay Prefix - Offline Changelog
+           ##  Ajay Prefix - Offline Changelog ##
 ============================================================
 
 Version: v10.17 Hotfix  
@@ -18,12 +18,12 @@ Download:
 
 
 =================================================================
-Ajay Prefix Components - Changelog (2 May 2025)
+# Ajay Prefix Components - Changelog (2 May 2025)
 
 - fixed XACT and xaudio scripts of Microsoft Samples 
 
 =================================================================
-Ajay Prefix Components - Changelog (30 April 2025)
+# Ajay Prefix Components - Changelog (30 April 2025)
 
 - updated all wined3d scripts and added wined3d 7.8
 - added dsound of wine 10.0 (may fix sound of some games)
@@ -31,7 +31,7 @@ Ajay Prefix Components - Changelog (30 April 2025)
 - updated uninstall wrapper script
 
 =================================================================
-Ajay Prefix Components - Changelog (29 April 2025)
+# Ajay Prefix Components - Changelog (29 April 2025)
 
 - Updated **help.txt** in "8. Backup and Restore drive C users and ProgramData."
 - Updated **Backup drive C users and ProgramData.bat.**
@@ -41,7 +41,7 @@ Ajay Prefix Components - Changelog (29 April 2025)
 (Now users can backup and restore for all emus. For example, you can backup in the Winlator normal container and then restore in Micewine or the Winlator Bionic container.)
 
 =================================================================
-Ajay Prefix Components - Changelog (27 April 2025)
+# Ajay Prefix Components - Changelog (27 April 2025)
 
 - Added Notepad registry integration for all supported formats (.ini, .config, etc.). Just double-click a file to open it in Notepad.
 (Run 'Install_prefix_for_Current_Container.bat' to apply)
@@ -53,33 +53,31 @@ Ajay Prefix Components - Changelog (27 April 2025)
 (Now all folder and drive shortcuts open in WFM2 instead of Explorer.exe)
 
 =================================================================
-Ajay Prefix components changelog (24 april 2025)
+# Ajay Prefix components changelog (24 april 2025)
 
 - added "vkd3d official custom version(old to latest).bat"
 
 =================================================================
-Ajay Prefix components changelog (23 april 2025)
+# Ajay Prefix components changelog (23 april 2025)
 
 - added vkd3d-2.14-lutris-fix-ajay
 - added 7z24.09-zstd-x64 ( Easily extract and edit .zst, .zip, .7z, and other archive formats with 7z24.09-zstd-x64)
 
 =================================================================
-Ajay Prefix components changelog (20 april 2025)
+# Ajay Prefix components changelog (20 april 2025)
 
 - updated Microsoft Samples scripts
 - added GPUInfo by BrunoSX
 
 =================================================================
-
-Ajay Prefix components changelog (16 april 2025)
+# Ajay Prefix components changelog (16 april 2025)
 
 - fixed dxvk sarek script for gamehub and other emu ( eg,  type v1.10.8 or async-v1.10.8 )
 - updated msgbox.bat (now update message bug is fixed)
 - added "Export applied env variables info as txt.bat"
 
 =================================================================
-
-Ajay Prefix components changelog (14 april 2025)
+# Ajay Prefix components changelog (14 april 2025)
 
 - removed extra scripts of dxvk ( Now less start menu )
 - updated dxvk custom version script
@@ -93,30 +91,27 @@ Ajay Prefix components changelog (14 april 2025)
 (Note - Now it will download old to latest dxvk release versions. dxvk won't be downloaded again if it's already downloaded once. You can remove downloaded dxvk files from "D:/Ajay_prefix/wget_files/d3d/" ) 
 
 =================================================================
-
-Ajay Prefix components changelog (12 april 2025)
+# Ajay Prefix components changelog (12 april 2025)
 
 - added some Microsoft Samples from official DXSDK_Jun10.exe ( d3d9,d3d10,d3d11,XAudio2,XACT,XInput,DirectInput )
 - updated some scripts
 
 =================================================================
-
-Ajay Prefix components changelog (9 april 2025)
+# Ajay Prefix components changelog (9 april 2025)
 
 - updated physx scripts
 - added PhysX_9.23.1019_SystemSoftware (latest)
 - added wined3d, vkd3d, dxvk components for winlator 10
 
 =================================================================
-
 Ajay Prefix components changelog (8 april 2025)
 
 - added auto check offline files version in "update 1.components scripts.bat" . It will show a message, if you are not using Ajay prefix 10.16 fix or latest version
 - updated Ajay env .container file
 - updated env on Ajay prefix GitHub page
-=================================================================
 
-Ajay Prefix components changelog (6 april 2025)
+=================================================================
+# Ajay Prefix components changelog (6 april 2025)
 
 - updated scripts
 - updated Ajay hotkeys script, after running for the first time, you can launch this program by running 'Ajay_hotkeys.exe' in Taskmgr new task in winlator even if you are playing games.
@@ -124,7 +119,7 @@ Ajay Prefix components changelog (6 april 2025)
 - updated Ajay prefix GitHub readme ( added more env )
 
 ==================================================================
-Ajay Prefix components changelog (2 april 2025)
+# Ajay Prefix components changelog (2 april 2025)
 
 - added Ajay hotkey 
 
@@ -147,21 +142,21 @@ these are combos
 
 
 ==================================================================
-Ajay Prefix components changelog (30 march 2025)
+# Ajay Prefix components changelog (30 march 2025)
 
 - updated ThirteenAG wrapper scripts
 - updated "download box64" script , added Bruno's GitHub
 - added opengl wrapper by TitaniumGL , now you can use dx9 in some opengl games like tuxracer
 
 ==================================================================
-Ajay Prefix components changelog (29 march 2025)
+# Ajay Prefix components changelog (29 march 2025)
 
 - updated registry export import scripts
 
 ( Note - I updated the main offline ajay prefix 10.16.exe , now the timeout error is fixed. A message will pop up after running exe )
 ==================================================================
 
-Ajay Prefix components changelog (27 march 2025)
+# Ajay Prefix components changelog (27 march 2025)
 
 - updated xaudio2_9 (RDR fix) offline script
 - added latest Microsoft xaudio2_9+redist fix , it can fix audio issue in some games
@@ -170,7 +165,7 @@ Ajay Prefix components changelog (27 march 2025)
 
 ==================================================================
 
-Ajay Prefix components changelog (26 march 2025)
+# Ajay Prefix components changelog (26 march 2025)
 
 - added nsis-3.11 (SFX maker)
 - added Exe-info-checker
@@ -179,12 +174,12 @@ Ajay Prefix components changelog (26 march 2025)
 - added dxvk-gplasync-v2.6-1
 
 ==================================================================
-Ajay Prefix components changelog (22 march 2025)
+# Ajay Prefix components changelog (22 march 2025)
 
 - added sound enable and disable option
 
 ==================================================================
-Ajay Prefix components changelog (19 march 2025)
+# Ajay Prefix components changelog (19 march 2025)
 
 - added box64 download option for winlator 10 or above
 - added Backup and Restore option for game desktop or shortcuts
