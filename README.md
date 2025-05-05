@@ -19,10 +19,15 @@ Note: If it causes any issues, please let me know in the issues section.
 
 Ajay prefix wiki - [click here](https://github.com/ajay9634/Ajay-prefix/wiki)
 
-## ✨ Installation of Ajay prefix
+## ✨ Installation of Ajay prefix v10.18
 
 - **Partial Automatic Installation:**  
-  Run `Ajay_prefix.exe` from any location, then execute the `.bat` file from `D:\Ajay_prefix\` to complete the installation.
+  
+1. Run `Ajay_prefix.exe` from any location.
+2. Select your desired installation drive (e.g., D:, E:, F:).
+3. Navigate to:  
+       selected_drive:\Ajay_prefix\
+4. Execute the `.bat` file in that folder to complete the installation.
 
 - **Manual Installation:**  
   Open `Ajay_prefix.exe` as an archive, extract it to drive D, and then run `Install_prefix_for_current_container.bat`.  
