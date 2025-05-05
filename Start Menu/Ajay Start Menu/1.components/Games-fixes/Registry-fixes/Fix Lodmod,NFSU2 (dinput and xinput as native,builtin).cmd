@@ -26,7 +26,7 @@ reg add "HKCU\Software\Wine\DllOverrides" /v "xinput9_1_0" /t REG_SZ /d "native,
 reg add "HKCU\Software\Wine\DllOverrides" /v "xinputuap" /t REG_SZ /d "native,builtin" /f >nul 2>&1
 
 :: Wait 10 seconds to ensure changes are applied
-timeout.exe /t 10 /nobreak >nul 2>&1
+timeout.exe /t 6 /nobreak >nul 2>&1
 
 :: Reapply the registry actions silently
 reg add "HKCU\Software\Wine\DllOverrides" /v "dinput" /t REG_SZ /d "native,builtin" /f >nul 2>&1
@@ -37,5 +37,5 @@ reg add "HKCU\Software\Wine\DllOverrides" /v "xinput1_3" /t REG_SZ /d "native,bu
 reg add "HKCU\Software\Wine\DllOverrides" /v "xinput1_4" /t REG_SZ /d "native,builtin" /f >nul 2>&1
 reg add "HKCU\Software\Wine\DllOverrides" /v "xinput9_1_0" /t REG_SZ /d "native,builtin" /f >nul 2>&1
 reg add "HKCU\Software\Wine\DllOverrides" /v "xinputuap" /t REG_SZ /d "native,builtin" /f >nul 2>&1
-
+timeout.exe /t 4 /nobreak >nul 2>&1
 echo DLL overrides have been successfully configured to use native,builtin versions.
