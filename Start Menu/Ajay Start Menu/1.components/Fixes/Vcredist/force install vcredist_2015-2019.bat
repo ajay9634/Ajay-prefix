@@ -1,4 +1,6 @@
 @echo off
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
 color 84
 echo Uninstalling VC Redist 2015-2022...
 
@@ -6,7 +8,7 @@ echo Uninstalling VC Redist 2015-2022...
 rmdir /S /Q C:\temp\ >NUL 2>&1
 
 :: Extract required files from the archive
-D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\.Resources\Resources.7z -oC:\temp *vcredist_2022_x86.exe *vcredist_2022_x64.exe -p-q -r -y >NUL 2>&1
+%drive_letter%:\Ajay_prefix\.Resources\7z.exe x %drive_letter%:\Ajay_prefix\.Resources\Resources.7z -oC:\temp *vcredist_2022_x86.exe *vcredist_2022_x64.exe -p-q -r -y >NUL 2>&1
 
 :: Check if the extraction succeeded
 if not exist "C:\temp\Resources\files\vcredist_2022_x86.exe" (
@@ -41,9 +43,9 @@ echo Uninstalled VC Redist 2015-2022
 color 0A
 echo.
 echo *** Downloading vc_redist_2015-2019 ***
-IF NOT EXIST "D:\Ajay_prefix\wget_files\Files\vc_redist_2019.7z" (
-    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/vc_redist_2019.7z
-    copy /s /y D:\Ajay_prefix\wget_files\temp\vc_redist_2019.7z D:\Ajay_prefix\wget_files\Files\vc_redist_2019.7z /E /H /C /I
+IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\Files\vc_redist_2019.7z" (
+    wget -q --show-progress -P %drive_letter%:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/vc_redist_2019.7z
+    copy /s /y %drive_letter%:\Ajay_prefix\wget_files\temp\vc_redist_2019.7z %drive_letter%:\Ajay_prefix\wget_files\Files\vc_redist_2019.7z /E /H /C /I
 ) ELSE (
     ECHO vc_redist_2015-2019 already exists.
 )
@@ -51,10 +53,10 @@ IF NOT EXIST "D:\Ajay_prefix\wget_files\Files\vc_redist_2019.7z" (
 
 color 1f
 echo *** Extracting ...***
-D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\Files\vc_redist_2019.7z -oD:\Ajay_prefix\wget_files\temp\ -r -y >NUL 2>&1
+%drive_letter%:\Ajay_prefix\.Resources\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\Files\vc_redist_2019.7z -o%drive_letter%:\Ajay_prefix\wget_files\temp\ -r -y >NUL 2>&1
 
 echo *** install vcredist_2015-2019 manually , make sure you are using official or winlator ajay to prevent errors otherwise uninstall another version of vc redist manually ***
-Start /wait D:\Ajay_prefix\wget_files\temp\vc_redist_2019.x86.exe /repair /norestart
-Start /wait D:\Ajay_prefix\wget_files\temp\vc_redist_2019.x64.exe /repair /norestart
+Start /wait %drive_letter%:\Ajay_prefix\wget_files\temp\vc_redist_2019.x86.exe /repair /norestart
+Start /wait %drive_letter%:\Ajay_prefix\wget_files\temp\vc_redist_2019.x64.exe /repair /norestart
 
 echo ************************************************
