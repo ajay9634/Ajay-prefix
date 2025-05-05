@@ -16,7 +16,7 @@ for %%d in (
     reg add "HKCU\Software\Wine\DllOverrides" /v %%d /t REG_SZ /d "native,builtin" /f >nul 2>&1
 )
 
-timeout.exe /t 10 /nobreak >nul 2>&1
+timeout.exe /t 6 /nobreak >nul 2>&1
 
 for %%d in (
     d3dcompiler_33 d3dcompiler_34 d3dcompiler_35 d3dcompiler_36 d3dcompiler_37 d3dcompiler_38 d3dcompiler_39
@@ -31,5 +31,5 @@ for %%d in (
 ) do (
     reg add "HKCU\Software\Wine\DllOverrides" /v %%d /t REG_SZ /d "native,builtin" /f >nul 2>&1
 )
-
+timeout.exe /t 4 /nobreak >nul 2>&1
 echo Direct3D DLL overrides configured successfully.
