@@ -54,12 +54,13 @@ wget -q -P %drive_letter%:/Ajay_prefix/wget_files/temp/ --progress=dot:mega http
 :: Check if download succeeded
 if exist "%drive_letter%:\Ajay_prefix\wget_files\temp\offline_scripts_update.7z" (
     echo [INFO] Cleaning up old Start Menu ...
-    rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\2.offline components" >NUL 2>&1
-    rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\3.GPU Test" >NUL 2>&1
+    rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*offline components*" >nul 2>&1
+    rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*GPU Test*" >nul 2>&1
     del /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\install necessary files.bat" >NUL 2>&1
     del /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\Check_Ajay_prefix_status.bat" >NUL 2>&1
     rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*Backup and Restore*" >nul 2>&1
     rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*export and import*" >nul 2>&1
+    rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*Install custom files*" >nul 2>&1
 
     echo [INFO] Extracting latest Start Menu...
     %drive_letter%:\Ajay_prefix\.Resources\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\temp\offline_scripts_update.7z -oC:\ -r -y >NUL 2>&1
