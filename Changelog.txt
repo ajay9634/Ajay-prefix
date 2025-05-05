@@ -2,16 +2,19 @@
            ##  Ajay Prefix - Offline Changelog ##
 ============================================================
 
-Version: v10.17 Hotfix  
-Date:    28 April 2025  
+Version: v10.18
+Date:    5 may 2025  
 
 Changes:
-  - Replaced DirectX 9 test from Microsoft Samples  
-  - Updated installation scripts  
-  - Fixed various bugs  
-  - Updated 7zFM offline files  
-      
-     * Note: 7zFM Registry setup requires internet (automated process)
+
+- All in one mega improvement : - Updated exe installer , Ajay prefix registry and all offline and online Scripts ( Now supports installation in any drive , eg. D , F , G etc )
+
+- added registry related to dlls ( You can disable mono, gecho, winegstreamer etc)
+
+- removed some stuff from offline components like mediafoundaion etc ( it will be added in 1.components)
+
+( Note - After restarting the container, please run "Check_Ajay_prefix_status.bat"
+to verify the status.)
 
 Download:
   https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
