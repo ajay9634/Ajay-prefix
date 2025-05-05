@@ -1,10 +1,12 @@
 @echo off
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
 color 0a
-if exist "D:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XAudio2\Bin\x64\XAudio2BasicStream.lnk" goto Run
+if exist "%drive_letter%:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XAudio2\Bin\x64\XAudio2BasicStream.lnk" goto Run
 
 echo *** deleting temp2 files...***
-rmdir /S /Q "D:/Ajay_prefix/wget_files/temp2" >NUL 2>&1
-mkdir "D:/Ajay_prefix/wget_files/temp2" >NUL 2>&1
+rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp2" >NUL 2>&1
+mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp2" >NUL 2>&1
 echo *** Script made by Ajay ***
 
 :Run
@@ -12,9 +14,9 @@ echo *** Script made by Ajay ***
 color 1f
 echo *** Opening Microsoft Samples ***
 :: Define target and shortcut paths
-set "targetPath=D:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XAudio2\Bin\x64\XAudio2BasicStream.exe"
-set "shortcutPath=D:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XAudio2\Bin\x64\XAudio2BasicStream.lnk"
-set "workingDir=D:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XAudio2\Bin\x64"
+set "targetPath=%drive_letter%:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XAudio2\Bin\x64\XAudio2BasicStream.exe"
+set "shortcutPath=%drive_letter%:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XAudio2\Bin\x64\XAudio2BasicStream.lnk"
+set "workingDir=%drive_letter%:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XAudio2\Bin\x64"
 
 :: Create a temporary VBScript file
 set "vbsFile=%TEMP%\create_link.vbs"
@@ -30,7 +32,7 @@ cscript //nologo "%vbsFile%"
 :: Clean up
 del "%vbsFile%"
 
-Start ""  D:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XAudio2\Bin\x64\XAudio2BasicStream.lnk
+Start ""  %drive_letter%:\Ajay_prefix\wget_files\temp2\Microsoft_Samples\C++\XAudio2\Bin\x64\XAudio2BasicStream.lnk
 
 echo ************************************************
 timeout.exe /t 3 >nul
