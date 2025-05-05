@@ -53,7 +53,7 @@ If you were playing games before installing Ajay Prefix, you need to manually mo
 
 to:
 
-`D:\Ajay_prefix\save_data\users\...`
+`selected drive:\Ajay_prefix\save_data\users\...`
 
 ## ⚠️ Synchronization of Ajay Prefix Save Data Across Different Containers or Emulators
 
@@ -68,8 +68,8 @@ Ajay Prefix is available in the Releases section.
 
 ## ✨ Features of Ajay Prefix v10.18
 
-- **Save Game Location to any Drive:**  
-  Automatically redirects game saves to `any drive:\Ajay_prefix\save_data`. You can uninstall the emulator without losing your progress.  
+- **Save Game Location to selected Drive:**  
+  Automatically redirects game saves to `selected drive:\Ajay_prefix\save_data`. You can uninstall the emulator without losing your progress.  
   *(Note: Some games may save data in their own folders or other locations — backup manually if needed.)*
 
 - **Essential Runtime Files Included:**  
