@@ -28,7 +28,7 @@ echo msgbox " Looks like Ajay prefix offline files are missing from D drive." , 
 set "toolpath=%drive_letter%:\Ajay_prefix\.Resources\7z.exe"
 set "archive=%drive_letter%:\Ajay_prefix\.Resources\Start_Menu.7z"
 set "password=-p-q"
-set "expected_file=10.17.hotfix.txt"
+set "expected_file=10.18.txt"
 
 REM Check if expected file is inside the archive (quietly)
 "%toolpath%" l "%archive%" %password% 2>nul | findstr /I /C:"%expected_file%" >nul 2>&1
@@ -36,7 +36,7 @@ if errorlevel 1 (
     echo.
     echo [INFO] Looks like you're using an outdated version of the Ajay prefix.
     echo [INFO] Please download the latest version from Ajay's GitHub.
-    echo [INFO] The latest version 10.17.hotfix was uploaded on 28 April 2025.
+    echo [INFO] The latest version 10.18 was uploaded on 5 may 2025.
     echo msgbox "You're using an outdated version of the Ajay prefix. Please download the latest version from Ajay's GitHub." , vbInformation+vbSystemModal > "%tmp%\tmp.vbs"
     cscript //nologo "%tmp%\tmp.vbs"
     del "%tmp%\tmp.vbs"
