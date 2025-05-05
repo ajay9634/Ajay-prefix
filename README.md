@@ -50,11 +50,11 @@ to:
 To keep your save data in sync, make sure that the `D:` drive location is set to the same folder across all containers or emulators.  
 If that's not possible, you'll need to manually copy the save data between them.
 
-## 🔗 Link to Ajay Prefix v10.17 hotfix
+## 🔗 Link to Ajay Prefix v10.18
 
 Ajay Prefix is available in the Releases section.
 
-[Download Ajay Prefix v10.17 hotfix](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
+[Download Ajay Prefix v10.18](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
 
 ## ✨ Features of Ajay Prefix
 
