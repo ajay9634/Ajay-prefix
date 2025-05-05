@@ -1,4 +1,6 @@
 @echo off
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
 color 1f
 echo ==================================
 echo ***** Warning: Uninstall other physx version , This is official setup. it can fix some games.
@@ -29,26 +31,26 @@ ECHO *** installing PhysX-9.13.0604-SystemSoftware-Legacy....***
 echo.
 echo *** Script made by Ajay ***
 echo.
-rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
-mkdir "D:/Ajay_prefix/wget_files/temp"
+rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp"
+mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp"
 
 :: Check if the .din backup file exists
-IF EXIST "D:/Ajay_prefix/wget_files/physx/PhysX-9.13.0604-SystemSoftware-Legacy.din" (
+IF EXIST "%drive_letter%:/Ajay_prefix/wget_files/physx/PhysX-9.13.0604-SystemSoftware-Legacy.din" (
     ECHO *** backup file found, Now running the installer...***
-    copy "D:/Ajay_prefix/wget_files/physx/PhysX-9.13.0604-SystemSoftware-Legacy.din" "D:/Ajay_prefix/wget_files/temp/PhysX-9.13.0604-SystemSoftware-Legacy.msi"
+    copy "%drive_letter%:/Ajay_prefix/wget_files/physx/PhysX-9.13.0604-SystemSoftware-Legacy.din" "%drive_letter%:/Ajay_prefix/wget_files/temp/PhysX-9.13.0604-SystemSoftware-Legacy.msi"
 ) ELSE (
     echo.
     ECHO ! backup file not found, downloading...
     echo.
-    wget -q --show-progress -P "D:/Ajay_prefix/wget_files/temp/" --progress=dot:mega https://us.download.nvidia.com/Windows/9.13.0604/PhysX-9.13.0604-SystemSoftware-Legacy.msi
-    copy "D:/Ajay_prefix/wget_files/temp/PhysX-9.13.0604-SystemSoftware-Legacy.msi" "D:/Ajay_prefix/wget_files/physx/PhysX-9.13.0604-SystemSoftware-Legacy.din"
+    wget -q --show-progress -P "%drive_letter%:/Ajay_prefix/wget_files/temp/" --progress=dot:mega https://us.download.nvidia.com/Windows/9.13.0604/PhysX-9.13.0604-SystemSoftware-Legacy.msi
+    copy "%drive_letter%:/Ajay_prefix/wget_files/temp/PhysX-9.13.0604-SystemSoftware-Legacy.msi" "%drive_letter%:/Ajay_prefix/wget_files/physx/PhysX-9.13.0604-SystemSoftware-Legacy.din"
     echo.
     ECHO *** Download complete, installing...**"
     echo.
 )
 
 :: Run the installer
-Start /wait D:/Ajay_prefix/wget_files/temp/PhysX-9.13.0604-SystemSoftware-Legacy.msi
+Start /wait %drive_letter%:/Ajay_prefix/wget_files/temp/PhysX-9.13.0604-SystemSoftware-Legacy.msi
 
 ECHO *******
 exit

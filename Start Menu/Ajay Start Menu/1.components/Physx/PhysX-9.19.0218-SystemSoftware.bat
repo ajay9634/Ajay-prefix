@@ -1,4 +1,6 @@
 @echo off
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
 color 1f
 echo ==================================
 echo ***** Warning: Uninstall other physx version , This is official setup. it can fix some games.
@@ -29,26 +31,26 @@ ECHO *** installing PhysX-9.19.0218-SystemSoftware....***
 echo.
 echo *** Script made by Ajay ***
 echo.
-rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
-mkdir "D:/Ajay_prefix/wget_files/temp"
+rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp"
+mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp"
 
 :: Check if the .din backup file exists
-IF EXIST "D:/Ajay_prefix/wget_files/physx/PhysX-9.19.0218-SystemSoftware.din" (
+IF EXIST "%drive_letter%:/Ajay_prefix/wget_files/physx/PhysX-9.19.0218-SystemSoftware.din" (
     ECHO *** backup file found, Now running the installer...***
-    copy "D:/Ajay_prefix/wget_files/physx/PhysX-9.19.0218-SystemSoftware.din" "D:/Ajay_prefix/wget_files/temp/PhysX-9.19.0218-SystemSoftware.exe"
+    copy "%drive_letter%:/Ajay_prefix/wget_files/physx/PhysX-9.19.0218-SystemSoftware.din" "%drive_letter%:/Ajay_prefix/wget_files/temp/PhysX-9.19.0218-SystemSoftware.exe"
 ) ELSE (
     echo.
     ECHO ! backup file not found, downloading...
     echo.
-    wget -q --show-progress -P "D:/Ajay_prefix/wget_files/temp/" --progress=dot:mega D:/Ajay_prefix/wget_files/temp/PhysX-9.19.0218-SystemSoftware.exe https://us.download.nvidia.com/Windows/9.19.0218/PhysX-9.19.0218-SystemSoftware.exe
-    copy "D:/Ajay_prefix/wget_files/temp/PhysX-9.19.0218-SystemSoftware.exe" "D:/Ajay_prefix/wget_files/physx/PhysX-9.19.0218-SystemSoftware.din"
+    wget -q --show-progress -P "%drive_letter%:/Ajay_prefix/wget_files/temp/" --progress=dot:mega %drive_letter%:/Ajay_prefix/wget_files/temp/PhysX-9.19.0218-SystemSoftware.exe https://us.download.nvidia.com/Windows/9.19.0218/PhysX-9.19.0218-SystemSoftware.exe
+    copy "%drive_letter%:/Ajay_prefix/wget_files/temp/PhysX-9.19.0218-SystemSoftware.exe" "%drive_letter%:/Ajay_prefix/wget_files/physx/PhysX-9.19.0218-SystemSoftware.din"
     echo.
     ECHO *** Download complete, installing...**"
     echo.
 )
 
 :: Run the installer
-Start /wait D:/Ajay_prefix/wget_files/temp/PhysX-9.19.0218-SystemSoftware.exe
+Start /wait %drive_letter%:/Ajay_prefix/wget_files/temp/PhysX-9.19.0218-SystemSoftware.exe
 
 ECHO *******
 exit

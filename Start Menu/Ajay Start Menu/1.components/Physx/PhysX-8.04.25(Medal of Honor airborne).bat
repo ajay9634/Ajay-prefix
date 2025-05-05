@@ -1,4 +1,6 @@
 @echo off
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
 color 0a
 color 1f
 echo ==================================
@@ -27,8 +29,8 @@ exit
 :install
 echo.
 echo *** deleting temp files...***
-rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
-mkdir "D:/Ajay_prefix/wget_files/temp"
+rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp"
+mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp"
 echo *** deleted temp files ***
 echo.
 echo *** script made by Ajay ***
@@ -37,9 +39,9 @@ echo *** script made by Ajay ***
 color 0A
 echo.
 echo *** Downloading part01.rar ***
-IF NOT EXIST "D:\Ajay_prefix\wget_files\physx\PhysX_8.04.25_SystemSoftware.part1.rar" (
-    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/PhysX_8.04.25_SystemSoftware.part1.rar
-    copy /s /y D:\Ajay_prefix\wget_files\temp\PhysX_8.04.25_SystemSoftware.part1.rar D:\Ajay_prefix\wget_files\physx\PhysX_8.04.25_SystemSoftware.part1.rar /E /H /C /I
+IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_8.04.25_SystemSoftware.part1.rar" (
+    wget -q --show-progress -P %drive_letter%:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/PhysX_8.04.25_SystemSoftware.part1.rar
+    copy /s /y %drive_letter%:\Ajay_prefix\wget_files\temp\PhysX_8.04.25_SystemSoftware.part1.rar %drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_8.04.25_SystemSoftware.part1.rar /E /H /C /I
 ) ELSE (
     ECHO Part 01 already exists.
 )
@@ -48,16 +50,16 @@ IF NOT EXIST "D:\Ajay_prefix\wget_files\physx\PhysX_8.04.25_SystemSoftware.part1
 color 0A
 echo.
 echo *** Downloading part02.rar ***
-IF NOT EXIST "D:\Ajay_prefix\wget_files\physx\PhysX_8.04.25_SystemSoftware.part2.rar" (
-    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/PhysX_8.04.25_SystemSoftware.part2.rar
-    copy /s /y D:\Ajay_prefix\wget_files\temp\PhysX_8.04.25_SystemSoftware.part2.rar D:\Ajay_prefix\wget_files\physx\PhysX_8.04.25_SystemSoftware.part2.rar /E /H /C /I
+IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_8.04.25_SystemSoftware.part2.rar" (
+    wget -q --show-progress -P %drive_letter%:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/PhysX_8.04.25_SystemSoftware.part2.rar
+    copy /s /y %drive_letter%:\Ajay_prefix\wget_files\temp\PhysX_8.04.25_SystemSoftware.part2.rar %drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_8.04.25_SystemSoftware.part2.rar /E /H /C /I
 ) ELSE (
     ECHO Part 02 already exists.
 )
 
 color 1f
 echo Extracting...
-D:\Ajay_prefix\.Resources\winrar.exe x D:\Ajay_prefix\wget_files\physx\PhysX_8.04.25_SystemSoftware.part1.rar D:\Ajay_prefix\wget_files\temp\
+%drive_letter%:\Ajay_prefix\.Resources\winrar.exe x %drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_8.04.25_SystemSoftware.part1.rar %drive_letter%:\Ajay_prefix\wget_files\temp\
 echo.
 echo *** Running the installer ***
-Start /wait D:/Ajay_prefix/wget_files/temp/PhysX_8.04.25_SystemSoftware.exe
+Start /wait %drive_letter%:/Ajay_prefix/wget_files/temp/PhysX_8.04.25_SystemSoftware.exe
