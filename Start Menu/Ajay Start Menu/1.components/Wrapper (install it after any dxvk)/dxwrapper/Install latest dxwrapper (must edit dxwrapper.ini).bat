@@ -1,6 +1,8 @@
 @echo off
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
 :: Paths
-set "PREFIX_DIR=D:\Ajay_prefix"
+set "PREFIX_DIR=%drive_letter%:\Ajay_prefix"
 set "TEMP_DIR=%PREFIX_DIR%\wget_files\temp"
 set "DDIR=%PREFIX_DIR%\wget_files\d3d"
 set "WRAPPER_DEST_DIR=C:\windows\syswow64"
@@ -44,7 +46,7 @@ IF NOT EXIST "%DDIR%\DxWrapper-%version%.zip" (
 :: Extract to temp
 echo *** Extracting DxWrapper ***
 set "WRAPPER_EXTRACT_DIR=C:\windows\temp\dxwrapper-%version%"
-D:\Ajay_prefix\.Resources\winrar.exe x "%DDIR%\DxWrapper-%version%.zip" "%WRAPPER_EXTRACT_DIR%\" -r -y >NUL 2>&1
+%drive_letter%:\Ajay_prefix\.Resources\winrar.exe x "%DDIR%\DxWrapper-%version%.zip" "%WRAPPER_EXTRACT_DIR%\" -r -y >NUL 2>&1
 
 :: Copy default files
 echo *** Copying default DxWrapper files ***
