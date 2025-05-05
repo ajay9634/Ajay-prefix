@@ -1,4 +1,6 @@
 @echo off
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
 echo Removing all non-CoreFonts from C:\Windows\Fonts
 
 :: Ensure the directory exists before proceeding
