@@ -1,6 +1,8 @@
 @echo off
-set "sevenZipPath=D:\Ajay_prefix\.Resources\7z.exe"
-set "outputDir=D:\Ajay_prefix\save_data\winlator_desktop"
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
+set "sevenZipPath=%drive_letter%:\Ajay_prefix\.Resources\7z.exe"
+set "outputDir=%drive_letter%:\Ajay_prefix\save_data\winlator_desktop"
 
 :: Check if 7z.exe exists
 if not exist "%sevenZipPath%" (

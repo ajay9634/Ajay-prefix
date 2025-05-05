@@ -1,6 +1,8 @@
 @echo off
-set "sevenZipPath=D:\Ajay_prefix\.Resources\7z.exe"
-set "backupDir=D:\Ajay_prefix\save_data\winlator_desktop"
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
+set "sevenZipPath=%drive_letter%:\Ajay_prefix\.Resources\7z.exe"
+set "backupDir=%drive_letter%:\Ajay_prefix\save_data\winlator_desktop"
 set "iconsArchive=%backupDir%\Icons.7z"
 set "desktopArchive=%backupDir%\Desktop.7z"
 

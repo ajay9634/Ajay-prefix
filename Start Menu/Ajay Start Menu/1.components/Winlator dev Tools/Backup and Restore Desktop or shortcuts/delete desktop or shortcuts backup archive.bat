@@ -1,5 +1,7 @@
 @echo off
-set "outputDir=D:\Ajay_prefix\save_data\winlator_desktop"
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
+set "outputDir=%drive_letter%:\Ajay_prefix\save_data\winlator_desktop"
 set "iconsArchive=%outputDir%\Icons.7z"
 set "desktopArchive=%outputDir%\Desktop.7z"
 
@@ -11,7 +13,7 @@ if not exist "%iconsArchive%" if not exist "%desktopArchive%" (
 )
 
 :: Confirmation prompt
-echo The following archives will be deleted:
+echo The following archives will be delete%drive_letter%:
 if exist "%iconsArchive%" echo - Icons.7z
 if exist "%desktopArchive%" echo - Desktop.7z
 
