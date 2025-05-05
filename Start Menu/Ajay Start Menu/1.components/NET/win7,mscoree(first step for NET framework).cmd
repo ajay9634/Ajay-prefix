@@ -17,7 +17,7 @@ reg add "HKCU\Software\Wine\DllOverrides" /v "fusion" /t REG_SZ /d "builtin" /f 
 reg add "HKCU\Software\Wine\DllOverrides" /v "mscoree" /t REG_SZ /d "native" /f >nul 2>&1
 
 :: Wait 10 seconds to ensure changes are applied
-timeout /t 10 /nobreak >nul 2>&1
+timeout.exe /t 6 /nobreak >nul 2>&1
 
 :: Reapply the registry actions silently
 reg add "HKCU\Software\Wine\DllOverrides" /v "ngen.exe" /t REG_SZ /d "native" /f >nul 2>&1
@@ -28,5 +28,5 @@ reg add "HKCU\Software\Wine\DllOverrides" /v "mscoree" /t REG_SZ /d "native" /f 
 
 :: Set Wine version to Windows 7
 reg add "HKCU\Software\Wine" /v "Version" /t REG_SZ /d "win7" /f >nul 2>&1
-
+timeout.exe /t 4 /nobreak >nul 2>&1
 echo Wine registry settings have been successfully configured.
