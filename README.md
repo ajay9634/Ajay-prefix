@@ -9,9 +9,9 @@ You can install the Ajay Prefix on various pc emu such as MoboX WOW64, Winlator,
 
 ## ✨ What is Ajay prefix?
 
-✨ What is Ajay Prefix?
+✨ What is Ajay Prefix v10.18?
 
-[Ajay prefix = game save location to D:\Ajay_prefix\save_data + Start menu customization + bug fixes]
+[Ajay prefix = game save location to any drive:\Ajay_prefix\save_data + Start menu customization + bug fixes]
 
 It includes multiple fixes needed in many games.
 
