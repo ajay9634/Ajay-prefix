@@ -57,7 +57,7 @@ to:
 
 ## ⚠️ Synchronization of Ajay Prefix Save Data Across Different Containers or Emulators
 
-To keep your save data in sync, make sure that the `D:` drive location is set to the same folder across all containers or emulators.  
+To keep your save data in sync, make sure that the `selected drive:` location is set to the same folder across all containers or emulators.  
 If that's not possible, you'll need to manually copy the save data between them.
 
 ## 🔗 Link to Ajay Prefix v10.18
