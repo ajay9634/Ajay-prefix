@@ -125,7 +125,7 @@ Ajay Prefix is available in the Releases section.
   It does not back up Steam game save data located in `C:\Program Files (x86)\Steam\`.
 
 - **Game Save Path Change:**  
-  The game save path is only changed from `C:\Users\` to `D:\Ajay_prefix\save_data\users`.
+  The game save path is only changed from `C:\Users\` to `selected drive:\Ajay_prefix\save_data\users`.
 
 - **Games Still Using `C:\Users\`:**  
   If some games continue to use the old save path, try using the "Backup and Restore Drive C Users" feature.
