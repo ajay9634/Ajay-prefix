@@ -1,4 +1,6 @@
 @echo off
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
 setlocal enabledelayedexpansion
 color 0a
 title DXVK GPLAsync Version Selector
@@ -7,8 +9,8 @@ echo ( Available old dxvk gplasync version :- 2.1-4 , 2.2-4 , 2.3-1 , 2.3.1-1 , 
 :: Config
 set "base_url=https://gitlab.com/Ph42oN/dxvk-gplasync/-/jobs/artifacts"
 set "job_name=build"
-set "output_dir=D:\Ajay_prefix\wget_files\d3d"
-set "winrar_path=D:\Ajay_prefix\.Resources\winrar.exe"
+set "output_dir=%drive_letter%:\Ajay_prefix\wget_files\d3d"
+set "winrar_path=%drive_letter%:\Ajay_prefix\.Resources\winrar.exe"
 
 :: Ensure output directory exists
 if not exist "%output_dir%" (
@@ -39,7 +41,7 @@ echo From: %artifact_url%
 if not exist "%output_path%" (
     curl --fail -L -o "%output_path%" "%artifact_url%" >nul 2>&1
     if exist "%output_path%" (
-        echo [OK] Successfully downloaded: %zipname%
+        echo [OK] Successfully downloade%drive_letter%: %zipname%
     ) else (
         echo [X] Failed to download %zipname%
         del "%output_path%" >nul 2>&1

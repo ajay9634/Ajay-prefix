@@ -1,15 +1,16 @@
 @echo off
-
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
 :: Cleanup and Setup
 echo *** Deleting temp files... ***
-rmdir /S /Q "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "C:/windows/temp" >NUL 2>&1
-mkdir "D:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 cls
 
 echo Fetching available DXVK-Sarek versions...
-wget -q -O D:/Ajay_prefix/wget_files/temp/all_releases.json https://api.github.com/repos/pythonlover02/DXVK-Sarek/releases
+wget -q -O %drive_letter%:/Ajay_prefix/wget_files/temp/all_releases.json https://api.github.com/repos/pythonlover02/DXVK-Sarek/releases
 
 goto show_version_list
 
@@ -27,15 +28,15 @@ echo *** Script made by Ajay ***
     set "tarball=dxvk-sarek-%version%.tar.gz"
 
 :: Set paths
-set "tarball_path=D:\Ajay_prefix\wget_files\d3d\%tarball%"
-set "temp_tarball_path=D:\Ajay_prefix\wget_files\temp\%tarball%"
+set "tarball_path=%drive_letter%:\Ajay_prefix\wget_files\d3d\%tarball%"
+set "temp_tarball_path=%drive_letter%:\Ajay_prefix\wget_files\temp\%tarball%"
 
 echo.
 echo *** Downloading %tarball% ***
 
 IF NOT EXIST "%tarball_path%" (
     echo Attempting download from: https://github.com/pythonlover02/DXVK-Sarek/releases/download/%version_tag%/%tarball%
-    wget -q --show-progress -P D:/Ajay_prefix/wget_files/temp/ --progress=dot:mega ^
+    wget -q --show-progress -P %drive_letter%:/Ajay_prefix/wget_files/temp/ --progress=dot:mega ^
     https://github.com/pythonlover02/DXVK-Sarek/releases/download/%version_tag%/%tarball%
 
     IF EXIST "%temp_tarball_path%" (
@@ -49,7 +50,7 @@ IF NOT EXIST "%tarball_path%" (
 :: Extract
 color 1f
 echo *** Extracting... ***
-D:\Ajay_prefix\.Resources\winrar.exe x "%tarball_path%" "C:\windows\temp\" -r -y >NUL 2>&1
+%drive_letter%:\Ajay_prefix\.Resources\winrar.exe x "%tarball_path%" "C:\windows\temp\" -r -y >NUL 2>&1
 
 :: Find extracted folder
 set "dxvk_dir="
@@ -77,7 +78,7 @@ goto end
 echo.
 setlocal EnableDelayedExpansion
 set count=0
-for /f "tokens=2 delims=:" %%A in ('findstr /i "tag_name" D:/Ajay_prefix/wget_files/temp/all_releases.json 2^>nul') do (
+for /f "tokens=2 delims=:" %%A in ('findstr /i "tag_name" %drive_letter%:/Ajay_prefix/wget_files/temp/all_releases.json 2^>nul') do (
     set "ver=%%A"
     set "ver=!ver:,=!"
     set "ver=!ver:"=!"
