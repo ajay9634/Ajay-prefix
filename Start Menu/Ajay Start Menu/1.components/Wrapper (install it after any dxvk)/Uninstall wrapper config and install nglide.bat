@@ -1,9 +1,11 @@
 @echo off
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
 color 0a
 echo *** wait....***
 echo *** deleting files...***
-rmdir /S /Q "D:/Ajay_prefix/wget_files/temp"
-mkdir "D:/Ajay_prefix/wget_files/temp"
+rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp"
+mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp"
 del "C:\windows\system32\dgVoodooCpl.exe" >NUL 2>&1
 del "C:\windows\syswow64\dgVoodooCpl.exe" >NUL 2>&1
 del "C:\windows\syswow64\dgVoodoo.conf" >NUL 2>&1
@@ -13,9 +15,9 @@ del "C:\windows\syswow64\dxwrapper.dll" >NUL 2>&1
 del "C:\windows\syswow64\dxwrapper.ini" >NUL 2>&1
 
 echo *** deleted wrapper config files ***
-D:\Ajay_prefix\.Resources\7z.exe x D:\Ajay_prefix\wget_files\d3d\nGlide210_setup.7z -oD:\Ajay_prefix\wget_files\temp\ -p-q -r -y >NUL 2>&1
+%drive_letter%:\Ajay_prefix\.Resources\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\d3d\nGlide210_setup.7z -o%drive_letter%:\Ajay_prefix\wget_files\temp\ -p-q -r -y >NUL 2>&1
 echo *** installing nglide ... ***
-Start D:\Ajay_prefix\wget_files\temp\nGlide210_setup.exe /S
+Start %drive_letter%:\Ajay_prefix\wget_files\temp\nGlide210_setup.exe /S
 timeout.exe 3 /nobreak >NUL 2>&1
 echo ************************************************
 
