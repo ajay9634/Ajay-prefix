@@ -66,10 +66,10 @@ Ajay Prefix is available in the Releases section.
 
 [Download Ajay Prefix v10.18](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
 
-## ✨ Features of Ajay Prefix
+## ✨ Features of Ajay Prefix v10.18
 
-- **Save Game Location to D Drive:**  
-  Automatically redirects game saves to `D:\Ajay_prefix\save_data`. You can uninstall the emulator without losing your progress.  
+- **Save Game Location to any Drive:**  
+  Automatically redirects game saves to `any drive:\Ajay_prefix\save_data`. You can uninstall the emulator without losing your progress.  
   *(Note: Some games may save data in their own folders or other locations — backup manually if needed.)*
 
 - **Essential Runtime Files Included:**  
