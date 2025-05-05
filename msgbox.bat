@@ -140,7 +140,9 @@ timeout /t 5 >NUL 2>&1
 echo [INFO] done !
 taskkill /F /IM cscript.exe /T >nul 2>&1
 del %tmp%\tmp.vbs
-Start "" notepad.exe %drive_letter%:/Ajay_prefix/wget_files/Changelog.txt
+if exist "%drive_letter%:\Ajay_prefix\wget_files\Changelog.txt" (
+    start "" notepad.exe "%drive_letter%:\Ajay_prefix\wget_files\Changelog.txt"
+)
 timeout /t 2 >NUL 2>&1
 exit /b
 
