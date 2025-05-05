@@ -6,4 +6,5 @@ if %errorlevel% equ 0 (
 ) else (
     echo Failed to disable sound.
 )
+timeout.exe /t 4 /nobreak >nul 2>&1
 pause
