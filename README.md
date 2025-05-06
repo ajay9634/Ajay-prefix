@@ -48,6 +48,7 @@ Ajay prefix wiki - [click here](https://github.com/ajay9634/Ajay-prefix/wiki)
 ## ✨ Note - 
 
 Latest winlator bionic unofficial are fixed for Ajay prefix by pissblaster dev. Recommended unofficial fork -  [jhinzuo](https://github.com/jhinzuo/winlator/releases)
+Note - try `manual installation`
 
 ## ⚠️ Move Game Save Data to Ajay Prefix
 
