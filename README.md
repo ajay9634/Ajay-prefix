@@ -39,7 +39,7 @@ Ajay prefix wiki - [click here](https://github.com/ajay9634/Ajay-prefix/wiki)
   **Note:** Running `Install_only_start_menu.bat` will only modify the Start menu, leaving the game save data location unchanged.
 
 - **Installation Guide Video** -  
-[![Ajay Prefix Installation Video](https://img.youtube.com/vi/NXCquIv8D4c/0.jpg)](https://www.youtube.com/watch?v=NXCquIv8D4c)
+[![Ajay Prefix Installation Video](https://img.youtube.com/vi/NXCquIv8D4c/0.jpg)](https://youtu.be/yr3tpOhik0Q?si=VHWzmGhFJYA9WgKr)
 
 ## ✨ Note - 
 
