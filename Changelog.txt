@@ -23,6 +23,7 @@ Download:
 # Ajay Prefix Components - Changelog (6 May 2025)
 
 - added "mediafoundaion by HoodedDeath.bat"
+- added gldirect-Opengl_to_dx9 wrapper
 
 =================================================================
 # Ajay Prefix Components - Changelog (2 May 2025)
