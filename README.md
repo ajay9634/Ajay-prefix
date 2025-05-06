@@ -9,9 +9,9 @@ You can install the Ajay Prefix on various pc emu such as MoboX WOW64, Winlator,
 
 ## ✨ What is Ajay prefix?
 
-✨ What is Ajay Prefix?
+✨ What is Ajay Prefix v10.18?
 
-[Ajay prefix = game save location to D:\Ajay_prefix\save_data + Start menu customization + bug fixes]
+[Ajay prefix = game save location to any drive:\Ajay_prefix\save_data + Start menu customization + bug fixes]
 
 It includes multiple fixes needed in many games.
 
@@ -19,19 +19,29 @@ Note: If it causes any issues, please let me know in the issues section.
 
 Ajay prefix wiki - [click here](https://github.com/ajay9634/Ajay-prefix/wiki)
 
-## ✨ Installation of Ajay prefix
+## ✨ Installation of Ajay prefix v10.18
 
-- **Partial Automatic Installation:**  
-  Run `Ajay_prefix.exe` from any location, then execute the `.bat` file from `D:\Ajay_prefix\` to complete the installation.
+- ***Partial Automatic Installation:*** 
+  
+1. Run `Ajay_prefix.exe` from any location.
+2. Select your desired installation drive (e.g., D: , F:).
+3. Navigate to:  
+       selected_drive:\Ajay_prefix\
+4. Execute the `.bat` file in that folder to complete the installation.
 
-- **Manual Installation:**  
-  Open `Ajay_prefix.exe` as an archive, extract it to drive D, and then run `Install_prefix_for_current_container.bat`.  
+- ***Manual Installation:***  
+1. Open `Ajay_prefix.exe` as archive.
+2. Extract `Ajay_prefix` folder your desired installation drive (e.g., D: , F:). (don't extract it  into any subfolder)
+3. Navigate to:  
+       selected_drive:\Ajay_prefix\
+4. Execute the `.bat` file in that folder to complete the installation.
+
   **Note:** Running `Install_only_start_menu.bat` will only modify the Start menu, leaving the game save data location unchanged.
 
-- **Installation Guide Video** -  
-[![Ajay Prefix Installation Video](https://img.youtube.com/vi/NXCquIv8D4c/0.jpg)](https://www.youtube.com/watch?v=NXCquIv8D4c)
+- **Ajay prefix v10.18 Installation Guide Video** -  
+[![Ajay Prefix Installation Video](https://img.youtube.com/vi/NXCquIv8D4c/0.jpg)](https://youtu.be/yr3tpOhik0Q?si=VHWzmGhFJYA9WgKr)
 
-### ✨ Note - 
+## ✨ Note - 
 
 Latest winlator bionic unofficial are fixed for Ajay prefix by pissblaster dev. Recommended unofficial fork -  [jhinzuo](https://github.com/jhinzuo/winlator/releases)
 
@@ -43,23 +53,23 @@ If you were playing games before installing Ajay Prefix, you need to manually mo
 
 to:
 
-`D:\Ajay_prefix\save_data\users\...`
+`selected drive:\Ajay_prefix\save_data\users\...`
 
 ## ⚠️ Synchronization of Ajay Prefix Save Data Across Different Containers or Emulators
 
-To keep your save data in sync, make sure that the `D:` drive location is set to the same folder across all containers or emulators.  
+To keep your save data in sync, make sure that the `selected drive:` location is set to the same folder across all containers or emulators.  
 If that's not possible, you'll need to manually copy the save data between them.
 
-## 🔗 Link to Ajay Prefix v10.17 hotfix
+## 🔗 Link to Ajay Prefix v10.18
 
 Ajay Prefix is available in the Releases section.
 
-[Download Ajay Prefix v10.17 hotfix](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
+[Download Ajay Prefix v10.18](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
 
-## ✨ Features of Ajay Prefix
+## ✨ Features of Ajay Prefix v10.18
 
-- **Save Game Location to D Drive:**  
-  Automatically redirects game saves to `D:\Ajay_prefix\save_data`. You can uninstall the emulator without losing your progress.  
+- **Save Game Location to selected Drive:**  
+  Automatically redirects game saves to `selected drive:\Ajay_prefix\save_data`. You can uninstall the emulator without losing your progress.  
   *(Note: Some games may save data in their own folders or other locations — backup manually if needed.)*
 
 - **Essential Runtime Files Included:**  
@@ -115,7 +125,7 @@ Ajay Prefix is available in the Releases section.
   It does not back up Steam game save data located in `C:\Program Files (x86)\Steam\`.
 
 - **Game Save Path Change:**  
-  The game save path is only changed from `C:\Users\` to `D:\Ajay_prefix\save_data\users`.
+  The game save path is only changed from `C:\Users\` to `selected drive:\Ajay_prefix\save_data\users`.
 
 - **Games Still Using `C:\Users\`:**  
   If some games continue to use the old save path, try using the "Backup and Restore Drive C Users" feature.
