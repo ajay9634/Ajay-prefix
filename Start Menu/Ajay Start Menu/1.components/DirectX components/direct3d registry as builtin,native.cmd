@@ -13,7 +13,7 @@ for %%d in (
     d3dx9_33 d3dx9_34 d3dx9_35 d3dx9_36 d3dx9_37 d3dx9_38 d3dx9_39 d3dx9_40 d3dx9_41
     d3dx9_42 d3dx9_43
 ) do (
-    reg add "HKCU\Software\Wine\DllOverrides" /v %%d /t REG_SZ /d "native,builtin" /f >nul 2>&1
+    reg add "HKCU\Software\Wine\DllOverrides" /v %%d /t REG_SZ /d "builtin,native" /f >nul 2>&1
 )
 
 timeout.exe /t 6 /nobreak >nul 2>&1
