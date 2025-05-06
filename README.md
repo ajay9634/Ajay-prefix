@@ -29,12 +29,16 @@ Ajay prefix wiki - [click here](https://github.com/ajay9634/Ajay-prefix/wiki)
        selected_drive:\Ajay_prefix\
 4. Execute the `.bat` file in that folder to complete the installation.
 
-- ***Manual Installation: (compatible)***  
-1. Open `Ajay_prefix.exe` as archive.
+- ***Manual Installation: (compatible)***
+  
+  (some emu doesn't support `Partial Automatic Installation` then follow this method)
+  
+1. Open `Ajay_prefix.exe` as archive by Z archiver or rename extension to zip.
 2. Extract `Ajay_prefix` folder your desired installation drive (e.g., D: , F:). (don't extract it  into any subfolder)
 3. Navigate to:  
        selected_drive:\Ajay_prefix\
 4. Execute the `.bat` file in that folder to complete the installation.
+
 
   **Note:** Running `Install_only_start_menu.bat` will only modify the Start menu, leaving the game save data location unchanged.
 
