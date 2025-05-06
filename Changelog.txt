@@ -19,6 +19,10 @@ to verify the status.)
 Download:
   https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 
+=================================================================
+# Ajay Prefix Components - Changelog (6 May 2025)
+
+- added "mediafoundaion by HoodedDeath.bat"
 
 =================================================================
 # Ajay Prefix Components - Changelog (2 May 2025)
