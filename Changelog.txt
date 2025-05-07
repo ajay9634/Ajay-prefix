@@ -2,7 +2,7 @@
            ##  Ajay Prefix - Offline Changelog ##
 ============================================================
 
-Version: v10.18 final
+Version: v10.18 final fix
 Date:    7 may 2025  
 
 Changes:
