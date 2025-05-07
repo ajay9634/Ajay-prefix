@@ -2,11 +2,12 @@
            ##  Ajay Prefix - Offline Changelog ##
 ============================================================
 
-Version: v10.18
-Date:    5 may 2025  
+Version: v10.18 final
+Date:    7 may 2025  
 
 Changes:
 
+- uploaded "Ajay_prefix_v10.18_final_setup.exe"
 - All in one mega improvement : - Updated exe installer , Ajay prefix registry and all offline and online Scripts ( Now supports installation in any drive , eg. D , F , G etc )
 
 - added registry related to dlls ( You can disable mono, gecho, winegstreamer etc)
