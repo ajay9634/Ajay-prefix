@@ -1,1 +1,3 @@
-It will extract missing vc redist dlls which are needed in old games.
+"install missing dlls v1.0 as skip (for old games).bat" will extract missing vc redist dlls which are needed in old games.
+
+don't install force vcredist for general usage.
