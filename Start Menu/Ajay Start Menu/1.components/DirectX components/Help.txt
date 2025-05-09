@@ -1,1 +1,12 @@
-It's also called june 2010 directX setup. XInput, Dinput and dxnt files are not included in Direct3d of dx2010.
+DirectX june 2010 setup parts details -
+
+1 - direct3d ( d3dx , d3dcompiler , d3dcsx dlls collection )
+
+2 - dmusic,dplay,dshow ( necessary dlls from dxnt.cab )
+
+3 - dxnt x86 components ( other necessary dlls from dxnt.cab )
+
+4 - xaudio ( x3daudio , xactengine , XAPOFX dlls collection ) 
+
+Note - `XAudio` and `dxnt x86 components` start menu are available in offline components.
+
