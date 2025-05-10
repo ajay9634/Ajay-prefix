@@ -9,4 +9,5 @@ DirectX june 2010 setup parts details -
 4 - xaudio ( x3daudio , xactengine , XAPOFX dlls collection ) 
 
 Note - `XAudio` and `dxnt x86 components` start menu are available in offline components.
+(2) and (3) may break other games. So don't use these for general use.
 
