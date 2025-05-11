@@ -22,6 +22,7 @@ echo *** Extracting ...***
 %drive_letter%:\Ajay_prefix\.Resources\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\Files\ResourceHacker.7z -o%drive_letter%:\Ajay_prefix\wget_files\temp\ -r -y >NUL 2>&1
 
 echo *** opening ResourceHacker ***
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 Start %drive_letter%:\Ajay_prefix\wget_files\temp\ResourceHacker.exe
 echo ************************************************
 timeout.exe /t 3 >nul
