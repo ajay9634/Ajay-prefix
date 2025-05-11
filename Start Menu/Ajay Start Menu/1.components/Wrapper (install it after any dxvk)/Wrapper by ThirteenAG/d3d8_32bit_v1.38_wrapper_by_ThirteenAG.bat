@@ -39,7 +39,6 @@ echo msgbox "Hello! Extract it in game exe folder then you can edit ini !" , vbi
 start /b cscript //nologo %tmp%\tmp.vbs
 timeout.exe /t 1 >nul
 del %tmp%\tmp.vbs
-call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 Start %drive_letter%:\Ajay_prefix\wget_files\temp\d3d8_32bit_v1.38_wrapper_by_ThirteenAG.exe
 timeout.exe /t 3 >nul
 
