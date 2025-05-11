@@ -34,7 +34,7 @@ Ajay prefix wiki - [click here](https://github.com/ajay9634/Ajay-prefix/wiki)
   (some emu doesn't support `Partial Automatic Installation` then follow this method)
   
 1. Open `Ajay_prefix.exe` as archive by Z archiver or rename extension to zip.
-2. Extract `Ajay_prefix` folder your desired installation drive (e.g., D: , F:). (don't extract it  into any subfolder)
+2. Extract `Ajay_prefix` folder to your desired installation drive (e.g., D: , F:). (don't extract it  into any subfolder)
 3. Navigate to:  
        selected_drive:\Ajay_prefix\
 4. Execute the `.bat` file in that folder to complete the installation.
@@ -48,7 +48,7 @@ Ajay prefix wiki - [click here](https://github.com/ajay9634/Ajay-prefix/wiki)
 ## ✨ Note - 
 
 Latest winlator bionic unofficial are fixed for Ajay prefix by pissblaster dev. Recommended unofficial fork -  [jhinzuo](https://github.com/jhinzuo/winlator/releases)
-Note - try manual installation
+Note - try `manual installation`
 
 ## ⚠️ Move Game Save Data to Ajay Prefix
 
@@ -69,7 +69,7 @@ If that's not possible, you'll need to manually copy the save data between them.
 
 Ajay Prefix is available in the Releases section.
 
-[Download Ajay Prefix v10.18](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
+[Download Ajay Prefix v10.18 final setup](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
 
 ## ✨ Features of Ajay Prefix v10.18
 
