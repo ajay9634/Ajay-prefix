@@ -3,6 +3,12 @@ call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 if not defined drive_letter set drive_letter=D
 color 0a
 echo *** Enjoy flash or swf games ***
+echo *** deleting temp files...***
+rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+rmdir /S /Q "C:/windows/temp" >NUL 2>&1
+mkdir "C:/windows/temp" >NUL 2>&1
+mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+echo *** deleted temp files ***
 echo *** script made by Ajay ***
 
 :: Simulating bold with color and emphasis
