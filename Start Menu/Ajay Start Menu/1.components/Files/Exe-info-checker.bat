@@ -3,6 +3,12 @@ call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 if not defined drive_letter set drive_letter=D
 color 0a
 echo *** You can check exe info in details  ***
+echo *** deleting temp files...***
+rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+rmdir /S /Q "C:/windows/temp" >NUL 2>&1
+mkdir "C:/windows/temp" >NUL 2>&1
+mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+echo *** deleted temp files ***
 echo *** Script made by Ajay ***
 
 :: Downloading file if it doesn't exist
