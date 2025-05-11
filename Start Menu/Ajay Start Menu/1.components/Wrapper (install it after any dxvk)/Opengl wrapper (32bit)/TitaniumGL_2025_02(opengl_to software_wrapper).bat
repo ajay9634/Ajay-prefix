@@ -50,6 +50,7 @@ echo msgbox "Hello! Extract it in game exe folder !" , vbinformation+vbSystemMod
 start /b cscript //nologo %tmp%\tmp.vbs
 timeout.exe /t 1 >nul
 del %tmp%\tmp.vbs
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 Start %drive_letter%:\Ajay_prefix\wget_files\temp\TitaniumGL_2025_02_opengl_to_software_wrapper.exe
 timeout.exe /t 3 >nul
 
