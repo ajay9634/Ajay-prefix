@@ -33,8 +33,7 @@ IF %ERRORLEVEL% NEQ 0 (
 
 :: Launching the Installer
 echo *** Opening NSIS-3.11 Setup ***
-call "C:\Windows\Ajay_drive.bat" >nul 2>&1
-Start "" %drive_letter%:\Ajay_prefix\wget_files\temp\nsis-3.11-setup.exe
+Start %drive_letter%:\Ajay_prefix\wget_files\temp\nsis-3.11-setup.exe
 
 echo ************************************************
 timeout.exe /t 3 >nul
