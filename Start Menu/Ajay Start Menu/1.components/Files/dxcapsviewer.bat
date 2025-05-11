@@ -30,5 +30,5 @@ echo *** opening ...***
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 Start %drive_letter%\Ajay_prefix\wget_files\temp\dxcapsviewer.exe
 
-echo.************************************************
+echo ************************************************
 timeout.exe /t 3 >nul
