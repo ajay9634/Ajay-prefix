@@ -32,7 +32,7 @@ echo msgbox "Hello! Extract it in game exe or app exe folder !" , vbinformation+
 start /b cscript //nologo %tmp%\tmp.vbs
 timeout.exe /t 1 >nul
 del %tmp%\tmp.vbs
-Start "" %drive_letter%:\Ajay_prefix\wget_files\temp\Exe-info-checker.exe
+Start /wait "" "%drive_letter%:\Ajay_prefix\wget_files\temp\Exe-info-checker.exe"
 
 echo ************************************************
 timeout.exe /t 3 >nul
