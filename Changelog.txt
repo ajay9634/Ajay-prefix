@@ -22,6 +22,11 @@ Download:
   https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 
 =================================================================
+# Ajay Prefix Components - Changelog (11 May 2025)
+
+- updated some scripts
+
+=================================================================
 # Ajay Prefix Components - Changelog (9 May 2025)
 
 - added Install dmusic,dplay,dshow.bat and it's registry ( it may not work for all emu )
