@@ -78,3 +78,8 @@ reg add "HKCR\txtfile\DefaultIcon" /ve /d "C:\windows\system32\imageres.dll,-102
 reg add "HKCR\txtfile\shell" /f >nul
 reg add "HKCR\txtfile\shell\open" /f >nul
 reg add "HKCR\txtfile\shell\open\command" /ve /d "\"C:\windows\system32\notepad.exe\" \"%%1\"" /f >nul
+
+echo [INFO] Adding some dlls override as native,builtin
+
+reg add "HKCU\Software\Wine\DllOverrides" /v "openal32" /t REG_SZ /d "native,builtin" /f >nul 2>&1
+reg add "HKCU\Software\Wine\DllOverrides" /v "opengl32" /t REG_SZ /d "native,builtin" /f >nul 2>&1
