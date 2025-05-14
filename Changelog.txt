@@ -27,6 +27,12 @@ Download:
 - updated some scripts
 
 =================================================================
+# Ajay Prefix Components - Changelog (14 May 2025)
+
+- added opengl demos
+- added 'Install necessary files.bat' for 1.components
+
+=================================================================
 # Ajay Prefix Components - Changelog (9 May 2025)
 
 - added Install dmusic,dplay,dshow.bat and it's registry ( it may not work for all emu )
