@@ -140,6 +140,8 @@ timeout /t 5 >NUL 2>&1
 echo [INFO] done !
 taskkill /F /IM cscript.exe /T >nul 2>&1
 del %tmp%\tmp.vbs
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
 if exist "%drive_letter%:\Ajay_prefix\wget_files\Changelog.txt" (
     start "" notepad.exe "%drive_letter%:\Ajay_prefix\wget_files\Changelog.txt"
 )
