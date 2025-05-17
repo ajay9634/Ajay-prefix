@@ -41,14 +41,15 @@ if not defined drive_letter set drive_letter=D
 rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 del %drive_letter%:\Ajay_prefix\wget_files\Files\Missing_dlls.7z >NUL 2>&1
+del %drive_letter%:\Ajay_prefix\wget_files\Files\Missing_dlls_1.0.7z >NUL 2>&1
 
 echo.
 echo ====================================================
 echo       [ Downloading Missing_dlls ]
 echo ====================================================
-IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\Files\Missing_dlls_v1.0.7z" (
-    wget -q --show-progress -P %drive_letter%:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/Missing_dlls_v1.0.7z
-    copy /s /y %drive_letter%:\Ajay_prefix\wget_files\temp\Missing_dlls_v1.0.7z %drive_letter%:\Ajay_prefix\wget_files\Files\Missing_dlls_v1.0.7z /E /H /C /I
+IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\Files\Missing_dlls_v1.1.7z" (
+    wget -q --show-progress -P %drive_letter%:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/Missing_dlls_v1.1.7z
+    copy /s /y %drive_letter%:\Ajay_prefix\wget_files\temp\Missing_dlls_v1.1.7z %drive_letter%:\Ajay_prefix\wget_files\Files\Missing_dlls_v1.1.7z /E /H /C /I
 ) ELSE (
     echo Missing_dlls file already exists.
 )
@@ -56,7 +57,7 @@ IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\Files\Missing_dlls_v1.0.7z"
 echo.
 echo [ Extracting and Installing Missing_dlls... ]
 echo.
-%drive_letter%:\Ajay_prefix\.Resources\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\Files\Missing_dlls_v1.0.7z -o%drive_letter%:\Ajay_prefix\wget_files\temp\ -p-q -r -y >NUL 2>&1
+%drive_letter%:\Ajay_prefix\.Resources\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\Files\Missing_dlls_v1.1.7z -o%drive_letter%:\Ajay_prefix\wget_files\temp\ -p-q -r -y >NUL 2>&1
 Xcopy /e /y /d %drive_letter%:\Ajay_prefix\wget_files\temp\system32\ C:\windows\system32\ /E /H /C /I
 Xcopy /e /y /d %drive_letter%:\Ajay_prefix\wget_files\temp\syswow64\ C:\windows\syswow64\ /E /H /C /I
 timeout.exe 2 /nobreak >NUL 2>&1
