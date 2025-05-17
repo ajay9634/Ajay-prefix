@@ -58,8 +58,8 @@ echo.
 echo [ Extracting and Installing Missing_dlls... ]
 echo.
 %drive_letter%:\Ajay_prefix\.Resources\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\Files\Missing_dlls_v1.1.7z -o%drive_letter%:\Ajay_prefix\wget_files\temp\ -p-q -r -y >NUL 2>&1
-Xcopy /e /y /d %drive_letter%:\Ajay_prefix\wget_files\temp\system32\ C:\windows\system32\ /E /H /C /I
-Xcopy /e /y /d %drive_letter%:\Ajay_prefix\wget_files\temp\syswow64\ C:\windows\syswow64\ /E /H /C /I
+xcopy "%drive_letter%:\Ajay_prefix\wget_files\temp\system32\" "C:\Windows\System32\" /E /Y /D /H /C /I
+xcopy "%drive_letter%:\Ajay_prefix\wget_files\temp\syswow64\" "C:\Windows\SysWOW64\" /E /Y /D /H /C /I
 timeout.exe 2 /nobreak >NUL 2>&1
 
 :: Clean temp again
