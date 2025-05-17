@@ -20,7 +20,7 @@ echo *** deleting temp files...***
 rmdir /S /Q "%drive_letter%:\Ajay_prefix\wget_files\temp" >NUL 2>&1
 mkdir "%drive_letter%:\Ajay_prefix\wget_files\temp" >NUL 2>&1
 del /F /Q /A "%drive_letter%:\Ajay_prefix\wget_files\Files\Missing_dlls.7z"
-del /F /Q /A "%drive_letter%:\Ajay_prefix\wget_files\Files\Missing_dlls_1.0.7z"
+del /F /Q /A "%drive_letter%:\Ajay_prefix\wget_files\Files\Missing_dlls_v1.0.7z"
 
 echo *** deleted temp files ***
 echo.
