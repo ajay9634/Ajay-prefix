@@ -22,6 +22,11 @@ Download:
   https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 
 =================================================================
+# Ajay Prefix Components - Changelog (17 May 2025)
+
+- updated missing dlls scripts
+- updated "install necessary files" script
+=================================================================
 # Ajay Prefix Components - Changelog (11 May 2025)
 
 - updated some scripts
