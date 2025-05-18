@@ -55,23 +55,49 @@ if /i not "%choice%"=="Y" (
 if not exist "C:\windows\temp" mkdir "C:\windows\temp"
 
 @echo off
-echo Downloading .container file (Don't disconnect internet)...
+@echo off
+setlocal
 
-:: Corrected GitHub Raw URL
-wget -q --show-progress -P C:/windows/temp/ "https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Winlator-10-stuff/installable_components/.container"
+:: Define paths
+set "origfile=Z:\home\xuser\.container"
+set "tempfolder=%TEMP%\container_edit"
+set "tempfile=%tempfolder%\.container"
 
-:: Check if download was successful
-if not exist "C:\windows\temp\.container" (
-    echo Error: File not found. Download may have failed.
-    pause
-)
+:: Create temp folder
+if not exist "%tempfolder%" mkdir "%tempfolder%"
 
-timeout.exe 5 /nobreak
-echo Copying file...
-copy /Y "C:\windows\temp\.container" "Z:\home\xuser\"
-echo File copied successfully.
+:: Copy original file to temp
+copy /y "%origfile%" "%tempfile%"
 
+:: Define replacements
+set "old=E:\/data\/data\/com.winlator\/storage"
+set "new=E:\/data\/data\/com.winlator"
+set "inject=MESA_VK_WSI_DEBUG=(sw BOX64_DYNAREC_PAUSE=0 BOX64_NOBANNER=1 BOX64_DYNAREC_DIRTY=1 BOX64_UNITYPLAYER=1 vblank_mode=0 ZINK_DESCRIPTOR_POOL=1 ZINK_USE_LOW_MEMORY_POOL=1 BOX64_MMAP32=1 "
+
+:: Read whole file
+set /p content=<"%tempfile%"
+
+:: Do replacements
+call set "content=%%content:%old%=%new%%%"
+
+call set "content=%%content:envVars":"=envVars":"%inject%%%"
+
+call set "content=%%content:Container=Container-Ajay%%%"
+
+call set "content=%%content:}=}}%%%"
+
+:: Write back to temp file
+echo %content%>"%tempfile%"
+
+:: Copy modified file back to original location
+copy /y "%tempfile%" "%origfile%"
+
+:: Cleanup
+rd /s /q "%tempfolder%"
+cls
+echo Done.
+echo Enjoy good performance.
 echo Exiting Current Container...
-timeout.exe 5 /nobreak
+timeout.exe 5 /nobreak >NUL 2>&1
 taskkill /F /IM Start.exe
 exit /b
