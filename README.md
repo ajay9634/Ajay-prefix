@@ -45,11 +45,6 @@ Ajay prefix v10.18 wiki - [click here](https://github.com/ajay9634/Ajay-prefix/w
 - **Ajay prefix v10.18 Installation Guide Video** -  
 [![Ajay Prefix Installation Video](https://img.youtube.com/vi/NXCquIv8D4c/0.jpg)](https://youtu.be/yr3tpOhik0Q?si=VHWzmGhFJYA9WgKr)
 
-## ✨ Note - 
-
-Latest winlator bionic unofficial are fixed for Ajay prefix by pissblaster dev. Recommended unofficial fork -  [jhinzuo](https://github.com/jhinzuo/winlator/releases)
-Note - try `manual installation`
-
 ## ⚠️ Move Game Save Data to Ajay Prefix
 
 If you were playing games before installing Ajay Prefix, you need to manually move your game save data from:
