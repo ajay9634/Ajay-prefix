@@ -17,7 +17,7 @@ It includes multiple fixes needed in many games.
 
 Note: If it causes any issues, please let me know in the issues section.
 
-Ajay prefix wiki - [click here](https://github.com/ajay9634/Ajay-prefix/wiki)
+Ajay prefix v10.18 wiki - [click here](https://github.com/ajay9634/Ajay-prefix/wiki)
 
 ## ✨ Installation of Ajay prefix v10.18
 
