@@ -45,6 +45,9 @@ Ajay prefix v10.18 wiki - [click here](https://github.com/ajay9634/Ajay-prefix/w
 - **Ajay prefix v10.18 Installation Guide Video** -  
 [![Ajay Prefix Installation Video](https://img.youtube.com/vi/NXCquIv8D4c/0.jpg)](https://youtu.be/yr3tpOhik0Q?si=VHWzmGhFJYA9WgKr)
 
+- **Ajay Prefix 10.18 Final – Manual Installation & Start Menu Explained** -
+[![Ajay Prefix 10.18 Final – Manual Installation & Start Menu Explained](https://img.youtube.com/vi/GLiZUHEPQNc/0.jpg)](https://youtu.be/GLiZUHEPQNc)
+
 ## ⚠️ Move Game Save Data to Ajay Prefix
 
 If you were playing games before installing Ajay Prefix, you need to manually move your game save data from:
