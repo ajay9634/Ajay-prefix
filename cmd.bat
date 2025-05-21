@@ -79,6 +79,20 @@ reg add "HKCR\txtfile\shell" /f >nul
 reg add "HKCR\txtfile\shell\open" /f >nul
 reg add "HKCR\txtfile\shell\open\command" /ve /d "\"C:\windows\system32\notepad.exe\" \"%%1\"" /f >nul
 
+echo [INFO] Adding Explorer++ registry
+set "key=HKCU\Software\Explorer++\Settings"
+reg add "%key%" /v AlwaysOpenNewTab /t REG_DWORD /d 0 /f >nul
+reg add "%key%" /v ShowApplicationToolbar /t REG_DWORD /d 0 /f >nul
+reg add "%key%" /v ShowBookmarksToolbar /t REG_DWORD /d 0 /f >nul
+reg add "%key%" /v ShowDisplayWindow /t REG_DWORD /d 0 /f >nul
+reg add "%key%" /v ShowFolders /t REG_DWORD /d 0 /f >nul
+reg add "%key%" /v ShowFolderSizes /t REG_DWORD /d 0 /f >nul
+reg add "%key%" /v ShowFriendlyDates /t REG_DWORD /d 0 /f >nul
+reg add "%key%" /v ShowFullTitlePath /t REG_DWORD /d 0 /f >nul
+reg add "%key%" /v ShowInfoTips /t REG_DWORD /d 0 /f >nul
+reg add "%key%" /v ShowPrivilegeLevelInTitleBar /t REG_DWORD /d 0 /f >nul
+reg add "%key%" /v ShowTabBarAtBottom /t REG_DWORD /d 0 /f >nul
+
 echo [INFO] Adding some dlls override as native,builtin
 
 reg add "HKCU\Software\Wine\DllOverrides" /v "openal32" /t REG_SZ /d "native,builtin" /f >nul 2>&1
