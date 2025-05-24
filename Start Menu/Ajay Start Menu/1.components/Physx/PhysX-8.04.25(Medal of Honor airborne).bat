@@ -64,3 +64,5 @@ echo Extracting...
 echo.
 echo *** Running the installer ***
 Start "" /wait %drive_letter%:/Ajay_prefix/wget_files/temp/PhysX_8.04.25_SystemSoftware.exe
+
+timeout.exe /t 3
