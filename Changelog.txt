@@ -27,6 +27,7 @@ Download:
 - added some windows dlls from winetricks
 - added xliveredist , useful in games which require xlive.dll
 - updated physx scripts
+- added xliveless for section8 game
 
 =================================================================
 # Ajay Prefix Components - Changelog (18 May 2025)
