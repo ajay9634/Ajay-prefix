@@ -2,56 +2,60 @@
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 if not defined drive_letter set drive_letter=D
 color 1f
+
 echo ==================================
-echo ***** Warning: Uninstall other physx version , This is official setup. it can fix some games.
+echo ***** Warning: Uninstall other PhysX versions. This is the official setup. It can fix some games. *****
 echo ==================================
-:choice 
+
+:choice
 echo.
 echo *** Now choose an option - ***
 echo.
-ECHO 1. Install PhysX-9.21.0713-SystemSoftware
-ECHO 2. Cancel or exit
-set choice=
-set /p choice=Type the number to select an option-
-if not '%choice%'=='' set choice=%choice:~0,1%
-if '%choice%'=='1' goto install
-if '%choice%'=='2' goto cancel
-ECHO "%choice%" is not valid, try again
-ECHO.
+echo 1. Install PhysX-9.21.0713-SystemSoftware
+echo 2. Cancel or exit
+set "choice="
+set /p "choice=Type the number to select an option: "
+if not "%choice%"=="" set "choice=%choice:~0,1%"
+if "%choice%"=="1" goto install
+if "%choice%"=="2" goto cancel
+echo "%choice%" is not valid, try again.
+echo.
 goto choice
 
 :cancel
 echo.
-ECHO Installation cancelled. 
-exit
+echo Installation cancelled.
+exit /b
 
 :install
 echo.
-ECHO *** installing PhysX-9.21.0713-SystemSoftware....***
+echo *** Installing PhysX-9.21.0713-SystemSoftware.... ***
 echo.
 echo *** Script made by Ajay ***
 echo.
-rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp"
-mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp"
+
+rmdir /S /Q "%drive_letter%:\Ajay_prefix\wget_files\temp"
+mkdir "%drive_letter%:\Ajay_prefix\wget_files\temp"
 
 :: Check if the .din backup file exists
-IF EXIST "%drive_letter%:/Ajay_prefix/wget_files/physx/PhysX-9.21.0713-SystemSoftware.din" (
-    ECHO *** backup file found, Now running the installer...***
-    copy "%drive_letter%:/Ajay_prefix/wget_files/physx/PhysX-9.21.0713-SystemSoftware.din" "%drive_letter%:/Ajay_prefix/wget_files/temp/PhysX-9.21.0713-SystemSoftware.exe"
-Start /wait %drive_letter%:/Ajay_prefix/wget_files/temp/PhysX-9.21.0713-SystemSoftware.exe
-) ELSE (
+if exist "%drive_letter%:\Ajay_prefix\wget_files\physx\PhysX-9.21.0713-SystemSoftware.din" (
+    echo *** Backup file found, now running the installer... ***
+    copy "%drive_letter%:\Ajay_prefix\wget_files\physx\PhysX-9.21.0713-SystemSoftware.din" "%drive_letter%:\Ajay_prefix\wget_files\temp\PhysX-9.21.0713-SystemSoftware.exe"
+) else (
     echo.
-    ECHO ! backup file not found, downloading...
+    echo ! Backup file not found, downloading...
     echo.
-    wget -q --show-progress -P "%drive_letter%:/Ajay_prefix/wget_files/temp/" --progress=dot:mega  https://us.download.nvidia.com/Windows/9.21.0713/PhysX_9.21.0713_SystemSoftware.exe
-    copy "%drive_letter%:/Ajay_prefix/wget_files/temp/PhysX_9.21.0713_SystemSoftware.exe" "%drive_letter%:/Ajay_prefix/wget_files/physx/PhysX-9.21.0713-SystemSoftware.din"
-    
-    echo.
-    ECHO *** Download complete, installing...**"
-    echo.
-Start /wait %drive_letter%:/Ajay_prefix/wget_files/temp/PhysX_9.21.0713_SystemSoftware.exe
-
+    wget -q --show-progress -P "%drive_letter%:\Ajay_prefix\wget_files\temp" --progress=dot:mega https://us.download.nvidia.com/Windows/9.21.0713/PhysX_9.21.0713_SystemSoftware.exe
+    copy "%drive_letter%:\Ajay_prefix\wget_files\temp\PhysX_9.21.0713_SystemSoftware.exe" "%drive_letter%:\Ajay_prefix\wget_files\physx\PhysX-9.21.0713-SystemSoftware.din"
 )
 
-ECHO *******
-exit
+echo.
+echo *** installing... ***
+echo.
+
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
+start "" /wait "%drive_letter%:\Ajay_prefix\wget_files\temp\PhysX-9.21.0713-SystemSoftware.exe"
+
+echo *******
+pause

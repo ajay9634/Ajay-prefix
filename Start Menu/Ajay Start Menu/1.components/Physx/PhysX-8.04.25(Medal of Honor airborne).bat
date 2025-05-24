@@ -56,10 +56,11 @@ IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_8.04.25_SystemS
 ) ELSE (
     ECHO Part 02 already exists.
 )
-
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
 color 1f
 echo Extracting...
 %drive_letter%:\Ajay_prefix\.Resources\winrar.exe x %drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_8.04.25_SystemSoftware.part1.rar %drive_letter%:\Ajay_prefix\wget_files\temp\
 echo.
 echo *** Running the installer ***
-Start /wait %drive_letter%:/Ajay_prefix/wget_files/temp/PhysX_8.04.25_SystemSoftware.exe
+Start "" /wait %drive_letter%:/Ajay_prefix/wget_files/temp/PhysX_8.04.25_SystemSoftware.exe

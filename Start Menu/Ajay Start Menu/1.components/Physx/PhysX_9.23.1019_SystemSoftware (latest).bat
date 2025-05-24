@@ -57,9 +57,11 @@ IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_9.23.1019_Syste
 )
 
 color 1f
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
 echo Extracting...
 %drive_letter%:\Ajay_prefix\.Resources\winrar.exe x %drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_9.23.1019_SystemSoftware.part1.rar %drive_letter%:\Ajay_prefix\wget_files\temp\
 echo.
 echo *** Running the installer ***
-Start /wait %drive_letter%:/Ajay_prefix/wget_files/temp/PhysX_9.23.1019_SystemSoftware.exe
+Start "" /wait %drive_letter%:/Ajay_prefix/wget_files/temp/PhysX_9.23.1019_SystemSoftware.exe
 
