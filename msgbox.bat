@@ -63,7 +63,7 @@ if exist "%drive_letter%:\Ajay_prefix\wget_files\temp\offline_scripts_update.7z"
     rd /s /q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\*Install custom files*" >nul 2>&1
 
     echo [INFO] Extracting latest Start Menu...
-    %drive_letter%:\Ajay_prefix\.Resources\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\temp\offline_scripts_update.7z -oC:\ -r -y >NUL 2>&1
+    %drive_letter%:\Ajay_prefix\.Resources\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\temp\offline_scripts_update.7z -oC:\ -p-q -r -y >NUL 2>&1
 ) else (
     echo ERROR: Download failed or file does not exist. Skipping cleanup and extraction.
 )
