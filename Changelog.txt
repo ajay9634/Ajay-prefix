@@ -22,6 +22,11 @@ Download:
   https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 
 =================================================================
+# Ajay Prefix Components - Changelog (28 May 2025)
+
+- added glide demo (you can test it in compatibility preset and after installing dgvoodoo or nglide wrapper)
+
+=================================================================
 # Ajay Prefix Components - Changelog (24 May 2025)
 
 - added some windows dlls from winetricks
