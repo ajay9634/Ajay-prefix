@@ -8,7 +8,6 @@ rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "C:/windows/temp" >NUL 2>&1
 mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
-del "%LOCALAPPDATA%\DOSBox\dosbox-staging.conf" >NUL 2>&1
 echo *** deleted temp files ***
 echo *** script made by Ajay ***
 
