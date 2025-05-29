@@ -32,7 +32,7 @@ echo *** downloading latest dosbox script...***
 wget -q --show-progress -P %drive_letter%:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/dosbox_script.7z
 %drive_letter%:\Ajay_prefix\.Resources\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\temp\dosbox_script.7z -o%drive_letter%:\Ajay_prefix\wget_files\my_apps\dosbox-staging-v0.82.1\ -r -y >NUL 2>&1
 
-echo *** opening dosbox-32bit ***
+echo *** opening dosbox staging ***
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 Start %drive_letter%:\Ajay_prefix\wget_files\my_apps\dosbox-staging-v0.82.1\dosbox.exe
 echo ************************************************
