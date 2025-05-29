@@ -22,6 +22,16 @@ Download:
   https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 
 =================================================================
+# Ajay Prefix Components - Changelog (29 May 2025)
+
+- Added DOSBox-Staging for improved performance in 3D games like Doom, Duke3D, etc.  
+- Updated DOSBox-SVN Daum scripts  
+- Added scripts for DOSBox configuration management  
+- Added DOS games launcher script to select a path (GUI or manual), scan for .exe files, and launch games
+
+(Note: Low FPS may cause stuttering audio)
+
+=================================================================
 # Ajay Prefix Components - Changelog (28 May 2025)
 
 - added glide demo (you can test it in compatibility preset and after installing dgvoodoo or nglide wrapper)
