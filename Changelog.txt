@@ -28,6 +28,7 @@ Download:
 - Updated DOSBox-SVN Daum scripts  
 - Added scripts for DOSBox configuration management  
 - Added DOS games launcher script to select a path (GUI or manual), scan for .exe files, and launch games
+- added dgvoodoo 2.78.2
 
 (Note: Low FPS may cause stuttering audio)
 
