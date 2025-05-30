@@ -22,13 +22,18 @@ Download:
   https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 
 =================================================================
+# Ajay Prefix Components - Changelog (30 May 2025)
+
+- added dgvoodoo 2.78.2
+- added dcom95 and dcom98 in  "Winetricks Windows DLLs" — may help with old setup.exe or installers, but could cause issues in some cases
+
+=================================================================
 # Ajay Prefix Components - Changelog (29 May 2025)
 
 - Added DOSBox-Staging for improved performance in 3D games like Doom, Duke3D, etc.  
 - Updated DOSBox-SVN Daum scripts  
 - Added scripts for DOSBox configuration management  
 - Added DOS games launcher script to select a path (GUI or manual), scan for .exe files, and launch games
-- added dgvoodoo 2.78.2
 
 (Note: Low FPS may cause stuttering audio)
 
