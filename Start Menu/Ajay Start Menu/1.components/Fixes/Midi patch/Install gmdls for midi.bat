@@ -26,7 +26,7 @@ color 1f
 echo *** Extracting ...***
 %drive_letter%:\Ajay_prefix\.Resources\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\Fixes\%installname%.7z -o%drive_letter%:\Ajay_prefix\wget_files\temp\ -r -y >NUL 2>&1
 echo *** installing...***
-Xcopy /s /y %drive_letter%:\Ajay_prefix\wget_files\temp\media\ C:\windows\media\ /E /H /C /I
+Xcopy /s /y %drive_letter%:\Ajay_prefix\wget_files\temp\media\ C:\windows\syswow64\drivers\ /E /H /C /I
 
 echo ************************************************
 timeout.exe 5 /nobreak
