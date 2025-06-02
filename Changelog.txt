@@ -25,7 +25,7 @@ Download:
 # Ajay Prefix Components - Changelog (2 june 2025)
 
 - updated Dosbox-staging to latest dev version
-- updated "Run Games by DOSBox-Staging.bat" to improve performance
+- updated `Run Games by DOSBox-Staging.bat` to improve performance
 - added Scummvm 2.0.0 (dx9 supported)
 - updated some scripts and added `Delete temp files.bat`
 
