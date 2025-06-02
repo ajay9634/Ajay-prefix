@@ -30,6 +30,13 @@ Download:
 - added `change dx version.bat`
 
 =================================================================
+# Ajay Prefix Components - Changelog (2 june 2025)
+
+- updated Dosbox-staging to latest dev version
+- updated "Run Games by DOSBox-Staging.bat" to improve performance
+- added Scummvm 2.0.0 (dx9 supported)
+
+=================================================================
 # Ajay Prefix Components - Changelog (30 May 2025)
 
 - added dgvoodoo 2.78.2
