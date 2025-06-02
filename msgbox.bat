@@ -128,7 +128,45 @@ rmdir /S /Q "C:\windows\temp\"
 mkdir "C:/windows/temp" > NUL 2>&1
 rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
 
+set "baseDir=%drive_letter%:\Ajay_prefix\.Resources"
+
+:: Define whitelist (exact filenames only)
+set "keepList=7z.din 7z.exe Resources.7z Start_Menu.7z timeout.exe update.7z WinRAR.din WinRAR.exe"
+
+echo === Deleting all files not in the keep list ===
+
+:: Step 1: Delete unwanted files
+for /r "%baseDir%" %%F in (*) do (
+    set "delete=1"
+    set "fname=%%~nxF"
+
+    for %%K in (%keepList%) do (
+        if /i "%%~nxF"=="%%K" set "delete=0"
+    )
+
+    if !delete! equ 1 (
+        echo Deleting file: %%F
+        del "%%F" >nul 2>&1
+    )
+)
+
+echo === Removing folders and subfolders ===
+
+:: Step 2: Remove all folders except baseDir
+:: Run multiple passes to ensure all nested folders are removed
+for /l %%I in (1,1,5) do (
+    for /f "delims=" %%D in ('dir "%baseDir%" /ad /s /b') do (
+        if /i not "%%D"=="%baseDir%" (
+            rd "%%D" >nul 2>&1
+            if not exist "%%D" echo Removed folder: %%D
+        )
+    )
+)
+
+timeout /t 2 >NUL 2>&1
 if not exist "Z:\home\xuser" (
     rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\1.components\Winlator dev Tools"
     rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\6.File manager\Change default wfm for Winlator"
