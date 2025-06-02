@@ -136,7 +136,6 @@ set "baseDir=%drive_letter%:\Ajay_prefix\.Resources"
 :: Define whitelist (exact filenames only)
 set "keepList=7z.din 7z.exe Resources.7z Start_Menu.7z timeout.exe update.7z WinRAR.din WinRAR.exe"
 
-echo === Deleting all files not in the keep list ===
 
 :: Step 1: Delete unwanted files
 for /r "%baseDir%" %%F in (*) do (
@@ -152,8 +151,6 @@ for /r "%baseDir%" %%F in (*) do (
         del "%%F" >nul 2>&1
     )
 )
-
-echo === Removing folders and subfolders ===
 
 :: Step 2: Remove all folders except baseDir
 :: Run multiple passes to ensure all nested folders are removed
