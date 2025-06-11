@@ -31,6 +31,14 @@ echo *** Extracting ...***
 echo *** installing...***
 xcopy "%drive_letter%:\Ajay_prefix\wget_files\temp\system32\" "C:\Windows\System32\" /E /Y /D /H /C /I
 xcopy "%drive_letter%:\Ajay_prefix\wget_files\temp\syswow64\" "C:\Windows\SysWOW64\" /E /Y /D /H /C /I
-
-echo.************************************************
+echo.
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\Missing_dlls" /v "DisplayName" /t REG_SZ /d "Missing_dlls" /f >nul 2>&1
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\Missing_dlls" /v "UninstallString" /t REG_SZ /d "rundll32.exe" /f >nul 2>&1
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\Missing_dlls" /v "DisplayVersion" /t REG_SZ /d "1.1" /f >nul 2>&1
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\Missing_dlls" /v "Publisher" /t REG_SZ /d "Ajay Prefix" /f >nul 2>&1
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\Missing_dlls" /v "InstallLocation" /t REG_SZ /d "C:\\windows\\system32" /f >nul 2>&1
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\Missing_dlls" /v "DisplayIcon" /t REG_SZ /d "C:\\windows\\system32\\shell32.dll" /f >nul 2>&1
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\Missing_dlls" /v "NoModify" /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\Missing_dlls" /v "NoRepair" /t REG_DWORD /d 1 /f >nul 2>&1
+echo ************************************************
 timeout.exe 5 /nobreak
