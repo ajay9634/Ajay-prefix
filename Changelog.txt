@@ -22,6 +22,14 @@ Download:
   https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 
 =================================================================
+# Ajay Prefix Components - Changelog (11 june 2025)
+
+- Integrated registry entry for missing dlls to ensure the tool appears under "Add/Remove Programs" as informational only (no uninstaller).
+- Added a new script to install the latest Microsoft Visual C++ Redistributable directly from official sources.
+
+( Note - vc 2022 version from offline components - 14.40 , latest vc version from 1.components - 14.44  )
+
+=================================================================
 # Ajay Prefix Components - Changelog (2 june 2025)
 
 - updated Dosbox-staging to latest dev version
