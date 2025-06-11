@@ -9,7 +9,7 @@ mkdir "C:/windows/temp" >NUL 2>&1
 mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 echo *** deleted temp files ***
 cls
-echo ( Example async versions: 1.10.3, 2.0, 2.1, 2.2, 2.3 )
+echo ( Example async versions: 1.10.3, 2.0 .etc )
 echo.
 echo Fetching available **DXVK Async** versions...
 :: Ensure temp folder exists before download
