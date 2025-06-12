@@ -164,27 +164,15 @@ call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 if not defined drive_letter set drive_letter=D
 rmdir /S /Q "C:/windows/temp/Ajay-prefix-main/Start Menu" >NUL 2>&1
 
-:: Step 2: Remove all folders except baseDir
-:: Run multiple passes to ensure all nested folders are removed
-for /l %%I in (1,1,5) do (
-    for /f "delims=" %%D in ('dir "%baseDir%" /ad /s /b') do (
-        if /i not "%%D"=="%baseDir%" (
-            rd "%%D" >nul 2>&1
-            if not exist "%%D" echo Removed folder: %%D
-        )
-    )
-)
-
 timeout /t 2 >NUL 2>&1
 if not exist "Z:\home\xuser" (
     rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\1.components\Winlator dev Tools"
     rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu\6.File manager\Change default wfm for Winlator"
 )
-
+echo [INFO] done !
 echo msgbox "All processes are done. Changelog is saved in drive %drive_letter%:\Ajay_prefix\wget_files!" , vbInformation+vbSystemModal > %tmp%\tmp.vbs
 start "" cscript //nologo %tmp%\tmp.vbs
 timeout /t 5 >NUL 2>&1
-echo [INFO] done !
 taskkill /F /IM cscript.exe /T >nul 2>&1
 del %tmp%\tmp.vbs
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
