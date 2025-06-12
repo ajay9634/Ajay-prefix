@@ -123,6 +123,45 @@ reg add "HKEY_CLASSES_ROOT\Folder\shell\open\command" /ve /d "C:\\windows\\wfm2.
 reg add "HKEY_CLASSES_ROOT\Drive\shell\open\command" /ve /d "C:\\windows\\wfm2.exe \"%%1\"" /f >nul 2>&1
 reg add "HKEY_CLASSES_ROOT\Directory\shell\open\command" /ve /d "C:\\windows\\wfm2.exe \"%%1\"" /f >nul 2>&1
 
+@echo off
+cls
+call "C:\Windows\Ajay_drive.bat" >nul 2>&1
+if not defined drive_letter set drive_letter=D
+
+:: Ajay prefix folder path check
+set "RegistryKey=HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders"
+set "RegistryValue=Personal"
+set "ExpectedData=%drive_letter%:\Ajay_prefix\save_data\users\xuser\Documents"
+
+reg query "%RegistryKey%" /v "%RegistryValue%" | find "%ExpectedData%" >nul 2>&1
+if %errorlevel%==0 (
+    goto check
+) else (
+    goto done
+)
+
+:check
+:: Check if Ajay_prefix Version is 10.18_final
+reg query "HKCU\Software\Ajay_prefix" /v Version 2>nul | find "10.18_final" >nul 2>&1
+if %errorlevel%==0 (
+    goto done
+) else (
+    goto install
+)
+
+:install
+:: Add Ajay_prefix version info
+reg add "HKCU\Software\Ajay_prefix" /v Version /t REG_SZ /d "10.18_final" /f >nul 2>&1
+
+:: Optional post-install script
+if exist "C:\windows\temp\Ajay-prefix-main\msgbox.bat" (
+    echo [ Updating Ajay Prefix Registry ]
+    call "C:\windows\temp\Ajay-prefix-main\msgbox.bat"
+)
+
+:done
+timeout /t 2 >nul
+
 echo [INFO] Please wait...
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 if not defined drive_letter set drive_letter=D
