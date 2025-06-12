@@ -150,13 +150,10 @@ if %errorlevel%==0 (
 )
 
 :install
-:: Add Ajay_prefix version info
-reg add "HKCU\Software\Ajay_prefix" /v Version /t REG_SZ /d "10.18_final" /f >nul 2>&1
 
-:: Optional post-install script
 if exist "C:\windows\temp\Ajay-prefix-main\cmd.bat" (
     echo [ Updating Ajay Prefix Registry ]
-    call "C:\windows\temp\Ajay-prefix-main\msgbox.bat"
+    call "C:\windows\temp\Ajay-prefix-main\cmd.bat"
 )
 
 :done
