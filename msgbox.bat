@@ -162,9 +162,7 @@ timeout /t 2 >nul
 echo [INFO] Please wait...
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 if not defined drive_letter set drive_letter=D
-rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 rmdir /S /Q "C:/windows/temp/Ajay-prefix-main/Start Menu" >NUL 2>&1
-mkdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 
 set "baseDir=%drive_letter%:\Ajay_prefix\.Resources"
 
