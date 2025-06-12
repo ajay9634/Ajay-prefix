@@ -6,7 +6,8 @@ rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "C:/windows/temp" >NUL 2>&1
 mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
-
+echo done !
+echo [INFO] If the process appears stuck, you may safely cancel it.
 set "baseDir=%drive_letter%:\Ajay_prefix\.Resources"
 
 :: Whitelist of exact filenames to keep
