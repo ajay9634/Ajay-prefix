@@ -157,7 +157,8 @@ if exist "C:\windows\temp\Ajay-prefix-main\cmd.bat" (
 )
 
 :done
-timeout /t 2 >nul
+timeout /t 1 >NUL 2>&1
+timeout /t 1 >NUL 2>&1
 
 echo [INFO] Please wait...
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
@@ -172,7 +173,12 @@ if not exist "Z:\home\xuser" (
 echo [INFO] done !
 echo msgbox "All processes are done. Changelog is saved in drive %drive_letter%:\Ajay_prefix\wget_files!" , vbInformation+vbSystemModal > %tmp%\tmp.vbs
 start "" cscript //nologo %tmp%\tmp.vbs
-timeout /t 5 >NUL 2>&1
+timeout /t 1 >NUL 2>&1
+timeout /t 1 >NUL 2>&1
+timeout /t 1 >NUL 2>&1
+timeout /t 1 >NUL 2>&1
+timeout /t 1 >NUL 2>&1
+timeout /t 1 >NUL 2>&1
 taskkill /F /IM cscript.exe /T >nul 2>&1
 del %tmp%\tmp.vbs
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
@@ -180,7 +186,8 @@ if not defined drive_letter set drive_letter=D
 if exist "%drive_letter%:\Ajay_prefix\wget_files\Changelog.txt" (
     start "" notepad.exe "%drive_letter%:\Ajay_prefix\wget_files\Changelog.txt"
 )
-timeout /t 2 >NUL 2>&1
+timeout /t 1 >NUL 2>&1
+timeout /t 1 >NUL 2>&1
 exit /b
 
 :delete_offline_scripts
