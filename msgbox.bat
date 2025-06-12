@@ -163,7 +163,7 @@ echo [INFO] Please wait...
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 if not defined drive_letter set drive_letter=D
 rmdir /S /Q "C:/windows/temp/Ajay-prefix-main/Start Menu" >NUL 2>&1
-
+echo done !
 set "baseDir=%drive_letter%:\Ajay_prefix\.Resources"
 
 :: Whitelist of exact filenames to keep
