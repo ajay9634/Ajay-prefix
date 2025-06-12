@@ -22,6 +22,12 @@ Download:
   https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 
 =================================================================
+# Ajay Prefix Components - Changelog (12 june 2025)
+
+- updated msgbox.bat for winlator bionic
+- added vc redist 2015 , vc redist 2017
+
+=================================================================
 # Ajay Prefix Components - Changelog (11 june 2025)
 
 - Integrated registry entry for missing dlls to ensure the tool appears under "Add/Remove Programs" as informational only (no uninstaller).
