@@ -1,6 +1,9 @@
 @echo off
 echo [INFO] Adding 7zFM registry
 
+:: Add or update Ajay_prefix version in registry
+reg add "HKCU\Software\Ajay_prefix" /v Version /t REG_SZ /d "10.18_final" /f >nul 2>&1
+
 :: Associate extensions silently with 7-Zip types
 reg add "HKCR\.7z" /ve /d "7-Zip.archive" /f >nul 2>&1
 reg add "HKCR\.xz" /ve /d "7-Zip.archive" /f >nul 2>&1
