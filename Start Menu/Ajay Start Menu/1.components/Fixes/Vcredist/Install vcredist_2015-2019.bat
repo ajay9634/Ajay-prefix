@@ -1,6 +1,6 @@
 @echo off
 color 84
-title VC Redist Installer by Ajay
+title VC Redist 2015-2019 Installer by Ajay
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 if not defined drive_letter set drive_letter=D
 :: Set paths
@@ -16,7 +16,7 @@ echo *** Deleted temp files ***
 echo.
 cls
 :choice
-echo Latest VC redist x86 and x64 Installation from Microsoft :
+echo VC redist 2015-2019 x86 and x64 Installation :
 echo.
 :: Ask user
 echo 1. Download and uninstall latest VC Redist files (first step - if you already installed latest vc redist 2022)
@@ -37,7 +37,7 @@ del /F /Q /A "%file_dir%\vc_redist.x86.exe" >NUL 2>&1
 del /F /Q /A "%file_dir%\vc_redist.x64.exe" >NUL 2>&1
 color 0A
 echo.
-echo *** Downloading VC Redist x86 and x64 ***
+echo *** Downloading latest VC Redist x86 and x64 ***
 
 :: URLs
 set "x86url=https://aka.ms/vs/17/release/vc_redist.x86.exe"
@@ -55,7 +55,7 @@ goto Uninstall_local
 
 :Uninstall_local
 echo.
-echo *** Installing VC Redist files ***
+echo *** Uninstalling latest VC Redist files ***
 
 if not exist "%file_dir%\vc_redist.x86.exe" (
     echo [ERROR] vc_redist.x86.exe not found!
