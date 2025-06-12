@@ -163,9 +163,11 @@ echo [INFO] Please wait...
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 if not defined drive_letter set drive_letter=D
 rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
-rmdir /S /Q "C:/windows/temp" >NUL 2>&1
-mkdir "C:/windows/temp" >NUL 2>&1
+rmdir /S /Q "C:/windows/temp/Ajay-prefix-main/Start Menu" >NUL 2>&1
 mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
+rmdir "C:/windows/temp/Ajay-prefix-main/.github" >NUL 2>&1
+del /F "C:/windows/temp/Ajay-prefix-main/README.md" >NUL 2>&1
+del /F "C:/windows/temp/Ajay-prefix-main/LICENCE" >NUL 2>&1
 
 set "baseDir=%drive_letter%:\Ajay_prefix\.Resources"
 
