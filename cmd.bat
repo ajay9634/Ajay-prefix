@@ -90,3 +90,8 @@ echo [INFO] Adding some dlls override as native,builtin
 
 reg add "HKCU\Software\Wine\DllOverrides" /v "openal32" /t REG_SZ /d "native,builtin" /f >nul 2>&1
 reg add "HKCU\Software\Wine\DllOverrides" /v "opengl32" /t REG_SZ /d "native,builtin" /f >nul 2>&1
+
+echo [INFO] Updating cmd registry
+
+reg add "HKCU\Console" /v "FontSize" /t REG_DWORD /d 0x00160000 /f
+reg add "HKCU\Console" /v "ScreenColors" /t REG_DWORD /d 0x0A /f
