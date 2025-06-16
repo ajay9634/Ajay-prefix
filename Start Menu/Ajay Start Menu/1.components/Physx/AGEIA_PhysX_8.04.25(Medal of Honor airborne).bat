@@ -5,6 +5,8 @@ color 0a
 color 1f
 echo ==================================
 echo ***** Warning: Uninstall other physx version , This is official setup. it can fix some games.
+echo ***** Note: Launch Explorer++ to open physx launcher
+
 echo ==================================
 :choice
 echo.
