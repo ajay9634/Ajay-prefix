@@ -3,6 +3,8 @@ call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 if not defined drive_letter set drive_letter=D
 color 1f
 echo ==================================
+echo ***** Note: Launch Explorer++ to open physx launcher
+echo.
 
 :choice
 echo.
