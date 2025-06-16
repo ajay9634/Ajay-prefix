@@ -4,7 +4,6 @@ if not defined drive_letter set drive_letter=D
 color 1f
 echo ==================================
 echo ***** Note: Launch Explorer++ to open physx launcher
-echo.
 
 :choice
 echo.
