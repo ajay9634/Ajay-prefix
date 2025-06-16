@@ -51,6 +51,7 @@ IF EXIST "%drive_letter%:/Ajay_prefix/wget_files/physx/PhysX-9.13.0604-SystemSof
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 if not defined drive_letter set drive_letter=D
 :: Run the installer
+timeout.exe /t 3 >nul 2>&1
 Start "" /wait %drive_letter%:/Ajay_prefix/wget_files/temp/PhysX-9.13.0604-SystemSoftware-Legacy.msi
 ECHO *******
 timeout.exe /t 3
