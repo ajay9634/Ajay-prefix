@@ -63,6 +63,7 @@ echo Extracting...
 %drive_letter%:\Ajay_prefix\.Resources\winrar.exe x %drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_8.04.25_SystemSoftware.part1.rar %drive_letter%:\Ajay_prefix\wget_files\temp\
 echo.
 echo *** Running the installer ***
+timeout.exe /t 3 >nul 2>&1
 Start "" /wait %drive_letter%:/Ajay_prefix/wget_files/temp/PhysX_8.04.25_SystemSoftware.exe
 
 timeout.exe /t 3
