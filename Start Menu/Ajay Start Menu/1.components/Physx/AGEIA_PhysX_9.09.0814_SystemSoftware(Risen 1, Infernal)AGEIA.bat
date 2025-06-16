@@ -3,8 +3,7 @@ call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 if not defined drive_letter set drive_letter=D
 color 1f
 echo ==================================
-echo ***** Warning: Uninstall other physx version , This is official setup. it can fix some games.
-echo ==================================
+
 :choice
 echo.
 echo *** Now choose an option - ***
