@@ -1,4 +1,4 @@
-✅ Recommended PhysX Installation Combo for Compatibility
+# Recommended PhysX Installation Combo for Compatibility #
 
 To ensure maximum compatibility with both older and newer games,
 install the following PhysX packages in the exact order listed below:
@@ -18,7 +18,8 @@ install the following PhysX packages in the exact order listed below:
   5. NVIDIA PhysX 9.23.1019 System Software  
      - Provides compatibility with modern PhysX games and engines.
 
-⚠️ Important:
+# Important: #
+
 Install these packages **in the exact order** listed above. This ensures that all
 necessary runtimes are properly registered without overwriting critical files from older versions.
 
