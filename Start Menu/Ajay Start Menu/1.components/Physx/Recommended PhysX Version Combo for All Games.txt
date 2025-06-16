@@ -25,3 +25,11 @@ necessary runtimes are properly registered without overwriting critical files fr
 
 This combination offers **comprehensive support** for PhysX-based games across all generations —  
 from early AGEIA-powered classics to modern NVIDIA PhysX titles.
+
+# Problem and solution #
+
+1 - NVIDIA PhysX 9.13.0604 System Software (Legacy unistaller may not work properly 
+
+solution - don't uninstall this version, just install latest version.
+
+2 - Installer didn't lanuch - Run script again. It will work otherwise create a new container.
