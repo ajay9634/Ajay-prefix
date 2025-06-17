@@ -59,4 +59,3 @@ if not defined drive_letter set drive_letter=D
 start "" /wait "%drive_letter%:\Ajay_prefix\wget_files\temp\PhysX-9.21.0713-SystemSoftware.exe"
 echo *******
 timeout.exe /t 3
-pause
