@@ -9,7 +9,7 @@ install the following PhysX packages in the exact order listed below:
   2. AGEIA PhysX 9.09.0814  
      - Required for classic games using original AGEIA hardware acceleration.
 
-  3. NVIDIA PhysX 9.13.0604 System Software (Legacy)  
+  3. NVIDIA PhysX 9.13.0604 System Software (Legacy)  ( It may uninstall 9.09.0814 )
      - Adds support for a wide range of older NVIDIA PhysX-powered games.
 
   4. NVIDIA PhysX 9.19.0218 System Software  
@@ -17,6 +17,13 @@ install the following PhysX packages in the exact order listed below:
 
   5. NVIDIA PhysX 9.23.1019 System Software  
      - Provides compatibility with modern PhysX games and engines.
+
+
+# combos #
+
+ 1st combo for old and latest games -  1+2+4+5
+
+ 2nd combo for mid and latest games -  3+4+5
 
 # Important: #
 
