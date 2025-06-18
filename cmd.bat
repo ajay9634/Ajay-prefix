@@ -87,12 +87,6 @@ reg add "HKCR\txtfile\shell\open\command" /ve /d "\"C:\windows\system32\notepad.
 echo [INFO] Adding Explorer++ registry
 reg add "HKCU\Software\Explorer++\Settings" /v ShowDisplayWindow /t REG_DWORD /d 0 /f >nul
 
-
-echo [INFO] Adding some dlls override as native,builtin
-
-reg add "HKCU\Software\Wine\DllOverrides" /v "openal32" /t REG_SZ /d "native,builtin" /f >nul 2>&1
-reg add "HKCU\Software\Wine\DllOverrides" /v "opengl32" /t REG_SZ /d "native,builtin" /f >nul 2>&1
-
 echo [INFO] Updating cmd registry
 
 reg add "HKCU\Console" /v "FontSize" /t REG_DWORD /d 0x00160000 /f
