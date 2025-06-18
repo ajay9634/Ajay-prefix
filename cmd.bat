@@ -51,6 +51,8 @@ reg add "HKCR\7-Zip.archive\DefaultIcon" /ve /d "C:\\windows\\7z.dll,2" /f >nul 
 reg add "HKCR\7-Zip.archive\Shell\Open\Command" /ve /d "\"C:\\windows\\7zFM.exe\" \"%%1\"" /f >nul 2>&1
 
 reg add "HKCU\Software\7-Zip\FM" /v ShowRealFileIcons /t REG_DWORD /d 1 /f >nul 2>&1
+reg add "HKCU\Software\7-Zip-Zstandard\FM" /v ShowRealFileIcons /t REG_DWORD /d 1 /f >nul 2>&1
+
 
 echo [INFO] Adding Notepad registry
 reg add "HKCR\.txt" /ve /d "txtfile" /f >nul
