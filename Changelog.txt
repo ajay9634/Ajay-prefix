@@ -26,7 +26,7 @@ Download:
 
 - updated 7zFM registry
 - added `Install all vcredist dlls.bat`
-- added vc registry - vc 2015 registry , vc 2017 registry , vc 2015_2019 registry , latest vc 2022 registry 
+- added vc registry - vc 2015 registry , vc 2017 registry , vc 2015_2019 registry , latest vc 2022 and costom registry 
   These registry can suppress vc ++ error in many games like stray etc.
 
 =================================================================
