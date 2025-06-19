@@ -84,6 +84,42 @@ xcopy "C:\windows\temp\syswow64\" "C:\Windows\SysWOW64\" /E /Y /H /C /I
 goto registry
 
 :registry
+
+echo updating registry...
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{14E469E0-BF61-11CF-8385-8F69D8F1350B}" /ve /d "AsyncProperty_VB5" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{14E469E0-BF61-11CF-8385-8F69D8F1350B}\TypeLib" /ve /d "{EA544A21-C82D-11D1-A3E4-00A0C90AEA82}" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{14E469E0-BF61-11CF-8385-8F69D8F1350B}\TypeLib" /v Version /d "6.0" /f >nul 2>&1
+
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{2CE46480-1A08-11CF-AD63-00AA00614F3E}\TypeLib" /ve /d "{EA544A21-C82D-11D1-A3E4-00A0C90AEA82}" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{2CE46480-1A08-11CF-AD63-00AA00614F3E}\TypeLib" /v Version /d "6.0" /f >nul 2>&1
+
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{41A7D760-6018-11CF-9016-00AA0068841E}\TypeLib" /ve /d "{EA544A21-C82D-11D1-A3E4-00A0C90AEA82}" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{41A7D760-6018-11CF-9016-00AA0068841E}\TypeLib" /v Version /d "6.0" /f >nul 2>&1
+
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{41A7D761-6018-11CF-9016-00AA0068841E}\TypeLib" /ve /d "{EA544A21-C82D-11D1-A3E4-00A0C90AEA82}" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{41A7D761-6018-11CF-9016-00AA0068841E}\TypeLib" /v Version /d "6.0" /f >nul 2>&1
+
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{45046D60-08CA-11CF-A90F-00AA0062BB4C}" /ve /d "PropertyBag_VB5" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{45046D60-08CA-11CF-A90F-00AA0062BB4C}\TypeLib" /ve /d "{EA544A21-C82D-11D1-A3E4-00A0C90AEA82}" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{45046D60-08CA-11CF-A90F-00AA0062BB4C}\TypeLib" /v Version /d "6.0" /f >nul 2>&1
+
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{888A5A60-B283-11CF-8AD5-00A0C90AEA82}\TypeLib" /ve /d "{EA544A21-C82D-11D1-A3E4-00A0C90AEA82}" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{888A5A60-B283-11CF-8AD5-00A0C90AEA82}\TypeLib" /v Version /d "6.0" /f >nul 2>&1
+
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{A4C466B8-499F-101B-BB78-00AA00383CBB}\TypeLib" /v Version /d "6.0" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{A4C46780-499F-101B-BB78-00AA00383CBB}\TypeLib" /v Version /d "6.0" /f >nul 2>&1
+
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{B28FA150-0FF0-11CF-A911-00AA0062BB4C}\TypeLib" /ve /d "{EA544A21-C82D-11D1-A3E4-00A0C90AEA82}" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{B28FA150-0FF0-11CF-A911-00AA0062BB4C}\TypeLib" /v Version /d "6.0" /f >nul 2>&1
+
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{BE8F9800-2AAA-11CF-AD67-00AA00614F3E}\TypeLib" /ve /d "{EA544A21-C82D-11D1-A3E4-00A0C90AEA82}" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{BE8F9800-2AAA-11CF-AD67-00AA00614F3E}\TypeLib" /v Version /d "6.0" /f >nul 2>&1
+
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{C0324960-2AAA-11CF-AD67-00AA00614F3E}\TypeLib" /ve /d "{EA544A21-C82D-11D1-A3E4-00A0C90AEA82}" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{C0324960-2AAA-11CF-AD67-00AA00614F3E}\TypeLib" /v Version /d "6.0" /f >nul 2>&1
+
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{D4E0F020-720A-11CF-8136-00AA00C14959}\TypeLib" /ve /d "{EA544A21-C82D-11D1-A3E4-00A0C90AEA82}" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{D4E0F020-720A-11CF-8136-00AA00C14959}\TypeLib" /v Version /d "6.0" /f >nul 2>&1
 echo.
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\all_vcredist_dlls" /v "DisplayName" /t REG_SZ /d "all_vcredist_dlls" /f >nul 2>&1
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\all_vcredist_dlls" /v "UninstallString" /t REG_SZ /d "rundll32.exe" /f >nul 2>&1
