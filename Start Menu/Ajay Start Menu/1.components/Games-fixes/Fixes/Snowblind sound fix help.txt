@@ -1,0 +1,1 @@
+install dxwrapper dx9 in game folder to fix sound issue.
