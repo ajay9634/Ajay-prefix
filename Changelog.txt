@@ -24,6 +24,7 @@ Download:
 =================================================================
 # Ajay Prefix Components - Changelog (19 june 2025)
 
+- added latest openal and dsoal
 - updated 7zFM registry
 - added `Install all vcredist dlls.bat`
 - added vc registry - vc 2015 registry , vc 2017 registry , vc 2015_2019 registry , latest vc 2022 and costom registry 
