@@ -6,6 +6,7 @@ color 1f
 echo ==============================================================================================
 echo       Microsoft Visual C+ 2005-2022 Redistributable (x64/x86) with missing dlls
 echo        Installer - by Ajay
+echo       dlls credits - VisualCppRedist_AIO_x86_x64.exe
 echo ==============================================================================================
 echo ***** Note: Install vc registry after this
 echo ==============================================================================================
