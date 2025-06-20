@@ -24,6 +24,7 @@ Download:
 =================================================================
 # Ajay Prefix Components - Changelog (19 june 2025)
 
+- added `Install dxwrapper SoundFix winmm.bat` , useful for dx9 games to fix sound issue 
 - added latest openal and dsoal
 - updated 7zFM registry
 - added `Install all vcredist dlls.bat`
