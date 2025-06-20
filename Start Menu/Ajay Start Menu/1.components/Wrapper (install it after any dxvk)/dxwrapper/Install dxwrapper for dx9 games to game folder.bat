@@ -1,14 +1,13 @@
 @echo off
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 if not defined drive_letter set drive_letter=D
-set "installname=dxwrapper-dx9-32bit"
+set "installname=dxwrapper-1.3.7700.25-dx9-32bit"
 :: Remove the prefix "dxvk-" and keep the part after it
 color 0a
 echo *** wait....***
 echo *** deleting temp files...***
 rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp"
 mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp"
-del "%drive_letter%:/Ajay_prefix/wget_files/d3d/dxwrapper-dx9.7z" >NUL 2>&1
 echo *** deleted temp files ***
 echo.
 echo *** script made by Ajay ***
@@ -33,6 +32,6 @@ start /b cscript //nologo %tmp%\tmp.vbs
 timeout.exe /t 1 >nul
 del %tmp%\tmp.vbs
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
-Start /wait %drive_letter%:\Ajay_prefix\wget_files\temp\dxwrapper-dx9-32bit.exe
-timeout.exe /t 3 >nul
+Start "" %drive_letter%:\Ajay_prefix\wget_files\temp\dxwrapper-1.3.7700.25-dx9-32bit.exe
+timeout.exe /t 4 >nul
 echo ************************************************
