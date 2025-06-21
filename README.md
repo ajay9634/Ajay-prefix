@@ -175,9 +175,8 @@ ZINK_USE_LOW_MEMORY_POOL=1
 
 ## 🚨 Final Notice
 
-I will focus updates on components with issues.  
+I will focus updates on 1.components of Ajay prefix.
 No more WCP uploads due to time and support limits.  
-🙏 I need to focus on finding a real job.
 
 ---
 
