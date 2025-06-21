@@ -24,6 +24,10 @@ Includes multiple fixes needed in many games.
 
 ---
 
+## 📦 [Download Ajay Prefix v10.18](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
+
+---
+
 ## ⚙️ Installation of Ajay Prefix v10.18
 
 ### 🔹 Partial Automatic Installation (User Interface):
@@ -68,10 +72,6 @@ To sync save data across containers/emulators:
 
 ➡️ Make sure all use the same drive path — or copy manually if needed.
 ➡️ Use `Backup and Restore Drive C Users and ProgramData` feature
-
----
-
-## 📦 [Download Ajay Prefix v10.18](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
 
 ---
 
