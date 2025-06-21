@@ -70,8 +70,9 @@ If you previously played games, move your save data from:
 
 To sync save data across containers/emulators:  
 
-➡️ Make sure all use the same drive path — or copy manually if needed.
-➡️ Use `Backup and Restore Drive C Users and ProgramData` feature
+- ➡️ Make sure all use the same drive path — or copy manually if needed.
+
+- ➡️ Use `Backup and Restore Drive C Users and ProgramData` feature
 
 ---
 
@@ -90,6 +91,17 @@ To sync save data across containers/emulators:
 
 ---
 
+## 🚧 Limitations
+
+- 🌐 Requires Internet for full setup  
+- ⚠️ May cause issues on some emulators  
+- ❌ Some games may not be compatible  
+- 🚫 No backup for Steam saves in `C:\Program Files (x86)\Steam\`  
+- 📂 Game save path changed to `selected_drive:\Ajay_prefix\save_data\users`  
+- 🔄 Games still using `C:\Users\` → Use `Backup and Restore Drive C Users and ProgramData` feature
+
+---
+
 ## 🆘 Some Special Help
 
 📄 Read `help.txt` inside relevant folders.  
@@ -101,17 +113,6 @@ To sync save data across containers/emulators:
 
 ✅ Yes, everything is scanned and verified.  
 ⚠️ *If you still have trust issues, please avoid installing it.*
-
----
-
-## 🚧 Limitations
-
-- 🌐 Requires Internet for full setup  
-- ⚠️ May cause issues on some emulators  
-- ❌ Some games may not be compatible  
-- 🚫 No backup for Steam saves in `C:\Program Files (x86)\Steam\`  
-- 📂 Game save path changed to `selected_drive:\Ajay_prefix\save_data\users`  
-- 🔄 Games still using `C:\Users\` → Use `Backup and Restore Drive C Users and ProgramData` feature
 
 ---
 
