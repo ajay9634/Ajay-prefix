@@ -64,12 +64,6 @@ echo Extracting...
 echo.
 echo Updating Registry ...
 
-:: Standard Python file type associations
-reg add "HKCR\.py" /ve /d "Python.File" /f >nul
-reg add "HKCR\.pyw" /ve /d "Python.NoConFile" /f >nul
-reg add "HKCR\Python.File\shell\open\command" /ve /d "\"C:\\Program Files (x86)\\Python310-32\\python.exe\" \"%%1\" %%*" /f >nul
-reg add "HKCR\Python.NoConFile\shell\open\command" /ve /d "\"C:\\Program Files (x86)\\Python310-32\\pythonw.exe\" \"%%1\" %%*" /f >nul
-
 :: Custom .ajpy and .ajpyw file associations for Ajay
 reg add "HKCR\.ajpy" /ve /d "AjayPython.File" /f >nul
 reg add "HKCR\.ajpyw" /ve /d "AjayPython.NoConFile" /f >nul
