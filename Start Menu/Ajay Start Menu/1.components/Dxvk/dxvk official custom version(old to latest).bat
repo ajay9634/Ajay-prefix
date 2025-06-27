@@ -44,6 +44,20 @@ IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\d3d\dxvk-%version%.tar.gz" 
 color 1f
 echo *** Extracting ...***
 %drive_letter%:\Ajay_prefix\.Resources\winrar.exe x %drive_letter%:\Ajay_prefix\wget_files\d3d\dxvk-%version%.tar.gz C:\windows\temp\ -r -y >NUL 2>&1
+
+IF ERRORLEVEL 1 (
+    echo.
+    echo [WARN] WinRAR extraction failed. Trying with 7-Zip...
+    C:\Windows\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\d3d\dxvk-%version%.tar.gz -oC:\windows\temp -y
+C:\Windows\7z.exe x C:\windows\temp\dxvk-%version%.tar -oC:\windows\temp -y
+    IF ERRORLEVEL 1 (
+        echo.
+        echo [ERROR] Both WinRAR and 7-Zip failed to extract the archive.
+        echo Make sure all parts exist and are not corrupted.
+        timeout /t 5 >nul
+        exit /b 1
+    )
+)
 echo *** installing...***
 if exist "C:\windows\temp\dxvk-%version%\x64" ren "C:\windows\temp\dxvk-%version%\x64" system32
 if exist "C:\windows\temp\dxvk-%version%\x32" ren "C:\windows\temp\dxvk-%version%\x32" syswow64
