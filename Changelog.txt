@@ -28,6 +28,7 @@ Download:
 - Added `update2.7z`.
 - Added Python 3.10.11 with support for `.ajpy` and `.ajpyw` extensions. You can rename `.py` files to `.ajpy` to open them with this Python build.
 - Added several Python scripts.
+- Removed pre-installed dotnet40
 
 =================================================================
 # Ajay Prefix Components - Changelog (19 june 2025)
