@@ -7,7 +7,7 @@ rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp" >NUL 2>&1
 rmdir /S /Q "C:/windows/temp" >NUL 2>&1
 mkdir "C:/windows/temp" >NUL 2>&1
-echo *** Temp cleaned ***
+echo *** temp files deleted ***
 cls
 
 echo ( Recommended versions: 2.14.1 , 2.13 , 2.12 , 2.11 , 2.10 , 2.9 , 2.8 )
@@ -40,20 +40,11 @@ IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\d3d\vkd3d-proton-%version%.
 color 1f
 echo *** Decompressing and Extracting... ***
 
-IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\Files\7z24.09-zstd-x64.7z" (
-    wget -q --show-progress -P %drive_letter%:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Archive-Tools/7z24.09-zstd-x64.7z
-    copy /s /y %drive_letter%:\Ajay_prefix\wget_files\temp\7z24.09-zstd-x64.7z %drive_letter%:\Ajay_prefix\wget_files\Files\7z24.09-zstd-x64.7z /E /H /C /I
-) ELSE (
-    ECHO 7z24.09-zstd-x64 already exists.
-)
-
-%drive_letter%:\Ajay_prefix\.Resources\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\Files\7z24.09-zstd-x64.7z -o"C:\Program Files\" -p-q -r -y >NUL 2>&1
-
 :: rem Extract .tar.zst
-"C:\Program Files\7z24.09-zstd-x64\7z.exe" x "%drive_letter%:\Ajay_prefix\wget_files\d3d\vkd3d-proton-%version%.tar.zst" -o"C:\windows\temp"
+"C:\windows\7z.exe" x "%drive_letter%:\Ajay_prefix\wget_files\d3d\vkd3d-proton-%version%.tar.zst" -o"C:\windows\temp"
 
 :: rem Extract .tar
-"C:\Program Files\7z24.09-zstd-x64\7z.exe" x "C:\windows\temp\vkd3d-proton-%version%.tar" -o"C:\windows\temp"
+"C:\windows\7z.exe" x "C:\windows\temp\vkd3d-proton-%version%.tar" -o"C:\windows\temp"
 
 echo *** Installing... ***
 Xcopy /s /y C:\windows\temp\vkd3d-proton-%version%\x64\ C:\windows\system32\ /E /H /C /I
