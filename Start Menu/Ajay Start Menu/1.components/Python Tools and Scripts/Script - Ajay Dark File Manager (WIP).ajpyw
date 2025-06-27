@@ -1,0 +1,245 @@
+import os
+import sys
+import shutil
+import string
+import tkinter as tk
+from tkinter import ttk, messagebox, simpledialog
+import subprocess
+import webbrowser
+
+ICON_FOLDER = "[#]"
+ICON_FILE = "-"
+
+class FileManager:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Ajay Dark File Manager")
+        self.root.geometry("950x580")
+        self.root.configure(bg="#2e2e2e")
+
+        self.clipboard_path = None
+        self.current_path = tk.StringVar()
+        self.font_size = 12
+
+        self.setup_ui()
+        self.list_drives()
+        # Startup path changed to Documents
+        self.load_directory("C:\\")
+
+    def setup_ui(self):
+        style = ttk.Style()
+        style.theme_use("clam")
+        style.configure("TFrame", background="#2e2e2e")
+        style.configure("TLabel", background="#2e2e2e", foreground="white", font=("Segoe UI", self.font_size))
+        style.configure("TButton", background="#444", foreground="white", font=("Segoe UI", self.font_size - 1))
+        style.configure("Treeview",
+                        background="#2e2e2e",
+                        foreground="white",
+                        fieldbackground="#2e2e2e",
+                        rowheight=28,
+                        font=("Segoe UI", self.font_size))
+        style.map("Treeview", background=[("selected", "#444")])
+        style.configure("Vertical.TScrollbar", background="#444", troughcolor="#2e2e2e")
+        style.configure("Horizontal.TScrollbar", background="#444", troughcolor="#2e2e2e")
+
+        toolbar = ttk.Frame(self.root)
+        toolbar.pack(fill=tk.X, padx=5, pady=4)
+
+        self.drive_combo = ttk.Combobox(toolbar, state="readonly", width=8, font=("Segoe UI", self.font_size - 1))
+        self.drive_combo.pack(side=tk.LEFT, padx=5)
+        self.drive_combo.bind("<<ComboboxSelected>>", self.change_drive)
+
+        ttk.Button(toolbar, text="Up", command=self.go_up).pack(side=tk.LEFT, padx=5)
+        ttk.Button(toolbar, text="Edit", command=self.edit_item).pack(side=tk.LEFT, padx=5)
+        ttk.Button(toolbar, text="Copy", command=self.copy_item).pack(side=tk.LEFT, padx=5)
+        ttk.Button(toolbar, text="Paste", command=self.paste_item).pack(side=tk.LEFT, padx=5)
+        ttk.Button(toolbar, text="Rename", command=self.rename_item).pack(side=tk.LEFT, padx=5)
+        ttk.Button(toolbar, text="Delete", command=self.delete_item).pack(side=tk.LEFT, padx=5)
+
+        address = ttk.Entry(self.root, textvariable=self.current_path, font=("Segoe UI", self.font_size))
+        address.pack(fill=tk.X, padx=10, pady=2)
+        address.bind("<Return>", lambda e: self.load_directory(self.current_path.get()))
+
+        frame = ttk.Frame(self.root)
+        frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=5)
+
+        self.tree = ttk.Treeview(frame, columns=("Name", "Type", "Size"), show="headings", selectmode="extended")
+        self.tree.heading("Name", text="Name")
+        self.tree.heading("Type", text="Type")
+        self.tree.heading("Size", text="Size")
+        self.tree.column("Name", anchor=tk.W, width=450)
+        self.tree.column("Type", anchor=tk.W, width=100)
+        self.tree.column("Size", anchor=tk.E, width=100)
+        self.tree.bind("<Double-1>", self.on_open)
+
+        self.tree.tag_configure("folder_item", font=("Segoe UI", self.font_size, "bold"))
+
+        y_scroll = ttk.Scrollbar(frame, orient=tk.VERTICAL, command=self.tree.yview)
+        x_scroll = ttk.Scrollbar(frame, orient=tk.HORIZONTAL, command=self.tree.xview)
+        self.tree.configure(yscrollcommand=y_scroll.set, xscrollcommand=x_scroll.set)
+
+        self.tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        y_scroll.pack(side=tk.RIGHT, fill=tk.Y)
+        x_scroll.pack(side=tk.BOTTOM, fill=tk.X)
+
+    def list_drives(self):
+        drives = [f"{d}:\\" for d in string.ascii_uppercase if os.path.exists(f"{d}:\\")]
+        self.drive_combo['values'] = drives
+        if drives:
+            self.drive_combo.current(0)
+
+    def change_drive(self, event=None):
+        self.load_directory(self.drive_combo.get())
+
+    def load_directory(self, path):
+        if not os.path.exists(path):
+            messagebox.showerror("Error", f"Path not found:\n{path}")
+            return
+        self.current_path.set(path)
+        self.tree.delete(*self.tree.get_children())
+        try:
+            items = sorted(os.listdir(path), key=lambda x: (not os.path.isdir(os.path.join(path, x)), x.lower()))
+            # Includes hidden folders (e.g., .wine)
+            for item in items:
+                full_path = os.path.join(path, item)
+                icon = ICON_FOLDER if os.path.isdir(full_path) else ICON_FILE
+                size = f"{os.path.getsize(full_path)} B" if os.path.isfile(full_path) else ""
+                tag = "folder_item" if os.path.isdir(full_path) else ""
+                self.tree.insert("", "end", values=(f"{icon} {item}", "Folder" if tag else "File", size), tags=(tag,))
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
+
+    def get_selected_paths(self):
+        paths = []
+        for sel in self.tree.selection():
+            name = self.tree.item(sel)['values'][0].lstrip(ICON_FOLDER + ICON_FILE + " ")
+            paths.append(os.path.join(self.current_path.get(), name))
+        return paths
+
+    def on_open(self, event=None):
+        def to_wine_path(unix_path):
+            prefix = os.environ.get("WINEPREFIX", os.path.expanduser("~/.wine"))
+            prefix = os.path.abspath(prefix)
+            if unix_path.startswith(prefix):
+                rel_path = unix_path[len(prefix):].lstrip("/\\")
+                parts = rel_path.split(os.sep)
+                if len(parts) >= 2 and parts[0].startswith("drive_"):
+                    drive_letter = parts[0][-1].upper()
+                    return f"{drive_letter}:\\" + "\\".join(parts[1:])
+            return unix_path
+
+        for path in self.get_selected_paths():
+            if os.path.isdir(path):
+                self.load_directory(path)
+            else:
+                try:
+                    if "wine" in sys.executable.lower() or "wine" in os.environ.get("WINEPREFIX", ""):
+                        subprocess.Popen(["explorer", to_wine_path(os.path.abspath(path))])
+                    elif sys.platform.startswith("win"):
+                        os.startfile(path)
+                    elif sys.platform.startswith("linux"):
+                        subprocess.Popen(["xdg-open", path])
+                    else:
+                        webbrowser.open(path)
+                except Exception as e:
+                    messagebox.showerror("Open Error", f"Could not open:\n{e}")
+
+    def edit_item(self):
+        paths = self.get_selected_paths()
+        if not paths:
+            messagebox.showwarning("Edit", "No file selected.")
+            return
+
+        path = paths[0]
+        if os.path.isdir(path):
+            messagebox.showinfo("Edit", "Cannot edit folders.")
+            return
+
+        try:
+            if "wine" in sys.executable.lower() or "wine" in os.environ.get("WINEPREFIX", ""):
+                subprocess.Popen(["notepad.exe", os.path.abspath(path)])
+            elif sys.platform.startswith("win"):
+                subprocess.Popen(["notepad.exe", path])
+            elif sys.platform.startswith("linux"):
+                subprocess.Popen(["gedit", path])
+            else:
+                messagebox.showerror("Edit", "Unsupported platform.")
+        except Exception as e:
+            messagebox.showerror("Edit Error", str(e))
+
+    def copy_item(self):
+        paths = self.get_selected_paths()
+        if paths:
+            self.clipboard_path = paths
+            messagebox.showinfo("Copied", f"{len(paths)} item(s) copied.")
+
+    def paste_item(self):
+        if not self.clipboard_path:
+            return messagebox.showwarning("Paste", "Nothing copied.")
+
+        dest_dir = self.current_path.get()
+
+        popup = tk.Toplevel(self.root)
+        popup.title("Copying...")
+        popup.geometry("300x70")
+        popup.configure(bg="#2e2e2e")
+        ttk.Label(popup, text="Copying files, please wait...", background="#2e2e2e", foreground="white").pack(pady=20)
+        popup.update()
+
+        for src in self.clipboard_path:
+            name = os.path.basename(src)
+            new_path = os.path.join(dest_dir, name)
+            try:
+                if os.path.isdir(src):
+                    shutil.copytree(src, new_path)
+                else:
+                    shutil.copy2(src, new_path)
+            except Exception as e:
+                messagebox.showerror("Paste error", str(e))
+
+        popup.destroy()
+        self.load_directory(dest_dir)
+
+    def rename_item(self):
+        paths = self.get_selected_paths()
+        if not paths:
+            return
+        path = paths[0]
+        new_name = simpledialog.askstring("Rename", "Enter new name:")
+        if new_name:
+            new_path = os.path.join(self.current_path.get(), new_name)
+            try:
+                os.rename(path, new_path)
+                self.load_directory(self.current_path.get())
+            except Exception as e:
+                messagebox.showerror("Rename error", str(e))
+
+    def delete_item(self):
+        paths = self.get_selected_paths()
+        if not paths:
+            return
+
+        confirm = messagebox.askyesno("Delete Confirmation", f"Are you sure you want to delete {len(paths)} item(s)?")
+        if not confirm:
+            return
+
+        for path in paths:
+            try:
+                if os.path.isdir(path):
+                    shutil.rmtree(path)
+                else:
+                    os.remove(path)
+            except Exception as e:
+                messagebox.showerror("Delete error", str(e))
+
+        self.load_directory(self.current_path.get())
+
+    def go_up(self):
+        parent = os.path.dirname(self.current_path.get())
+        if parent and os.path.exists(parent):
+            self.load_directory(parent)
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    FileManager(root)
+    root.mainloop()
