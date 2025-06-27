@@ -12,13 +12,15 @@ echo.
 echo *** Now choose an option - ***
 echo.
 ECHO 1. Install Python-3.10.11-x86 to Program Files (x86)
+ECHO 2. Install dependencies
 ECHO 2. Cancel or exit
 echo.
 set choice=
 set /p choice=Type the number to select an option -
 if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto install
-if '%choice%'=='2' goto cancel
+if '%choice%'=='2' goto dependencies
+if '%choice%'=='3' goto cancel
 ECHO "%choice%" is not valid, try again
 ECHO.
 goto choice
@@ -78,16 +80,63 @@ IF ERRORLEVEL 1 (
 )
 
 echo.
-echo Updating Registry ...
+echo [STEP] Registering aj-prefixed file extensions...
 
-:: Custom .ajpy and .ajpyw file associations for Ajay
-reg add "HKCR\.ajpy" /ve /d "AjayPython.File" /f >nul
-reg add "HKCR\.ajpyw" /ve /d "AjayPython.NoConFile" /f >nul
-reg add "HKCR\AjayPython.File\shell\open\command" /ve /d "\"C:\\Program Files (x86)\\Python310-32\\python.exe\" \"%%1\" %%*" /f >nul
-reg add "HKCR\AjayPython.NoConFile\shell\open\command" /ve /d "\"C:\\Program Files (x86)\\Python310-32\\pythonw.exe\" \"%%1\" %%*" /f >nul
+:: Function to add registry entries
+setlocal ENABLEEXTENSIONS
+for %%F in (py pyw pyo pyc pyd pyz pyx pxi pxd) do (
+    set "EXT=%%F"
+    set "KEY=aj%%Ffile"
+    set "EXE=%PYTHON_EXE%"
+    if /i "%%F"=="pyw" set "EXE=%PYTHON_DIR%\pythonw.exe"
+    if /i "%%F"=="pyz" set "EXE=%PYTHON_DIR%\pythonw.exe"
+
+    reg add "HKCR\.aj!EXT!" /ve /d "!KEY!" /f >nul
+    reg add "HKCR\!KEY!\shell\open\command" /ve /d "\"!EXE!\" \"%%1\"" /f >nul
+)
+
+echo [ OK  ] All .aj* file types registered with Python
+echo.
 
 echo.
 echo *** Running the installer ***
 start "" "C:\Program Files (x86)\Python310-32\python.exe"
 
 timeout /t 3 >nul
+
+exit
+
+:dependencies
+cls
+color 0A
+
+set "PYTHON_DIR=C:\Program Files (x86)\Python310-32"
+set "PYTHON_EXE=%PYTHON_DIR%\python.exe"
+set "PIP_EXE=%PYTHON_DIR%\Scripts\pip.exe"
+
+echo =========================================================
+echo        PYTHON DEPENDENCIES INSTALLER
+echo =========================================================
+echo.
+
+:: [STEP] Check Python
+if not exist "%PYTHON_EXE%" (
+    echo [ERROR] Python not found:
+    echo         %PYTHON_EXE%
+    pause
+    exit /b
+)
+
+:: [STEP] Ensure pip + setup tools
+echo [STEP] Ensuring pip and tools...
+"%PYTHON_EXE%" -m ensurepip >nul 2>&1
+"%PYTHON_EXE%" -m pip install --upgrade pip setuptools wheel >nul 2>&1
+echo [ OK  ] pip, setuptools, wheel installed
+echo.
+
+:: [STEP] Install required + optional packages silently
+echo [STEP] Installing dependencies...
+"%PIP_EXE%" install Pillow requests pyinstaller pystray >nul 2>&1
+echo [ OK  ] Pillow, requests, pyinstaller, pystray installed
+timeout /t 5 >nul
+pause
