@@ -69,12 +69,25 @@ if exist "%drive_letter%:\Ajay_prefix\wget_files\temp\offline_scripts_update.7z"
 )
 
 :checked
-if not exist "C:\windows\curl.exe" (
-    echo [INFO] Curl not found. Downloading update...
+set "updatefile=%drive_letter%:\Ajay_prefix\.Resources\update2.7z"
+if not exist "C:\windows\curl.exe" set "missing=1"
+if not exist "C:\windows\7-zip32.dll" set "missing=1"
+
+if defined missing (
+    echo [INFO] Required files missing. Preparing update...
+    rmdir C:\windows\temp\update >nul 2>&1
     mkdir C:\windows\temp\update >nul 2>&1
-    wget -q -P %drive_letter%:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/update.7z
-    xcopy /s /y %drive_letter%:\Ajay_prefix\wget_files\temp\update.7z %drive_letter%:\Ajay_prefix\.Resources\ /E /H /C /I >NUL 2>&1
-    %drive_letter%:\Ajay_prefix\.Resources\7z.exe x %drive_letter%:\Ajay_prefix\.Resources\update.7z -oC:\windows\temp\update\ -r -y >NUL 2>&1
+
+    if exist "%updatefile%" (
+        echo [INFO] update2.7z found. Extracting directly...
+    ) else (
+        echo [INFO] Downloading update2.7z...
+        wget -q --show-progress -P "%drive_letter%:/Ajay_prefix/wget_files/temp/" --progress=dot:mega ^
+        https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/update2.7z
+        xcopy /s /y "%drive_letter%:\Ajay_prefix\wget_files\temp\update2.7z" "%drive_letter%:\Ajay_prefix\.Resources\" /E /H /C /I >NUL 2>&1
+    )
+
+    %drive_letter%:\Ajay_prefix\.Resources\7z.exe x "%updatefile%" -oC:\windows\temp\update\ -p-q -r -y >NUL 2>&1
     echo [INFO] *** Installing... ***
     xcopy /s /y C:\windows\temp\update\ C:\ /E /H /C /I >NUL 2>&1
 )
