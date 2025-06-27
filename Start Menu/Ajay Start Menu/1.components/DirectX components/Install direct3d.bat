@@ -33,7 +33,6 @@ echo *** deleted temp files ***
 echo.
 echo *** script made by Ajay ***
 
-:: Simulating bold with color and emphasis
 color 0A
 echo.
 echo *** Downloading part01.rar ***
@@ -44,7 +43,6 @@ IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\Files\direct3d.part1.rar" (
     ECHO Part 01 already exists.
 )
 
-:: Simulate download progress only for subsequent parts
 color 0A
 echo.
 echo *** Downloading part02.rar ***
@@ -56,14 +54,28 @@ IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\Files\direct3d.part2.rar" (
 )
 
 color 1f
-echo Extracting...
+echo.
+echo Extracting part1.rar using WinRAR...
 %drive_letter%:\Ajay_prefix\.Resources\winrar.exe x %drive_letter%:\Ajay_prefix\wget_files\Files\direct3d.part1.rar %drive_letter%:\Ajay_prefix\wget_files\temp\
 
+IF ERRORLEVEL 1 (
+    echo.
+    echo [WARN] WinRAR extraction failed. Trying with 7-Zip...
+    C:\Windows\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\Files\direct3d.part1.rar -o%drive_letter%:\Ajay_prefix\wget_files\temp\ -y
+    IF ERRORLEVEL 1 (
+        echo.
+        echo [ERROR] Both WinRAR and 7-Zip failed to extract direct3d.part1.rar
+        echo Make sure all parts exist and are not corrupted.
+        timeout /t 5 >nul
+        exit /b 1
+    )
+)
+
 echo Installing...
-%drive_letter%:\Ajay_prefix\.Resources\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\temp\direct3d.7z -oC:\windows\temp\ -r -y >NUL 2>&1
-Xcopy /s /y C:\windows\temp\ C:\windows\ /E /H /C /I
+C:\Windows\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\temp\direct3d.7z -oC:\windows\temp\ -r -y >NUL 2>&1
+xcopy /s /y C:\windows\temp\ C:\windows\ /E /H /C /I
 echo.
-timeout.exe 5 /nobreak >NUL 2>&1
+timeout.exe 3 /nobreak >NUL 2>&1
 cls
 echo Direct3d is installed !
 echo removing temp files
@@ -73,3 +85,4 @@ echo removed temp files !
 echo msgbox "Hello! direct3d is installed successfully. Now install Direct3d registry as native,builtin !" , vbinformation+vbSystemModal > %tmp%\tmp.vbs
 cscript /nologo %tmp%\tmp.vbs
 del %tmp%\tmp.vbs
+timeout.exe 3 /nobreak >NUL 2>&1
