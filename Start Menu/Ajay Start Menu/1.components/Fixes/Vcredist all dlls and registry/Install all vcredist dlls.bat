@@ -13,7 +13,6 @@ echo ===========================================================================
 :choice
 echo.
 
-
 :install1
 echo.
 echo *** deleting temp files...***
@@ -23,7 +22,6 @@ echo *** deleted temp files ***
 echo.
 echo *** script made by Ajay ***
 
-:: Simulating bold with color and emphasis
 color 0A
 echo.
 echo *** Downloading part01.rar ***
@@ -34,7 +32,6 @@ IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\Files\redist.part1.rar" (
     ECHO Part 01 already exists.
 )
 
-:: Simulate download progress only for subsequent parts
 color 0A
 echo.
 echo *** Downloading part02.rar ***
@@ -44,16 +41,32 @@ IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\Files\redist.part2.rar" (
 ) ELSE (
     ECHO Part 02 already exists.
 )
+
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 if not defined drive_letter set drive_letter=D
 color 1f
-echo Extracting...
+echo.
+echo Extracting with WinRAR...
 %drive_letter%:\Ajay_prefix\.Resources\winrar.exe x %drive_letter%:\Ajay_prefix\wget_files\Files\redist.part1.rar C:\windows\temp
+
+IF ERRORLEVEL 1 (
+    echo.
+    echo [WARN] WinRAR extraction failed. Trying with 7-Zip...
+    C:\Windows\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\Files\redist.part1.rar -oC:\windows\temp -y
+    IF ERRORLEVEL 1 (
+        echo.
+        echo [ERROR] Both WinRAR and 7-Zip failed to extract the archive.
+        echo Make sure all parts exist and are not corrupted.
+        timeout /t 5 >nul
+        exit /b 1
+    )
+)
+
 echo.
 :choice
 echo *** Now choose an option - ***
 echo.
-ECHO 1. Install all vcredist dlls as skip
+ECHO 1. Install all vcredist dlls as skip (Recommended)
 ECHO 2. Install all vcredist dlls as force
 ECHO 3. Cancel or exit
 set choice=
@@ -72,19 +85,16 @@ ECHO Installation cancelled.
 exit
 
 :install1
-
 xcopy "C:\windows\temp\system32\" "C:\Windows\System32\" /E /Y /D /H /C /I
 xcopy "C:\windows\temp\syswow64\" "C:\Windows\SysWOW64\" /E /Y /D /H /C /I
 goto registry
 
 :install2
-
 xcopy "C:\windows\temp\system32\" "C:\Windows\System32\" /E /Y /H /C /I
 xcopy "C:\windows\temp\syswow64\" "C:\Windows\SysWOW64\" /E /Y /H /C /I
 goto registry
 
 :registry
-
 echo updating registry...
 reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{14E469E0-BF61-11CF-8385-8F69D8F1350B}" /ve /d "AsyncProperty_VB5" /f >nul 2>&1
 reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{14E469E0-BF61-11CF-8385-8F69D8F1350B}\TypeLib" /ve /d "{EA544A21-C82D-11D1-A3E4-00A0C90AEA82}" /f >nul 2>&1
@@ -120,6 +130,7 @@ reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{C0324960-2AAA-11CF-AD67-00
 
 reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{D4E0F020-720A-11CF-8136-00AA00C14959}\TypeLib" /ve /d "{EA544A21-C82D-11D1-A3E4-00A0C90AEA82}" /f >nul 2>&1
 reg add "HKLM\SOFTWARE\Classes\WOW6432Node\Interface\{D4E0F020-720A-11CF-8136-00AA00C14959}\TypeLib" /v Version /d "6.0" /f >nul 2>&1
+
 echo.
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\all_vcredist_dlls" /v "DisplayName" /t REG_SZ /d "all_vcredist_dlls" /f >nul 2>&1
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Uninstall\all_vcredist_dlls" /v "UninstallString" /t REG_SZ /d "rundll32.exe" /f >nul 2>&1
