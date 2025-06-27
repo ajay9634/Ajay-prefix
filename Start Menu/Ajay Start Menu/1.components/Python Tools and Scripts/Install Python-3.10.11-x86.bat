@@ -13,6 +13,7 @@ echo *** Now choose an option - ***
 echo.
 ECHO 1. Install Python-3.10.11-x86 to Program Files (x86)
 ECHO 2. Cancel or exit
+echo.
 set choice=
 set /p choice=Type the number to select an option -
 if not '%choice%'=='' set choice=%choice:~0,1%
