@@ -52,6 +52,20 @@ color 1f
 echo *** Extracting... ***
 %drive_letter%:\Ajay_prefix\.Resources\winrar.exe x "%tarball_path%" "C:\windows\temp\" -r -y >NUL 2>&1
 
+IF ERRORLEVEL 1 (
+    echo.
+    echo [WARN] WinRAR extraction failed. Trying with 7-Zip...
+    C:\Windows\7z.exe x %tarball_path% -oC:\windows\temp -y
+C:\Windows\7z.exe x C:\windows\temp\dxvk-sarek-%version%.tar -oC:\windows\temp -y
+    IF ERRORLEVEL 1 (
+        echo.
+        echo [ERROR] Both WinRAR and 7-Zip failed to extract the archive.
+        echo Make sure all parts exist and are not corrupted.
+        timeout /t 5 >nul
+        exit /b 1
+    )
+)
+
 :: Find extracted folder
 set "dxvk_dir="
 for /d %%F in (C:\windows\temp\dxvk-*) do (
