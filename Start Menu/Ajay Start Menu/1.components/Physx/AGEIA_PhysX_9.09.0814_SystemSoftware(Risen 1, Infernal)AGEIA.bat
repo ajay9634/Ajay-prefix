@@ -1,10 +1,17 @@
 @echo off
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 if not defined drive_letter set drive_letter=D
+setlocal EnableDelayedExpansion
+
+set "winrar=%drive_letter%:\Ajay_prefix\.Resources\winrar.exe"
+set "sevenzip=C:\Windows\7z.exe"
+set "part1=%drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_9.09.0814_SystemSoftware.part1.rar"
+set "extract_dir=%drive_letter%:\Ajay_prefix\wget_files\temp"
+
 color 1f
 echo =====================================================
-echo ***** Note: Launch Explorer++ to open physx launcher
-
+echo ***** Note: Launch Explorer++ to open PhysX launcher
+echo =====================================================
 :choice
 echo.
 echo *** Now choose an option - ***
@@ -23,44 +30,61 @@ goto choice
 :cancel
 echo.
 ECHO Installation cancelled. 
-exit
+exit /b
 
 :install
 echo.
-echo *** deleting temp files...***
-rmdir /S /Q "%drive_letter%:/Ajay_prefix/wget_files/temp"
-mkdir "%drive_letter%:/Ajay_prefix/wget_files/temp"
-echo *** deleted temp files ***
+echo *** Deleting temp files... ***
+rmdir /S /Q "%extract_dir%" >nul 2>&1
+mkdir "%extract_dir%" >nul 2>&1
+echo *** Deleted temp files ***
 echo.
-echo *** script made by Ajay ***
+echo *** Script made by Ajay ***
 
-:: Simulating bold with color and emphasis
 color 0A
 echo.
 echo *** Downloading part01.rar ***
-IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_9.09.0814_SystemSoftware.part1.rar" (
-    wget -q --show-progress -P %drive_letter%:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/PhysX_9.09.0814_SystemSoftware.part1.rar
-    copy /s /y %drive_letter%:\Ajay_prefix\wget_files\temp\PhysX_9.09.0814_SystemSoftware.part1.rar %drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_9.09.0814_SystemSoftware.part1.rar /E /H /C /I
+IF NOT EXIST "%part1%" (
+    wget -q --show-progress -P "%extract_dir%" --progress=dot:mega ^
+    https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/PhysX_9.09.0814_SystemSoftware.part1.rar
+    copy /s /y "%extract_dir%\PhysX_9.09.0814_SystemSoftware.part1.rar" "%part1%" /E /H /C /I
 ) ELSE (
-    ECHO Part 01 already exists.
+    echo Part 01 already exists.
 )
 
-:: Simulate download progress only for subsequent parts
-color 0A
 echo.
 echo *** Downloading part02.rar ***
 IF NOT EXIST "%drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_9.09.0814_SystemSoftware.part2.rar" (
-    wget -q --show-progress -P %drive_letter%:/Ajay_prefix/wget_files/temp/ --progress=dot:mega https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/PhysX_9.09.0814_SystemSoftware.part2.rar
-    copy /s /y %drive_letter%:\Ajay_prefix\wget_files\temp\PhysX_9.09.0814_SystemSoftware.part2.rar %drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_9.09.0814_SystemSoftware.part2.rar /E /H /C /I
+    wget -q --show-progress -P "%extract_dir%" --progress=dot:mega ^
+    https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/My-files/PhysX_9.09.0814_SystemSoftware.part2.rar
+    copy /s /y "%extract_dir%\PhysX_9.09.0814_SystemSoftware.part2.rar" ^
+    "%drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_9.09.0814_SystemSoftware.part2.rar" /E /H /C /I
 ) ELSE (
-    ECHO Part 02 already exists.
+    echo Part 02 already exists.
 )
-call "C:\Windows\Ajay_drive.bat" >nul 2>&1
-if not defined drive_letter set drive_letter=D
+
 color 1f
-echo Extracting...
-%drive_letter%:\Ajay_prefix\.Resources\winrar.exe x %drive_letter%:\Ajay_prefix\wget_files\physx\PhysX_9.09.0814_SystemSoftware.part1.rar %drive_letter%:\Ajay_prefix\wget_files\temp\
+echo.
+echo *** Extracting PhysX archive ***
+%winrar% x "%part1%" "%extract_dir%\" -r -y >nul 2>&1
+
+IF EXIST "%extract_dir%\PhysX_9.09.0814_SystemSoftware.exe" (
+    echo [OK] Extracted using WinRAR
+) ELSE (
+    echo [!] WinRAR failed, trying 7z.exe...
+    %sevenzip% x "%part1%" -o"%extract_dir%" -y >nul 2>&1
+    IF EXIST "%extract_dir%\PhysX_9.09.0814_SystemSoftware.exe" (
+        echo [OK] Extracted using 7z.exe
+    ) ELSE (
+        echo [X] Extraction failed.
+        pause
+        exit /b
+    )
+)
+
 echo.
 echo *** Running the installer ***
-Start "" %drive_letter%:/Ajay_prefix/wget_files/temp/PhysX_9.09.0814_SystemSoftware.exe
-timeout.exe /t 3
+Start "" "%extract_dir%\PhysX_9.09.0814_SystemSoftware.exe"
+
+timeout.exe /t 3 >nul
+endlocal
