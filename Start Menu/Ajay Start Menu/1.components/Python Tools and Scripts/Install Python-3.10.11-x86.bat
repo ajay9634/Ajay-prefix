@@ -5,11 +5,13 @@ if not defined drive_letter set drive_letter=D
 color 0a
 color 1f
 echo ==============================================================================================
+echo Note - This version can run ajpy and ajpyw format and it won't conflict with other Python.
+echo ==============================================================================================
 :choice
 echo.
 echo *** Now choose an option - ***
 echo.
-ECHO 1. Install Python-3.10.11-x86
+ECHO 1. Install Python-3.10.11-x86 to Program Files (x86)
 ECHO 2. Cancel or exit
 set choice=
 set /p choice=Type the number to select an option -
@@ -60,6 +62,19 @@ color 1f
 echo.
 echo Extracting...
 "%drive_letter%:\Ajay_prefix\.Resources\winrar.exe" x -y "%drive_letter%:\Ajay_prefix\wget_files\Files\Python310-32.part1.rar" "C:\Program Files (x86)\"
+
+IF ERRORLEVEL 1 (
+    echo.
+    echo [WARN] WinRAR extraction failed. Trying with 7-Zip...
+    C:\Windows\7z.exe x %drive_letter%:\Ajay_prefix\wget_files\Files\Python310-32.part1.rar -o"C:\Program Files (x86)" -y
+    IF ERRORLEVEL 1 (
+        echo.
+        echo [ERROR] Both WinRAR and 7-Zip failed to extract the archive.
+        echo Make sure all parts exist and are not corrupted.
+        timeout /t 5 >nul
+        exit /b 1
+    )
+)
 
 echo.
 echo Updating Registry ...
