@@ -21,9 +21,11 @@ class FileManager:
         self.current_path = tk.StringVar()
         self.font_size = 12
 
+        self.root.rowconfigure(3, weight=1)
+        self.root.columnconfigure(0, weight=1)
+
         self.setup_ui()
         self.list_drives()
-        # Startup path changed to Documents
         self.load_directory("C:\\")
 
     def setup_ui(self):
@@ -32,36 +34,69 @@ class FileManager:
         style.configure("TFrame", background="#2e2e2e")
         style.configure("TLabel", background="#2e2e2e", foreground="white", font=("Segoe UI", self.font_size))
         style.configure("TButton", background="#444", foreground="white", font=("Segoe UI", self.font_size - 1))
-        style.configure("Treeview",
-                        background="#2e2e2e",
-                        foreground="white",
-                        fieldbackground="#2e2e2e",
-                        rowheight=28,
+        style.map("TButton", background=[("active", "#666")])
+        style.configure("Treeview", background="#2e2e2e", foreground="white", fieldbackground="#2e2e2e", rowheight=24,
                         font=("Segoe UI", self.font_size))
+        style.configure("Treeview.Heading", background="#1e1e1e", foreground="white",
+                        font=("Segoe UI", self.font_size, "bold"))
+        style.map("Treeview.Heading", background=[("active", "#444")])
         style.map("Treeview", background=[("selected", "#444")])
         style.configure("Vertical.TScrollbar", background="#444", troughcolor="#2e2e2e")
         style.configure("Horizontal.TScrollbar", background="#444", troughcolor="#2e2e2e")
+        style.configure("TCombobox", fieldbackground="#1e1e1e", background="#1e1e1e", foreground="white",
+                        arrowcolor="white")
+        style.map("TCombobox", fieldbackground=[("readonly", "#1e1e1e")],
+                  background=[("readonly", "#1e1e1e")], foreground=[("readonly", "white")])
 
-        toolbar = ttk.Frame(self.root)
-        toolbar.pack(fill=tk.X, padx=5, pady=4)
+        toolbar1 = ttk.Frame(self.root)
+        toolbar1.grid(row=0, column=0, sticky="ew", padx=6, pady=2)
+        for i in range(10):
+            toolbar1.columnconfigure(i, weight=1)
 
-        self.drive_combo = ttk.Combobox(toolbar, state="readonly", width=8, font=("Segoe UI", self.font_size - 1))
-        self.drive_combo.pack(side=tk.LEFT, padx=5)
+        self.drive_combo = ttk.Combobox(toolbar1, state="readonly", width=6, font=("Segoe UI", self.font_size - 1))
+        self.drive_combo.grid(row=0, column=0, padx=2, sticky="ew")
         self.drive_combo.bind("<<ComboboxSelected>>", self.change_drive)
 
-        ttk.Button(toolbar, text="Up", command=self.go_up).pack(side=tk.LEFT, padx=5)
-        ttk.Button(toolbar, text="Edit", command=self.edit_item).pack(side=tk.LEFT, padx=5)
-        ttk.Button(toolbar, text="Copy", command=self.copy_item).pack(side=tk.LEFT, padx=5)
-        ttk.Button(toolbar, text="Paste", command=self.paste_item).pack(side=tk.LEFT, padx=5)
-        ttk.Button(toolbar, text="Rename", command=self.rename_item).pack(side=tk.LEFT, padx=5)
-        ttk.Button(toolbar, text="Delete", command=self.delete_item).pack(side=tk.LEFT, padx=5)
+        buttons = [
+            ("Up", self.go_up),
+            ("Edit", self.edit_item),
+            ("Copy", self.copy_item),
+            ("Paste", self.paste_item),
+            ("Rename", self.rename_item),
+            ("Delete", self.delete_item),
+            ("Shortcut", self.create_shortcut),
+            ("New File", self.create_file),
+            ("New Folder", self.create_folder)
+        ]
 
-        address = ttk.Entry(self.root, textvariable=self.current_path, font=("Segoe UI", self.font_size))
-        address.pack(fill=tk.X, padx=10, pady=2)
+        for i, (label, command) in enumerate(buttons, start=1):
+            ttk.Button(toolbar1, text=label, command=command).grid(row=0, column=i, padx=2, sticky="ew")
+
+        toolbar2 = ttk.Frame(self.root)
+        toolbar2.grid(row=1, column=0, sticky="ew", padx=6, pady=1)
+        for i in range(4):
+            toolbar2.columnconfigure(i, weight=1)
+
+        locations = [
+            ("Desktop", self.go_desktop),
+            ("Documents", self.go_documents),
+            ("Home", self.go_home),
+            ("Start Menu", self.go_start_menu)
+        ]
+
+        for i, (label, command) in enumerate(locations):
+            ttk.Button(toolbar2, text=label, command=command).grid(row=0, column=i, padx=2, sticky="ew")
+
+        address = tk.Entry(self.root, textvariable=self.current_path,
+                           font=("Segoe UI", self.font_size),
+                           bg="#2e2e2e", fg="white", insertbackground="white", relief=tk.FLAT)
+        address.grid(row=2, column=0, sticky="ew", padx=6)
         address.bind("<Return>", lambda e: self.load_directory(self.current_path.get()))
 
         frame = ttk.Frame(self.root)
-        frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=5)
+        frame.grid(row=3, column=0, sticky="nsew", padx=6, pady=2)
+        frame.columnconfigure(0, weight=1)
+        frame.rowconfigure(0, weight=1)
 
         self.tree = ttk.Treeview(frame, columns=("Name", "Type", "Size"), show="headings", selectmode="extended")
         self.tree.heading("Name", text="Name")
@@ -71,16 +106,15 @@ class FileManager:
         self.tree.column("Type", anchor=tk.W, width=100)
         self.tree.column("Size", anchor=tk.E, width=100)
         self.tree.bind("<Double-1>", self.on_open)
-
         self.tree.tag_configure("folder_item", font=("Segoe UI", self.font_size, "bold"))
+        self.tree.grid(row=0, column=0, sticky="nsew")
 
         y_scroll = ttk.Scrollbar(frame, orient=tk.VERTICAL, command=self.tree.yview)
         x_scroll = ttk.Scrollbar(frame, orient=tk.HORIZONTAL, command=self.tree.xview)
         self.tree.configure(yscrollcommand=y_scroll.set, xscrollcommand=x_scroll.set)
 
-        self.tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-        y_scroll.pack(side=tk.RIGHT, fill=tk.Y)
-        x_scroll.pack(side=tk.BOTTOM, fill=tk.X)
+        y_scroll.grid(row=0, column=1, sticky="ns")
+        x_scroll.grid(row=1, column=0, sticky="ew")
 
     def list_drives(self):
         drives = [f"{d}:\\" for d in string.ascii_uppercase if os.path.exists(f"{d}:\\")]
@@ -99,7 +133,6 @@ class FileManager:
         self.tree.delete(*self.tree.get_children())
         try:
             items = sorted(os.listdir(path), key=lambda x: (not os.path.isdir(os.path.join(path, x)), x.lower()))
-            # Includes hidden folders (e.g., .wine)
             for item in items:
                 full_path = os.path.join(path, item)
                 icon = ICON_FOLDER if os.path.isdir(full_path) else ICON_FILE
@@ -117,24 +150,13 @@ class FileManager:
         return paths
 
     def on_open(self, event=None):
-        def to_wine_path(unix_path):
-            prefix = os.environ.get("WINEPREFIX", os.path.expanduser("~/.wine"))
-            prefix = os.path.abspath(prefix)
-            if unix_path.startswith(prefix):
-                rel_path = unix_path[len(prefix):].lstrip("/\\")
-                parts = rel_path.split(os.sep)
-                if len(parts) >= 2 and parts[0].startswith("drive_"):
-                    drive_letter = parts[0][-1].upper()
-                    return f"{drive_letter}:\\" + "\\".join(parts[1:])
-            return unix_path
-
         for path in self.get_selected_paths():
             if os.path.isdir(path):
                 self.load_directory(path)
             else:
                 try:
                     if "wine" in sys.executable.lower() or "wine" in os.environ.get("WINEPREFIX", ""):
-                        subprocess.Popen(["explorer", to_wine_path(os.path.abspath(path))])
+                        subprocess.Popen(["explorer", os.path.abspath(path)])
                     elif sys.platform.startswith("win"):
                         os.startfile(path)
                     elif sys.platform.startswith("linux"):
@@ -149,21 +171,12 @@ class FileManager:
         if not paths:
             messagebox.showwarning("Edit", "No file selected.")
             return
-
         path = paths[0]
         if os.path.isdir(path):
             messagebox.showinfo("Edit", "Cannot edit folders.")
             return
-
         try:
-            if "wine" in sys.executable.lower() or "wine" in os.environ.get("WINEPREFIX", ""):
-                subprocess.Popen(["notepad.exe", os.path.abspath(path)])
-            elif sys.platform.startswith("win"):
-                subprocess.Popen(["notepad.exe", path])
-            elif sys.platform.startswith("linux"):
-                subprocess.Popen(["gedit", path])
-            else:
-                messagebox.showerror("Edit", "Unsupported platform.")
+            subprocess.Popen(["notepad.exe" if sys.platform.startswith("win") or "wine" in sys.executable.lower() else "gedit", path])
         except Exception as e:
             messagebox.showerror("Edit Error", str(e))
 
@@ -176,16 +189,7 @@ class FileManager:
     def paste_item(self):
         if not self.clipboard_path:
             return messagebox.showwarning("Paste", "Nothing copied.")
-
         dest_dir = self.current_path.get()
-
-        popup = tk.Toplevel(self.root)
-        popup.title("Copying...")
-        popup.geometry("300x70")
-        popup.configure(bg="#2e2e2e")
-        ttk.Label(popup, text="Copying files, please wait...", background="#2e2e2e", foreground="white").pack(pady=20)
-        popup.update()
-
         for src in self.clipboard_path:
             name = os.path.basename(src)
             new_path = os.path.join(dest_dir, name)
@@ -196,8 +200,6 @@ class FileManager:
                     shutil.copy2(src, new_path)
             except Exception as e:
                 messagebox.showerror("Paste error", str(e))
-
-        popup.destroy()
         self.load_directory(dest_dir)
 
     def rename_item(self):
@@ -218,11 +220,9 @@ class FileManager:
         paths = self.get_selected_paths()
         if not paths:
             return
-
         confirm = messagebox.askyesno("Delete Confirmation", f"Are you sure you want to delete {len(paths)} item(s)?")
         if not confirm:
             return
-
         for path in paths:
             try:
                 if os.path.isdir(path):
@@ -231,13 +231,118 @@ class FileManager:
                     os.remove(path)
             except Exception as e:
                 messagebox.showerror("Delete error", str(e))
-
         self.load_directory(self.current_path.get())
 
     def go_up(self):
         parent = os.path.dirname(self.current_path.get())
         if parent and os.path.exists(parent):
             self.load_directory(parent)
+
+    def go_home(self):
+        home = os.path.expanduser("~")
+        if os.path.exists(home):
+            self.load_directory(home)
+
+    def go_documents(self):
+        try:
+            result = subprocess.run([
+                "reg", "query", "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders", "/v", "Personal"
+            ], capture_output=True, text=True, check=True)
+            lines = result.stdout.strip().splitlines()
+            for line in lines:
+                if "Personal" in line:
+                    path = line.split("    ")[-1].strip()
+                    if os.path.exists(path):
+                        self.load_directory(path)
+                        return
+        except:
+            pass
+        docs = os.path.join(os.path.expanduser("~"), "Documents")
+        if os.path.exists(docs):
+            self.load_directory(docs)
+
+    def go_desktop(self):
+        desktop = os.path.join(os.path.expanduser("~"), "Desktop")
+        if os.path.exists(desktop):
+            self.load_directory(desktop)
+
+    def go_start_menu(self):
+        programdata = os.environ.get("ProgramData", "C:\\ProgramData")
+        start_menu = os.path.join(programdata, "Microsoft", "Windows", "Start Menu")
+        if os.path.exists(start_menu):
+            self.load_directory(start_menu)
+
+    def create_shortcut(self):
+        paths = self.get_selected_paths()
+        if not paths:
+            return messagebox.showwarning("Shortcut", "No item selected.")
+        desktop = os.path.join(os.path.expanduser("~"), "Desktop")
+        if not os.path.exists(desktop):
+            messagebox.showerror("Shortcut", "Desktop folder not found.")
+            return
+        for target in paths:
+            name = os.path.basename(target)
+            base = os.path.splitext(name)[0]
+            if sys.platform.startswith("win") or "wine" in sys.executable.lower():
+                shortcut_path = os.path.join(desktop, base + ".lnk")
+                vbs_path = os.path.join(desktop, "temp_shortcut.vbs")
+                try:
+                    with open(vbs_path, "w", encoding="utf-8") as f:
+                        f.write(f'''
+Set oWS = WScript.CreateObject("WScript.Shell")
+Set oLink = oWS.CreateShortcut("{shortcut_path}")
+oLink.TargetPath = "{os.path.abspath(target)}"
+oLink.WorkingDirectory = "{os.path.dirname(os.path.abspath(target))}"
+oLink.Save
+'''.strip())
+                    subprocess.run(["wscript", vbs_path], check=True)
+                    os.remove(vbs_path)
+                    messagebox.showinfo("Shortcut Created", f"Shortcut created:\n{shortcut_path}")
+                except Exception as e:
+                    messagebox.showerror("Shortcut Error", str(e))
+            elif sys.platform.startswith("linux"):
+                shortcut_path = os.path.join(desktop, base + ".desktop")
+                try:
+                    with open(shortcut_path, "w", encoding="utf-8") as f:
+                        f.write(f"""[Desktop Entry]
+Name={base}
+Exec="{os.path.abspath(target)}"
+Type=Application
+Terminal=false
+""")
+                    os.chmod(shortcut_path, 0o755)
+                    messagebox.showinfo("Shortcut Created", f"Shortcut created:\n{shortcut_path}")
+                except Exception as e:
+                    messagebox.showerror("Shortcut Error", str(e))
+
+    def create_file(self):
+        name = simpledialog.askstring("New File", "Enter file name (with extension):")
+        if not name:
+            return
+        path = os.path.join(self.current_path.get(), name)
+        if os.path.exists(path):
+            messagebox.showwarning("File Exists", "File already exists.")
+            return
+        try:
+            with open(path, "w", encoding="utf-8") as f:
+                f.write("")
+            self.load_directory(self.current_path.get())
+        except Exception as e:
+            messagebox.showerror("Error", f"Could not create file:\n{e}")
+
+    def create_folder(self):
+        name = simpledialog.askstring("New Folder", "Enter folder name:")
+        if not name:
+            return
+        path = os.path.join(self.current_path.get(), name)
+        if os.path.exists(path):
+            messagebox.showwarning("Folder Exists", "Folder already exists.")
+            return
+        try:
+            os.makedirs(path)
+            self.load_directory(self.current_path.get())
+        except Exception as e:
+            messagebox.showerror("Error", f"Could not create folder:\n{e}")
 
 if __name__ == "__main__":
     root = tk.Tk()
