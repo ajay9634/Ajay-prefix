@@ -8,18 +8,19 @@ import subprocess
 import webbrowser
 
 ICON_FOLDER = "[#]"
-ICON_FILE = "-"
+ICON_FILE = " "
+ICON_EXE = " ∆"
 
 class FileManager:
     def __init__(self, root):
         self.root = root
         self.root.title("Ajay Dark File Manager")
-        self.root.geometry("950x580")
+        self.root.geometry("800x500")
         self.root.configure(bg="#2e2e2e")
 
         self.clipboard_path = None
         self.current_path = tk.StringVar()
-        self.font_size = 12
+        self.font_size = 14
 
         self.root.rowconfigure(3, weight=1)
         self.root.columnconfigure(0, weight=1)
@@ -58,15 +59,14 @@ class FileManager:
         self.drive_combo.bind("<<ComboboxSelected>>", self.change_drive)
 
         buttons = [
-            ("Up", self.go_up),
             ("Edit", self.edit_item),
             ("Copy", self.copy_item),
             ("Paste", self.paste_item),
             ("Rename", self.rename_item),
             ("Delete", self.delete_item),
             ("Shortcut", self.create_shortcut),
-            ("New File", self.create_file),
-            ("New Folder", self.create_folder)
+            ("N File", self.create_file),
+            ("N Folder", self.create_folder)
         ]
 
         for i, (label, command) in enumerate(buttons, start=1):
@@ -87,10 +87,17 @@ class FileManager:
         for i, (label, command) in enumerate(locations):
             ttk.Button(toolbar2, text=label, command=command).grid(row=0, column=i, padx=2, sticky="ew")
 
-        address = tk.Entry(self.root, textvariable=self.current_path,
+        address_row = ttk.Frame(self.root)
+        address_row.grid(row=2, column=0, sticky="ew", padx=6, pady=2)
+        address_row.columnconfigure(1, weight=1)
+
+        btn_up = ttk.Button(address_row, text="Up", command=self.go_up)
+        btn_up.grid(row=0, column=0, padx=(0, 6))
+
+        address = tk.Entry(address_row, textvariable=self.current_path,
                            font=("Segoe UI", self.font_size),
                            bg="#2e2e2e", fg="white", insertbackground="white", relief=tk.FLAT)
-        address.grid(row=2, column=0, sticky="ew", padx=6)
+        address.grid(row=0, column=1, sticky="ew")
         address.bind("<Return>", lambda e: self.load_directory(self.current_path.get()))
 
         frame = ttk.Frame(self.root)
@@ -135,7 +142,12 @@ class FileManager:
             items = sorted(os.listdir(path), key=lambda x: (not os.path.isdir(os.path.join(path, x)), x.lower()))
             for item in items:
                 full_path = os.path.join(path, item)
-                icon = ICON_FOLDER if os.path.isdir(full_path) else ICON_FILE
+                if os.path.isdir(full_path):
+                    icon = ICON_FOLDER
+                elif full_path.lower().endswith(".exe"):
+                    icon = ICON_EXE
+                else:
+                    icon = ICON_FILE
                 size = f"{os.path.getsize(full_path)} B" if os.path.isfile(full_path) else ""
                 tag = "folder_item" if os.path.isdir(full_path) else ""
                 self.tree.insert("", "end", values=(f"{icon} {item}", "Folder" if tag else "File", size), tags=(tag,))
@@ -145,7 +157,7 @@ class FileManager:
     def get_selected_paths(self):
         paths = []
         for sel in self.tree.selection():
-            name = self.tree.item(sel)['values'][0].lstrip(ICON_FOLDER + ICON_FILE + " ")
+            name = self.tree.item(sel)['values'][0].lstrip(ICON_FOLDER + ICON_FILE + ICON_EXE + " ")
             paths.append(os.path.join(self.current_path.get(), name))
         return paths
 
@@ -234,8 +246,8 @@ class FileManager:
         self.load_directory(self.current_path.get())
 
     def go_up(self):
-        parent = os.path.dirname(self.current_path.get())
-        if parent and os.path.exists(parent):
+        parent = os.path.dirname(self.current_path.get().rstrip("\\/"))
+        if parent and os.path.exists(parent) and parent != self.current_path.get():
             self.load_directory(parent)
 
     def go_home(self):
