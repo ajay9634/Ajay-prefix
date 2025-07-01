@@ -81,7 +81,8 @@ IF ERRORLEVEL 1 (
 
 echo.
 echo [STEP] Registering aj-prefixed file extensions...
-
+set "PYTHON_DIR=C:\Program Files (x86)\Python310-32"
+set "PYTHON_EXE=%PYTHON_DIR%\python.exe"
 :: Function to add registry entries
 setlocal ENABLEEXTENSIONS
 for %%F in (py pyw pyo pyc pyd pyz pyx pxi pxd) do (
@@ -89,7 +90,7 @@ for %%F in (py pyw pyo pyc pyd pyz pyx pxi pxd) do (
     set "KEY=aj%%Ffile"
     set "EXE=%PYTHON_EXE%"
     if /i "%%F"=="pyw" set "EXE=%PYTHON_DIR%\pythonw.exe"
-    if /i "%%F"=="pyz" set "EXE=%PYTHON_DIR%\pythonw.exe"
+    if /i "%%F"=="pyz" set "EXE=%Ajay_File_Manager%\pythonw.exe"
 
     reg add "HKCR\.aj!EXT!" /ve /d "!KEY!" /f >nul
     reg add "HKCR\!KEY!\shell\open\command" /ve /d "\"!EXE!\" \"%%1\"" /f >nul
