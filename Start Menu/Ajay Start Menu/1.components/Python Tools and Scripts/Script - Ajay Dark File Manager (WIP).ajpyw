@@ -15,7 +15,7 @@ class FileManager:
     def __init__(self, root):
         self.root = root
         self.root.title("Ajay Dark File Manager")
-        self.root.geometry("800x500")
+        self.root.geometry("800x450")
         self.root.configure(bg="#2e2e2e")
 
         self.clipboard_path = None
