@@ -167,14 +167,9 @@ class FileManager:
                 self.load_directory(path)
             else:
                 try:
-                    if "wine" in sys.executable.lower() or "wine" in os.environ.get("WINEPREFIX", ""):
-                        subprocess.Popen(["explorer", os.path.abspath(path)])
-                    elif sys.platform.startswith("win"):
-                        os.startfile(path)
-                    elif sys.platform.startswith("linux"):
-                        subprocess.Popen(["xdg-open", path])
-                    else:
-                        webbrowser.open(path)
+                    full_path = os.path.abspath(path)
+                    working_dir = os.path.dirname(full_path)
+                    subprocess.Popen(["cmd.exe", "/c", "start", "", full_path], cwd=working_dir)
                 except Exception as e:
                     messagebox.showerror("Open Error", f"Could not open:\n{e}")
 
@@ -188,7 +183,7 @@ class FileManager:
             messagebox.showinfo("Edit", "Cannot edit folders.")
             return
         try:
-            subprocess.Popen(["notepad.exe" if sys.platform.startswith("win") or "wine" in sys.executable.lower() else "gedit", path])
+            subprocess.Popen(["notepad.exe", path])
         except Exception as e:
             messagebox.showerror("Edit Error", str(e))
 
@@ -295,37 +290,22 @@ class FileManager:
         for target in paths:
             name = os.path.basename(target)
             base = os.path.splitext(name)[0]
-            if sys.platform.startswith("win") or "wine" in sys.executable.lower():
-                shortcut_path = os.path.join(desktop, base + ".lnk")
-                vbs_path = os.path.join(desktop, "temp_shortcut.vbs")
-                try:
-                    with open(vbs_path, "w", encoding="utf-8") as f:
-                        f.write(f'''
+            shortcut_path = os.path.join(desktop, base + ".lnk")
+            vbs_path = os.path.join(desktop, "temp_shortcut.vbs")
+            try:
+                with open(vbs_path, "w", encoding="utf-8") as f:
+                    f.write(f'''
 Set oWS = WScript.CreateObject("WScript.Shell")
 Set oLink = oWS.CreateShortcut("{shortcut_path}")
 oLink.TargetPath = "{os.path.abspath(target)}"
 oLink.WorkingDirectory = "{os.path.dirname(os.path.abspath(target))}"
 oLink.Save
 '''.strip())
-                    subprocess.run(["wscript", vbs_path], check=True)
-                    os.remove(vbs_path)
-                    messagebox.showinfo("Shortcut Created", f"Shortcut created:\n{shortcut_path}")
-                except Exception as e:
-                    messagebox.showerror("Shortcut Error", str(e))
-            elif sys.platform.startswith("linux"):
-                shortcut_path = os.path.join(desktop, base + ".desktop")
-                try:
-                    with open(shortcut_path, "w", encoding="utf-8") as f:
-                        f.write(f"""[Desktop Entry]
-Name={base}
-Exec="{os.path.abspath(target)}"
-Type=Application
-Terminal=false
-""")
-                    os.chmod(shortcut_path, 0o755)
-                    messagebox.showinfo("Shortcut Created", f"Shortcut created:\n{shortcut_path}")
-                except Exception as e:
-                    messagebox.showerror("Shortcut Error", str(e))
+                subprocess.run(["wscript", vbs_path], check=True)
+                os.remove(vbs_path)
+                messagebox.showinfo("Shortcut Created", f"Shortcut created:\n{shortcut_path}")
+            except Exception as e:
+                messagebox.showerror("Shortcut Error", str(e))
 
     def create_file(self):
         name = simpledialog.askstring("New File", "Enter file name (with extension):")
