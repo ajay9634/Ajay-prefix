@@ -22,6 +22,9 @@ class FileManager:
         self.current_path = tk.StringVar()
         self.font_size = 14
 
+        self.history = []
+        self.current_index = -1
+
         self.root.rowconfigure(3, weight=1)
         self.root.columnconfigure(0, weight=1)
 
@@ -89,15 +92,21 @@ class FileManager:
 
         address_row = ttk.Frame(self.root)
         address_row.grid(row=2, column=0, sticky="ew", padx=6, pady=2)
-        address_row.columnconfigure(1, weight=1)
+        address_row.columnconfigure(3, weight=1)
+
+        btn_back = ttk.Button(address_row, text="Back", command=self.go_back)
+        btn_back.grid(row=0, column=0, padx=(0, 6))
 
         btn_up = ttk.Button(address_row, text="Up", command=self.go_up)
-        btn_up.grid(row=0, column=0, padx=(0, 6))
+        btn_up.grid(row=0, column=1, padx=(0, 6))
+
+        btn_refresh = ttk.Button(address_row, text="Refresh", command=self.refresh)
+        btn_refresh.grid(row=0, column=2, padx=(0, 6))
 
         address = tk.Entry(address_row, textvariable=self.current_path,
                            font=("Segoe UI", self.font_size),
                            bg="#2e2e2e", fg="white", insertbackground="white", relief=tk.FLAT)
-        address.grid(row=0, column=1, sticky="ew")
+        address.grid(row=0, column=3, sticky="ew")
         address.bind("<Return>", lambda e: self.load_directory(self.current_path.get()))
 
         frame = ttk.Frame(self.root)
@@ -132,10 +141,15 @@ class FileManager:
     def change_drive(self, event=None):
         self.load_directory(self.drive_combo.get())
 
-    def load_directory(self, path):
+    def load_directory(self, path, add_to_history=True):
         if not os.path.exists(path):
             messagebox.showerror("Error", f"Path not found:\n{path}")
             return
+        if add_to_history:
+            if self.current_index == -1 or self.history[self.current_index] != path:
+                self.history = self.history[:self.current_index + 1]
+                self.history.append(path)
+                self.current_index += 1
         self.current_path.set(path)
         self.tree.delete(*self.tree.get_children())
         try:
@@ -172,6 +186,16 @@ class FileManager:
                     subprocess.Popen(["cmd.exe", "/c", "start", "", full_path], cwd=working_dir)
                 except Exception as e:
                     messagebox.showerror("Open Error", f"Could not open:\n{e}")
+
+    def go_back(self):
+        if self.current_index > 0:
+            self.current_index -= 1
+            self.load_directory(self.history[self.current_index], add_to_history=False)
+        else:
+            messagebox.showinfo("Back", "No previous location.")
+
+    def refresh(self):
+        self.load_directory(self.current_path.get(), add_to_history=False)
 
     def edit_item(self):
         paths = self.get_selected_paths()
