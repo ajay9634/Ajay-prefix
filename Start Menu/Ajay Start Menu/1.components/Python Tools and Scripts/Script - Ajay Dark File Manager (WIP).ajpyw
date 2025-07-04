@@ -21,9 +21,7 @@ class FileManager:
         self.clipboard_path = None
         self.current_path = tk.StringVar()
         self.font_size = 14
-
-        self.history = []
-        self.current_index = -1
+        self.previous_path = ""
 
         self.root.rowconfigure(3, weight=1)
         self.root.columnconfigure(0, weight=1)
@@ -31,6 +29,20 @@ class FileManager:
         self.setup_ui()
         self.list_drives()
         self.load_directory("C:\\")
+
+    def add_tooltip(self, widget, text):
+        def on_enter(event):
+            widget.tooltip = tk.Toplevel(widget)
+            widget.tooltip.wm_overrideredirect(True)
+            widget.tooltip.wm_geometry(f"+{event.x_root + 10}+{event.y_root + 10}")
+            label = tk.Label(widget.tooltip, text=text, background="#111", foreground="white",
+                             font=("Segoe UI", 9), borderwidth=1, relief="solid", padx=4, pady=2)
+            label.pack()
+        def on_leave(event):
+            if hasattr(widget, 'tooltip'):
+                widget.tooltip.destroy()
+        widget.bind("<Enter>", on_enter)
+        widget.bind("<Leave>", on_leave)
 
     def setup_ui(self):
         style = ttk.Style()
@@ -62,18 +74,24 @@ class FileManager:
         self.drive_combo.bind("<<ComboboxSelected>>", self.change_drive)
 
         buttons = [
-            ("Edit", self.edit_item),
-            ("Copy", self.copy_item),
-            ("Paste", self.paste_item),
-            ("Rename", self.rename_item),
-            ("Delete", self.delete_item),
-            ("Shortcut", self.create_shortcut),
-            ("N File", self.create_file),
-            ("N Folder", self.create_folder)
+            ("✎", self.edit_item),       # Edit
+            ("⧉", self.copy_item),       # Copy
+            ("⎘", self.paste_item),      # Paste
+            ("✍", self.rename_item),     # Rename
+            ("✖", self.delete_item),     # Delete
+            ("⤴", self.create_shortcut), # Shortcut
+            ("⊕", self.create_file),     # New File
+            ("⊞", self.create_folder)    # New Folder
+        ]
+
+        tooltips = [
+            "Edit", "Copy", "Paste", "Rename", "Delete", "Shortcut", "New File", "New Folder"
         ]
 
         for i, (label, command) in enumerate(buttons, start=1):
-            ttk.Button(toolbar1, text=label, command=command).grid(row=0, column=i, padx=2, sticky="ew")
+            btn = ttk.Button(toolbar1, text=label, command=command)
+            btn.grid(row=0, column=i, padx=2, sticky="ew")
+            self.add_tooltip(btn, tooltips[i - 1])
 
         toolbar2 = ttk.Frame(self.root)
         toolbar2.grid(row=1, column=0, sticky="ew", padx=6, pady=1)
@@ -94,14 +112,9 @@ class FileManager:
         address_row.grid(row=2, column=0, sticky="ew", padx=6, pady=2)
         address_row.columnconfigure(3, weight=1)
 
-        btn_back = ttk.Button(address_row, text="Back", command=self.go_back)
-        btn_back.grid(row=0, column=0, padx=(0, 6))
-
-        btn_up = ttk.Button(address_row, text="Up", command=self.go_up)
-        btn_up.grid(row=0, column=1, padx=(0, 6))
-
-        btn_refresh = ttk.Button(address_row, text="Refresh", command=self.refresh)
-        btn_refresh.grid(row=0, column=2, padx=(0, 6))
+        ttk.Button(address_row, text="←", width=3, command=self.go_back).grid(row=0, column=0, padx=(0, 6))
+        ttk.Button(address_row, text="↑", width=3, command=self.go_up).grid(row=0, column=1, padx=(0, 6))
+        ttk.Button(address_row, text="⟳", width=3, command=self.refresh).grid(row=0, column=2, padx=(0, 6))
 
         address = tk.Entry(address_row, textvariable=self.current_path,
                            font=("Segoe UI", self.font_size),
@@ -141,15 +154,11 @@ class FileManager:
     def change_drive(self, event=None):
         self.load_directory(self.drive_combo.get())
 
-    def load_directory(self, path, add_to_history=True):
+    def load_directory(self, path):
         if not os.path.exists(path):
             messagebox.showerror("Error", f"Path not found:\n{path}")
             return
-        if add_to_history:
-            if self.current_index == -1 or self.history[self.current_index] != path:
-                self.history = self.history[:self.current_index + 1]
-                self.history.append(path)
-                self.current_index += 1
+        self.previous_path = self.current_path.get()
         self.current_path.set(path)
         self.tree.delete(*self.tree.get_children())
         try:
@@ -186,16 +195,6 @@ class FileManager:
                     subprocess.Popen(["cmd.exe", "/c", "start", "", full_path], cwd=working_dir)
                 except Exception as e:
                     messagebox.showerror("Open Error", f"Could not open:\n{e}")
-
-    def go_back(self):
-        if self.current_index > 0:
-            self.current_index -= 1
-            self.load_directory(self.history[self.current_index], add_to_history=False)
-        else:
-            messagebox.showinfo("Back", "No previous location.")
-
-    def refresh(self):
-        self.load_directory(self.current_path.get(), add_to_history=False)
 
     def edit_item(self):
         paths = self.get_selected_paths()
@@ -268,6 +267,13 @@ class FileManager:
         parent = os.path.dirname(self.current_path.get().rstrip("\\/"))
         if parent and os.path.exists(parent) and parent != self.current_path.get():
             self.load_directory(parent)
+
+    def go_back(self):
+        if self.previous_path and os.path.exists(self.previous_path):
+            self.load_directory(self.previous_path)
+
+    def refresh(self):
+        self.load_directory(self.current_path.get())
 
     def go_home(self):
         home = os.path.expanduser("~")
