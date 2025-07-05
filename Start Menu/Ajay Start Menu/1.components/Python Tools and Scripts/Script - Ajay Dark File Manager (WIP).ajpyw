@@ -5,7 +5,6 @@ import string
 import tkinter as tk
 from tkinter import ttk, messagebox, simpledialog
 import subprocess
-import webbrowser
 
 ICON_FOLDER = "[#]"
 ICON_FILE = " "
@@ -21,7 +20,8 @@ class FileManager:
         self.clipboard_path = None
         self.current_path = tk.StringVar()
         self.font_size = 14
-        self.previous_path = ""
+        self.history = []
+        self.history_index = -1
 
         self.root.rowconfigure(3, weight=1)
         self.root.columnconfigure(0, weight=1)
@@ -74,14 +74,14 @@ class FileManager:
         self.drive_combo.bind("<<ComboboxSelected>>", self.change_drive)
 
         buttons = [
-            ("✎", self.edit_item),       # Edit
-            ("⧉", self.copy_item),       # Copy
-            ("⎘", self.paste_item),      # Paste
-            ("✍", self.rename_item),     # Rename
-            ("✖", self.delete_item),     # Delete
-            ("⤴", self.create_shortcut), # Shortcut
-            ("⊕", self.create_file),     # New File
-            ("⊞", self.create_folder)    # New Folder
+            ("✎", self.edit_item),
+            ("⧉", self.copy_item),
+            ("⎘", self.paste_item),
+            ("✍", self.rename_item),
+            ("✖", self.delete_item),
+            ("⤴", self.create_shortcut),
+            ("⊕", self.create_file),
+            ("⊞", self.create_folder)
         ]
 
         tooltips = [
@@ -110,16 +110,17 @@ class FileManager:
 
         address_row = ttk.Frame(self.root)
         address_row.grid(row=2, column=0, sticky="ew", padx=6, pady=2)
-        address_row.columnconfigure(3, weight=1)
+        address_row.columnconfigure(4, weight=1)
 
-        ttk.Button(address_row, text="←", width=3, command=self.go_back).grid(row=0, column=0, padx=(0, 6))
-        ttk.Button(address_row, text="↑", width=3, command=self.go_up).grid(row=0, column=1, padx=(0, 6))
-        ttk.Button(address_row, text="⟳", width=3, command=self.refresh).grid(row=0, column=2, padx=(0, 6))
+        ttk.Button(address_row, text="←", width=3, command=self.go_back).grid(row=0, column=0, padx=(0, 4))
+        ttk.Button(address_row, text="→", width=3, command=self.go_forward).grid(row=0, column=1, padx=(0, 4))
+        ttk.Button(address_row, text="↑", width=3, command=self.go_up).grid(row=0, column=2, padx=(0, 4))
+        ttk.Button(address_row, text="⟳", width=3, command=self.refresh).grid(row=0, column=3, padx=(0, 6))
 
         address = tk.Entry(address_row, textvariable=self.current_path,
                            font=("Segoe UI", self.font_size),
                            bg="#2e2e2e", fg="white", insertbackground="white", relief=tk.FLAT)
-        address.grid(row=0, column=3, sticky="ew")
+        address.grid(row=0, column=4, sticky="ew")
         address.bind("<Return>", lambda e: self.load_directory(self.current_path.get()))
 
         frame = ttk.Frame(self.root)
@@ -154,11 +155,16 @@ class FileManager:
     def change_drive(self, event=None):
         self.load_directory(self.drive_combo.get())
 
-    def load_directory(self, path):
+    def load_directory(self, path, add_to_history=True):
         if not os.path.exists(path):
             messagebox.showerror("Error", f"Path not found:\n{path}")
             return
-        self.previous_path = self.current_path.get()
+
+        if add_to_history:
+            self.history = self.history[:self.history_index + 1]
+            self.history.append(path)
+            self.history_index += 1
+
         self.current_path.set(path)
         self.tree.delete(*self.tree.get_children())
         try:
@@ -176,6 +182,24 @@ class FileManager:
                 self.tree.insert("", "end", values=(f"{icon} {item}", "Folder" if tag else "File", size), tags=(tag,))
         except Exception as e:
             messagebox.showerror("Error", str(e))
+
+    def go_back(self):
+        if self.history_index > 0:
+            self.history_index -= 1
+            self.load_directory(self.history[self.history_index], add_to_history=False)
+
+    def go_forward(self):
+        if self.history_index < len(self.history) - 1:
+            self.history_index += 1
+            self.load_directory(self.history[self.history_index], add_to_history=False)
+
+    def go_up(self):
+        parent = os.path.dirname(self.current_path.get().rstrip("\\/"))
+        if parent and os.path.exists(parent) and parent != self.current_path.get():
+            self.load_directory(parent)
+
+    def refresh(self):
+        self.load_directory(self.current_path.get(), add_to_history=False)
 
     def get_selected_paths(self):
         paths = []
@@ -220,17 +244,32 @@ class FileManager:
         if not self.clipboard_path:
             return messagebox.showwarning("Paste", "Nothing copied.")
         dest_dir = self.current_path.get()
+        pasted_count, skipped = 0, []
         for src in self.clipboard_path:
-            name = os.path.basename(src)
-            new_path = os.path.join(dest_dir, name)
             try:
+                name = os.path.basename(src)
+                new_path = os.path.join(dest_dir, name)
+                if os.path.exists(new_path):
+                    skipped.append(name)
+                    continue
                 if os.path.isdir(src):
                     shutil.copytree(src, new_path)
                 else:
                     shutil.copy2(src, new_path)
+                pasted_count += 1
             except Exception as e:
-                messagebox.showerror("Paste error", str(e))
-        self.load_directory(dest_dir)
+                messagebox.showerror("Paste Error", f"Failed to paste: {name}\n{str(e)}")
+                return
+        self.load_directory(dest_dir, add_to_history=False)
+        if pasted_count > 0:
+            msg = f"{pasted_count} item(s) pasted successfully."
+            if skipped:
+                msg += f"\n\nSkipped {len(skipped)} existing item(s):\n" + "\n".join(skipped)
+            messagebox.showinfo("Paste Complete", msg)
+        elif skipped:
+            messagebox.showinfo("Paste Skipped", f"All selected items already exist:\n" + "\n".join(skipped))
+        else:
+            messagebox.showwarning("Paste", "Nothing was pasted.")
 
     def rename_item(self):
         paths = self.get_selected_paths()
@@ -242,7 +281,7 @@ class FileManager:
             new_path = os.path.join(self.current_path.get(), new_name)
             try:
                 os.rename(path, new_path)
-                self.load_directory(self.current_path.get())
+                self.load_directory(self.current_path.get(), add_to_history=False)
             except Exception as e:
                 messagebox.showerror("Rename error", str(e))
 
@@ -261,19 +300,7 @@ class FileManager:
                     os.remove(path)
             except Exception as e:
                 messagebox.showerror("Delete error", str(e))
-        self.load_directory(self.current_path.get())
-
-    def go_up(self):
-        parent = os.path.dirname(self.current_path.get().rstrip("\\/"))
-        if parent and os.path.exists(parent) and parent != self.current_path.get():
-            self.load_directory(parent)
-
-    def go_back(self):
-        if self.previous_path and os.path.exists(self.previous_path):
-            self.load_directory(self.previous_path)
-
-    def refresh(self):
-        self.load_directory(self.current_path.get())
+        self.load_directory(self.current_path.get(), add_to_history=False)
 
     def go_home(self):
         home = os.path.expanduser("~")
@@ -348,7 +375,7 @@ oLink.Save
         try:
             with open(path, "w", encoding="utf-8") as f:
                 f.write("")
-            self.load_directory(self.current_path.get())
+            self.load_directory(self.current_path.get(), add_to_history=False)
         except Exception as e:
             messagebox.showerror("Error", f"Could not create file:\n{e}")
 
@@ -362,7 +389,7 @@ oLink.Save
             return
         try:
             os.makedirs(path)
-            self.load_directory(self.current_path.get())
+            self.load_directory(self.current_path.get(), add_to_history=False)
         except Exception as e:
             messagebox.showerror("Error", f"Could not create folder:\n{e}")
 
