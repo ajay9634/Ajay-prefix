@@ -22,6 +22,7 @@ class FileManager:
         self.font_size = 14
         self.history = []
         self.history_index = -1
+        self.show_executables_only = False
 
         self.root.rowconfigure(3, weight=1)
         self.root.columnconfigure(0, weight=1)
@@ -29,6 +30,30 @@ class FileManager:
         self.setup_ui()
         self.list_drives()
         self.load_directory("C:\\")
+
+        # Enable mouse drag multi-select
+        self.drag_selecting = False
+        self.tree.bind("<ButtonPress-1>", self.start_drag_select)
+        self.tree.bind("<B1-Motion>", self.drag_select)
+        self.tree.bind("<ButtonRelease-1>", self.end_drag_select)
+
+    def start_drag_select(self, event):
+        self.drag_selecting = True
+        row = self.tree.identify_row(event.y)
+        if row:
+            self.tree.selection_set(row)
+
+    def drag_select(self, event):
+        if not self.drag_selecting:
+            return
+        row = self.tree.identify_row(event.y)
+        if row:
+            current = set(self.tree.selection())
+            current.add(row)
+            self.tree.selection_set(list(current))
+
+    def end_drag_select(self, event):
+        self.drag_selecting = False
 
     def add_tooltip(self, widget, text):
         def on_enter(event):
@@ -66,7 +91,7 @@ class FileManager:
 
         toolbar1 = ttk.Frame(self.root)
         toolbar1.grid(row=0, column=0, sticky="ew", padx=6, pady=2)
-        for i in range(10):
+        for i in range(11):
             toolbar1.columnconfigure(i, weight=1)
 
         self.drive_combo = ttk.Combobox(toolbar1, state="readonly", width=6, font=("Segoe UI", self.font_size - 1))
@@ -81,11 +106,12 @@ class FileManager:
             ("✖", self.delete_item),
             ("⤴", self.create_shortcut),
             ("⊕", self.create_file),
-            ("⊞", self.create_folder)
+            ("⊞", self.create_folder),
+            ("⇄", self.toggle_executables_view)
         ]
 
         tooltips = [
-            "Edit", "Copy", "Paste", "Rename", "Delete", "Shortcut", "New File", "New Folder"
+            "Edit", "Copy", "Paste", "Rename", "Delete", "Shortcut", "New File", "New Folder", "Show Only Executables"
         ]
 
         for i, (label, command) in enumerate(buttons, start=1):
@@ -146,6 +172,10 @@ class FileManager:
         y_scroll.grid(row=0, column=1, sticky="ns")
         x_scroll.grid(row=1, column=0, sticky="ew")
 
+    def toggle_executables_view(self):
+        self.show_executables_only = not self.show_executables_only
+        self.load_directory(self.current_path.get(), add_to_history=False)
+
     def list_drives(self):
         drives = [f"{d}:\\" for d in string.ascii_uppercase if os.path.exists(f"{d}:\\")]
         self.drive_combo['values'] = drives
@@ -171,12 +201,19 @@ class FileManager:
             items = sorted(os.listdir(path), key=lambda x: (not os.path.isdir(os.path.join(path, x)), x.lower()))
             for item in items:
                 full_path = os.path.join(path, item)
+
+                # Filter: show only folders + executables when enabled
+                if self.show_executables_only:
+                    if not os.path.isdir(full_path) and not full_path.lower().endswith((".exe", ".bat", ".cmd", ".lnk")):
+                        continue
+
                 if os.path.isdir(full_path):
                     icon = ICON_FOLDER
                 elif full_path.lower().endswith(".exe"):
                     icon = ICON_EXE
                 else:
                     icon = ICON_FILE
+
                 size = f"{os.path.getsize(full_path)} B" if os.path.isfile(full_path) else ""
                 tag = "folder_item" if os.path.isdir(full_path) else ""
                 self.tree.insert("", "end", values=(f"{icon} {item}", "Folder" if tag else "File", size), tags=(tag,))
@@ -397,3 +434,5 @@ if __name__ == "__main__":
     root = tk.Tk()
     FileManager(root)
     root.mainloop()
+            
+            
