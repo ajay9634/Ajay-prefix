@@ -30,6 +30,21 @@ class FileManager:
         self.setup_ui()
         self.list_drives()
         self.load_directory("C:\\")
+        
+        # Add hotkeys
+        self.root.bind("<F5>", lambda e: self.refresh())
+        self.root.bind("<Control-c>", lambda e: self.copy_item())
+        self.root.bind("<Control-v>", lambda e: self.paste_item())
+        self.root.bind("<Delete>", lambda e: self.delete_item())
+        self.root.bind("<F2>", lambda e: self.rename_item())
+        self.root.bind("<Control-Shift-N>", lambda e: self.create_folder())
+        self.root.bind("<Control-n>", lambda e: self.create_file())
+        self.root.bind("<Control-l>", lambda e: self.create_shortcut())
+        self.root.bind("<Control-e>", lambda e: self.toggle_executables_view())
+        self.root.bind("<Control-Return>", lambda e: self.edit_item())
+        self.root.bind("<Alt-Left>", lambda e: self.go_back())
+        self.root.bind("<Alt-Right>", lambda e: self.go_forward())
+        self.root.bind("<Alt-Up>", lambda e: self.go_up())
 
         # Enable mouse drag multi-select
         self.drag_selecting = False
