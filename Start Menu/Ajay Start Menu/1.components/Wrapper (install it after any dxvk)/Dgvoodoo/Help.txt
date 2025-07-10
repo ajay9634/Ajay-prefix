@@ -39,7 +39,8 @@ Files:
 ---------------------------
 Setup for different games :
 ---------------------------
-
+- Try dgvoodoo2_78_2 , It's most stable version
+- Try different dgvoodoo if it's crashing or nor working properly 
 
 ---------------------------
 Website:
