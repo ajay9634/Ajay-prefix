@@ -48,6 +48,19 @@ echo *** Extracting DxWrapper ***
 set "WRAPPER_EXTRACT_DIR=C:\windows\temp\dxwrapper-%version%"
 %drive_letter%:\Ajay_prefix\.Resources\winrar.exe x "%DDIR%\DxWrapper-%version%.zip" "%WRAPPER_EXTRACT_DIR%\" -r -y >NUL 2>&1
 
+IF ERRORLEVEL 1 (
+    echo.
+    echo [WARN] WinRAR extraction failed. Trying with 7-Zip...
+    C:\Windows\7z.exe x "%DDIR%\DxWrapper-%version%.zip" -o"%WRAPPER_EXTRACT_DIR%" -y
+    IF ERRORLEVEL 1 (
+        echo.
+        echo [ERROR] Both WinRAR and 7-Zip failed to extract the archive.
+        echo Make sure all parts exist and are not corrupted.
+        timeout /t 5 >nul
+        exit /b 1
+    )
+)
+
 :: Copy default files
 echo *** Copying default DxWrapper files ***
 
