@@ -121,15 +121,15 @@ del /f /q "%TEMP%\msgbox.vbs" >nul
         Start "" "!GAMEFOLDER!\dgvoodooCpl.exe"
     ) else (
         echo [WARN] Folder picker failed or was cancelled.
-        set /p GAMEFOLDER=Enter game folder path manually (e.g. Z:\sdcard\Games): 
+        set /p GAMEFOLDER=Enter game folder path manually - e.g. F:\Games :
         if not exist "!GAMEFOLDER!" (
             echo [ERROR] Folder not found. Aborting.
             timeout /t 2
             exit /b 1
         )
-        xcopy /s /e /h /y "%TEMPDIR%\MS\x86\*.*" "!GAMEFOLDER!\" >nul
-        xcopy /s /e /h /y "%TEMPDIR%\3dfx\x86\*.*" "!GAMEFOLDER!\" >nul
-        xcopy /s /e /h /y "%TEMPDIR%\dgvoodooCpl.exe" "!GAMEFOLDER!\" >nul
+        xcopy /y "%TEMPDIR%\MS\x86\*.*" "!GAMEFOLDER!\" >nul
+        xcopy /y "%TEMPDIR%\3dfx\x86\*.*" "!GAMEFOLDER!\" >nul
+        xcopy /y "%TEMPDIR%\dgvoodooCpl.exe" "!GAMEFOLDER!\" >nul
         echo [ OK  ] Files copied to manually entered path
         echo [INFO] Opening conf ...
         echo MsgBox "Change dgvoodoo.conf location to Roaming ", vbInformation, "dgVoodoo Config Reminder" > "%TEMP%\msgbox.vbs"

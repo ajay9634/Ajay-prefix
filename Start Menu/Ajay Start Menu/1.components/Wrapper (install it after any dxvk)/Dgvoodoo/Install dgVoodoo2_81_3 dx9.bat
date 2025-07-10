@@ -6,7 +6,7 @@ color 0a
 call "C:\Windows\Ajay_drive.bat" >nul 2>&1
 if not defined drive_letter set drive_letter=D
 
-set "installname=dgVoodoo2_63"
+set "installname=dgVoodoo2_81_3"
 set "ZIPPATH=%drive_letter%:\Ajay_prefix\wget_files\d3d\%installname%.zip"
 set "TEMPDIR=C:\windows\temp"
 set "WRAR=%drive_letter%:\Ajay_prefix\.Resources\winrar.exe"
@@ -58,11 +58,10 @@ IF ERRORLEVEL 1 (
     )
 )
 echo [ OK  ] Extraction successful
-del /s /f /q "C:\windows\temp\d3d9.dll"
 echo.
 cls
 echo ==========================================================
-echo [STEP] Choose where to install %installname% files ( ddraw.dll , d3d8.dll and nglide dlls ) -
+echo [STEP] Choose where to install %installname% files ( ddraw.dll , d3d8.dll , d3d9.dll and nglide dlls ) -
 echo ----------------------------------------------------------
 echo [1] Install to SysWOW64
 echo [2] Install to a Game Folder (choose manually)
@@ -72,6 +71,7 @@ set /p choice="[CHOICE] Enter 1 or 2: "
 if /i "%choice%"=="1" (
     echo [INFO] Installing to SysWOW64...
     xcopy /y "%TEMPDIR%\MS\x86\*.*" "C:\Windows\SysWOW64\" >nul
+    xcopy /y "%TEMPDIR%\MS\x64\*.*" "C:\Windows\System32\" >nul
     xcopy /y "%TEMPDIR%\3dfx\x86\*.*" "C:\Windows\SysWOW64\" >nul
     echo [ OK  ] Files copied to SysWOW64
     echo [INFO] Opening conf ...
@@ -111,6 +111,7 @@ if /i "%choice%"=="2" (
             exit /b 1
         )
         xcopy /y "%TEMPDIR%\MS\x86\*.*" "!GAMEFOLDER!\" >nul
+        xcopy /y "%TEMPDIR%\MS\x64\*.*" "!GAMEFOLDER!\x64\" >nul
         xcopy /y "%TEMPDIR%\3dfx\x86\*.*" "!GAMEFOLDER!\" >nul
         xcopy /y "%TEMPDIR%\dgvoodooCpl.exe" "!GAMEFOLDER!\" >nul
         echo [ OK  ] Files copied to game folder
@@ -128,6 +129,7 @@ del /f /q "%TEMP%\msgbox.vbs" >nul
             exit /b 1
         )
         xcopy /y "%TEMPDIR%\MS\x86\*.*" "!GAMEFOLDER!\" >nul
+        xcopy /y "%TEMPDIR%\MS\x64\*.*" "!GAMEFOLDER!\x64\" >nul
         xcopy /y "%TEMPDIR%\3dfx\x86\*.*" "!GAMEFOLDER!\" >nul
         xcopy /y "%TEMPDIR%\dgvoodooCpl.exe" "!GAMEFOLDER!\" >nul
         echo [ OK  ] Files copied to manually entered path

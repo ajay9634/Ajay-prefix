@@ -114,15 +114,15 @@ if /i "%choice%"=="2" (
         Start "" "!GAMEFOLDER!\dgvoodooCpl.exe"
     ) else (
         echo [WARN] Folder picker failed or was cancelled.
-        set /p GAMEFOLDER=Enter game folder path manually (e.g. Z:\sdcard\Games): 
+        set /p GAMEFOLDER=Enter game folder path manually - e.g. F:\Games :
         if not exist "!GAMEFOLDER!" (
             echo [ERROR] Folder not found. Aborting.
             timeout /t 2
             exit /b 1
         )
-        xcopy /s /e /h /y "%TEMPDIR%\MS\*.*" "!GAMEFOLDER!\" >nul
-        xcopy /s /e /h /y "%TEMPDIR%\3Dfx\*.*" "!GAMEFOLDER!\" >nul
-        xcopy /s /e /h /y "%TEMPDIR%\dgvoodooCpl.exe" "!GAMEFOLDER!\" >nul
+        xcopy /y "%TEMPDIR%\MS\*.*" "!GAMEFOLDER!\" >nul
+        xcopy /y "%TEMPDIR%\3Dfx\*.*" "!GAMEFOLDER!\" >nul
+        xcopy /y "%TEMPDIR%\dgvoodooCpl.exe" "!GAMEFOLDER!\" >nul
         echo [ OK  ] Files copied to manually entered path
         echo [INFO] Opening conf ...
         Start "" "!GAMEFOLDER!\dgvoodooCpl.exe"
@@ -145,4 +145,4 @@ echo [DONE] dgVoodoo2 (%installname%) has been installed.
 echo You may now run dgVoodooCpl.exe or test with a game.
 echo ==========================================================
 timeout /t 3 >nul
-exit /
+exit /b
