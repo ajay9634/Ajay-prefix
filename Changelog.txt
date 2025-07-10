@@ -24,7 +24,7 @@ Download:
 =================================================================
 # Ajay Prefix Components - Changelog (10 July 2025)
 
-- Updated dgvoodoo scripts eith user choice
+- Updated dgvoodoo scripts with user choice
 
 =================================================================
 # Ajay Prefix Components - Changelog (5 July 2025)
