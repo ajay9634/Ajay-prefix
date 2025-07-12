@@ -205,12 +205,13 @@ Join the Emuplay0 Discord group:
 👨‍🔧 **Ajay9634 (Emuplay0)**
 
 📦 **Third-Party Sources:**
+- Emuplay0 Testing Team
 - Winlator, MoBox
-- DXVK, Wined3D
+- DXVK, Wined3D , vkd3d
 - Microsoft, WineHQ
 - Open-source projects
 - WinRAR, 7z, wget, curl
-- Emuplay0 Testing Team
+- Anyburn ,Nvidia , Python , 
+- dxwrapper , dgvoodoo , nglide , wrapper by ThirteenAG , d3d8to9 , gldirect , TitaniumGL
 - Guide by ChatGPT
-
 ---
