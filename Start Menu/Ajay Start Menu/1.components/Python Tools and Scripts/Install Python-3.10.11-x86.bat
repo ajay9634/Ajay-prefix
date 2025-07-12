@@ -13,14 +13,16 @@ echo *** Now choose an option - ***
 echo.
 ECHO 1. Install Python-3.10.11-x86 to Program Files (x86)
 ECHO 2. Install dependencies
-ECHO 2. Cancel or exit
+ECHO 3. Install aj prefix extension registry (ajpy , ajpyw etc)
+ECHO 4. Cancel or exit
 echo.
 set choice=
 set /p choice=Type the number to select an option -
 if not '%choice%'=='' set choice=%choice:~0,1%
 if '%choice%'=='1' goto install
 if '%choice%'=='2' goto dependencies
-if '%choice%'=='3' goto cancel
+if '%choice%'=='3' goto Register
+if '%choice%'=='4' goto cancel
 ECHO "%choice%" is not valid, try again
 ECHO.
 goto choice
@@ -80,25 +82,82 @@ IF ERRORLEVEL 1 (
 )
 
 echo.
+@echo off
+:Register
 echo [STEP] Registering aj-prefixed file extensions...
-set "PYTHON_DIR=C:\Program Files (x86)\Python310-32"
-set "PYTHON_EXE=%PYTHON_DIR%\python.exe"
-:: Function to add registry entries
-setlocal ENABLEEXTENSIONS
-for %%F in (py pyw pyo pyc pyd pyz pyx pxi pxd) do (
-    set "EXT=%%F"
-    set "KEY=aj%%Ffile"
-    set "EXE=%PYTHON_EXE%"
-    if /i "%%F"=="pyw" set "EXE=%PYTHON_DIR%\pythonw.exe"
-    if /i "%%F"=="pyz" set "EXE=%Ajay_File_Manager%\pythonw.exe"
 
-    reg add "HKCR\.aj!EXT!" /ve /d "!KEY!" /f >nul
-    reg add "HKCR\!KEY!\shell\open\command" /ve /d "\"!EXE!\" \"%%1\"" /f >nul
-)
+:: Register .ajpy
+reg add "HKCR\.ajpy" /ve /d "ajpyfile" /f >nul
+reg add "HKCR\ajpyfile\shell\open\command" /ve /d "\"C:\Program Files (x86)\Python310-32\python.exe\" \"%%1\"" /f >nul
 
+:: Register .ajpyw
+reg add "HKCR\.ajpyw" /ve /d "ajpywfile" /f >nul
+reg add "HKCR\ajpywfile\shell\open\command" /ve /d "\"C:\Program Files (x86)\Python310-32\pythonw.exe\" \"%%1\"" /f >nul
+
+:: Register .ajpyo
+reg add "HKCR\.ajpyo" /ve /d "ajpyofile" /f >nul
+reg add "HKCR\ajpyofile\shell\open\command" /ve /d "\"C:\Program Files (x86)\Python310-32\python.exe\" \"%%1\"" /f >nul
+
+:: Register .ajpyc
+reg add "HKCR\.ajpyc" /ve /d "ajpycfile" /f >nul
+reg add "HKCR\ajpycfile\shell\open\command" /ve /d "\"C:\Program Files (x86)\Python310-32\python.exe\" \"%%1\"" /f >nul
+
+:: Register .ajpyd
+reg add "HKCR\.ajpyd" /ve /d "ajpydfile" /f >nul
+reg add "HKCR\ajpydfile\shell\open\command" /ve /d "\"C:\Program Files (x86)\Python310-32\python.exe\" \"%%1\"" /f >nul
+
+:: Register .ajpyz
+reg add "HKCR\.ajpyz" /ve /d "ajpyzfile" /f >nul
+reg add "HKCR\ajpyzfile\shell\open\command" /ve /d "\"%Ajay_File_Manager%\pythonw.exe\" \"%%1\"" /f >nul
+
+:: Register .ajpyx
+reg add "HKCR\.ajpyx" /ve /d "ajpyxfile" /f >nul
+reg add "HKCR\ajpyxfile\shell\open\command" /ve /d "\"C:\Program Files (x86)\Python310-32\python.exe\" \"%%1\"" /f >nul
+
+:: Register .ajpxi
+reg add "HKCR\.ajpxi" /ve /d "ajpxifile" /f >nul
+reg add "HKCR\ajpxifile\shell\open\command" /ve /d "\"C:\Program Files (x86)\Python310-32\python.exe\" \"%%1\"" /f >nul
+
+:: Register .ajpxd
+reg add "HKCR\.ajpxd" /ve /d "ajpxdfile" /f >nul
+reg add "HKCR\ajpxdfile\shell\open\command" /ve /d "\"C:\Program Files (x86)\Python310-32\python.exe\" \"%%1\"" /f >nul
+timeout /t 6 >nul
+reg add "HKCR\.ajpy" /ve /d "ajpyfile" /f >nul
+reg add "HKCR\ajpyfile\shell\open\command" /ve /d "\"C:\Program Files (x86)\Python310-32\python.exe\" \"%%1\"" /f >nul
+
+:: Register .ajpyw
+reg add "HKCR\.ajpyw" /ve /d "ajpywfile" /f >nul
+reg add "HKCR\ajpywfile\shell\open\command" /ve /d "\"C:\Program Files (x86)\Python310-32\pythonw.exe\" \"%%1\"" /f >nul
+
+:: Register .ajpyo
+reg add "HKCR\.ajpyo" /ve /d "ajpyofile" /f >nul
+reg add "HKCR\ajpyofile\shell\open\command" /ve /d "\"C:\Program Files (x86)\Python310-32\python.exe\" \"%%1\"" /f >nul
+
+:: Register .ajpyc
+reg add "HKCR\.ajpyc" /ve /d "ajpycfile" /f >nul
+reg add "HKCR\ajpycfile\shell\open\command" /ve /d "\"C:\Program Files (x86)\Python310-32\python.exe\" \"%%1\"" /f >nul
+
+:: Register .ajpyd
+reg add "HKCR\.ajpyd" /ve /d "ajpydfile" /f >nul
+reg add "HKCR\ajpydfile\shell\open\command" /ve /d "\"C:\Program Files (x86)\Python310-32\python.exe\" \"%%1\"" /f >nul
+
+:: Register .ajpyz
+reg add "HKCR\.ajpyz" /ve /d "ajpyzfile" /f >nul
+reg add "HKCR\ajpyzfile\shell\open\command" /ve /d "\"%Ajay_File_Manager%\pythonw.exe\" \"%%1\"" /f >nul
+
+:: Register .ajpyx
+reg add "HKCR\.ajpyx" /ve /d "ajpyxfile" /f >nul
+reg add "HKCR\ajpyxfile\shell\open\command" /ve /d "\"C:\Program Files (x86)\Python310-32\python.exe\" \"%%1\"" /f >nul
+
+:: Register .ajpxi
+reg add "HKCR\.ajpxi" /ve /d "ajpxifile" /f >nul
+reg add "HKCR\ajpxifile\shell\open\command" /ve /d "\"C:\Program Files (x86)\Python310-32\python.exe\" \"%%1\"" /f >nul
+
+:: Register .ajpxd
+reg add "HKCR\.ajpxd" /ve /d "ajpxdfile" /f >nul
+reg add "HKCR\ajpxdfile\shell\open\command" /ve /d "\"C:\Program Files (x86)\Python310-32\python.exe\" \"%%1\"" /f >nul
+timeout /t 3 >nul
 echo [ OK  ] All .aj* file types registered with Python
-echo.
-
 echo.
 echo *** Running the installer ***
 start "" "C:\Program Files (x86)\Python310-32\python.exe"
