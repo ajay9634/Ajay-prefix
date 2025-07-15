@@ -1,17 +1,24 @@
-Ajay Script License v1.0
+Ajay Script License v1.0  
 Copyright (c) 2025 Ajay
 
 These scripts are the intellectual property of the author (Ajay) and are provided for **personal, non-commercial use only**. You may view, modify, and use these scripts on your own systems, but redistribution or commercial use is not permitted without written permission.
 
-This license applies only to the scripts included in this GitHub repository. It does **not** apply to any external archive files, dependencies, or third-party tools required to use the scripts. Those components are governed by their own respective licenses and are not distributed as part of this repository.
+The author retains the right to share **only selected scripts at their sole discretion**. There is **no obligation** to publish full source code or all internal components. Any unpublished scripts, tools, or related files remain private and proprietary.
+
+This license applies only to the scripts explicitly included in this GitHub repository. It does **not** apply to:
+- External archive files
+- Third-party dependencies
+- Tools or binaries required to run the scripts
+
+Those components are governed by their own respective licenses and are not part of this repository.
 
 You may:
-- Use the scripts for personal projects.
-- Modify them locally for private use.
+- Use the included scripts for personal, non-commercial use
+- Modify them locally for private use
 
 You may not:
-- Redistribute the scripts publicly.
-- Use them for commercial purposes.
-- Claim ownership or relicense these scripts.
+- Redistribute these scripts
+- Use them commercially
+- Claim ownership or relicense them
 
 All rights reserved.
