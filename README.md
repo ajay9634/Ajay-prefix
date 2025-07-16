@@ -48,7 +48,9 @@ Includes multiple fixes needed in many games.
 3. Navigate to `selected_drive:\Ajay_prefix\`  
 4. ▶️ Run the `.bat` file to complete install.
 
-📎 **Note:** Running `Install_only_start_menu.bat` only modifies the Start menu — game save path remains unchanged.
+📎 **Note:** 
+Don't select any internal Drive like C , E , Z etc.
+Running `Install_only_start_menu.bat` only modifies the Start menu — game save path remains unchanged.
 
 ---
 
