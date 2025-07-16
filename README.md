@@ -51,7 +51,7 @@ Includes multiple fixes needed in many games.
 📎 **Note:** 
 Don't select any internal Drive like C , E , Z etc.
 
-Running `Install_only_start_menu.bat` only modifies the Start menu — game save path remains unchanged.
+Running `Install_Only_Start_Menu.bat` only modifies the Start menu — game save path remains unchanged.
 
 ---
 
