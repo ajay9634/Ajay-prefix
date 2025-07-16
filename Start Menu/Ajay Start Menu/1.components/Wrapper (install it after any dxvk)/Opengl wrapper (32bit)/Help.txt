@@ -1,5 +1,0 @@
-These OpenGL wrappers offer improved compatibility and performance.
-To use them, extract the files into the 32-bit game folder.
-
-Example Game:
-Star Wars Jedi Knight – Jedi Academy
