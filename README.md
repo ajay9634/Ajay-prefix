@@ -13,22 +13,22 @@ You can install the Ajay Prefix on various PC emulators such as MoboX WOW64, Win
 
 ## ❓ What is Ajay Prefix?
 
-✨ **Ajay Prefix v10.18**  
+✨ **Ajay Prefix v10.19**  
 
 📌 `Ajay prefix = game save location to any drive:\Ajay_prefix\save_data + Start menu customization + bug fixes`
 
 Includes multiple fixes needed in many games.  
 📝 *Note: If it causes any issues, please let me know in the issues section.*
 
-📖 [Ajay prefix v10.18 wiki – click here](https://github.com/ajay9634/Ajay-prefix/wiki)
+📖 [Ajay prefix v10.19 wiki – click here](https://github.com/ajay9634/Ajay-prefix/wiki)
 
 ---
 
-## 📦 [Download Ajay Prefix v10.18](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
+## 📦 [Download Ajay Prefix v10.19](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
 
 ---
 
-## ⚙️ Installation of Ajay Prefix v10.18
+## ⚙️ Installation of Ajay Prefix v10.19
 
 ### 🔹 Partial Automatic Installation (User Interface):
 
