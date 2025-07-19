@@ -2,24 +2,45 @@
            ##  Ajay Prefix - Offline Changelog ##
 ============================================================
 
-Version: v10.18 final fix
-Date:    7 may 2025  
+Version - 10.19  
+Date -    16 July 2025  
 
-Changes:
+Changes -
 
-- uploaded "Ajay_prefix_v10.18_final_setup.exe"
+- Updated VC Redist 2022 to Latest version - v14.44.35211.0
 
-- All in one mega improvement : - Updated exe installer , Ajay prefix registry and all offline and online Scripts ( Now supports installation in any drive , eg. D , F , G etc )
+- Removed Some offline Files and scripts
 
-- added registry related to dlls ( You can disable mono, gecho, winegstreamer etc)
+- Improved compatibility of the installer and error handling
+ 
+- Enhanced folder and file UI  
 
-- removed some stuff from offline components like mediafoundaion etc ( it will be added in 1.components)
+- Improved both offline and online scripts  
 
-( Note - After restarting the container, please run "Check_Ajay_prefix_status.bat"
-to verify the status.)
+- Updated main installer batch files with better error handling  
+
+- Fixed an issue where the Ajay prefix was creating some unintended folders  
+
+- Changed the link for "1. components" , The old Ajay prefix is no longer supported for the latest "1. components"  
+
+- All bugs fixed  
+
+(Note - After restarting the container, please run "Check_Ajay_prefix_Status.bat" to verify the status.)
 
 Download:
   https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
+
+=================================================================
+# Ajay Prefix v10.19 Components - Changelog (19 July 2025)
+
+- Updated Dgvoodoo scripts
+- Updated Dxwrapper scripts
+- Updated Opengl Wrapper scripts (Updated TitaniumGL)
+- Updated ThirteenAG scripts
+- Updated TitaniumGL
+- Added nglide
+- Added OpenAL 1.1 and updated OpenAL soft scripts
+- Updated some other scripts
 
 =================================================================
 # Ajay Prefix Components - Changelog (10 July 2025)
