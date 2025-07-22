@@ -57,7 +57,7 @@ Running `Install_Only_Start_Menu.bat` only modifies the Start menu — game save
 
 ### 🎥 Video Guides
 
-- ▶️ [Ajay Prefix Installation Video](https://youtu.be/yr3tpOhik0Q?si=VHWzmGhFJYA9WgKr)  
+- ▶️ [Ajay Prefix 10.19 Installation Video](https://youtu.be/MYljgF1UObE?si=6LoZ98lbw5dnH3qV)  
 - ▶️ [Ajay Prefix 10.18 Final – Manual Installation & Start Menu Explained](https://youtu.be/GLiZUHEPQNc)
 
 ---
