@@ -24,6 +24,8 @@ Includes multiple fixes needed in many games.
 
 📖 [Ajay prefix v10.19 wiki → click here](https://github.com/ajay9634/Ajay-prefix/wiki)
 
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?size=35&duration=5000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1000&lines=📥+Download+README.txt)](https://github.com/ajay9634/Ajay-prefix/releases/download/Ajay_prefix/README.txt)
+
 ---
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=5000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1000&lines=📥+Download+Ajay+Prefix+v10.19)](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
