@@ -80,7 +80,7 @@ To sync save data across containers/emulators:
 
 ---
 
-![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=🚀+Features+of+Ajay+Prefix+🚀)
+![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1200&height=150&lines=🚀+Features+of+Ajay+Prefix+🚀)
 
 - 💾 **Game Save Redirection**  
 - 📦 **Essential Runtime Files Included**  
