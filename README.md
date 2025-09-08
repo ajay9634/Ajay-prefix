@@ -2,7 +2,7 @@
 
 ---
 
-## 💥 Ajay-prefix
+## ⚡ Ajay-prefix
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=6000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1200&height=200&lines=Welcome+to+Ajay+Prefix;Universal+Wine+Tools+and+fixes;Game+tweaks+%7C+Save+redirection+%7C+Start+menu)
 
@@ -13,115 +13,115 @@ You can install the Ajay Prefix on various PC emulators such as MoboX WOW64, Win
 
 ---
 
-## ❓ What is Ajay Prefix?
+![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=✨+What+is+Ajay+Prefix+✨)
 
-✨ **Ajay Prefix v10.19**  
+✅ **Ajay Prefix v10.19**  
 
-📌 `Ajay prefix = game save location to any drive:\Ajay_prefix\save_data + Start menu customization + bug fixes`
+📂 `Ajay prefix = game save location to any drive:\Ajay_prefix\save_data + Start menu customization + bug fixes`
 
 Includes multiple fixes needed in many games.  
 📝 *Note: If it causes any issues, please let me know in the issues section.*
 
-📖 [Ajay prefix v10.19 wiki – click here](https://github.com/ajay9634/Ajay-prefix/wiki)
+📖 [Ajay prefix v10.19 wiki → click here](https://github.com/ajay9634/Ajay-prefix/wiki)
+
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?size=35&duration=5000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1000&lines=📥+Download+README.txt)](https://github.com/ajay9634/Ajay-prefix/releases/download/Ajay_prefix/README.txt)
 
 ---
 
-## 📦 [Download Ajay Prefix v10.19](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=5000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1000&lines=📥+Download+Ajay+Prefix+v10.19)](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
 
 ---
 
 ## ⚙️ Installation of Ajay Prefix v10.19
 
-### 🔹 Partial Automatic Installation (User Interface):
+### 🛠️ Partial Automatic Installation (User Interface):
 
 1. ▶️ Run `Ajay_prefix.exe` from any location.  
-2. 💽 Select your desired installation drive (e.g., `D:` or `F:`).  
-3. 📂 Navigate to `selected_drive:\Ajay_prefix\`  
+2. 📂 Select your desired installation drive (e.g., `D:` or `F:`).  
+3. 🗂️ Navigate to `selected_drive:\Ajay_prefix\`  
 4. ✅ Execute the `.bat` file to complete the installation.
 
 ---
 
-### 🔹 Manual Installation (Fully Compatible):
+### 🛠️ Manual Installation (Fully Compatible):
 
-💡 *Use this if your emulator doesn't support automatic installation.*
+👉 *Use this if your emulator doesn't support automatic installation.*
 
 1. 📦 Open `Ajay_prefix.exe` as archive via ZArchiver or rename to `.zip`.  
 2. 📂 Extract `Ajay_prefix` folder to desired drive (e.g., `D:\`, not in subfolders).  
-3. Navigate to `selected_drive:\Ajay_prefix\`  
+3. 🗂️ Navigate to `selected_drive:\Ajay_prefix\`  
 4. ▶️ Run the `.bat` file to complete install.
 
-📎 **Note:** 
-Don't select any internal Drive like C , E , Z etc.
+⚠️ **Note:**  
+Don't select any internal Drive like C , E , Z etc.  
 
 Running `Install_Only_Start_Menu.bat` only modifies the Start menu — game save path remains unchanged.
 
 ---
 
-### 🎥 Video Guides
+### 📺 Video Guides
 
 - ▶️ [Ajay Prefix 10.19 Installation Video](https://youtu.be/MYljgF1UObE?si=6LoZ98lbw5dnH3qV)  
-- ▶️ [Ajay Prefix 10.18 Final – Manual Installation & Start Menu Explained](https://youtu.be/GLiZUHEPQNc)
+- ▶️ [Ajay Prefix 10.18 Final — Manual Installation & Start Menu Explained](https://youtu.be/GLiZUHEPQNc)
 
 ---
 
-## 💾 Move Game Save Data to Ajay Prefix
+## 📂 Move Game Save Data to Ajay Prefix
 
 If you previously played games, move your save data from:  
-📁 `C:\Users\...` → 📁 `selected drive:\Ajay_prefix\save_data\users\...`
+💾 `C:\Users\...` ➝ 💾 `selected drive:\Ajay_prefix\save_data\users\...`
 
 ---
 
-## 🔁 Synchronize Save Data Across Containers
+## 🔗 Synchronize Save Data Across Containers
 
 To sync save data across containers/emulators:  
 
-- ➡️ Make sure all use the same drive path — or copy manually if needed.
-
-- ➡️ Use `Backup and Restore Drive C Users and ProgramData` feature
+- ➡️ Make sure all use the same drive path — or copy manually if needed.  
+- ➡️ Use `Backup and Restore Drive C Users and ProgramData` feature  
 
 ---
 
-## ✨ Features of Ajay Prefix v10.19
+![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=🚀+Features+of+Ajay+Prefix+🚀)
 
 - 💾 **Game Save Redirection**  
-- 🧰 **Essential Runtime Files Included**  
-- 🛠️ **Custom Wined3D & Useful Tweaks**  
-- 🧩 **Bundled Tools (DOSBox, Flash, MPC, Codecs)**  
+- 📦 **Essential Runtime Files Included**  
+- 🎮 **Custom Wined3D & Useful Tweaks**  
+- 🖥️ **Bundled Tools (DOSBox, Flash, MPC, Codecs)**  
 - 🔊 **Audio Libraries (XAudio, FAudio, dsound)**  
-- 🌐 **Mono, Gecko, .NET One-Click Setup**  
-- 🎮 **Popular Wrappers Included (dgVoodoo, DXWrapper, etc.)**  
+- 🪟 **Mono, Gecko, One-Click Setup**  
+- 🎨 **Popular Wrappers Included (dgVoodoo, DXWrapper, etc.)**  
 - 🧪 **Microsoft Sample Test Tools**  
-- 📋 **Experimental Start Menu for Winlator 10+**  
-- 🔒 **Resource File Protection**
+- 🏆 **Experimental Start Menu for Winlator 10+**  
+- 🔐 **Resource File Protection**
 
 ---
 
-## 🚧 Limitations
-
+![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=⛔+Limitations)
 - 🌐 Requires Internet for full setup  
 - ⚠️ May cause issues on some emulators  
-- ❌ Some games may not be compatible  
+- 💡 Some games may not be compatible  
 - 🚫 No backup for Steam saves in `C:\Program Files (x86)\Steam\`  
 - 📂 Game save path changed to `selected_drive:\Ajay_prefix\save_data\users`  
-- 🔄 Games still using `C:\Users\` → Use `Backup and Restore Drive C Users and ProgramData` feature
+- 🔧 Games still using `C:\Users\` ➝ Use `Backup and Restore Drive C Users and ProgramData` feature
 
 ---
 
-## 🆘 Some Special Help
+## 📖 Some Special Help
 
-📄 Read `help.txt` inside relevant folders.  
-📚 [Ajay Prefix Wiki on GitHub](https://github.com/ajay9634/Ajay-prefix/wiki)
+📘 Read `help.txt` inside relevant folders.  
+📖 [Ajay Prefix Wiki on GitHub](https://github.com/ajay9634/Ajay-prefix/wiki)
 
 ---
 
-## 🛡️ Is It Safe?
+## 🔒 Is It Safe?
 
 ✅ Yes, everything is scanned and verified.  
 ⚠️ *If you still have trust issues, please avoid installing it.*
 
 ---
 
-## 🧪 Environment Variables
+## ⚙️ Environment Variables
 
 ### 🎮 VKD3D FPS HUD
 ```bash
@@ -210,13 +210,12 @@ Join the Emuplay0 Discord group:
 👨‍🔧 **Ajay9634 (Emuplay0)**
 
 📦 **Third-Party Sources:**
-- Emuplay0 Testing Team
 - Winlator, MoBox
-- DXVK, Wined3D , vkd3d
+- DXVK, Wined3D
 - Microsoft, WineHQ
 - Open-source projects
 - WinRAR, 7z, wget, curl
-- Anyburn ,Nvidia , Python , 
-- dxwrapper , dgvoodoo , nglide , wrapper by ThirteenAG , d3d8to9 , gldirect , TitaniumGL
+- Emuplay0 Testing Team
 - Guide by ChatGPT
+
 ---
