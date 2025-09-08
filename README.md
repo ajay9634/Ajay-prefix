@@ -3,7 +3,7 @@
 ---
 
 ## 💥 Ajay-prefix
-![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=6000&color=36BCF7&center=true&vCenter=true&width=1000&height=200&lines=Welcome+to+Ajay+Prefix;Universal+Wine+prefix+for+Android;Game+tweaks+%7C+Save+redirection+%7C+Start+menu)
+![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=6000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1000&height=200&lines=Welcome+to+Ajay+Prefix;Universal+Wine+prefix+for+Android;Game+tweaks+%7C+Save+redirection+%7C+Start+menu)
 
 You can install the Ajay Prefix on various PC emulators such as MoboX WOW64, Winlator, Dark OS, MiceWine, the latest Hangover, GameHub, GameFusion, and other WOW64 PC emulators.
 
