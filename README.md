@@ -87,7 +87,7 @@ To sync save data across containers/emulators:
 - 🎮 **Custom Wined3D & Useful Tweaks**  
 - 🖥️ **Bundled Tools (DOSBox, Flash, MPC, Codecs)**  
 - 🔊 **Audio Libraries (XAudio, FAudio, dsound)**  
-- 🪟 **Mono, Gecko, .NET One-Click Setup**  
+- 🪟 **Mono, Gecko, One-Click Setup**  
 - 🎨 **Popular Wrappers Included (dgVoodoo, DXWrapper, etc.)**  
 - 🧪 **Microsoft Sample Test Tools**  
 - 🏆 **Experimental Start Menu for Winlator 10+**  
