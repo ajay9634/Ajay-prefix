@@ -2,86 +2,6 @@
 
 ---
 
-## 💥 Ajay-prefix
-
-![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=6000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1200&height=200&lines=Welcome+to+Ajay+Prefix;Universal+Wine+Tools+and+fixes;Game+tweaks+%7C+Save+redirection+%7C+Start+menu)
-
-You can install the Ajay Prefix on various PC emulators such as MoboX WOW64, Winlator, Dark OS, MiceWine, the latest Hangover, GameHub, GameFusion, and other WOW64 PC emulators.
-
-> ⚠️ **Note:** Not supported on x86 emulators like ExaGear or Mobox Box86.  
-> ExaGear Mod Ajay has a separate Ajay Prefix setup.
-
----
-
-## ❓ What is Ajay Prefix?
-
-✨ **Ajay Prefix v10.18**  
-
-📌 `Ajay prefix = game save location to any drive:\Ajay_prefix\save_data + Start menu customization + bug fixes`
-
-Includes multiple fixes needed in many games.  
-📝 *Note: If it causes any issues, please let me know in the issues section.*
-
-📖 [Ajay prefix v10.18 wiki – click here](https://github.com/ajay9634/Ajay-prefix/wiki)
-
----
-
-## 📦 [Download Ajay Prefix v10.18](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix)
-
----
-
-## ⚙️ Installation of Ajay Prefix v10.18
-
-### 🔹 Partial Automatic Installation (User Interface):
-
-1. ▶️ Run `Ajay_prefix.exe` from any location.  
-2. 💽 Select your desired installation drive (e.g., `D:` or `F:`).  
-3. 📂 Navigate to `selected_drive:\Ajay_prefix\`  
-4. ✅ Execute the `.bat` file to complete the installation.
-
----
-
-### 🔹 Manual Installation (Fully Compatible):
-
-💡 *Use this if your emulator doesn't support automatic installation.*
-
-1. 📦 Open `Ajay_prefix.exe` as archive via ZArchiver or rename to `.zip`.  
-2. 📂 Extract `Ajay_prefix` folder to desired drive (e.g., `D:\`, not in subfolders).  
-3. Navigate to `selected_drive:\Ajay_prefix\`  
-4. ▶️ Run the `.bat` file to complete install.
-
-📎 **Note:** Running `Install_only_start_menu.bat` only modifies the Start menu — game save path remains unchanged.
-
----
-
-### 🎥 Video Guides
-
-- ▶️ [Ajay Prefix Installation Video](https://youtu.be/yr3tpOhik0Q?si=VHWzmGhFJYA9WgKr)  
-- ▶️ [Ajay Prefix 10.18 Final – Manual Installation & Start Menu Explained](https://youtu.be/GLiZUHEPQNc)
-
----
-
-## 💾 Move Game Save Data to Ajay Prefix
-
-If you previously played games, move your save data from:  
-📁 `C:\Users\...` → 📁 `selected drive:\Ajay_prefix\save_data\users\...`
-
----
-
-## 🔁 Synchronize Save Data Across Containers
-
-To sync save data across containers/emulators:  
-
-- ➡️ Make sure all use the same drive path — or copy manually if needed.
-
-- ➡️ Use `Backup and Restore Drive C Users and ProgramData` feature
-
----
-
-![logo](https://github.com/ajay9634/Ajay-prefix/blob/main/.github/logo.jpg)
-
----
-
 ## ⚡ Ajay-prefix
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=6000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1200&height=200&lines=Welcome+to+Ajay+Prefix;Universal+Wine+Tools+and+fixes;Game+tweaks+%7C+Save+redirection+%7C+Start+menu)
@@ -93,7 +13,7 @@ You can install the Ajay Prefix on various PC emulators such as MoboX WOW64, Win
 
 ---
 
-![Typing SVG](https://readme-typing-svg.herokuapp.com?size=30&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&lines=✨+What+is+Ajay+Prefix+✨)
+![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&lines=✨+What+is+Ajay+Prefix+✨)
 
 ✅ **Ajay Prefix v10.19**  
 
@@ -160,7 +80,7 @@ To sync save data across containers/emulators:
 
 ---
 
-![Typing SVG](https://readme-typing-svg.herokuapp.com?size=30&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&lines=🚀+Features+of+Ajay+Prefix+🚀)
+![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&lines=🚀+Features+of+Ajay+Prefix+🚀)
 
 - 💾 **Game Save Redirection**  
 - 📦 **Essential Runtime Files Included**  
