@@ -7,7 +7,6 @@ dxvk-1.5.5.tzst
 dxvk-1.7.1.tzst
 dxvk-1.7.3.00.tzst
 dxvk-1.8.1.tzst
-dxvk-1.10.00.tzst
 dxvk-1.10.3.tzst
 dxvk-1.10.3.00.tzst
 dxvk-1.10.6.tzst
