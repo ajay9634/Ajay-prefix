@@ -137,6 +137,8 @@ BOX64_NOBANNER=1
 BOX64_DYNAREC_ALIGNED_ATOMICS=1  # games may crash
 BOX64_DYNAREC_DIRTY=1
 BOX64_RDTSC_1GHZ=1
+BOX64_DYNAREC_TBB=1
+BOX64_DYNAREC_VOLATILE_METADATA=0
 ```
 
 ### 🎯 BOX64 – Fix Source Engine Bugs
@@ -147,13 +149,15 @@ BOX64_ALLOWMISSINGLIBS=1
 
 ### ⚙️ BOX64 – Compatibility
 ```bash
-BOX64_DYNAREC_DIV0=1
-BOX64_DYNAREC_TBB=0
-BOX64_FIX_64BIT_INODES=1
-BOX64_IGNOREINT3=1
-BOX64_RESERVE_HIGH=1
+BOX64_DYNAREC_DIV0=1 # can fix crashes in titles that use tricky math or expect exact CPU fault behavior
+BOX64_DYNAREC_TBB=0 # Can fix crashes or instability in JIT-heavy programs (Unity/Unreal)
+BOX64_FIX_64BIT_INODES=1 # Fix error "file not found" when the file is there
+BOX64_IGNOREINT3=1 # For Some old games, copy protections, or JIT engines misuse INT3
+BOX64_RESERVE_HIGH=1 # Fix allocate memory or segfaults when loading big binaries
 BOX64_UNITYPLAYER=1
-BOX64_SYNC_ROUNDING=1
+BOX64_SYNC_ROUNDING=1 # Fix crash by Game physics or graphics glitches
+BOX64_DYNAREC_X87DOUBLE=1 # Can fix crashes in old DirectX/GL games
+BOX64_NOSIGSEGV=1  # May fix game crash
 ```
 
 ### 🧠 MESA Performance
