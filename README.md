@@ -136,7 +136,6 @@ BOX64_MAX_CPU=4
 BOX64_NOBANNER=1
 BOX64_DYNAREC_ALIGNED_ATOMICS=1  # games may crash
 BOX64_DYNAREC_DIRTY=1
-BOX64_RDTSC_1GHZ=1
 BOX64_DYNAREC_TBB=1
 BOX64_DYNAREC_VOLATILE_METADATA=0
 ```
@@ -158,6 +157,7 @@ BOX64_UNITYPLAYER=1
 BOX64_SYNC_ROUNDING=1 # Fix crash by Game physics or graphics glitches
 BOX64_DYNAREC_X87DOUBLE=1 # Can fix crashes in old DirectX/GL games
 BOX64_NOSIGSEGV=1  # May fix game crash
+BOX64_RDTSC_1GHZ=1 # May fix too fast and too slow timer in games and fix crash in drm
 ```
 
 ### 🧠 MESA Performance
