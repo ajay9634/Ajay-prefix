@@ -4,7 +4,7 @@
 This application, **Ajay Prefix Pro v1.0**, is a self-extracting archive (SFX) built using WinRAR. It is designed to redirect user registry paths (e.g., Documents folder) on Windows systems, utilizing a 64-bit command-line environment for proper configuration. The tool includes custom scripts to manage this process efficiently.
 
 ## VirusTotal Flags
-If you encounter flags on VirusTotal (https://www.virustotal.com/gui/file/2c5728ad7e69b43de2cb1f4ba50f14021b2995de68d947b2aed4bfb93cf1a91e), please note the following:
+If you encounter flags on VirusTotal (https://www.virustotal.com/gui/file/1d79957eb4f19d710788a7aa9400b45c62f2b65af8c56b78a5278db891e91cbb?nocache=1), please note the following:
 - These flags are **false positives**, primarily triggered because the scripts execute from a temporary directory (`C:\Windows\Temp`) due to the SFX extraction process.
 - The application has been tested on a Windows PC, and no malicious activity ( The intended registry redirection functioned as expected.
 - Specific flags (e.g., "DarkGate AutoIt3.EXE Execution Parameters," "Suspicious Script Execution From Temp Folder") are likely due to sandbox misinterpretation of the SFX stub or WScript usage for user feedback.
