@@ -56,6 +56,19 @@ Don't select any internal Drive like C , E , Z etc.
 
 ---
 
+## ✨ Key Features
+
+- **Automatic First-Time Backup**: Creates a compact backup of the default registry at `C:\AJAY_PREFIX_PRO\Backup\`. Easily restore if needed (requires a fresh container).
+- **Lightweight & Dependency-Free**: No offline dependencies—runs smoothly out of the box.
+- **Quick Installation**: Simple, one-click setup process.
+- **Start Menu Integration**: Launch and manage via a dedicated Start Menu Viewer.
+- **Flexible Save Locations**: Choose any folder, subfolder, or root drive for saves and offline components.
+- **Broad Compatibility**: Supports various Wine versions (Winlator Official, Winlator Bionic) and Windows 11.
+- **Shared Saves with Legacy Version**: Seamlessly shares save locations with Ajay Prefix v10.19 when using the main root drive.
+- **Customizable Data Paths**: Configure  **Save Data Folder** for game saves and **Offline Cache Folder** for offline downloads of online components.
+
+---
+
 ### 📺 Video Guides
 
 ---
