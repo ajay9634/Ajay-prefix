@@ -4,7 +4,7 @@
 Ajay Prefix Pro v1.2 is distributed in archive format. Extract the archive and run `setup.bat` to begin installation.
 
 ## VirusTotal Flags
-If you encounter flags on VirusTotal (https://www.virustotal.com/gui/file/1d79957eb4f19d710788a7aa9400b45c62f2b65af8c56b78a5278db891e91cbb?nocache=1), please note the following:
+If you encounter flags on VirusTotal (https://www.virustotal.com/gui/file/f8c6422a732481205bb3da6df4741ced4fa6b5f24e2180b6d498278d95be05a4), please note the following:
 
 - These flags are **false positives**, primarily triggered by the scripts' execution during the extraction process.
 - The application has been tested on a Windows PC, and no malicious activity was observed. The intended registry redirection functioned as expected.
