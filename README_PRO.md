@@ -37,14 +37,19 @@ Includes multiple fixes needed in many games.
 ### 🛠️ Manual Installation :
 
 1. 📦 Open `Ajay prefix Pro 1.2` as archive via ZArchiver or other tool.  
-2. 📂 Run **Setup (Run as Admin).bat**.
+2. ⚙️ Run **Setup (Run as Admin).bat**.
 3. 🗂️ Select an **Offline Cache Folder** for online components (any folder, subfolder, or root drive).
 4. 🗂️ Choose  **Save Data Folder** for game saves (any folder, subfolder, or root drive
 5. 🗂️ Click **Save Paths** in the Folder Selector, then **Exit**.
 6. 🗂️ If successful, the latest Start Menu will be installed.
-7. 🗂️ Restart Windows or your Wine environment
-8. 🗂️ Verify Ajay Prefix Pro status in the viewer.
+7. 💻 Restart Windows or your Wine environment
+8. ✅ Verify Ajay Prefix Pro status in the viewer.
 
+## ⚠️ Important Warnings
+
+- **Manual Registry Backup Recommended**: Always back up your Windows registry before installation. While Wine containers can be recreated with minimal loss, the author is not responsible for registry issues.
+- **Post-Installation Save Migration**: After setup, manually move game saves from the C: drive to your designated **Save Data Folder**. On Windows 11, copy or move the AppData directory to prevent data loss.
+- Don't ever Remove That folder or Drive Root  of **Save Data Folder**
 
 ⚠️ **Note:**  
 Don't select any internal Drive like C , E , Z etc.  
@@ -75,23 +80,33 @@ To sync save data across containers/emulators:
 
 - 💾 **Game Save Redirection**  
 - 📦 **Essential Runtime Files Included**  
-- 🎮 **Custom Wined3D & Useful Tweaks**  
-- 🖥️ **Bundled Tools (DOSBox, Flash, MPC, Codecs)**  
-- 🔊 **Audio Libraries (XAudio, FAudio, dsound)**  
-- 🪟 **Mono, Gecko, One-Click Setup**  
+- 🎮 **Custom Wined3D & Useful Tweaks** for wine
+- 🔊 **Audio Libraries (XAudio, FAudio, dsound)** for wine
 - 🎨 **Popular Wrappers Included (dgVoodoo, DXWrapper, etc.)**  
 - 🧪 **Microsoft Sample Test Tools**  
-- 🔐 **Resource File Protection**
 
 ---
 
-![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=⛔+Limitations)
-- 🌐 Requires Internet for full setup  
-- ⚠️ May cause issues on some emulators  
-- 💡 Some games may not be compatible  
-- 🚫 No backup for Steam saves in `C:\Program Files (x86)\Steam\`  
-- 📂 Game save path changed to `selected_drive:\Ajay_prefix\save_data\users`  
-- 🔧 Games still using `C:\Users\` ➝ Use `Backup and Restore Drive C Users and ProgramData` feature
+## ⚠️ Notices & Troubleshooting
+
+- **Cancel Installation**: To stop the process, close the CMD window before exiting the **Ajay Prefix Folder Selector**.
+- **Restoring Original Setup or Uninstalling**:
+  - Navigate to `C:\AJAY_PREFIX_PRO\backup\`.
+  - Import all registry keys to revert.
+- **Do Not Delete**:
+  - `Ajay_Scripts` and `Ajay_Start_Menu_Pro` from `C:\AJAY_PREFIX_PRO`.
+  - `AjayPrefixConf.txt` or other Ajay Prefix Pro files from `C:\Windows\`.
+  - **Save Data Folder**
+- **Upcoming Features**: Online components and Start Menu enhancements are in development (converting legacy scripts—stay tuned!).
+- **Tested Platforms**: Verified on Winlator Official, Winlator forks, and Windows 11 with no issues.
+
+## 📸 Screenshots
+
+![IMG_20251026_163151](https://github.com/user-attachments/assets/610f6657-a99b-425f-b0ad-fb7386672a12)
+![Screenshot_2025-10-21-11-18-56-633_com winlator](https://github.com/user-attachments/assets/37f819fe-79d5-44a9-ab5c-8058a29d3cf9)
+![Screenshot_2025-10-21-11-19-31-740_com winlator](https://github.com/user-attachments/assets/6a2053b3-d3f8-4f83-8d46-e4c3ba2246f9)
+![Screenshot_2025-10-21-11-19-57-209_com winlator](https://github.com/user-attachments/assets/ffaf374f-c034-4af5-b3eb-0cc9b0a73b5f)
+![IMG_20251026_165606](https://github.com/user-attachments/assets/804dbc46-0a57-4e38-8216-649a1a9d433d)
 
 ---
 
@@ -106,6 +121,9 @@ To sync save data across containers/emulators:
 
 ✅ Yes, everything is scanned and verified.  
 ⚠️ *If you still have trust issues, please avoid installing it.*
+
+## 🤧 False Positive Note
+[Click here](https://github.com/ajay9634/Ajay-prefix/blob/main/Ajay%20Prefix%20Pro%20%20README.txt)
 
 ---
 
