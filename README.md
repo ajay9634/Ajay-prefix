@@ -2,6 +2,12 @@
 
 ---
 
+## ⚡ Ajay-prefix-pro
+
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=5000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1000&lines=📥+Ajay+Prefix+Pro+Readme)](https://github.com/ajay9634/Ajay-prefix/blob/main/README_PRO.md)
+
+---
+
 ## ⚡ Ajay-prefix
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=6000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1200&height=200&lines=Welcome+to+Ajay+Prefix;Universal+Wine+Tools+and+fixes;Game+tweaks+%7C+Save+redirection+%7C+Start+menu)
