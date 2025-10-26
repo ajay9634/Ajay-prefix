@@ -4,6 +4,19 @@
 
 ## ⚡ Ajay-prefix-pro
 
+![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=6000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1200&height=200&lines=Welcome+to+Ajay+Prefix+Pro;Universal+Wine+Tools+and+Fixes;Game+Tweaks+%7C+Save+Redirection+%7C+Start+Menu)
+
+Ajay Prefix Pro is compatible with PC emulators such as MoboX WOW64, Winlator, Dark OS, MiceWine, Hangover (latest), GameHub, GameFusion, and other WOW64-based emulators. It also supports Windows 11.
+
+## 📋 Requirements
+
+- 🖥️ 64-bit architecture
+- 🌐 Internet connection for the latest Start Menu
+- 🍷 Any Wine-based PC emulator or Windows 11 (24H2 update)
+- 🔑 Administrative permissions for Windows 11
+
+---
+
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=5000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1000&lines=📥+Ajay+Prefix+Pro+Readme)](https://github.com/ajay9634/Ajay-prefix/blob/main/README_PRO.md)
 
 ---
