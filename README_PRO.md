@@ -56,7 +56,7 @@ Don't select any internal Drive like C , E , Z etc.
 
 ---
 
-## ✨ Key Features
+## ✨ New key Features
 
 - **Automatic First-Time Backup**: Creates a compact backup of the default registry at `C:\AJAY_PREFIX_PRO\Backup\`. Easily restore if needed (requires a fresh container).
 - **Lightweight & Dependency-Free**: No offline dependencies—runs smoothly out of the box.
@@ -66,6 +66,16 @@ Don't select any internal Drive like C , E , Z etc.
 - **Broad Compatibility**: Supports various Wine versions (Winlator Official, Winlator Bionic) and Windows 11.
 - **Shared Saves with Legacy Version**: Seamlessly shares save locations with Ajay Prefix v10.19 when using the main root drive.
 - **Customizable Data Paths**: Configure  **Save Data Folder** for game saves and **Offline Cache Folder** for offline downloads of online components.
+---
+
+![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=🚀+Features+of+Ajay+Prefix+Pro🚀)
+
+- 💾 **Game Save Redirection**  
+- 📦 **Essential Runtime Files Included**  
+- 🎮 **Custom Wined3D & Useful Tweaks** for wine
+- 🔊 **Audio Libraries (XAudio, FAudio, dsound)** for wine
+- 🎨 **Popular Wrappers Included (dgVoodoo, DXWrapper, etc.)**  
+- 🧪 **Microsoft Sample Test Tools**  
 
 ---
 
@@ -87,16 +97,6 @@ To sync save data across containers/emulators:
 - ➡️ Make sure all use the same drive path — or copy manually if needed.  
 - ➡️ Use `Backup and Restore Drive C Users and ProgramData` feature  
 
----
-
-![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=🚀+Features+of+Ajay+Prefix+Pro🚀)
-
-- 💾 **Game Save Redirection**  
-- 📦 **Essential Runtime Files Included**  
-- 🎮 **Custom Wined3D & Useful Tweaks** for wine
-- 🔊 **Audio Libraries (XAudio, FAudio, dsound)** for wine
-- 🎨 **Popular Wrappers Included (dgVoodoo, DXWrapper, etc.)**  
-- 🧪 **Microsoft Sample Test Tools**  
 
 ---
 
