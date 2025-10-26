@@ -21,9 +21,10 @@ You can install the Ajay Prefix on various PC emulators such as MoboX WOW64, Win
 
 ✅ **Ajay Prefix Pro v1.2**  
 
-📂 `Ajay prefix = game save location to any drive or folder:\Ajay_prefix\save_data + Start menu customization + bug fixes`
+📂 `Ajay prefix pro = game save location (any drive or folder:\Ajay_prefix\save_data) + Start menu customization + bug fixes`
 
-Includes multiple fixes needed in many games.  
+Includes multiple fixes needed in many games.
+
 📝 *Note: If it causes any issues, please let me know in the issues section.*
 
 ---
@@ -95,7 +96,7 @@ If you previously played games, move your save data from:
 To sync save data across containers/emulators:  
 
 - ➡️ Make sure all use the same drive path — or copy manually if needed.  
-- ➡️ Use `Backup and Restore Drive C Users and ProgramData` feature  
+- ➡️ Use `Backup and Restore Tool` feature  
 
 
 ---
