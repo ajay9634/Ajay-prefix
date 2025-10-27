@@ -17,7 +17,7 @@ Ajay Prefix Pro is compatible with PC emulators such as MoboX WOW64, Winlator, D
 
 ---
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=5000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1000&lines=📥+Ajay+Prefix+Pro+Readme)](https://github.com/ajay9634/Ajay-prefix/blob/main/README_PRO.md)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=5000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1000&lines=📥+Ajay+Prefix+Pro+Readme)](https://github.com/ajay9634/Ajay-prefix/blob/main/README.md)
 
 ---
 
