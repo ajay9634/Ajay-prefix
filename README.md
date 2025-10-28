@@ -77,7 +77,9 @@ Includes multiple fixes for enhanced gaming performance.
 
 - 💾 **Game Save Redirection**
 - 📦 **Essential Runtime Files Included**
-- 🎮 **Custom WineD3D & Useful Tweaks** for Wine
+- 🎮 **WineD3D, DXVK, VKD3D & Useful Tweaks** for Wine
+- 🎮 **Some Winetricks and Other Fixes** for Wine
+- 🎮 **Fonts** for Wine
 - 🔊 **Audio Libraries (XAudio, FAudio, dsound)** for Wine
 - 🎨 **Popular Wrappers Included (dgVoodoo, DXWrapper, etc.)**
 - 🧪 **Microsoft Sample Test Tools**
