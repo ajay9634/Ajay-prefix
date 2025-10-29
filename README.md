@@ -42,7 +42,7 @@ Includes multiple fixes for enhanced gaming performance.
 ### 🛠️ Manual Installation
 
 1. 📦 Extract `Ajay Prefix Pro v1.2` using ZArchiver or another archive tool.
-2. ⚙️ Run **Setup (Run as Admin).bat**.
+2. ⚙️ Run Setup (Run as Admin).bat as Administrator. (If an admin permission error occurs, manually remove the admin check command.)
 3. 🗂️ Select an **Offline Cache Folder** for online components (any folder, subfolder, or root drive).
 4. 🗂️ Choose a **Save Data Folder** for game saves (any folder, subfolder, or root drive).
 5. 💾 Click **Save Paths** in the Folder Selector, then **Exit**.
