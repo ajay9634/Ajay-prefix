@@ -42,14 +42,15 @@ Includes multiple fixes for enhanced gaming performance.
 ### 🛠️ Manual Installation
 
 1. 📦 Extract `Ajay Prefix Pro v1.2` using ZArchiver or another archive tool.
-2. ⚙️ Run Setup (Run as Admin).bat as Administrator.
-(If the admin permission issue persists under Wine, manually remove the admin check command from the batch file. Do not remove it when running on Windows 11.)
-3. 🗂️ Select an **Offline Cache Folder** for online components (any folder, subfolder, or root drive).
-4. 🗂️ Choose a **Save Data Folder** for game saves (any folder, subfolder, or root drive).
-5. 💾 Click **Save Paths** in the Folder Selector, then **Exit**.
-6. ✅ Wait for the automatic installation to complete. If successful, the latest Start Menu will be installed.
-7. 🔄 Restart Windows or your Wine environment.
-8. ✔️ Verify Ajay Prefix Pro status in the Start Menu Viewer.
+2. ⚙️ Run Setup (for wine).bat (Emulators)  OR
+3. ⚙️ Run Setup (Run as Admin for windows 11).bat
+(If the admin permission issue persists, manually remove the admin check command from the batch file.)
+4. 🗂️ Select an **Offline Cache Folder** for online components (any folder, subfolder, or root drive).
+5. 🗂️ Choose a **Save Data Folder** for game saves (any folder, subfolder, or root drive).
+6. 💾 Click **Save Paths** in the Folder Selector, then **Exit**.
+7. ✅ Wait for the automatic installation to complete. If successful, the latest Start Menu will be installed.
+8. 🔄 Restart Windows or your Wine environment.
+9. ✔️ Verify Ajay Prefix Pro status in the Start Menu Viewer.
 
 ## ⚠️ Important Warnings
 
