@@ -90,7 +90,7 @@ Includes multiple fixes for enhanced gaming performance.
 
 ## 📺 Video Guides
 
-[Insert video guide links here]
+[[For Winlator](https://youtu.be/vNVC-PNc3-o)]
 
 ---
 
