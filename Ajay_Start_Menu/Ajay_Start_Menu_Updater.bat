@@ -85,5 +85,3 @@ echo ==========================================================
 
 :end
 echo.
-Start C:\ProgramData\Temp\start_menu_message.ajau3
-
