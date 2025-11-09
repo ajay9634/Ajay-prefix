@@ -1,10 +1,26 @@
-set "URL=https://www.dropbox.com/scl/fo/3zp5mkv3cpeg8kc11zdet/ALLcNRTH04hX6llvzumIZ4I?rlkey=32sq7ibs60t8nhl0faanminso&st=2jo5x55e&dl=1"
+set "URL1=C:\Windows\Temp" "https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Ajay_Start_Menu/Start_Menu.7z"
+
+set "URL2=C:\Windows\Temp" "https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Ajay_Start_Menu/Ajay_Prefix_Extra_Setup.bat"
+
+set "URL3=C:\Windows\Temp" "https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Ajay_Start_Menu/Ajay_Start_Menu_Updater.bat"
+
+set "URL4=C:\Windows\Temp" "https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Ajay_Start_Menu/cmd.bat"
+
+set "URL5=C:\Windows\Temp" "https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Ajay_Start_Menu/Changelog.txt"
 
 echo [STEP] Downloading latest Ajay Start Menu package...
 set "OUTFILE=C:\Windows\Temp\Scripts.zip"
 set "StartMenu=C:\Windows\Temp\Start_Menu.7z"
-wget --no-check-certificate -O "%OUTFILE%" "%URL%" >nul 2>&1
+timeout.exe /t 1 /nobreak >nul
+wget -q -P "C:\Windows\Temp" "%URL1%" >nul 2>&1
+timeout.exe /t 1 /nobreak >nul
+wget -q -P "C:\Windows\Temp" "%URL2%" >nul 2>&1
+timeout.exe /t 1 /nobreak >nul
+wget -q -P "C:\Windows\Temp" "%URL3%" >nul 2>&1
+timeout.exe /t 1 /nobreak >nul
+wget -q -P "C:\Windows\Temp" "%URL4%" >nul 2>&1
+timeout.exe /t 1 /nobreak >nul
+wget -q -P "C:\Windows\Temp" "%URL5%" >nul 2>&1
 
-C:\Windows\7z.exe x "%OUTFILE%" -oC:\Windows\Temp -y >nul
 timeout.exe /t 1 /nobreak >nul
 timeout.exe /t 1 /nobreak >nul
