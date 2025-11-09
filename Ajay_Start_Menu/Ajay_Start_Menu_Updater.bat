@@ -79,10 +79,11 @@ echo [UPDATE INFO] Install Ajay Prefix Pro from official GitHub !
 
 start /b wscript //nologo "%tmp%\tmp.vbs" ----------------------------------------------------------
 echo [INFO] Check the Start Menu for changes.
-Start C:\ProgramData\Temp\start_menu_message.ajau3
+Start C:\ProgramData\Temp\Temp_Cleaner.ajau3
 
 echo ==========================================================
 
 :end
 echo.
+Start C:\ProgramData\Temp\start_menu_message.ajau3
 
