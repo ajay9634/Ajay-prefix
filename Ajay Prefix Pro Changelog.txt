@@ -1,0 +1,45 @@
+# Changelog
+
+============================================================
+             ## [AJAY PREFIX PRO 1.2 RELEASE] - 30 OCT 2025
+============================================================
+
+### Added
+- Added all necessary Scripts from old Ajay prefix v10.19
+
+### Fixed
+- Installation bug fixed for Winlator bionic and gamehub
+
+===========================================================
+               ## [AJAY START MENU PRO] - 16 NOV 2025
+============================================================
+
+- Updated all scripts related to custom input text or numbers in console windows.
+- Added choice and version selectors to this process, making it compatible with all devices.
+- Added a new "GUI D3D INSTALLER" for DXVK and VKD3D.
+- Moved old scripts with update to the D3D INSTALLER.
+- Bugs fixed.
+
+===========================================================
+               ## [AJAY START MENU PRO] - 13 NOV 2025
+============================================================
+
+- added "Steam_launcher_by_Ajay" in Misc for wine from prefix 10.19
+- added "README_PRO" in Misc for wine
+- added 3DAnalyzer-v236 in Misc for wine
+
+============================================================
+               ## [AJAY START MENU PRO] - 4 NOV 2025
+============================================================
+
+### Added
+- FAudio.dll and SDL2.dll override registry in FAudio Start Menu
+
+============================================================
+               ## [AJAY START MENU PRO] - 2 NOV 2025
+===========================================================
+### Added
+- Added link of DOSBox Pure Unleashed (fast)
+
+### Removed
+- Removed all other slow and old DOSBox
