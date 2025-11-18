@@ -74,8 +74,8 @@ echo [ OK ] Ajay Start Menu scripts updated successfully !
 echo.
 echo
 
-echo [UPDATE INFO] Install Ajay Prefix Pro from official GitHub !
-    echo msgbox "[UPDATE INFO] Install Ajay Prefix Pro from official GitHub !", 64+4096, "Status" > "%tmp%\tmp.vbs"
+echo [UPDATE INFO] Install Ajay Prefix Pro with new Scripts from official GitHub !
+    echo msgbox "[UPDATE INFO] Install Ajay Prefix Pro with new Scripts from official GitHub !", 64+4096, "Status" > "%tmp%\tmp.vbs"
 
 start /b wscript //nologo "%tmp%\tmp.vbs" ----------------------------------------------------------
 echo [INFO] Check the Start Menu for changes.
