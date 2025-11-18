@@ -146,6 +146,9 @@ echo ERROR: Failed to copy Start Menu shortcuts to ProgramData (code %XCOPY2%)
 echo WARNING: This appears to be a protected directory.
 echo Note: This is not a major issue. The Start Menu will appear only in Start Menu Pro Viewer.
 echo certain scripts might not function properly because of restrictions.
+echo.
+echo [INFO] Check the Start Menu for changes by Start Menu Pro Viewer
+echo [INFO] Check the Changelog.txt in Misc
 timeout /t 5 >nul 2>&1
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
 goto :EndScript
