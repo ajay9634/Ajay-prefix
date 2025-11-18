@@ -1,12 +1,12 @@
-set "URL1=C:\Windows\Temp" "https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Ajay_Start_Menu/Start_Menu.7z"
+set "URL1=https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Ajay_Start_Menu/Start_Menu.7z"
 
-set "URL2=C:\Windows\Temp" "https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Ajay_Start_Menu/Ajay_Prefix_Extra_Setup.bat"
+set "URL2=https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Ajay_Start_Menu/Ajay_Prefix_Extra_Setup.bat"
 
-set "URL3=C:\Windows\Temp" "https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Ajay_Start_Menu/Ajay_Start_Menu_Updater.bat"
+set "URL3=https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Ajay_Start_Menu/Ajay_Start_Menu_Updater.bat"
 
-set "URL4=C:\Windows\Temp" "https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Ajay_Start_Menu/cmd.bat"
+set "URL4=https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Ajay_Start_Menu/cmd.bat"
 
-set "URL5=C:\Windows\Temp" "https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Ajay_Start_Menu/Changelog.txt"
+set "URL5=https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Ajay_Start_Menu/Changelog.txt"
 
 echo [STEP] Downloading latest Ajay Start Menu package...
 set "OUTFILE=C:\Windows\Temp\Scripts.zip"
