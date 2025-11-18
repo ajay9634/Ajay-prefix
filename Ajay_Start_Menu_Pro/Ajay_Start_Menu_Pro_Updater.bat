@@ -78,8 +78,10 @@ echo Success: Files copied.
 goto AfterXCopy1
 
 :XCopy1_Warn
-echo Warning: No files found to copy.
-goto AfterXCopy1
+echo Warning: No Start Menu files to copy.
+ERROR: Failed to copy Start Menu files  (code %XCOPY2%)
+pause
+exit /B 1
 
 :XCopy1_Error
 cls
@@ -133,13 +135,17 @@ goto AfterXCopy2
 
 :XCopy2_Warn
 echo Warning: No Start Menu files to copy.
-goto AfterXCopy2
+ERROR: Failed to copy Start Menu shortcuts to ProgramData (code %XCOPY2%)
+goto :EndScript
+exit /B 1
+pause
 
 :XCopy2_Error
 cls
 echo ERROR: Failed to copy Start Menu shortcuts to ProgramData (code %XCOPY2%)
 echo WARNING: This appears to be a protected directory.
-echo You will see the Start Menu only in Start Menu Pro Viewer, and some scripts may not work properly due to restrictions.
+echo Note: This is not a major issue. The Start Menu will appear only in Start Menu Pro Viewer, and certain scripts might not function properly because of restrictions.
+echo 
 timeout /t 5 >nul 2>&1
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
 goto :EndScript
