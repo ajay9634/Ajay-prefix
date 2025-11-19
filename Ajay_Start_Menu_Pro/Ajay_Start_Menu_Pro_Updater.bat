@@ -160,8 +160,10 @@ pause
 exit /B 1
 
 :AfterXCopy2
+echo [INFO] Check the Changelog.txt in Misc
 :SkipWineMenu
-
+echo [INFO] Check the Start Menu for changes.
+echo ----------------------------------------------------------
 timeout /t 2 >nul 2>&1
 
 "C:\windows\7z.exe" x "C:\Program Files (x86)\AutoIt3\AutoIt3_exe_backup.7z" -o"C:\Program Files (x86)\AutoIt3" -y >nul 2>&1
@@ -170,12 +172,10 @@ echo.
 echo [ OK ] Ajay Start Menu Pro Scripts updated successfully!
 echo.
 echo ----------------------------------------------------------
-echo [INFO] Check the Start Menu for changes.
-echo [INFO] Check the Changelog.txt in Misc
+
 
 start "" "C:\Program Files (x86)\AutoIt3\AutoIt3.exe" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\start_menu_message.ajau3"
 if exist "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Del_Old_Start_Menu.vbs" start "" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Del_Old_Start_Menu.vbs"
-echo ==========================================================
 
 goto EndScript
 
