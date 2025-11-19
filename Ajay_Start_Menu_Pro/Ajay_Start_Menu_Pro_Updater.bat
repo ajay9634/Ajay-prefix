@@ -37,6 +37,7 @@ timeout /t 2 >nul 2>&1
 :ContinueInstall
 rmdir /S /Q "C:\temp\AJAY_PREFIX_PRO" 2>nul
 echo.
+echo ----------------------------------------------------------
 echo [STEP] Installing Updated Ajay Start Menu Pro package ...
 "C:\windows\7z.exe" x "C:\temp\Start_Menu_Pro.7z" -p-q-r -o"C:\Temp" -y >nul 2>&1
 
@@ -112,7 +113,7 @@ mkdir "%setupfolder%\Ajay_prefix\wget_files\temp" 2>nul
 mkdir "%setupfolder%\Ajay_prefix\wget_files\my_apps" 2>nul
 
 timeout /t 2 >nul 2>&1
-
+echo ----------------------------------------------------------
 echo [INFO] Copying to Wine Start Menu for Easy Access ...
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v a /d "AjayStartMenuPro" /f >nul 2>&1
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v MRUList /d a /f >nul 2>&1
@@ -165,7 +166,7 @@ echo ----------------------------------------------------------
 echo [INFO] Check the Changelog.txt in Misc
 :SkipWineMenu
 echo [INFO] Check the Start Menu for changes.
-echo ----------------------------------------------------------
+echo ==========================================================
 timeout /t 2 >nul 2>&1
 
 "C:\windows\7z.exe" x "C:\Program Files (x86)\AutoIt3\AutoIt3_exe_backup.7z" -o"C:\Program Files (x86)\AutoIt3" -y >nul 2>&1
