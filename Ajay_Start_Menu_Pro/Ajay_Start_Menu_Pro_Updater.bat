@@ -160,6 +160,8 @@ pause
 exit /B 1
 
 :AfterXCopy2
+echo.
+echo ----------------------------------------------------------
 echo [INFO] Check the Changelog.txt in Misc
 :SkipWineMenu
 echo [INFO] Check the Start Menu for changes.
@@ -171,7 +173,7 @@ timeout /t 2 >nul 2>&1
 echo.
 echo [ OK ] Ajay Start Menu Pro Scripts updated successfully!
 echo.
-echo ----------------------------------------------------------
+echo ==========================================================
 
 
 start "" "C:\Program Files (x86)\AutoIt3\AutoIt3.exe" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\start_menu_message.ajau3"
