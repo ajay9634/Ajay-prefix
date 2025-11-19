@@ -24,7 +24,6 @@ if not exist "%StartMenuPro%" goto PackageMissing
 
 echo.
 echo [ OK ] Downloaded successfully
-
 echo [STEP] Removing old Ajay Start Menu Pro Scripts ...
 rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro" >nul 2>&1
 del /S /Q /F "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts\*.*" >nul 2>&1
@@ -75,12 +74,13 @@ if %XCOPY1% geq 4 goto XCopy1_Error
 goto XCopy1_Abort
 
 :XCopy1_OK
-echo Success: Files copied.
+echo Success: Files copied to Main Location.
+echo [INFO] Now You can enjoy Ajay Start Menu Pro by Viewer.
 goto AfterXCopy1
 
 :XCopy1_Warn
 echo Warning: No Start Menu files to copy.
-ERROR: Failed to copy Start Menu files  (code %XCOPY2%)
+ERROR: Failed to copy Ajay Start Menu Pro files  (code %XCOPY2%)
 pause
 exit /B 1
 
@@ -114,7 +114,7 @@ mkdir "%setupfolder%\Ajay_prefix\wget_files\my_apps" 2>nul
 
 timeout /t 2 >nul 2>&1
 echo ----------------------------------------------------------
-echo [INFO] Copying to Wine Start Menu for Easy Access ...
+echo [INFO] Copying to Wine Start Menu for Convenience ...
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v a /d "AjayStartMenuPro" /f >nul 2>&1
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v MRUList /d a /f >nul 2>&1
 
@@ -131,19 +131,19 @@ if %XCOPY2% geq 4 goto XCopy2_Error
 goto XCopy2_Abort
 
 :XCopy2_OK
-echo Success: Start Menu shortcuts copied.
+echo Success: Ajay Start Menu Pro shortcuts copied to ProgramData Start Menu.
 goto AfterXCopy2
 
 :XCopy2_Warn
 echo Warning: No Start Menu files to copy.
-ERROR: Failed to copy Start Menu shortcuts to ProgramData (code %XCOPY2%)
+ERROR: Failed to copy Ajay Start Menu Pro shortcuts to ProgramData (code %XCOPY2%)
 goto :EndScript
 exit /B 1
 pause
 
 :XCopy2_Error
 cls
-echo ERROR: Failed to copy Start Menu shortcuts to ProgramData (code %XCOPY2%)
+echo ERROR: Failed to copy Ajay Start Menu Pro shortcuts to ProgramData (code %XCOPY2%)
 echo WARNING: This appears to be a protected directory.
 echo Note: This is not a major issue. The Start Menu will appear only in Start Menu Pro Viewer.
 echo certain scripts might not function properly because of restrictions.
@@ -166,6 +166,7 @@ echo ----------------------------------------------------------
 echo [INFO] Check the Changelog.txt in Misc
 :SkipWineMenu
 echo [INFO] Check the Start Menu for changes.
+echo.
 echo ==========================================================
 timeout /t 2 >nul 2>&1
 
@@ -192,5 +193,7 @@ echo [INFO ] Download may have failed. Check internet and retry.
 
 :EndScript
 echo.
+timeout /t 1 >nul 2>&1
+timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
 endlocal
