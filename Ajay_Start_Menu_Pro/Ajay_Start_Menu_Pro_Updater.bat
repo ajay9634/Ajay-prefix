@@ -131,19 +131,19 @@ if %XCOPY2% geq 4 goto XCopy2_Error
 goto XCopy2_Abort
 
 :XCopy2_OK
-echo Success: Ajay Start Menu Pro shortcuts copied to ProgramData Start Menu.
+echo Success: Start Menu shortcuts copied to ProgramData .
 goto AfterXCopy2
 
 :XCopy2_Warn
 echo Warning: No Start Menu files to copy.
-ERROR: Failed to copy Ajay Start Menu Pro shortcuts to ProgramData (code %XCOPY2%)
+ERROR: Failed to copy Start Menu shortcuts to ProgramData (code %XCOPY2%)
 goto :EndScript
 exit /B 1
 pause
 
 :XCopy2_Error
 cls
-echo ERROR: Failed to copy Ajay Start Menu Pro shortcuts to ProgramData (code %XCOPY2%)
+echo ERROR: Failed to copy Start Menu shortcuts to ProgramData (code %XCOPY2%)
 echo WARNING: This appears to be a protected directory.
 echo Note: This is not a major issue. The Start Menu will appear only in Start Menu Pro Viewer.
 echo certain scripts might not function properly because of restrictions.
