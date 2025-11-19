@@ -174,7 +174,7 @@ echo [INFO] Check the Start Menu for changes.
 echo [INFO] Check the Changelog.txt in Misc
 
 start "" "C:\Program Files (x86)\AutoIt3\AutoIt3.exe" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\start_menu_message.ajau3"
-Start C:\AJAY_PREFIX_PRO\Ajay_Scripts\Del_Old_Start_Menu.vbs
+Start C:\AJAY_PREFIX_PRO\Ajay_Scripts\Del_Old_Start_Menu.vbs >nul 2>&1
 echo ==========================================================
 
 goto EndScript
