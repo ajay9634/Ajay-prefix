@@ -118,7 +118,8 @@ To sync save data across containers/emulators:
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=⛔+Limitations)
 - 🌐 Requires Internet for full setup  
-- ⚠️ May cause issues on some emulators  
+- ⚠️ May cause issues on some emulators
+- ⚠️ May break Steam
 - 💡 Some games may not be compatible  
 - 🚫 No backup for Steam saves in `C:\Program Files (x86)\Steam\`  
 - 📂 Game save path changed to `selected_drive:\Ajay_prefix\save_data\users`  
