@@ -79,6 +79,10 @@ Includes multiple fixes for enhanced gaming performance.
 
 - 💾 **Game Save Redirection**
 - 📦 **Essential Runtime Files** like Official VC Redist , XNA , PhysX , Disk Tools etc Included in **Ajay Prefix Pro Apps Store** which is common for Wine and Windows 11
+- 💾 **Ajay_CDrive_Backup_Restore_Tool** – for backing up data from C drive if game save path is hard-coded
+- 📑 **Ajay_Registry_Export_Import_Tool** – for exporting current container registry and importing previous registry
+- 🔗 **App Paths Manager** – for managing quick command of apps which can be launched via Run or Task Manager new task
+- 🚀 **Multi App Launcher** – for managing quick access to your games (common across multiple containers)
 - 🎮 **WineD3D, DXVK, VKD3D & Useful Tweaks** for Wine
 - 🎮 **Some Winetricks and Other Fixes** for Wine
 - 🔊 **Audio Libraries (XAudio, FAudio, dsound)** for Wine
