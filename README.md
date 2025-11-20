@@ -98,10 +98,10 @@ Includes multiple fixes for enhanced gaming performance.
 - 🎼 DirectX Parts (Direct3D, Dmusic, Dplay, Dshow, etc.)
 - 🔊 Microsoft XAudio2_9+ Redist
 - 🎥 Media Foundation + Codecs by HoodedDeath
-- 🔍 3D-Analyze v2.36
-- ⌨️ Ajay Hotkeys Pro 1.2
-- 🔧 Path2Exe Converter
-- ⏱️ TimeoutKill Script
+- 🔍 3D-Analyze v2.36 app
+- ⌨️ Ajay Hotkeys Pro 1.2 script app
+- 🔧 Path2Exe Converter script app
+- ⏱️ TimeoutKill script app
 - 🛠️ WineD3D & DDraw Fixes
 - 🏎️ nGlide + 3dfx Wrapper
 - 📈 Performance & Compatibility Tools Pack
