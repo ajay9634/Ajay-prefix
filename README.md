@@ -83,25 +83,25 @@ Includes multiple fixes for enhanced gaming performance.
 - 🎮 **Some Winetricks and Other Fixes** for Wine
 - 🎮 **Fonts** for Wine
 - 🔊 **Audio Libraries (XAudio, FAudio, dsound)** for Wine
-🎨 Popular Wrappers Included (dgVoodoo, DXWrapper, etc.)
-🧪 Microsoft Sample Test Tools
-🖼️ GPU Test (DDRAW,DX8,DX9,DX10,DX11,DX12, Nglide & OpenGL)
-🎮 D3D GUI Installer for DXVK & VKD3D
-⚡ Some DXVK ARM64EC
-🌐 xlive fix Tools (xLiveRedist & xliveless)
-🌍 Multilingual Fonts with CJK included
-📦 Custom VC Redist All-in-One (Old & Latest Games)
-🍷 Wine-Mono Custom Version Installer
-🎼 DirectX Parts (Direct3D, Dmusic, Dplay, Dshow, etc.)
-🔊 Microsoft XAudio2_9+ Redist
-🎥 Media Foundation + Codecs by HoodedDeath
-🔍 3D-Analyze v2.36
-⌨️ Ajay Hotkeys Pro 1.2
-🔧 Path2Exe Converter
-⏱️ TimeoutKill Script
-🛠️ WineD3D & DDraw Fixes
-🏎️ nGlide + 3dfx Wrapper
-📈 Performance & Compatibility Tools Pack
+- 🎨 Popular Wrappers Included (dgVoodoo, DXWrapper, etc.)
+- 🧪 Microsoft Sample Test Tools
+- 🖼️ GPU Test (DDRAW,DX8,DX9,DX10,DX11,DX12, Nglide & OpenGL)
+- 🎮 D3D GUI Installer for DXVK & VKD3D
+- ⚡ Some DXVK ARM64EC
+- 🌐 xlive fix Tools (xLiveRedist & xliveless)
+- 🌍 Multilingual Fonts with CJK included
+- 📦 Custom VC Redist All-in-One (Old & Latest Games)
+- 🍷 Wine-Mono Custom Version Installer
+- 🎼 DirectX Parts (Direct3D, Dmusic, Dplay, Dshow, etc.)
+- 🔊 Microsoft XAudio2_9+ Redist
+- 🎥 Media Foundation + Codecs by HoodedDeath
+- 🔍 3D-Analyze v2.36
+- ⌨️ Ajay Hotkeys Pro 1.2
+- 🔧 Path2Exe Converter
+- ⏱️ TimeoutKill Script
+- 🛠️ WineD3D & DDraw Fixes
+- 🏎️ nGlide + 3dfx Wrapper
+- 📈 Performance & Compatibility Tools Pack
 
 - And Many more ..
 
