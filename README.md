@@ -81,7 +81,6 @@ Includes multiple fixes for enhanced gaming performance.
 - 📦 **Essential Runtime Files** like Official VC Redist , XNA , PhysX , Disk Tools etc Included in **Ajay Prefix Pro Apps Store** which is common for Wine and Windows 11
 - 🎮 **WineD3D, DXVK, VKD3D & Useful Tweaks** for Wine
 - 🎮 **Some Winetricks and Other Fixes** for Wine
-- 🎮 **Fonts** for Wine
 - 🔊 **Audio Libraries (XAudio, FAudio, dsound)** for Wine
 - 🎨 Popular Wrappers Included (dgVoodoo, DXWrapper, etc.)
 - 🧪 Microsoft Sample Test Tools
