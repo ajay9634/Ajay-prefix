@@ -11,13 +11,24 @@
 - Installation bug fixed for Winlator bionic and gamehub
 
 ===========================================================
-               ## [AJAY START MENU PRO] - 16 NOV 2025
+               ## [AJAY START MENU PRO] - 20 NOV 2025
 ============================================================
 
+- Updated Some Scripts
+- Updated Anyburn to v6.6
+- Updated Path2Exe Converter , Now compiler is 64 bit , less flags in virustotal
+- Updated Readme of main GitHub Page
+
+===========================================================
+               ## [AJAY START MENU PRO] - 17 NOV 2025
+============================================================
+
+- Added arm64ec dxvk and other dxvk
 - Updated all scripts related to custom input text or numbers in console windows.
 - Added choice and version selectors to this process, making it compatible with all devices.
 - Added a new "GUI D3D INSTALLER" for DXVK and VKD3D.
 - Moved old scripts with update to the D3D INSTALLER.
+- Added New Tool - Path2Exe Converter , it will create exe of any file path . Supported file - exe ,bat ,lnk etc
 - Bugs fixed.
 
 ===========================================================
