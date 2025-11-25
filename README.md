@@ -183,6 +183,68 @@ To sync save data across containers/emulators:
 
 ---
 
+## ⚙️ Environment Variables
+
+### 🎮 VKD3D FPS HUD
+```bash
+VK_INSTANCE_LAYERS=VK_LAYER_MESA_overlay
+```
+
+### 📈 BOX64 – Performance
+```bash
+BOX64_DYNAREC_PAUSE=0
+BOX64_DYNAREC_WEAKBARRIER=2
+BOX64_MAX_CPU=4
+BOX64_NOBANNER=1
+BOX64_DYNAREC_ALIGNED_ATOMICS=1  # games may crash
+BOX64_DYNAREC_DIRTY=1
+BOX64_DYNAREC_TBB=1
+BOX64_DYNAREC_VOLATILE_METADATA=0 # May generate graphics bugs
+```
+
+### 🎯 BOX64 – Fix Source Engine Bugs
+```bash
+BOX64_DYNAREC_CALLRET=0
+BOX64_ALLOWMISSINGLIBS=1
+```
+
+### ⚙️ BOX64 – Compatibility
+```bash
+BOX64_DYNAREC_DIV0=1 # can fix crashes in titles that use tricky math or expect exact CPU fault behavior
+BOX64_DYNAREC_TBB=0 # Can fix crashes or instability in JIT-heavy programs (Unity/Unreal)
+BOX64_FIX_64BIT_INODES=1 # Fix error "file not found" when the file is there
+BOX64_IGNOREINT3=1 # For Some old games, copy protections, or JIT engines misuse INT3
+BOX64_RESERVE_HIGH=1 # Fix allocate memory or segfaults when loading big binaries
+BOX64_UNITYPLAYER=1
+BOX64_SYNC_ROUNDING=1 # Fix crash by Game physics or graphics glitches
+BOX64_DYNAREC_X87DOUBLE=1 # Can fix crashes in old DirectX/GL games
+BOX64_NOSIGSEGV=1  # May fix game crash
+BOX64_RDTSC_1GHZ=1 # May fix too fast and too slow timer in games and fix crash in drm
+BOX64_DYNAREC_PAUSE=1 # Can reduce CPU usage and fix crash in multi threaded games
+```
+
+### 🧠 MESA Performance
+```bash
+MESA_VK_WSI_DEBUG=(sw
+MESA_GLTHREAD=true
+vblank_mode=0   # set to 1 to fix tearing
+ZINK_DESCRIPTOR_POOL=1
+ZINK_USE_LOW_MEMORY_POOL=1
+```
+
+---
+
+## 📁 Necessary Components
+
+### ✅ [Steam Patch & Installer with Fonts](https://github.com/ajay9634/Ajay-prefix/releases/tag/Steam_Patch)  
+### ✅ [Box64 WCP for Winlator GLIBC](https://github.com/ajay9634/Ajay-prefix/releases/tag/Box64_wcp)  
+### ✅ [D3D WCP Files Collection](https://github.com/ajay9634/Ajay-prefix/releases/tag/D3d_wcp)  
+### ✅ [Turnip, Zink, Virgl WCP Collection](https://github.com/ajay9634/Ajay-prefix/releases/tag/Graphics_driver)  
+### ✅ [Turnip, Zink, Virgl EXE Collection](https://github.com/ajay9634/Ajay-prefix/releases/tag/graphics_driver_exe)  
+### ✅ [Wine WCP for Winlator GLIBC](https://github.com/ajay9634/Ajay-prefix/releases/tag/Wine_wcp)
+
+---
+
 ## ⚠️ Support & Community
 
 💬 Need help? Join the Emuplay0 Discord group:  
