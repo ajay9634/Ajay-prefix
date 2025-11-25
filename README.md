@@ -256,6 +256,7 @@ ZINK_USE_LOW_MEMORY_POOL=1
 
 🙏 Subscribe to my YouTube channel and watch videos!  
 ☕ Or donate on Ko-fi!
+🙏 Please star this repository.
 
 [![YouTube](https://img.shields.io/badge/YouTube-Subscribe-red?style=social&logo=youtube)](https://youtube.com/@EMUPLAY0?si=TA9tOZx49eZa4OuN)  
 [![Ko-fi](https://img.shields.io/badge/Donate-Ko_fi-orange?style=social&logo=ko-fi)](https://ko-fi.com)
