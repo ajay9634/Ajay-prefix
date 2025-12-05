@@ -1,3 +1,4 @@
+echo ----------------------------------------------------------
 echo [STEP] Checking New Version Info ...
 rmdir C:\Temp\Scripts_Version >nul 2>&1
 mkdir C:\Temp\Scripts_Version >nul 2>&1
@@ -44,6 +45,8 @@ set "URL3=https://raw.githubusercontent.com/ajay9634/Ajay-prefix/Resources/Ajay_
 set "OUTFILE=C:\Temp\Scripts_Pro.zip"
 set "StartMenuPro=C:\Temp\Start_Menu_Pro.7z"
 timeout.exe /t 1 /nobreak >nul
+echo.
+echo ----------------------------------------------------------
 echo [STEP] Downloading latest Ajay Start Menu Pro package...
 copy /y "C:\Temp\Scripts_Version\Version.txt" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Version.txt"
 
