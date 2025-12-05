@@ -5,7 +5,7 @@ if not exist "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Version.txt" (
     set "OLD_VER=0.0"
     goto Check_Latest
 )
-copy /y "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Version.txt" "C:\Temp\Scripts_Version\Old_Version.txt
+copy /y "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Version.txt" "C:\Temp\Scripts_Version\Old_Version.txt"
 
 timeout.exe /t 1 /nobreak >nul
 
@@ -25,8 +25,8 @@ if not exist "C:\Temp\Scripts_Version\Version.txt" (
 
 set "LATEST_VER=0.0"
 set /p LATEST_VER=<"C:\Temp\Scripts_Version\Version.txt"
-echo Installed Current Version %OLD_VER%
-echo Avilable New Version %LATEST_VER%
+echo [VERSION INFO] Installed Current Version %OLD_VER%
+echo [VERSION INFO] Avilable New Version %LATEST_VER%
 if "%LOCAL_VER%"=="%LATEST_VER%" (
     echo [INFO] You are up to date.
 ) else (
@@ -45,6 +45,8 @@ set "OUTFILE=C:\Temp\Scripts_Pro.zip"
 set "StartMenuPro=C:\Temp\Start_Menu_Pro.7z"
 timeout.exe /t 1 /nobreak >nul
 echo [STEP] Downloading latest Ajay Start Menu Pro package...
+copy /y "C:\Temp\Scripts_Version\Version.txt" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Version.txt"
+
 wget -q -P "C:\Temp" "%URL1%" >nul 2>&1
 timeout.exe /t 1 /nobreak >nul
 wget -q -P "C:\Temp" "%URL2%" >nul 2>&1
