@@ -27,7 +27,7 @@ set "LATEST_VER=0.0"
 set /p LATEST_VER=<"C:\Temp\Scripts_Version\Version.txt"
 echo [VERSION INFO] Installed Current Version %OLD_VER%
 echo [VERSION INFO] Avilable New Version %LATEST_VER%
-if "%LOCAL_VER%"=="%LATEST_VER%" (
+if "%OLD_VER%"=="%LATEST_VER%" (
     echo [INFO] You are up to date.
 ) else (
     echo [INFO] NEW UPDATE AVAILABLE.
