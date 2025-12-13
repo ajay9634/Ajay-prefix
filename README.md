@@ -1,4 +1,4 @@
-![logo](https://github.com/ajay9634/Ajay-prefix/blob/main/.github/logo.jpg)
+l![logo](https://github.com/ajay9634/Ajay-prefix/blob/main/.github/logo.jpg)
 
 ---
 
@@ -43,6 +43,7 @@ Includes multiple fixes for enhanced gaming performance.
 **del /F /Q 7z1.exe
 del /F /Q Setup.7z
 del "%~f0"** .
+
 **Warning:** `7z1.exe` is highly sensitive and can be corrupted by infected containers or modified game files. It is **strongly recommended** to keep these deletion lines for security and reliability.
 
 ### 🛠️ Manual Installation
