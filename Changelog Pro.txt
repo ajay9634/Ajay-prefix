@@ -11,6 +11,35 @@
 - Installation bug fixed for Winlator bionic and gamehub
 
 ===========================================================
+               ## [AJAY START MENU PRO] - 3 Dec 2025
+============================================================
+
+- Updated all Scripts, fixed syntax error issue
+- Added Latest action build FAudio , may not work as expected
+- Updated FAudio registry
+
+===========================================================
+               ## [AJAY START MENU PRO] - 25 NOV 2025
+============================================================
+
+- Added "Install necessary components" script
+- Updated "HLLib246 Multi Extractor" Script
+
+===========================================================
+               ## [AJAY START MENU PRO] - 22 NOV 2025
+============================================================
+
+- Added HLLib246 Multi Extractor , Useful to extract theses formats -
+VPK  ( *_dir.vpk )
+PAK  ( .pak )
+GCF  ( .gcf )
+BSP  ( .bsp )
+WAD  ( .wad )
+NCF  ( .ncf )
+
+Tested in half life 2 mods by Extracting VPK files
+
+===========================================================
                ## [AJAY START MENU PRO] - 20 NOV 2025
 ============================================================
 
