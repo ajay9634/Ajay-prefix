@@ -39,10 +39,10 @@ Includes multiple fixes for enhanced gaming performance.
 
 ## ⚙️ Installation of Ajay Prefix Pro v1.2
 
--- **Note:** To prevent auto-deletion, edit `install.bat` and remove these lines:
-'del /F /Q 7z1.exe
+**Note:** To prevent auto-deletion, edit `install.bat` and remove these lines:
+**del /F /Q 7z1.exe
 del /F /Q Setup.7z
-del "%~f0"' .
+del "%~f0"** .
 Remember 7z1.exe is too sensitive.
 
 ### 🛠️ Manual Installation
