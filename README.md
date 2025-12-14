@@ -136,17 +136,23 @@ To sync save data across containers/emulators:
 
 ## ⚠️ Notices & Troubleshooting
 
-- 🚫 **Cancel Installation**: To stop the process, close the CMD window before exiting the **Ajay Prefix Folder Selector**.
-- 🔄 **Restoring Original Setup or Uninstalling**:
-  - Navigate to `C:\AJAY_PREFIX_PRO\backup\`.
-  - Import all registry keys to revert.
-- 🚫 **Do Not Delete**:
-  - `Ajay_Scripts` and `Ajay_Start_Menu_Pro` from `C:\AJAY_PREFIX_PRO`.
-  - `AjayPrefixConf.txt` or other Ajay Prefix Pro files from `C:\Windows\`.
-  - **Save Data Folder**.
+> [!TIP]
+> - 🚫 **Cancel Installation**: To stop the process, close the CMD window before exiting the **Ajay Prefix Folder Selector**.
+
+> [!IMPORTANT]
+> - 🔄 **Restoring Original Setup or Uninstalling**:
+>  - Navigate to `C:\AJAY_PREFIX_PRO\backup\`.
+>  - Import all registry keys to revert.
+
+> [!CAUTION]
+> 🚫 **Do Not Delete**:
+>  - `Ajay_Scripts` and `Ajay_Start_Menu_Pro` from `C:\AJAY_PREFIX_PRO`.
+>  - `AjayPrefixConf.txt` or other Ajay Prefix Pro files from `C:\Windows\`.
+>  - **Save Data Folder**.
 - ✅ **Tested Platforms**: Verified on Winlator Official, Winlator forks, and Windows 11 with no issues.
+
 > [!NOTE]
->Online components and Start Menu enhancements are in development (Update Scripts Pro and stay tuned!).
+>Online components and Start Menu enhancements are in development (Update Scripts Pro and stay tuned).
 ---
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=⛔+Limitations)
