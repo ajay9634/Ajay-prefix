@@ -149,6 +149,7 @@ To sync save data across containers/emulators:
 >  - `AjayPrefixConf.txt` or other Ajay Prefix Pro files from `C:\Windows\`.
 >  - **Save Data Folder**.
 
+> [!Information]
 > - ✅ **Tested Platforms**: Verified on Winlator Official, Winlator forks, and Windows 11 with no issues.
 
 > [!NOTE]
