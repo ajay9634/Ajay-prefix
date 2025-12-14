@@ -1,14 +1,14 @@
 # Changelog
 
 ============================================================
-             ## [AJAY PREFIX PRO 1.2 RELEASE] - 30 OCT 2025
+             ## [AJAY PREFIX PRO 1.3 RELEASE] - 14 December 2025
 ============================================================
 
-### Added
-- Added all necessary Scripts from old Ajay prefix v10.19
+- Updated Setup scripts
+- Added "show dot files" registry for wine : Hidden folders and files (those starting with a dot) are now visible in Wine file dialogs, explorers, and applications for easier access to hidden directories.
+- Added wfm2_auto_run.exe : This new executable automates the installation process and directly launches wfm2.exe (File Manager from Winlator).
 
-### Fixed
-- Installation bug fixed for Winlator bionic and gamehub
+Quick setup: Create a shortcut to wfm2_auto_run.exe in GameHub , Winlator etc then launch it for seamless automatic installation and immediate access to the file manager and Ajay Start Menu Pro Viewer.
 
 ===========================================================
                ## [AJAY START MENU PRO] - 3 Dec 2025
