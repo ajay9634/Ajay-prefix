@@ -29,7 +29,7 @@ Ajay Prefix Pro is compatible with PC emulators such as MoboX WOW64, Winlator, D
 
 Includes multiple fixes for enhanced gaming performance.
 
-📝 *Note: If you encounter issues, please report them in the Issues section.*
+📝 *[!Note]: If you encounter issues, please report them in the Issues section.*
 
 ---
 
