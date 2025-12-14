@@ -23,7 +23,7 @@ Ajay Prefix Pro is compatible with PC emulators such as MoboX WOW64, Winlator, D
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=✨+What+is+Ajay+Prefix+Pro✨)
 
-✅ **Ajay Prefix Pro v1.2**  
+✅ **Ajay Prefix Pro v1.3**  
 
 📂 *Ajay Prefix Pro = Game save redirection (any drive or folder:\Ajay_prefix\save_data) + Start Menu customization + Game fixes*
 
@@ -33,22 +33,15 @@ Includes multiple fixes for enhanced gaming performance.
 
 ---
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=5000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1000&lines=📥+Download+Ajay+Prefix+v1.2)](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_Prefix_Pro)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=5000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1000&lines=📥+Download+Ajay+Prefix+v1.3)](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_Prefix_Pro_1.3)
 
 ---
 
-## ⚙️ Installation of Ajay Prefix Pro v1.2
-
-**Note:** To prevent auto-deletion, edit `Setup...bat` and remove these lines:
-**del /F /Q 7z1.exe
-del /F /Q Setup.7z
-del "%~f0"** .
-
-**Warning:** `7z1.exe` is highly sensitive and can be corrupted by infected containers or modified game files. It is **strongly recommended** to keep these deletion lines for security and reliability.
+## ⚙️ Installation of Ajay Prefix Pro v1.3
 
 ### 🛠️ Manual Installation
 
-1. 📦 Extract `Ajay Prefix Pro v1.2` using ZArchiver or another archive tool.
+1. 📦 Extract `Ajay Prefix Pro v1.3` using ZArchiver or another archive tool.
 2. ⚙️ Run Setup (for wine).bat (Emulators)  OR
 3. ⚙️ Run Setup (Run as Admin for windows 11).bat
 (If the admin permission issue persists, manually remove the admin check command from the batch file.)
