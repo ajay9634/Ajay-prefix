@@ -136,7 +136,6 @@ To sync save data across containers/emulators:
 
 ## ⚠️ Notices & Troubleshooting
 
-> [!TIP]
 > - 🚫 **Cancel Installation**: To stop the process, close the CMD window before exiting the **Ajay Prefix Folder Selector**.
 
 > [!IMPORTANT]
@@ -149,7 +148,8 @@ To sync save data across containers/emulators:
 >  - `Ajay_Scripts` and `Ajay_Start_Menu_Pro` from `C:\AJAY_PREFIX_PRO`.
 >  - `AjayPrefixConf.txt` or other Ajay Prefix Pro files from `C:\Windows\`.
 >  - **Save Data Folder**.
-- ✅ **Tested Platforms**: Verified on Winlator Official, Winlator forks, and Windows 11 with no issues.
+
+> - ✅ **Tested Platforms**: Verified on Winlator Official, Winlator forks, and Windows 11 with no issues.
 
 > [!NOTE]
 >Online components and Start Menu enhancements are in development (Update Scripts Pro and stay tuned).
