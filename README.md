@@ -144,9 +144,9 @@ To sync save data across containers/emulators:
   - `Ajay_Scripts` and `Ajay_Start_Menu_Pro` from `C:\AJAY_PREFIX_PRO`.
   - `AjayPrefixConf.txt` or other Ajay Prefix Pro files from `C:\Windows\`.
   - **Save Data Folder**.
-- 🚀 **Note**: Online components and Start Menu enhancements are in development (Update Scripts Pro and stay tuned!).
 - ✅ **Tested Platforms**: Verified on Winlator Official, Winlator forks, and Windows 11 with no issues.
-
+> [!NOTE]
+>Online components and Start Menu enhancements are in development (Update Scripts Pro and stay tuned!).
 ---
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=⛔+Limitations)
