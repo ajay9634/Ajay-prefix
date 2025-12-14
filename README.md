@@ -55,9 +55,14 @@ Includes multiple fixes for enhanced gaming performance.
 
 ## ⚠️ Important Warnings
 
-- 🔐 **Manual Registry Backup Recommended**: Always back up your Windows registry before installation. While Wine containers can be recreated with minimal loss, the author is not responsible for registry issues.
-- 💾 **Post-Installation Save Migration**: After setup, manually move game saves from the C: drive to your designated **Save Data Folder**. On Windows 11, copy or move the AppData directory to prevent data loss.
-- 🚫 **Do Not Delete**: Avoid removing the **Save Data Folder** or its root drive.
+> [!IMPORTANT]
+> - 🔐 **Manual Registry Backup Recommended**: Always back up your Windows registry before installation. While Wine containers can be recreated with minimal loss, the author is not responsible for registry issues.
+
+> [!IMPORTANT]
+> - 💾 **Post-Installation Save Migration**: After setup, manually move game saves from the C: drive to your designated **Save Data Folder**. On Windows 11, copy or move the AppData directory to prevent data loss.
+
+> [!CAUTION]
+> - 🚫 **Do Not Delete**: Avoid removing the **Save Data Folder** or its root drive.
 
 > [!NOTE]
 > Do not select internal drives (e.g., C:, E:, Z:) as the **Save Data Folder**.
@@ -136,7 +141,9 @@ To sync save data across containers/emulators:
 
 ## ⚠️ Notices & Troubleshooting
 
-> - 🚫 **Cancel Installation**: To stop the process, close the CMD window before exiting the **Ajay Prefix Folder Selector**.
+ - 🚫 **Cancel Installation**: To stop the process, close the CMD window before exiting the **Ajay Prefix Folder Selector**.
+
+- ✅ **Tested Platforms**: Verified on Winlator Official, Winlator forks, and Windows 11 with no issues.
 
 > [!IMPORTANT]
 > - 🔄 **Restoring Original Setup or Uninstalling**:
@@ -148,9 +155,6 @@ To sync save data across containers/emulators:
 >  - `Ajay_Scripts` and `Ajay_Start_Menu_Pro` from `C:\AJAY_PREFIX_PRO`.
 >  - `AjayPrefixConf.txt` or other Ajay Prefix Pro files from `C:\Windows\`.
 >  - **Save Data Folder**.
-
-> [!Information]
-> - ✅ **Tested Platforms**: Verified on Winlator Official, Winlator forks, and Windows 11 with no issues.
 
 > [!NOTE]
 >Online components and Start Menu enhancements are in development (Update Scripts Pro and stay tuned).
