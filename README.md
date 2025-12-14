@@ -59,7 +59,8 @@ Includes multiple fixes for enhanced gaming performance.
 - 💾 **Post-Installation Save Migration**: After setup, manually move game saves from the C: drive to your designated **Save Data Folder**. On Windows 11, copy or move the AppData directory to prevent data loss.
 - 🚫 **Do Not Delete**: Avoid removing the **Save Data Folder** or its root drive.
 
-⚠️ **Note**: Do not select internal drives (e.g., C:, E:, Z:) as the **Save Data Folder**.
+> [!NOTE]
+> Do not select internal drives (e.g., C:, E:, Z:) as the **Save Data Folder**.
 
 ---
 
