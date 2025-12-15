@@ -30,7 +30,7 @@ Ajay Prefix Pro is compatible with PC emulators such as MoboX WOW64, Winlator, D
 Includes multiple fixes for enhanced gaming performance.
 
 > [!NOTE]
-> If you encounter issues, please report them in the Issues section.*
+> If you encounter issues, please report them in the Issues section.
 
 ---
 
@@ -43,9 +43,9 @@ Includes multiple fixes for enhanced gaming performance.
 ### 🛠️ Manual Installation
 
 1. 📦 Extract `Ajay Prefix Pro v1.3` using ZArchiver or another archive tool.
-2. ⚙️ Run Setup (for wine).bat (Emulators)  OR
-3. ⚙️ Run Setup (Run as Admin for windows 11).bat
-(If the admin permission issue persists, manually remove the admin check command from the batch file.)
+2. ⚙️ Run **Setup (for wine).bat**   OR run **wfm2_auto_run.exe** in Emulator _OR_
+3. ⚙️ Run **Setup (Run as Admin for windows 11).bat** in Windows 11
+(If the admin permission issue persists, manually remove the admin check command from the batch file).
 4. 🗂️ Select an **Offline Cache Folder** for online components (any folder, subfolder, or root drive).
 5. 🗂️ Choose a **Save Data Folder** for game saves (any folder, subfolder, or root drive).
 6. 💾 Click **Save Paths** in the Folder Selector, then **Exit**.
