@@ -43,7 +43,7 @@ Includes multiple fixes for enhanced gaming performance.
 ### 🛠️ Manual Installation
 
 1. 📦 Extract `Ajay Prefix Pro v1.3` using ZArchiver or another archive tool.
-2. ⚙️ Run **Setup (for wine).bat**   OR run **wfm2_auto_run.exe** in Emulator _OR_
+2. ⚙️ Run **Setup (for wine).bat**   OR **wfm2_auto_run.exe** in Emulator _OR_
 3. ⚙️ Run **Setup (Run as Admin for windows 11).bat** in Windows 11
 (If the admin permission issue persists, manually remove the admin check command from the batch file).
 4. 🗂️ Select an **Offline Cache Folder** for online components (any folder, subfolder, or root drive).
@@ -287,6 +287,7 @@ ZINK_USE_LOW_MEMORY_POOL=1
 - Open-source projects
 - WinRAR, 7z, wget, curl
 - Emuplay0 Testing Team
-- Guide by ChatGPT
+- Autoit Software
+- Guide by ChatGPT , Grok etc
 
 ---
