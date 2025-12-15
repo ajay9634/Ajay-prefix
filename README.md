@@ -121,7 +121,7 @@ Includes multiple fixes for enhanced gaming performance.
 
 - [[Ajay Prefix Pro v1.2 Installation - Winlator official and bionic](https://youtu.be/vNVC-PNc3-o)]
 - [[Ajay Prefix Pro v1.2 Installation - Gamehub](https://youtu.be/6Qo_Yf9MIyg)]
-- [Ajay Prefix Pro v1.3 Quick Installation - Gamehub](https://youtu.be/UtLBM3iZYgA?si=MpSenHXC6WzTnIKt)]
+- [[Ajay Prefix Pro v1.3 Quick Installation - Gamehub](https://youtu.be/UtLBM3iZYgA?si=MpSenHXC6WzTnIKt)]
   
 ---
 
