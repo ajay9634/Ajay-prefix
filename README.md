@@ -198,6 +198,12 @@ To sync save data across containers/emulators:
 
 ---
 
+### ⏳ Current Status
+
+Development pause temporary!
+You can report bugs or broken Scripts on discord.
+
+---
 ## ⚙️ Environment Variables
 
 ### 🎮 VKD3D FPS HUD
