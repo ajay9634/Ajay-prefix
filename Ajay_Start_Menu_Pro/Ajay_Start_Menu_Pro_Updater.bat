@@ -18,7 +18,8 @@ mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\Documents" 2>nul
 mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\Documents\My Games" 2>nul
 mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\Saved Games" 2>nul
 
-timeout /t 2 >nul 2>&1
+timeout /t 1 >nul 2>&1
+timeout /t 1 >nul 2>&1
 
 if not exist "%StartMenuPro%" goto PackageMissing
 
@@ -29,7 +30,8 @@ rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro" >nul 2>&1
 del /S /Q /F "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts\*.*" >nul 2>&1
 rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts" >nul 2>&1
 
-timeout /t 2 >nul 2>&1
+timeout /t 1 >nul 2>&1
+timeout /t 1 >nul 2>&1
 
 "C:\windows\7z.exe" x "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Ajay_Start_Menu_Pro.7z" -o"C:\AJAY_PREFIX_PRO" -y >nul 2>&1
 
@@ -40,15 +42,19 @@ echo ----------------------------------------------------------
 echo [STEP] Installing Updated Ajay Start Menu Pro package ...
 "C:\windows\7z.exe" x "C:\temp\Start_Menu_Pro.7z" -p-q-r -o"C:\Temp" -y >nul 2>&1
 
-timeout /t 2 >nul 2>&1
+timeout /t 1 >nul 2>&1
+timeout /t 1 >nul 2>&1
 
 reg query "HKEY_LOCAL_MACHINE\Software\Wine" >nul 2>&1
 if errorlevel 1 goto IsWindows
 
 echo [INFO] Wine detected.
 echo [INFO] Installing Start Menu for Wine ...
-timeout /t 3 >nul 2>&1
+timeout /t 1 >nul 2>&1
+timeout /t 1 >nul 2>&1
 "C:\windows\7z.exe" x "C:\temp\Start_Menu_Pro_wine.7z" -p-q-r -o"C:\Temp" -y >nul 2>&1
+timeout /t 1 >nul 2>&1
+xcopy /s /y "C:\Temp\windows\" "C:\windows\" /E /H /C /I >nul 2>&1
 
 mkdir "%setupfolder%\Ajay_prefix\wget_files\d3d" 2>nul
 mkdir "%setupfolder%\Ajay_prefix\wget_files\dsound" 2>nul
@@ -57,12 +63,14 @@ goto DoXCopy
 
 :IsWindows
 echo [INFO] Windows detected.
-timeout /t 3 >nul 2>&1
+timeout /t 1 >nul 2>&1
+timeout /t 1 >nul 2>&1
+timeout /t 1 >nul 2>&1
 echo [INFO] Skipping Start Menu ...
 goto DoXCopy
 
 :DoXCopy
-timeout /t 2 >nul 2>&1
+timeout /t 1 >nul 2>&1
 
 :: === XCOPIES 1: Main Files ===
 xcopy /s /y "C:\Temp\AJAY_PREFIX_PRO\" "C:\AJAY_PREFIX_PRO\" /E /H /C /I >nul 2>&1
@@ -99,7 +107,7 @@ exit /B 1
 :AfterXCopy1
 echo.
 
-timeout /t 2 >nul 2>&1
+timeout /t 1 >nul 2>&1
 
 :: === Check for Wine again for Start Menu copy ===
 reg query "HKEY_LOCAL_MACHINE\Software\Wine" >nul 2>&1
@@ -112,7 +120,7 @@ mkdir "%setupfolder%\Ajay_prefix\wget_files\physx" 2>nul
 mkdir "%setupfolder%\Ajay_prefix\wget_files\temp" 2>nul
 mkdir "%setupfolder%\Ajay_prefix\wget_files\my_apps" 2>nul
 
-timeout /t 2 >nul 2>&1
+timeout /t 1 >nul 2>&1
 echo ----------------------------------------------------------
 echo [INFO] Copying to Wine Start Menu for Convenience ...
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v a /d "AjayStartMenuPro" /f >nul 2>&1
@@ -150,7 +158,11 @@ echo certain scripts might not function properly because of restrictions.
 echo.
 echo [INFO] Check the Start Menu for changes by Start Menu Pro Viewer
 echo [INFO] Check the Changelog.txt in Misc
-timeout /t 5 >nul 2>&1
+timeout /t 1 >nul 2>&1
+timeout /t 1 >nul 2>&1
+timeout /t 1 >nul 2>&1
+timeout /t 1 >nul 2>&1
+timeout /t 1 >nul 2>&1
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
 goto :EndScript
 exit /B 1
@@ -168,7 +180,7 @@ echo [INFO] Check the Changelog.txt in Misc
 echo [INFO] Check the Start Menu for changes.
 echo.
 echo ==========================================================
-timeout /t 2 >nul 2>&1
+timeout /t 1 >nul 2>&1
 
 "C:\windows\7z.exe" x "C:\Program Files (x86)\AutoIt3\AutoIt3_exe_backup.7z" -o"C:\Program Files (x86)\AutoIt3" -y >nul 2>&1
 
