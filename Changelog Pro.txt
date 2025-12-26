@@ -11,6 +11,21 @@
 Quick setup: Create a shortcut to wfm2_auto_run.exe in GameHub , Winlator etc then launch it for seamless automatic installation and immediate access to the file manager and Ajay Start Menu Pro Viewer.
 
 ===========================================================
+               ## [AJAY START MENU PRO] - 25 Dec 2025
+============================================================
+
+- Merry Christmas 2025
+- Added File_Info app script
+- Added File_Hashes app script
+
+===========================================================
+               ## [AJAY START MENU PRO] - 20 Dec 2025
+============================================================
+
+- Fixed more scripts ( all scripts are fixed, if still error in any script, report on Emuplay0 discord)
+- Added LAVFilters script
+
+===========================================================
                ## [AJAY START MENU PRO] - 18 Dec 2025
 ============================================================
 
@@ -18,7 +33,7 @@ Quick setup: Create a shortcut to wfm2_auto_run.exe in GameHub , Winlator etc th
 - Added more winetricks Scripts and Fixes
 - Added Winetools , Now you can open taskmgr, winecfg , kill services.exe etc.
 - Added VulkanRT-1.1.108.0-Installer_1 (for RDR2)
-- bugs fixed
+- Extraction bugs fixed
 
 ===========================================================
                ## [AJAY START MENU PRO] - 3 Dec 2025
