@@ -6,7 +6,7 @@
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=6000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1200&height=200&lines=Welcome+to+Ajay+Prefix+Pro;Universal+Wine+Tools+and+Fixes;Game+Tweaks+%7C+Save+Redirection+%7C+Start+Menu)
 
-Ajay Prefix Pro is compatible with PC emulators such as MoboX WOW64, Winlator, Dark OS, MiceWine, Hangover (latest), GameHub, GameFusion, and other WOW64-based emulators. It also supports Windows 11.
+Ajay Prefix Pro is compatible with PC emulators such as MoboX WOW64, Winlator, Dark OS, MiceWine, Hangover (latest), GameHub aka GameFusion, and other 64bit based emulators. It also supports Windows 11.
 
 ## 📋 Requirements
 
@@ -25,9 +25,12 @@ Ajay Prefix Pro is compatible with PC emulators such as MoboX WOW64, Winlator, D
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=6000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1200&height=200&lines=Welcome+to+Ajay+Prefix;Universal+Wine+Tools+and+fixes;Game+tweaks+%7C+Save+redirection+%7C+Start+menu)
 
-You can install the Ajay Prefix on various PC emulators such as MoboX WOW64, Winlator, Dark OS, MiceWine, the latest Hangover, GameHub, GameFusion, and other WOW64 PC emulators.
+You can install the Ajay Prefix on various PC emulators such as MoboX WOW64, Winlator, Dark OS, MiceWine, and other WOW64 PC emulators.
 
-> ⚠️ **Note:** Not supported on x86 emulators like ExaGear or Mobox Box86.  
+
+
+> ⚠️ **Note:** Not supported on x86 emulators like ExaGear or Mobox Box86. It's outdated and some scripts may not work on latest emu like gamehub.
+
 > ExaGear Mod Ajay has a separate Ajay Prefix setup.
 
 ---
