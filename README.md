@@ -200,8 +200,8 @@ To sync save data across containers/emulators:
 
 ### ⏳ Current Status
 
-Development pause temporary!
-You can report bugs or broken Scripts on discord.
+Development is progressing slowly due to a lack of necessary features to add, as well as limited feedback and user requests.
+You can help improve the project by reporting bugs or broken scripts in the issues section or on Discord.
 
 ---
 ## ⚙️ Environment Variables
