@@ -94,7 +94,6 @@ pause
 exit /B 1
 
 :XCopy1_Error
-cls
 echo ERROR: xcopy failed with code %XCOPY1%
 goto :alternate_method
 pause
