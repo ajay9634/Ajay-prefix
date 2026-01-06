@@ -89,20 +89,30 @@ goto AfterXCopy1
 :XCopy1_Warn
 echo Warning: No Start Menu files to copy.
 ERROR: Failed to copy Ajay Start Menu Pro files  (code %XCOPY2%)
+goto :alternate_method
 pause
 exit /B 1
 
 :XCopy1_Error
 cls
 echo ERROR: xcopy failed with code %XCOPY1%
-echo WARNING: You can't enjoy Latest Start Menu
+goto :alternate_method
 pause
 exit /B 1
 
 :XCopy1_Abort
 echo xcopy terminated abnormally (code %XCOPY1%)
+goto :alternate_method
 pause
 exit /B 1
+
+:alternate_method
+echo.
+echo Trying alternate method ...
+"C:\windows\7z.exe" a "C:\temp\Temp_Start_Menu.7z" "C:\Temp\AJAY_PREFIX_PRO\*" -y >nul 2>&1
+timeout /t 1 >nul 2>&1
+timeout /t 1 >nul 2>&1
+"C:\windows\7z.exe" x "C:\temp\Temp_Start_Menu.7z" -o"C:\AJAY_PREFIX_PRO" -y >nul 2>&1
 
 :AfterXCopy1
 echo.
