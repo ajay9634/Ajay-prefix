@@ -89,7 +89,6 @@ goto AfterXCopy1
 :XCopy1_Warn
 echo Warning: No Start Menu files to copy.
 ERROR: Failed to copy Ajay Start Menu Pro files  (code %XCOPY2%)
-goto :alternate_method
 pause
 exit /B 1
 
@@ -165,21 +164,25 @@ echo WARNING: This appears to be a protected directory.
 echo Note: This is not a major issue. The Start Menu will appear only in Start Menu Pro Viewer.
 echo certain scripts might not function properly because of restrictions.
 echo.
-echo [INFO] Check the Start Menu for changes by Start Menu Pro Viewer
-echo [INFO] Check the Changelog.txt in Misc
+goto :alternate_method2
 timeout /t 1 >nul 2>&1
-timeout /t 1 >nul 2>&1
-timeout /t 1 >nul 2>&1
-timeout /t 1 >nul 2>&1
-timeout /t 1 >nul 2>&1
-rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
 goto :EndScript
 exit /B 1
 
 :XCopy2_Abort
 echo Start Menu copy terminated abnormally (code %XCOPY2%)
+goto :alternate_method2
 pause
 exit /B 1
+
+:alternate_method2
+echo.
+echo Trying alternate method ...
+"C:\windows\7z.exe" a "C:\temp\Temp_Start_Menu2.7z" "C:\Temp\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro\*" -y >nul 2>&1
+timeout /t 1 >nul 2>&1
+timeout /t 1 >nul 2>&1
+mkdir "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" >nul 2>&1
+"C:\windows\7z.exe" x "C:\temp\Temp_Start_Menu2.7z" -o"C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" -y >nul 2>&1
 
 :AfterXCopy2
 echo.
