@@ -114,12 +114,13 @@ Section "Main"
   SetOutPath "C:\"
   File /r "Setup\*.*"
   
-  IfFileExists "C:\temp\Setup_main.bat" 0 +3
+  IfFileExists "C:\temp\Setup.bat" 0 +3
     ; ExecWait ensures the batch finishes before the installer closes
-    ExecWait '"$WINDIR\System32\cmd.exe" /c "C:\temp\Setup_main.bat"'
+    ExecWait '"C:\windows\System32\cmd.exe" /c "C:\temp\Setup.bat"'
     Goto +2
-  MessageBox MB_OK|MB_ICONEXCLAMATION "Setup_main.bat not found!"
+  MessageBox MB_OK|MB_ICONEXCLAMATION "Setup.bat not found!"
 
   ; No SendMessage here! 
   ; This allows the installer to finish and exit naturally.
-SectionEnd
+    SectionEnd
+    
