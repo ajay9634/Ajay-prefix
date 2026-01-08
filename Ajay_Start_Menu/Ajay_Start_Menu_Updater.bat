@@ -72,7 +72,6 @@ rmdir /S /Q "C:\windows\temp\ProgramData" 2>nul
 "C:\windows\7z.exe" x "C:\Program Files (x86)\AutoIt3\AutoIt3_exe_backup.7z" -o"C:\Program Files (x86)\AutoIt3" -y >nul 2>&1 ==========================================================
 echo [ OK ] Ajay Start Menu scripts updated successfully !
 echo.
-echo
 
 echo [UPDATE INFO] Install Ajay Prefix Pro with new Scripts from official GitHub !
     echo msgbox "[UPDATE INFO] Install Ajay Prefix Pro with new Scripts from official GitHub !", 64+4096, "Status" > "%tmp%\tmp.vbs"
