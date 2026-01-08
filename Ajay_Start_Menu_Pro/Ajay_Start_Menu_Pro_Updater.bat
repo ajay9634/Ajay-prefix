@@ -106,7 +106,7 @@ exit /B 1
 
 :alternate_method
 echo.
-echo Trying alternate method ...
+echo Trying alternate method by 7zip ...
 "C:\windows\7z.exe" a "C:\temp\Temp_Start_Menu.7z" "C:\Temp\AJAY_PREFIX_PRO\*" -y >nul 2>&1
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
@@ -161,9 +161,6 @@ pause
 cls
 echo ERROR: Failed to copy Start Menu shortcuts to ProgramData (code %XCOPY2%)
 echo WARNING: This appears to be a protected directory.
-echo Note: This is not a major issue. The Start Menu will appear only in Start Menu Pro Viewer.
-echo certain scripts might not function properly because of restrictions.
-echo.
 goto :alternate_method2
 timeout /t 1 >nul 2>&1
 goto :EndScript
@@ -177,7 +174,7 @@ exit /B 1
 
 :alternate_method2
 echo.
-echo Trying alternate method ...
+echo Trying alternate method by 7zip ...
 "C:\windows\7z.exe" a "C:\temp\Temp_Start_Menu2.7z" "C:\Temp\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro\*" -y >nul 2>&1
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
