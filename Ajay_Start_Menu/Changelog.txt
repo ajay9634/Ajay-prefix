@@ -31,6 +31,13 @@ Download:
   https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_prefix
 
 =================================================================
+
+# Ajay Prefix v10.19 Components - Changelog (8 Jan 2026) Final fix
+
+- Removed some scripts, they can be accessed in Ajay Prefix Pro
+- Fixed most scripts
+
+=================================================================
 # Ajay Prefix v10.19 Components - Changelog (28 Oct 2025) Last Update
 
 - Remove Apps and Some other Start Menu ( Install Ajay prefix pro for theses Start Menu)
