@@ -20,8 +20,6 @@ if errorlevel 1 (
 
 :Installation
 echo [INFO] You're using outdated version of Ajay Prefix.
-echo.
-echo Downloading Latest version of Ajay Prefix Pro...
 
 set "TARGET_DIR=Z:\home\.Ajay.Prefix.Pro.v1.3"
 set "EXE_NAME=Ajay.Prefix.Pro.v1.3.Installer.exe"
@@ -38,18 +36,22 @@ if exist "%TARGET_FILE%" (
     echo.
     echo Installer already exists in target location:
     echo %TARGET_FILE%
+    echo.
     echo Skipping download...
     goto :run_installer
 )
 
 :: If we reach here → file doesn't exist → download + copy
-echo Downloading installer...
+echo.
+echo Downloading Ajay Prefix Pro...
 wget -q -P "%TEMP_FOLDER%" "%DOWNLOAD_URL%" >nul 2>&1
 
 if not exist "%TEMP_FILE%" (
     echo.
     echo ERROR: Download failed! 
+    echo.
     echo Check your internet or the download link.
+    echo.
     pause
     exit /b 1
 )
@@ -57,10 +59,12 @@ if not exist "%TEMP_FILE%" (
 :: Create target folder if it doesn't exist
 if not exist "%TARGET_DIR%" mkdir "%TARGET_DIR%" >nul 2>&1
 
+echo.
 echo Copying installer to Drive Z...
 copy /y "%TEMP_FILE%" "%TARGET_DIR%\" >nul 2>&1
 
 if not exist "%TARGET_FILE%" (
+    echo.
     echo ERROR: Copy failed!
     pause
     exit /b 1
