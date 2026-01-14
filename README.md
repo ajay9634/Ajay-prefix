@@ -113,6 +113,7 @@ Includes multiple fixes for enhanced gaming performance.
 - 🔍 3D-Analyze v2.36 app
 - ⌨️ Ajay Hotkeys Pro 1.2 script app
 - 🔧 Path2Exe Converter script app
+- 🔧 SymLink Tools 
 - ⏱️ TimeoutKill script app
 - 🛠️ WineD3D & DDraw Fixes
 - 🏎️ nGlide + 3dfx Wrapper
