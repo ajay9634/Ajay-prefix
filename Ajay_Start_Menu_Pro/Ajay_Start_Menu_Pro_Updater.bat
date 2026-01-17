@@ -183,6 +183,16 @@ mkdir "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" >nul 2>&
 
 :AfterXCopy2
 echo.
+
+if exist "C:\windows\wfm.bat" (
+    copy /y "C:\Temp\temp\wfm.bat" "C:\windows\wfm.bat" >nul 2>nul
+)
+
+if exist "C:\windows\Update_Check.bat" (
+    copy /y "C:\Temp\temp\Update_Check.bat" "C:\windows\Update_Check.bat" >nul 2>nul
+)
+
+
 echo ----------------------------------------------------------
 echo [INFO] Check the Changelog.txt in Misc
 :SkipWineMenu
