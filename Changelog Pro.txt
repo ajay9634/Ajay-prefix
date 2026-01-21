@@ -10,6 +10,28 @@
 
 Quick setup: Create a shortcut to wfm2_auto_run.exe in GameHub , Winlator etc then launch it for seamless automatic installation and immediate access to the file manager and Ajay Start Menu Pro Viewer.
 
+==========================================================
+               ## [AJAY START MENU PRO] - 21 Jan 2026
+============================================================
+
+- Re Organised Misc start menu
+- added SymLink tools to app store
+- Moved themes to Registry
+
+==========================================================
+               ## [AJAY START MENU PRO] - 12 Jan 2026
+============================================================
+
+- Added new gui tool - SymLink Creator V1.1
+- Added new gui tool - SymLink Folder Redirector V1.1
+
+==========================================================
+               ## [AJAY START MENU PRO] - 8 Jan 2026
+============================================================
+
+- Added new version of TitaniumGL wrapper
+- Added new version of ThirteenAG wrapper dx8 and dx9
+
 ===========================================================
                ## [AJAY START MENU PRO] - 25 Dec 2025
 ============================================================
