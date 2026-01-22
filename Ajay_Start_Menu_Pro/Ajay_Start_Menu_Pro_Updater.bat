@@ -67,6 +67,13 @@ timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
 echo [INFO] Skipping Start Menu ...
+echo msgbox "Windows detected, Copy AppData and other folders to new Location.", 64+4096, "Notification" > "%tmp%\tmp.vbs"
+start /b wscript //nologo "%tmp%\tmp.vbs"
+
+timeout /t 1 /nobreak >nul
+timeout /t 1 /nobreak >nul
+timeout /t 1 /nobreak >nul
+del /f /q "%tmp%\tmp.vbs"
 goto DoXCopy
 
 :DoXCopy
@@ -130,57 +137,14 @@ mkdir "%setupfolder%\Ajay_prefix\wget_files\my_apps" 2>nul
 
 timeout /t 1 >nul 2>&1
 echo ----------------------------------------------------------
-echo [INFO] Copying to Wine Start Menu for Convenience ...
+echo [INFO] Confirmation message about Installing to ProgramData...
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v a /d "AjayStartMenuPro" /f >nul 2>&1
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v MRUList /d a /f >nul 2>&1
 
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
 mkdir "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
 
-:: === XCOPIES 2: Start Menu Shortcuts ===
-xcopy /s /y "C:\Temp\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro\" "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro\" /E /H /C /I >nul 2>&1
-set "XCOPY2=%ERRORLEVEL%"
-
-if %XCOPY2%==0 goto XCopy2_OK
-if %XCOPY2%==1 goto XCopy2_Warn
-if %XCOPY2% geq 4 goto XCopy2_Error
-goto XCopy2_Abort
-
-:XCopy2_OK
-echo Success: Start Menu shortcuts copied to ProgramData .
-goto AfterXCopy2
-
-:XCopy2_Warn
-echo Warning: No Start Menu files to copy.
-ERROR: Failed to copy Start Menu shortcuts to ProgramData (code %XCOPY2%)
-goto :EndScript
-exit /B 1
-pause
-
-:XCopy2_Error
-cls
-echo ERROR: Failed to copy Start Menu shortcuts to ProgramData (code %XCOPY2%)
-echo WARNING: This appears to be a protected directory.
-goto :alternate_method2
-timeout /t 1 >nul 2>&1
-goto :EndScript
-exit /B 1
-
-:XCopy2_Abort
-echo Start Menu copy terminated abnormally (code %XCOPY2%)
-goto :alternate_method2
-pause
-exit /B 1
-
-:alternate_method2
-echo.
-echo Trying alternate method by 7zip ...
-"C:\windows\7z.exe" a "C:\temp\Temp_Start_Menu2.7z" "C:\Temp\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro\*" -y >nul 2>&1
-timeout /t 1 >nul 2>&1
-timeout /t 1 >nul 2>&1
-mkdir "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" >nul 2>&1
-"C:\windows\7z.exe" x "C:\temp\Temp_Start_Menu2.7z" -o"C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" -y >nul 2>&1
-
+start /wait "" "C:\Program Files (x86)\AutoIt3\AutoIt3.exe" "C:\Temp\temp\Install2ProgramData.ajau3"
 :AfterXCopy2
 echo.
 
