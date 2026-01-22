@@ -67,7 +67,7 @@ timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
 echo [INFO] Skipping Start Menu ...
-echo msgbox "Windows detected.^n^nFor the first time setup: please copy your AppData and other important folders to the new location.^n(You can safely ignore this message if you've already done this).", 64 + 4096, "First-time Setup Notification" > "%tmp%\tmp.vbs"
+echo msgbox "Windows detected. For the first time setup: please copy your AppData and other important folders to %SaveDataFolder% . (You can safely ignore this message if you've already done this).", 64 + 4096, "First-time Setup Notification" > "%tmp%\tmp.vbs"
 start /b wscript //nologo "%tmp%\tmp.vbs"
 
 timeout /t 1 /nobreak >nul
