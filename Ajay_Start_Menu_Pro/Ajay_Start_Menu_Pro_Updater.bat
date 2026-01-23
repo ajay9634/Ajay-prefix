@@ -66,7 +66,7 @@ echo [INFO] Windows detected.
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
-echo [INFO] Skipping Start Menu ...
+echo [INFO] Skipping Most Start Menu ...
 echo msgbox "Windows detected. For the first time setup: please copy your AppData and other important folders to %SaveDataFolder%\Ajay_prefix\.. (You can safely ignore this message if you've already done this).", 64 + 4096, "First-time Setup Notification" > "%tmp%\tmp.vbs"
 start /b wscript //nologo "%tmp%\tmp.vbs"
 
@@ -115,9 +115,36 @@ exit /B 1
 echo.
 echo Trying alternate method by 7zip ...
 "C:\windows\7z.exe" a "C:\temp\Temp_Start_Menu.7z" "C:\Temp\AJAY_PREFIX_PRO\*" -y >nul 2>&1
+
+if errorlevel 1 (
+    echo [ERROR] 7-Zip failed to compress Start Menu files (code %ERRORLEVEL%).
+    echo msgbox "7-Zip Error: Failed to compress Start Menu files.", 16, "Error" > "%tmp%\7zerr.vbs"
+    wscript //nologo "%tmp%\7zerr.vbs"
+    timeout /t 1 >nul 2>&1
+    timeout /t 1 >nul 2>&1
+    del /f /q "%tmp%\7zerr.vbs"
+    pause
+    exit /B 1
+)
+
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
+
 "C:\windows\7z.exe" x "C:\temp\Temp_Start_Menu.7z" -o"C:\AJAY_PREFIX_PRO" -y >nul 2>&1
+
+if errorlevel 1 (
+    echo [ERROR] 7-Zip failed to extract files to C:\AJAY_PREFIX_PRO (code %ERRORLEVEL%).
+    echo msgbox "7-Zip Error: Failed to extract Start Menu files to destination.", 16, "Error" > "%tmp%\7zerr.vbs"
+    wscript //nologo "%tmp%\7zerr.vbs"
+    timeout /t 1 >nul 2>&1
+    timeout /t 1 >nul 2>&1
+    del /f /q "%tmp%\7zerr.vbs"
+    pause
+    exit /B 1
+)
+
+goto AfterXCopy1
+
 
 :AfterXCopy1
 echo.
@@ -144,7 +171,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v MRUL
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
 mkdir "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
 
-start /wait "" "C:\Program Files (x86)\AutoIt3\AutoIt3.exe" "C:\Temp\temp\Install2ProgramData.ajau3"
+start "" "C:\Program Files (x86)\AutoIt3\AutoIt3.exe" "C:\Temp\temp\Install2ProgramData.ajau3"
 :AfterXCopy2
 echo.
 
