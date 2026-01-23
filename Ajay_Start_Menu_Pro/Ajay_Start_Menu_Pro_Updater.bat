@@ -171,7 +171,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v MRUL
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
 mkdir "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
 
-start "" "C:\Program Files (x86)\AutoIt3\AutoIt3.exe" "C:\Temp\temp\Install2ProgramData.ajau3"
+start "" "C:\Program Files (x86)\AutoIt3\AutoIt3.exe" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Install2ProgramData.ajau3"
 :AfterXCopy2
 echo.
 
