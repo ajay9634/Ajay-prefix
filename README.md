@@ -6,7 +6,7 @@ l![logo](https://github.com/ajay9634/Ajay-prefix/blob/main/.github/logo.jpg)
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=6000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1200&height=200&lines=Welcome+to+Ajay+Prefix+Pro;Universal+Wine+Tools+and+Fixes;Game+Tweaks+%7C+Save+Redirection+%7C+Start+Menu)
 
-Ajay Prefix Pro is compatible with PC emulators such as Mobox WOW64, Winlator, Dark OS, MiceWine, Hangover (latest), GameHub aka GameFusion, and other 64 bit based emulators. It also supports Windows 11.
+Ajay Prefix Pro is compatible with PC emulators such as Mobox WOW64, Winlator, Dark OS, MiceWine, Hangover (latest), GameHub aka GameFusion, and other 64 bit based emulators. It also supports Windows 11 and Linux Wine.
 
 ## ⚡ Ajay Prefix 10.19 README
 
@@ -14,10 +14,11 @@ Ajay Prefix Pro is compatible with PC emulators such as Mobox WOW64, Winlator, D
 
 ## 📋 Requirements
 
-- 🖥️ 64-bit architecture
+- 🖥️ 64-bit architecture with 32 bit support
 - 🌐 Internet connection for the latest Start Menu
 - 🍷 Any Wine-based PC emulator or Windows 11 (24H2 update)
 - 🔑 Administrative permissions for Windows 11
+​🐧 Linux Wine: Wine 10.0+ with DXVK/VKD3D for full Vulkan-based Direct3D (9/10/11/12), OpenGL, and native Wayland support.
 
 ---
 
@@ -67,7 +68,11 @@ Includes multiple fixes for enhanced gaming performance.
 > - 💾 **Post-Installation Save Migration**: After setup, manually move game saves from the C: drive to your designated **Save Data Folder**. On Windows 11, copy or move the AppData directory to prevent data loss.
 
 > [!CAUTION]
-> - 🚫 **Do Not Delete**: Avoid removing the **Save Data Folder** or its root drive.
+> - 🚫 **Data Safety**: Do not delete the **Save Data Folder** or its associated root drive to prevent permanent data loss.
+> - 🚫 **OS Compatibility**: Do not install on Windows 10 or older versions; Windows 11 (24H2+) is required.
+> - 🚫 **Wine Version**: Do not install on outdated Wine versions on Linux; modern Wine 10+ is recommended.
+> - ☑️ **Troubleshooting**: If issues occur, run the provided batch script to uninstall. If the script fails, a manual registry restoration will be required.
+
 
 > [!NOTE]
 > Do not select internal drives (e.g., C:, E:, Z:) as the **Save Data Folder**.
