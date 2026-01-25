@@ -164,10 +164,11 @@ To sync save data across containers/emulators:
 >  - Import all registry keys to revert.
 
 > [!CAUTION]
-> 🚫 **Do Not Delete**:
->  - `Ajay_Scripts` and `Ajay_Start_Menu_Pro` from `C:\AJAY_PREFIX_PRO`.
->  - `AjayPrefixConf.txt` or other Ajay Prefix Pro files from `C:\Windows\`.
->  - **Save Data Folder**.
+> ### ⚠️ Post-Installation Warnings
+> 🚫 **Do Not Delete**: To prevent system instability or data loss, do not remove the following:
+> - **System Files**: `Ajay_Scripts` and `Ajay_Start_Menu_Pro` located in `C:\AJAY_PREFIX_PRO`.
+> - **Configuration**: `AjayPrefixConf.txt` or any other Ajay Prefix Pro files within `C:\Windows\`.
+> - **Save Data**: The designated **Save Data Folder**, as this will result in the loss of all game progress.
 
 > [!NOTE]
 >Online components and Start Menu enhancements are in development (Update Scripts Pro and stay tuned).
