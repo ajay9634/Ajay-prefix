@@ -18,7 +18,7 @@ Ajay Prefix Pro is compatible with PC emulators such as Mobox WOW64, Winlator, D
 - 🌐 Internet connection for the latest Start Menu
 - 🍷 Any Wine-based PC emulator or Windows 11 (24H2 update)
 - 🔑 Administrative permissions for Windows 11
-​🐧 Linux Wine: Wine 10.0+ with DXVK/VKD3D for full Vulkan-based Direct3D (9/10/11/12), OpenGL, and native Wayland support.
+​- 🐧 Linux Wine: Wine 10.0+ with DXVK/VKD3D for full Vulkan-based Direct3D (9/10/11/12), OpenGL, and native Wayland support.
 
 ---
 
