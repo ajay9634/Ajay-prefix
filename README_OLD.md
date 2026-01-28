@@ -1,4 +1,4 @@
-![logo](https://github.com/ajay9634/Ajay-prefix/blob/main/.github/logo.jpg)
+![logo](https://github.com/ajay9634/Ajay-prefix/blob/main/.github/logo.png)
 
 ---
 
