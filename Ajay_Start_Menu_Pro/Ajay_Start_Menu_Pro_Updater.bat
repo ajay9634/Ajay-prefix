@@ -165,7 +165,7 @@ mkdir "%setupfolder%\Ajay_prefix\wget_files\my_apps" 2>nul
 timeout /t 1 >nul 2>&1
 echo ----------------------------------------------------------
 echo [INFO] Confirmation message about Installing to ProgramData...
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v a /d "AjayStartMenuPro" /f >nul 2>&1
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v a /d "AjayStartMenuPro.exe" /f >nul 2>&1
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v MRUList /d a /f >nul 2>&1
 
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
