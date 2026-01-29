@@ -22,17 +22,17 @@ Read Wiki and FAQ - [Click Here](https://github.com/ajay9634/Ajay-prefix/wiki/%E
 
 ## 📋 Requirements
 
-- 🖥️ 64-bit architecture with 32 bit support
-- 🌐 Internet connection for the latest Start Menu
-- 🍷 Any Wine-based PC emulator or Windows 11 (24H2 update)
-- 🔑 Administrative permissions for Windows 11
-- ​🐧 Linux Wine: Wine 10.0+ with DXVK/VKD3D for full Vulkan-based Direct3D (9/10/11/12), OpenGL, and native Wayland support.
+- 🖥️ **Architecture:** 64-bit architecture (includes 32-bit compatibility).
+- 🌐 **Internet:** Active connection required to download the latest Start Menu.
+- 💻 **Platform:** Any Wine-based PC emulator or Windows 11 (24H2 update).
+- 🔑 **Permissions:** Administrative privileges required for Windows 11.
+- 🐧 **Linux:** Native Wine support (also compatible via Bottles, Lutris, etc.).
 
 ---
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=✨+What+is+Ajay+Prefix+Pro✨)
 
-✅ **Ajay Prefix Pro v1.3**  
+✅ **Ajay Prefix Pro v1.4**  
 
 > *Ajay Prefix Pro = Game save redirection (any drive or folder:\Ajay_prefix\save_data) + Start Menu customization + Game fixes*
 
@@ -50,13 +50,13 @@ Includes multiple fixes for enhanced gaming performance.
 ## ⚙️ Installation of Ajay Prefix Pro v1.3
 ## 📦 Partial Automatic Installation
 
-1. Just Run `Ajay_Prefix_Pro_v1.3_Installer.exe`
+1. Just Run `Ajay_Prefix_Pro_v1.4_Installer.exe`
 2. Click on last gui option - Install Ajay Prefix Pro
 3. Follow Manual Installation step from 4
 
 ### 🛠️ Manual Installation
 
-1. 📦 Extract `Ajay Prefix Pro v1.3` using ZArchiver or another archive tool.
+1. 📦 Extract `Ajay Prefix Pro v1.4` using ZArchiver or another archive tool.
 2. ⚙️ Run **Setup (for wine).bat**   OR **wfm2_auto_run.exe** in Emulator _OR_
 3. ⚙️ Run **Setup (Run as Admin for windows 11).bat** in Windows 11
 (If the admin permission issue persists, manually remove the admin check command from the batch file).
