@@ -47,7 +47,7 @@ Includes multiple fixes for enhanced gaming performance.
 
 ---
 
-## ⚙️ Installation of Ajay Prefix Pro v1.3
+## ⚙️ Installation of Ajay Prefix Pro v1.4
 ## 📦 Partial Automatic Installation
 
 1. Just Run `Ajay_Prefix_Pro_v1.4_Installer.exe`
