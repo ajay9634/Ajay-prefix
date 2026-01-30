@@ -171,7 +171,6 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v MRUL
 rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
 mkdir "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
 
-start "" "C:\Program Files (x86)\AutoIt3\AutoIt3.exe" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Install2ProgramData.ajau3"
 :AfterXCopy2
 echo.
 
@@ -200,9 +199,12 @@ echo.
 echo ==========================================================
 
 
-start "" "C:\Program Files (x86)\AutoIt3\AutoIt3.exe" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\start_menu_message.ajau3"
+start /wait "" "C:\Program Files (x86)\AutoIt3\AutoIt3_x64.exe" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\start_menu_message.ajau3"
 if exist "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Del_Old_Start_Menu.vbs" start "" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Del_Old_Start_Menu.vbs"
 
+reg query "HKEY_LOCAL_MACHINE\Software\Wine" >nul 2>&1
+if errorlevel 1 goto EndScript
+start "" "C:\Program Files (x86)\AutoIt3\AutoIt3_x64.exe" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Install2ProgramData.ajau3"
 goto EndScript
 
 :PackageMissing
