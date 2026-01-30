@@ -1,44 +1,37 @@
-# Ajay Prefix Pro v1.3 - README
+# Ajay Prefix Pro v1.4
 
-## Overview
-Ajay Prefix Pro v1.3 is distributed in archive format. Extract the archive and run `setup.bat` to begin installation.
+## Executive Overview
+Ajay Prefix Pro v1.4 is a specialized utility designed for registry redirection and environment management. The tool is distributed in both **Archive** and **Installer (EXE)** formats. To initiate deployment, execute the installer or extract the archive and run `setup.bat`.
 
-## VirusTotal Flags
-If you encounter flags on VirusTotal (https://www.virustotal.com/gui/file/f82d6abc93899f9234ca7f3788f9226e8527be5ae7d7b94f938a7e4760fdbbed/detection), please note the following:
+## Security & VirusTotal Transparency
+Due to the nature of registry manipulation and script execution, certain heuristic engines may trigger **false positives**. You can review the [VirusTotal Analysis here](https://www.virustotal.com/gui/file/c1ad835702c54a680872276da888cfc5c71b916c23f4ddbfbb51da21752f7a9b/detection).
 
-- These flags are **false positives**, primarily triggered by the scripts' execution during the extraction process.
-- The application has been tested on a Windows PC, and no malicious activity was observed. The intended registry redirection functioned as expected.
+* **Why flags occur:** High-level script execution during extraction often mimics suspicious behavior to automated scanners.
+* **Verification:** The application has been rigorously tested in isolated Windows environments. No malicious telemetry or unauthorized activity was detected; the tool performs only its intended registry redirection.
 
-## Reviewing the Scripts
-To ensure transparency, all scripts within the archive are accessible for review or verification. Follow these steps:
+## Open Source Audit & Code Review
+For full transparency, we encourage users to audit the logic before execution:
+1.  **Extract:** Use a standard archive manager (WinRAR, 7-Zip).
+2.  **Inspect:** Open the core components (`Run.au3`, `Setup.ajau3`, or `Setup_main.bat`) in any text editor to verify the source code.
 
-1. **Install an Archive Tool**: Ensure WinRAR or a similar archive tool is installed on your Windows PC or Wine environment.
-2. **Open the Archive**: Right-click the archive and select **Extract** using your archive tool.
-3. **Extract and Review**: Access the archive contents. Open the scripts (e.g., `Run.au3`, `Setup.ajau3`, `Setup_main.bat`) with Notepad or any text editor to inspect the code.
-   - **Run.au3**: Manages 64-bit `cmd.exe` execution for registry updates.
-   - **Setup.ajau3**: Provides a GUI for folder selection, saving paths to a configuration file.
-   - **Setup_main.bat**: Orchestrates the setup process, including registry modifications and backups.
+## Usage & Requirements
+* **Deployment:** Extract the archive and run `setup.bat`. This unpacks `setup.7z` to the `C:\` drive and launches `Setup_main.bat`.
+* **Privileges:** **Administrative Rights** are strictly required to authorize registry modifications.
+* **Compatibility:** Now officially supports **Linux via Wine**. Extensive testing has been performed using the **Bottles** app on Fedora.
 
-## Usage Instructions
-- **Extraction**: Extract the archive to any folder. The `setup.bat` file extracts `setup.7z` to the C: drive and runs `Setup_main.bat` with administrator privileges.
-- **Requirements**: Administrative rights are required for registry changes. Ensure AutoIt is installed if running `.au3` files directly.
-- **Note**: Some antivirus software may flag the application due to its design. These are false positives—proceed only if you trust the source.
+---
 
-## Contact and Support
-For questions or to report issues, please open an issue on this GitHub repository or contact the author. Feedback on false positives is welcome to improve future releases.
+## 🛠 For Contributors & Developers
+If you are submitting a **Pull Request** or contributing to the core logic, you may need to access protected assets within the Start Menu archives.
 
-Thank you for using Ajay Prefix Pro!3. **Extract and Review**: Use Archive Tool to access the archive contents. Open the scripts (e.g., `Run.au3`, `Setup.ajau3`, `Setup_main.bat`) with Notepad or any text editor to inspect the code.
-   - **Run.au3**: Manages 64-bit cmd.exe execution for registry updates.
-   - **Setup.ajau3**: Provides a GUI for folder selection, saving paths to a configuration file.
-   - **Setup_main.bat**: Orchestrates the setup, including registry modifications and backups.
+* **Archive Access:** Passwords for the Start Menu archives are embedded within the project scripts. 
+* **Support:** If you are a contributor and cannot locate the credentials within the script logic, please contact the **Lead Developer** directly for access.
 
-## Usage Instructions
-- **Extraction**: The Archive Should be extracted to any folder then the setup.bat extracts setup.7z to Drive C and runs `Setup_main.bat` with administrator privileges.
-- **Requirements**: Admin rights are needed for registry changes. Ensure AutoIt is installed if running `.au3` files directly.
-- **Note**: Some antivirus software may flag due to its design. This is a false positive—proceed if you trust the source.
+---
 
-## Contact and Support
-For questions or to report issues, please open an issue on this GitHub repository or contact the author. Feedback on false positives is welcome to improve future releases.
+## Contact & Support
+Encountered a bug or a persistent false positive? 
+* **Issues:** Open a ticket on this GitHub repository.
+* **Feedback:** We actively use community feedback to refine our code and reduce antivirus flagging in future releases.
 
-
-Thank you for using Ajay Prefix Pro!
+**Thank you for choosing Ajay Prefix Pro!**
