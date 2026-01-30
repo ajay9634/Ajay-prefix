@@ -214,7 +214,7 @@ To sync save data across containers/emulators:
 ⚠️ *If you have concerns about trustworthiness, please avoid installing.*
 
 ## 🤧 False Positive Note
-[Click here](https://github.com/ajay9634/Ajay-prefix/blob/main/Ajay%20Prefix%20Pro%20%20README.txt)
+[Click here](https://github.com/ajay9634/Ajay-prefix/blob/main/Ajay%20Prefix%20Pro%20%20README.md)
 
 ---
 
