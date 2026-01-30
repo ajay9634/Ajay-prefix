@@ -4,7 +4,7 @@
 Ajay Prefix Pro v1.4 is a specialized utility designed for registry redirection and environment management. The tool is distributed in both **Archive** and **Installer (EXE)** formats. To initiate deployment, execute the installer or extract the archive and run `setup.bat`.
 
 ## Security & VirusTotal Transparency
-Due to the nature of registry manipulation and script execution, certain heuristic engines may trigger **false positives**. You can review the [VirusTotal Analysis here](https://www.virustotal.com/gui/file/c1ad835702c54a680872276da888cfc5c71b916c23f4ddbfbb51da21752f7a9b/detection).
+Due to the nature of registry manipulation and script execution, certain heuristic engines may trigger **false positives**. You can review the [VirusTotal Analysis here](https://www.virustotal.com/gui/file/44fcacd127296f8a0acebf1040e2420e19e078b56dbbbca042b2f12d545c9a11/detection).
 
 * **Why flags occur:** High-level script execution during extraction often mimics suspicious behavior to automated scanners.
 * **Verification:** The application has been rigorously tested in isolated Windows environments. No malicious telemetry or unauthorized activity was detected; the tool performs only its intended registry redirection.
