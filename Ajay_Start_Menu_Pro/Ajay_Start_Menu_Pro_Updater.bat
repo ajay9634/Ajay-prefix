@@ -93,7 +93,7 @@ goto AfterXCopy1
 
 :XCopy1_Warn
 echo Warning: No Start Menu files to copy.
-ERROR: Failed to copy Ajay Start Menu Pro files  (code %XCOPY2%)
+echo ERROR: Failed to copy Ajay Start Menu Pro files  (code %XCOPY1%)
 rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro" >nul 2>&1
 del /S /Q /F "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts\*.*" >nul 2>&1
 rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts" >nul 2>&1
