@@ -119,10 +119,11 @@ echo Trying alternate method by 7zip ...
 "C:\windows\7z.exe" a "C:\temp\Temp_Start_Menu.7z" "C:\Temp\AJAY_PREFIX_PRO\*" -y >nul 2>&1
 
 if errorlevel 1 (
-    echo [ERROR] 7-Zip failed to compress Start Menu files (code %ERRORLEVEL%).
+    echo [ERROR] 7-Zip failed to compress Start Menu files.
     rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro" >nul 2>&1
     del /S /Q /F "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts\*.*" >nul 2>&1
     rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts" >nul 2>&1
+    rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
     "C:\windows\7z.exe" x "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Ajay_Start_Menu_Pro.7z" -o"C:\AJAY_PREFIX_PRO" -y >nul 2>&1
     echo msgbox "7-Zip Error: Failed to compress Start Menu files.", 16, "Error" > "%tmp%\7zerr.vbs"
     wscript //nologo "%tmp%\7zerr.vbs"
@@ -142,8 +143,9 @@ if errorlevel 1 (
     rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro" >nul 2>&1
     del /S /Q /F "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts\*.*" >nul 2>&1
     rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts" >nul 2>&1
+    rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
     "C:\windows\7z.exe" x "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Ajay_Start_Menu_Pro.7z" -o"C:\AJAY_PREFIX_PRO" -y >nul 2>&1
-    echo [ERROR] 7-Zip failed to extract files to C:\AJAY_PREFIX_PRO (code %ERRORLEVEL%).
+    echo [ERROR] 7-Zip failed to extract Start Menu files to C:\AJAY_PREFIX_PRO
     echo msgbox "7-Zip Error: Failed to extract Start Menu files to destination.", 16, "Error" > "%tmp%\7zerr.vbs"
     wscript //nologo "%tmp%\7zerr.vbs"
     timeout /t 1 >nul 2>&1
