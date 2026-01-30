@@ -50,13 +50,13 @@ Includes multiple fixes for enhanced gaming performance.
 ## ⚙️ Installation of Ajay Prefix Pro v1.4
 ## 📦 Partial Automatic Installation
 
-1. Just Run `Ajay_Prefix_Pro_v1.4_Installer.exe`
+1. Just Run `Ajay_Prefix_Pro_v1.4_Installer_x64.exe`
 2. Click on last gui option - Install Ajay Prefix Pro
 3. Follow Manual Installation step from 4
 
 ### 🛠️ Manual Installation
 
-1. 📦 Extract `Ajay Prefix Pro v1.4` using ZArchiver or another archive tool.
+1. 📦 Extract `Ajay_Prefix_Pro_v1.4_x64` using ZArchiver or another archive tool.
 2. ⚙️ Run **Setup (for wine).bat**   OR **wfm2_auto_run.exe** in Emulator _OR_
 3. ⚙️ Run **Setup (Run as Admin for windows 11).bat** in Windows 11
 (If the admin permission issue persists, manually remove the admin check command from the batch file).
