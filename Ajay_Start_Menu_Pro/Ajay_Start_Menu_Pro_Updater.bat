@@ -94,6 +94,9 @@ goto AfterXCopy1
 :XCopy1_Warn
 echo Warning: No Start Menu files to copy.
 ERROR: Failed to copy Ajay Start Menu Pro files  (code %XCOPY2%)
+rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro" >nul 2>&1
+del /S /Q /F "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts\*.*" >nul 2>&1
+rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts" >nul 2>&1
 "C:\windows\7z.exe" x "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Ajay_Start_Menu_Pro.7z" -o"C:\AJAY_PREFIX_PRO" -y >nul 2>&1
 pause
 exit /B 1
@@ -117,6 +120,10 @@ echo Trying alternate method by 7zip ...
 
 if errorlevel 1 (
     echo [ERROR] 7-Zip failed to compress Start Menu files (code %ERRORLEVEL%).
+    rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro" >nul 2>&1
+    del /S /Q /F "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts\*.*" >nul 2>&1
+    rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts" >nul 2>&1
+    "C:\windows\7z.exe" x "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Ajay_Start_Menu_Pro.7z" -o"C:\AJAY_PREFIX_PRO" -y >nul 2>&1
     echo msgbox "7-Zip Error: Failed to compress Start Menu files.", 16, "Error" > "%tmp%\7zerr.vbs"
     wscript //nologo "%tmp%\7zerr.vbs"
     timeout /t 1 >nul 2>&1
@@ -132,6 +139,9 @@ timeout /t 1 >nul 2>&1
 "C:\windows\7z.exe" x "C:\temp\Temp_Start_Menu.7z" -o"C:\AJAY_PREFIX_PRO" -y >nul 2>&1
 
 if errorlevel 1 (
+    rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro" >nul 2>&1
+    del /S /Q /F "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts\*.*" >nul 2>&1
+    rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts" >nul 2>&1
     "C:\windows\7z.exe" x "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Ajay_Start_Menu_Pro.7z" -o"C:\AJAY_PREFIX_PRO" -y >nul 2>&1
     echo [ERROR] 7-Zip failed to extract files to C:\AJAY_PREFIX_PRO (code %ERRORLEVEL%).
     echo msgbox "7-Zip Error: Failed to extract Start Menu files to destination.", 16, "Error" > "%tmp%\7zerr.vbs"
