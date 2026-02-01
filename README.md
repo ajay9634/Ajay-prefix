@@ -283,6 +283,7 @@ ZINK_USE_LOW_MEMORY_POOL=1
 ### ✅ [Turnip, Zink, Virgl WCP Collection](https://github.com/ajay9634/Ajay-prefix/releases/tag/Graphics_driver)  
 ### ✅ [Turnip, Zink, Virgl EXE Collection](https://github.com/ajay9634/Ajay-prefix/releases/tag/graphics_driver_exe)  
 ### ✅ [Wine WCP for Winlator GLIBC](https://github.com/ajay9634/Ajay-prefix/releases/tag/Wine_wcp)
+### ✅ [Box64 for Winlator 10+](https://github.com/ajay9634/Ajay-prefix/tree/Winlator-10-stuff/installable_components)
 
 ---
 
