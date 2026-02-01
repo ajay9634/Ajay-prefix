@@ -14,10 +14,11 @@
 - General bug fixes and stability enhancements.
 
 ==========================================================
-               ## [AJAY START MENU PRO] - 31 Jan 2026
+               ## [AJAY START MENU PRO] - 2 Feb 2026
 ============================================================
 
 - Added new app - Shell Extension Manager
+- Added new app - Ultimate Script Encryptor
 
 ==========================================================
                ## [AJAY START MENU PRO] - 26 Jan 2026
