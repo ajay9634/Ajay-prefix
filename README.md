@@ -67,7 +67,8 @@ Includes multiple fixes for enhanced gaming performance.
 8. 🔄 Restart Windows or your Wine environment.
 9. ✔️ Verify Ajay Prefix Pro status in the Start Menu Viewer.
 
-## ⚠️ Important Warnings
+> [!TIP]
+> * Run **Setup (for wine).bat** to automatically enable hidden folders; otherwise, you must manually adjust the settings in **winecfg**.
 
 > [!IMPORTANT]
 > - 🔐 **Manual Registry Backup Recommended**: Always back up your Windows registry before installation. While Wine containers can be recreated with minimal loss, the author is not responsible for registry issues.
@@ -84,6 +85,24 @@ Includes multiple fixes for enhanced gaming performance.
 
 > [!NOTE]
 > Do not select internal drives (e.g., C:, E:, Z:) as the **Save Data Folder**.
+
+---
+
+## 🗑️ Complete Removal Method
+
+To fully uninstall the Ajay Prefix Pro, please follow these steps in order:
+
+1. **Standard Uninstallation:** Run `Ajay.Prefix.Pro.v1.4.Uninstaller.bat` to begin the removal process.
+
+2. **Force Removal (Fallback):** If the standard uninstaller fails, run `Ajay.Prefix.Force.Uninstaller.v2.exe`. This will perform a deep clean and completely remove **Ajay Prefix v10.19** as well.
+
+---
+
+### 🔄 Restoring or Uninstalling Registry Only
+If you only need to revert registry changes without removing the application:
+
+* Navigate to: `C:\AJAY_PREFIX_PRO\backup\`
+* **Import** all registry keys located in this folder to revert your system settings.
 
 ---
 
@@ -165,11 +184,6 @@ To sync save data across containers/emulators:
  - 🚫 **Cancel Installation**: To stop the process, close the CMD window before exiting the **Ajay Prefix Folder Selector**.
 
 - ✅ **Tested Platforms**: Verified on Winlator Official, Winlator forks, and Windows 11 with no issues.
-
-> [!IMPORTANT]
-> - 🔄 **Restoring Original Setup or Uninstalling**:
->  - Navigate to `C:\AJAY_PREFIX_PRO\backup\`.
->  - Import all registry keys to revert.
 
 > [!CAUTION]
 > ### ⚠️ Post-Installation Warnings
