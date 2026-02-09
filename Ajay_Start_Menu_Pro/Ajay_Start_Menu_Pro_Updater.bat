@@ -8,15 +8,27 @@ taskkill /F /IM autoit3_x64.exe >nul 2>&1
 for /f "tokens=2 delims==" %%a in ('findstr /i "SetupFolder=" "%WINDIR%\AjayPrefixConf.txt" 2^>nul') do set "setupfolder=%%a"
 for /f "tokens=2 delims==" %%b in ('findstr /i "SaveDataFolder=" "%WINDIR%\AjayPrefixConf.txt" 2^>nul') do set "savedatafolder=%%b"
 
+set "RegistryKey=HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders"
+set "RegistryValue=Personal"
+set "ExpectedData=%savedatafolder%\Ajay_prefix\save_data\users\xuser\Documents"
+
+for /f "tokens=2,*" %%A in ('reg query "%RegistryKey%" /v %RegistryValue% 2^>nul') do (
+    set "CurrentPath=%%B"
+)
+
+reg query "%RegistryKey%" /v "%RegistryValue%" | find "%ExpectedData%" >nul 2>&1
+
+if %errorlevel%==0 (
+    xcopy "%UserProfile%\AppData\" "%savedatafolder%\Ajay_prefix\save_data\users\xuser\AppData\" /T /E /C /H /I
+    xcopy "%UserProfile%\Documents\" "%savedatafolder%\Ajay_prefix\save_data\users\xuser\Documents\" /T /E /C /H /I
+    xcopy "%UserProfile%\Saved Games\" "%savedatafolder%\Ajay_prefix\save_data\users\xuser\Saved Games\" /T /E /C /H /I
+)
+
 timeout /t 1 >nul 2>&1
 
-mkdir "%setupfolder%\Ajay_prefix\save_data\users\Registry_backup" 2>nul
-mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\Local" 2>nul
-mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\Local\Temp" 2>nul
-mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\Roaming" 2>nul
-mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\Documents" 2>nul
-mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\Documents\My Games" 2>nul
-mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\Saved Games" 2>nul
+if not exist "%setupfolder%\Ajay_prefix\save_data\users\Registry_backup" mkdir "%setupfolder%\Ajay_prefix\save_data\users\Registry_backup"
+if not exist "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\Local\Temp" mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\Local\Temp"
+if not exist "%setupfolder%\Ajay_prefix\save_data\users\xuser\Documents\My Games" mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\Documents\My Games"
 
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
@@ -76,7 +88,11 @@ goto DoXCopy
 
 :DoXCopy
 timeout /t 1 >nul 2>&1
+if not exist "Z:\home\xuser" (
+    rmdir /S /Q "C:\Temp\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro\6. Misc And Apps\SymLink Tools\SymLink Folders of Winlator" >nul 2>&1
+)
 
+timeout /t 1 >nul 2>&1
 :: === XCOPIES 1: Main Files ===
 xcopy /s /y "C:\Temp\AJAY_PREFIX_PRO\" "C:\AJAY_PREFIX_PRO\" /E /H /C /I >nul 2>&1
 set "XCOPY1=%ERRORLEVEL%"
