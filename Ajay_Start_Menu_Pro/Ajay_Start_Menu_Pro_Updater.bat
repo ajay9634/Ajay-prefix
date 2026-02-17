@@ -24,12 +24,10 @@ timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
 
 if not exist "%StartMenuPro%" goto PackageMissing
-
-echo.
 echo [ OK ] Downloaded successfully
 echo.
-echo --------------------------------------------------------------
-echo [STEP 3/4] Removing old Ajay Start Menu Pro Scripts ...
+echo ----------------------------------------------------------
+echo [STEP 3/4] Removing old Ajay Start Menu Pro Scripts
 rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro" >nul 2>&1
 del /S /Q /F "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts\*.*" >nul 2>&1
 rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts" >nul 2>&1
@@ -40,8 +38,8 @@ timeout /t 1 >nul 2>&1
 :ContinueInstall
 rmdir /S /Q "C:\temp\AJAY_PREFIX_PRO" 2>nul
 echo.
-echo --------------------------------------------------------------
-echo [STEP 4/4] Installing Updated Ajay Start Menu Pro package ...
+echo ----------------------------------------------------------
+echo [STEP 4/4] Installing Updated Ajay Start Menu Pro package
 "C:\windows\7z.exe" x "C:\temp\Start_Menu_Pro.7z" -p-q-r -o"C:\Temp" -y >nul 2>&1
 
 timeout /t 1 >nul 2>&1
@@ -51,7 +49,7 @@ reg query "HKEY_LOCAL_MACHINE\Software\Wine" >nul 2>&1
 if errorlevel 1 goto IsWindows
 
 echo [INFO] Wine detected.
-echo [INFO] Installing Start Menu for Wine ...
+echo [INFO] Installing Start Menu for Wine
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
 "C:\windows\7z.exe" x "C:\temp\Start_Menu_Pro_wine.7z" -p-q-r -o"C:\Temp" -y >nul 2>&1
@@ -68,7 +66,7 @@ echo [INFO] Windows detected.
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
-echo [INFO] Skipping Most Start Menu ...
+echo [INFO] Skipping Most Start Menu
 echo msgbox "Windows detected. For the first time setup: please copy your AppData and other important folders to %SaveDataFolder%\Ajay_prefix\.. (You can safely ignore this message if you've already done this).", 64 + 4096, "First-time Setup Notification" > "%tmp%\tmp.vbs"
 start /b wscript //nologo "%tmp%\tmp.vbs"
 
@@ -123,7 +121,7 @@ exit /B 1
 
 :alternate_method
 echo.
-echo Trying alternate method by 7zip ...
+echo Trying alternate method by 7zip
 "C:\windows\7z.exe" a "C:\temp\Temp_Start_Menu.7z" "C:\Temp\AJAY_PREFIX_PRO\*" -y >nul 2>&1
 
 if errorlevel 1 (
@@ -202,20 +200,20 @@ if exist "C:\windows\Update_Check.bat" (
 )
 
 
-echo --------------------------------------------------------------
+echo ----------------------------------------------------------
 echo [INFO] Check the Changelog.txt in Misc
 :SkipWineMenu
 echo [INFO] Check the Start Menu for changes.
 echo.
-echo ==============================================================
+echo ==========================================================
 timeout /t 1 >nul 2>&1
 
 "C:\windows\7z.exe" x "C:\Program Files (x86)\AutoIt3\AutoIt3_exe_backup.7z" -o"C:\Program Files (x86)\AutoIt3" -y >nul 2>&1
 
 echo.
-echo [ OK ] Ajay Start Menu Pro Scripts updated successfully!
+echo [ OK ] Ajay Start Menu Pro Scripts updated successfully
 echo.
-echo ==============================================================
+echo ==========================================================
 
 
 start /wait "" "C:\Program Files (x86)\AutoIt3\AutoIt3_x64.exe" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\start_menu_message.ajau3"
@@ -223,9 +221,9 @@ if exist "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Del_Old_Start_Menu.vbs" start "" "C:\A
 
 reg query "HKEY_LOCAL_MACHINE\Software\Wine" >nul 2>&1
 if errorlevel 1 goto EndScript
-echo --------------------------------------------------------------
-echo [INFO] Confirmation message about Installing to ProgramData...
-echo --------------------------------------------------------------
+echo ----------------------------------------------------------
+echo [OPTIONAL STEP] Confirmation msg installing to ProgramData
+echo ----------------------------------------------------------
 start "" "C:\Program Files (x86)\AutoIt3\AutoIt3_x64.exe" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Install2ProgramData.ajau3"
 goto EndScript
 
