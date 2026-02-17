@@ -27,7 +27,7 @@ if not exist "%StartMenuPro%" goto PackageMissing
 
 echo.
 echo [ OK ] Downloaded successfully
-echo [STEP] Removing old Ajay Start Menu Pro Scripts ...
+echo [STEP 3/4] Removing old Ajay Start Menu Pro Scripts ...
 rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro" >nul 2>&1
 del /S /Q /F "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts\*.*" >nul 2>&1
 rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts" >nul 2>&1
@@ -39,7 +39,7 @@ timeout /t 1 >nul 2>&1
 rmdir /S /Q "C:\temp\AJAY_PREFIX_PRO" 2>nul
 echo.
 echo ----------------------------------------------------------
-echo [STEP] Installing Updated Ajay Start Menu Pro package ...
+echo [STEP 4/4] Installing Updated Ajay Start Menu Pro package ...
 "C:\windows\7z.exe" x "C:\temp\Start_Menu_Pro.7z" -p-q-r -o"C:\Temp" -y >nul 2>&1
 
 timeout /t 1 >nul 2>&1
