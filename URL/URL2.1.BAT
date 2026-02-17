@@ -1,5 +1,5 @@
-echo --------------------------------------------------------------
-echo [STEP 1/4] Checking New Version Info ...
+echo ----------------------------------------------------------
+echo [STEP 1/4] Checking New Version Info
 rmdir C:\Temp\Scripts_Version >nul 2>&1
 mkdir C:\Temp\Scripts_Version >nul 2>&1
 if not exist "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Version.txt" (
@@ -46,8 +46,8 @@ set "OUTFILE=C:\Temp\Scripts_Pro.zip"
 set "StartMenuPro=C:\Temp\Start_Menu_Pro.7z"
 timeout.exe /t 1 /nobreak >nul
 echo.
-echo --------------------------------------------------------------
-echo [STEP 2/4] Downloading latest Ajay Start Menu Pro package...
+echo ----------------------------------------------------------
+echo [STEP 2/4] Downloading latest Ajay Start Menu Pro package
 copy /y "C:\Temp\Scripts_Version\Version.txt" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Version.txt"
 
 wget -q -P "C:\Temp" "%URL1%" >nul 2>&1
