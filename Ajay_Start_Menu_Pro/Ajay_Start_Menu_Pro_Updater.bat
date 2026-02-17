@@ -37,6 +37,7 @@ timeout /t 1 >nul 2>&1
 
 :ContinueInstall
 rmdir /S /Q "C:\temp\AJAY_PREFIX_PRO" 2>nul
+echo [ OK ] Removed successfully
 echo.
 echo ----------------------------------------------------------
 echo [STEP 4/4] Installing Updated Ajay Start Menu Pro package
