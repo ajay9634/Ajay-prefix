@@ -27,6 +27,8 @@ if not exist "%StartMenuPro%" goto PackageMissing
 
 echo.
 echo [ OK ] Downloaded successfully
+echo.
+echo --------------------------------------------------------------
 echo [STEP 3/4] Removing old Ajay Start Menu Pro Scripts ...
 rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro" >nul 2>&1
 del /S /Q /F "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts\*.*" >nul 2>&1
@@ -38,7 +40,7 @@ timeout /t 1 >nul 2>&1
 :ContinueInstall
 rmdir /S /Q "C:\temp\AJAY_PREFIX_PRO" 2>nul
 echo.
-echo ----------------------------------------------------------
+echo --------------------------------------------------------------
 echo [STEP 4/4] Installing Updated Ajay Start Menu Pro package ...
 "C:\windows\7z.exe" x "C:\temp\Start_Menu_Pro.7z" -p-q-r -o"C:\Temp" -y >nul 2>&1
 
@@ -200,12 +202,12 @@ if exist "C:\windows\Update_Check.bat" (
 )
 
 
-echo ----------------------------------------------------------
+echo --------------------------------------------------------------
 echo [INFO] Check the Changelog.txt in Misc
 :SkipWineMenu
 echo [INFO] Check the Start Menu for changes.
 echo.
-echo ==========================================================
+echo ==============================================================
 timeout /t 1 >nul 2>&1
 
 "C:\windows\7z.exe" x "C:\Program Files (x86)\AutoIt3\AutoIt3_exe_backup.7z" -o"C:\Program Files (x86)\AutoIt3" -y >nul 2>&1
@@ -213,7 +215,7 @@ timeout /t 1 >nul 2>&1
 echo.
 echo [ OK ] Ajay Start Menu Pro Scripts updated successfully!
 echo.
-echo ==========================================================
+echo ==============================================================
 
 
 start /wait "" "C:\Program Files (x86)\AutoIt3\AutoIt3_x64.exe" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\start_menu_message.ajau3"
@@ -221,9 +223,9 @@ if exist "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Del_Old_Start_Menu.vbs" start "" "C:\A
 
 reg query "HKEY_LOCAL_MACHINE\Software\Wine" >nul 2>&1
 if errorlevel 1 goto EndScript
-echo ----------------------------------------------------------
+echo --------------------------------------------------------------
 echo [INFO] Confirmation message about Installing to ProgramData...
-echo ----------------------------------------------------------
+echo --------------------------------------------------------------
 start "" "C:\Program Files (x86)\AutoIt3\AutoIt3_x64.exe" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Install2ProgramData.ajau3"
 goto EndScript
 
