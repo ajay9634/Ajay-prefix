@@ -16,16 +16,6 @@ for /f "tokens=2,*" %%A in ('reg query "%RegistryKey%" /v %RegistryValue% 2^>nul
     set "CurrentPath=%%B"
 )
 
-reg query "%RegistryKey%" /v "%RegistryValue%" | find "%ExpectedData%" >nul 2>&1
-
-if %errorlevel%==0 (
-    xcopy "%UserProfile%\AppData" "%savedatafolder%\Ajay_prefix\save_data\users\xuser\AppData\" /T /E /C /H /I >nul 2>&1
-    xcopy "%UserProfile%\Documents" "%savedatafolder%\Ajay_prefix\save_data\users\xuser\Documents\" /T /E /C /H /I >nul 2>&1
-    xcopy "%UserProfile%\Saved Games" "%savedatafolder%\Ajay_prefix\save_data\users\xuser\Saved Games\" /T /E /C /H /I >nul 2>&1
-)
-
-timeout /t 1 >nul 2>&1
-
 if not exist "%setupfolder%\Ajay_prefix\save_data\users\Registry_backup" mkdir "%setupfolder%\Ajay_prefix\save_data\users\Registry_backup"
 if not exist "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\Local\Temp" mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\Local\Temp"
 if not exist "%setupfolder%\Ajay_prefix\save_data\users\xuser\Documents\My Games" mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\Documents\My Games"
