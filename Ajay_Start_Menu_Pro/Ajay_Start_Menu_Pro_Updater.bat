@@ -166,7 +166,6 @@ goto AfterXCopy1
 
 
 :AfterXCopy1
-echo.
 
 timeout /t 1 >nul 2>&1
 
@@ -190,7 +189,6 @@ rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>
 mkdir "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
 
 :AfterXCopy2
-echo.
 
 if exist "C:\windows\wfm.bat" (
     copy /y "C:\Temp\temp\wfm.bat" "C:\windows\wfm.bat" >nul 2>nul
@@ -200,7 +198,7 @@ if exist "C:\windows\Update_Check.bat" (
     copy /y "C:\Temp\temp\Update_Check.bat" "C:\windows\Update_Check.bat" >nul 2>nul
 )
 
-
+echo.
 echo ----------------------------------------------------------
 echo [INFO] Check the Changelog.txt in Misc
 :SkipWineMenu
