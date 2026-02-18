@@ -49,7 +49,7 @@ rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts" >nul 2>&1
 
 timeout /t 1 >nul 2>&1
 
-start /wait "" "C:\Program Files (x86)\AutoIt3\AutoIt3_x64.exe" "C:\Temp\temp\cleaup.ajau3"
+start /wait "C:\Program Files (x86)\AutoIt3\AutoIt3_x64.exe" "C:\Temp\temp\cleaup.ajau3"
 
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
