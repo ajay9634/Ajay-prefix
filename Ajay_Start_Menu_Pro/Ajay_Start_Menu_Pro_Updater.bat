@@ -37,7 +37,22 @@ if errorlevel 1 (
     echo [ERROR] 7-Zip failed to Extract Start Menu Package
     echo.
     pause
+    exit
 )
+
+reg query "HKEY_LOCAL_MACHINE\Software\Wine" >nul 2>&1
+if errorlevel 1 goto Extraction_Success
+"C:\windows\7z.exe" x "C:\temp\Start_Menu_Pro_wine.7z" -p-q-r -o"C:\Temp" -y >nul 2>&1
+
+if errorlevel 1 (
+    cls
+    echo [ERROR] 7-Zip failed to Extract Wine Start Menu Package
+    echo.
+    pause
+    exit
+)
+
+:Extraction_Success
 echo [ OK ] Extracted successfully
 echo.
 
@@ -49,14 +64,19 @@ rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts" >nul 2>&1
 
 timeout /t 1 >nul 2>&1
 
+reg query "HKEY_LOCAL_MACHINE\Software\Wine" >nul 2>&1
+if errorlevel 1 goto ContinueInstall
+"C:\windows\7z.exe" x "C:\temp\Start_Menu_Pro_wine.7z" -p-q-r -o"C:\Temp" -y >nul 2>&1
+
 start /wait "" "C:\Program Files (x86)\AutoIt3\AutoIt3_x64.exe" "C:\Temp\temp\cleanup.ajau3"
+
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
 
-
+:ContinueInstall
 echo [ OK ] Removed successfully
 echo.
-:ContinueInstall
+
 echo ----------------------------------------------------------
 echo [STEP 5/5] Installing Updated Ajay Start Menu Pro package
 timeout /t 1 >nul 2>&1
@@ -66,9 +86,6 @@ if errorlevel 1 goto IsWindows
 
 echo [INFO] Wine detected.
 echo [INFO] Installing Start Menu for Wine
-timeout /t 1 >nul 2>&1
-timeout /t 1 >nul 2>&1
-"C:\windows\7z.exe" x "C:\temp\Start_Menu_Pro_wine.7z" -p-q-r -o"C:\Temp" -y >nul 2>&1
 timeout /t 1 >nul 2>&1
 xcopy /s /y "C:\Temp\windows\" "C:\windows\" /E /H /C /I >nul 2>&1
 
