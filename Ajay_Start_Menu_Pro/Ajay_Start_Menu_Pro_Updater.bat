@@ -126,13 +126,13 @@ if %XCOPY1% geq 4 goto XCopy1_Error
 goto XCopy1_Abort
 
 :XCopy1_OK
-echo Success: Files copied to Main Location.
+echo [Success] Files copied to Main Location.
 echo [INFO] Now You can enjoy Ajay Start Menu Pro by Viewer.
 goto AfterXCopy1
 
 :XCopy1_Warn
-echo Warning: No Start Menu files to copy.
-echo ERROR: Failed to copy Ajay Start Menu Pro files  (code %XCOPY1%)
+echo [Warning] No Start Menu files to copy.
+echo [ERROR] Failed to copy Ajay Start Menu Pro files  (code %XCOPY1%)
 rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro" >nul 2>&1
 del /S /Q /F "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts\*.*" >nul 2>&1
 rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts" >nul 2>&1
@@ -141,7 +141,7 @@ pause
 exit /B 1
 
 :XCopy1_Error
-echo ERROR: xcopy failed with code %XCOPY1%
+echo [ERROR] xcopy failed with code %XCOPY1%
 goto :alternate_method
 pause
 exit /B 1
