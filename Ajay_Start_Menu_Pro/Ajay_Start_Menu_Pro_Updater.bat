@@ -147,14 +147,14 @@ pause
 exit /B 1
 
 :XCopy1_Abort
-echo xcopy terminated abnormally (code %XCOPY1%)
+echo [ERROR] xcopy terminated abnormally (code %XCOPY1%)
 goto :alternate_method
 pause
 exit /B 1
 
 :alternate_method
 echo.
-echo Trying alternate method by 7zip
+echo [INFO] Trying alternate method by 7zip
 "C:\windows\7z.exe" a "C:\temp\Temp_Start_Menu.7z" "C:\Temp\AJAY_PREFIX_PRO\*" -y >nul 2>&1
 
 if errorlevel 1 (
