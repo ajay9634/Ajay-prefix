@@ -27,33 +27,39 @@ if not exist "%StartMenuPro%" goto PackageMissing
 echo [ OK ] Downloaded successfully
 echo.
 echo ----------------------------------------------------------
-echo [STEP 3/4] Removing old Ajay Start Menu Pro Scripts
+echo [STEP 3/5] Extracting Start Menu Package
+rmdir /S /Q "C:\temp\AJAY_PREFIX_PRO" 2>nul
+
+"C:\windows\7z.exe" x "C:\temp\Start_Menu_Pro.7z" -p-q-r -o"C:\Temp" -y >nul 2>&1
+
+if errorlevel 1 (
+    cls
+    echo [ERROR] 7-Zip failed to Extract Start Menu Package
+    echo.
+    pause
+)
+echo [ OK ] Extracted successfully
+echo.
+
+echo ----------------------------------------------------------
+echo [STEP 4/5] Removing old Ajay Start Menu Pro Scripts
 rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro" >nul 2>&1
 del /S /Q /F "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts\*.*" >nul 2>&1
 rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts" >nul 2>&1
 
-set "UserKey=HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
-set "CommonKey=HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
+timeout /t 1 >nul 2>&1
 
-for /f "tokens=2*" %%A in ('reg query "%UserKey%" /v "Start Menu" 2^>nul') do set "UserStartMenu=%%B"
-
-for /f "tokens=2*" %%A in ('reg query "%CommonKey%" /v "Common Start Menu" 2^>nul') do set "CommonStartMenu=%%B"
-
-rmdir /S /Q "%UserStartMenu%\Ajay Start Menu Pro" >nul 2>&1
-rmdir /S /Q "%CommonStartMenu%\Ajay Start Menu Pro" >nul 2>&1
+start /wait "" "C:\Program Files (x86)\AutoIt3\AutoIt3_x64.exe" "C:\Temp\temp\cleaup.ajau3"
 
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
 
-rmdir /S /Q "C:\temp\AJAY_PREFIX_PRO" 2>nul
+
 echo [ OK ] Removed successfully
 echo.
-echo ----------------------------------------------------------
 :ContinueInstall
-echo [STEP 4/4] Installing Updated Ajay Start Menu Pro package
-"C:\windows\7z.exe" x "C:\temp\Start_Menu_Pro.7z" -p-q-r -o"C:\Temp" -y >nul 2>&1
-
-timeout /t 1 >nul 2>&1
+echo ----------------------------------------------------------
+echo [STEP 5/5] Installing Updated Ajay Start Menu Pro package
 timeout /t 1 >nul 2>&1
 
 reg query "HKEY_LOCAL_MACHINE\Software\Wine" >nul 2>&1
