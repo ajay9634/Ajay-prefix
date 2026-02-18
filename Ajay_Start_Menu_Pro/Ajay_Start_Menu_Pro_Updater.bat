@@ -32,14 +32,24 @@ rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro" >nul 2>&1
 del /S /Q /F "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts\*.*" >nul 2>&1
 rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts" >nul 2>&1
 
+set "UserKey=HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
+set "CommonKey=HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
+
+for /f "tokens=2*" %%A in ('reg query "%UserKey%" /v "Start Menu" 2^>nul') do set "UserStartMenu=%%B"
+
+for /f "tokens=2*" %%A in ('reg query "%CommonKey%" /v "Common Start Menu" 2^>nul') do set "CommonStartMenu=%%B"
+
+rmdir /S /Q "%UserStartMenu%\Ajay Start Menu Pro" >nul 2>&1
+rmdir /S /Q "%CommonStartMenu%\Ajay Start Menu Pro" >nul 2>&1
+
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
 
-:ContinueInstall
 rmdir /S /Q "C:\temp\AJAY_PREFIX_PRO" 2>nul
 echo [ OK ] Removed successfully
 echo.
 echo ----------------------------------------------------------
+:ContinueInstall
 echo [STEP 4/4] Installing Updated Ajay Start Menu Pro package
 "C:\windows\7z.exe" x "C:\temp\Start_Menu_Pro.7z" -p-q-r -o"C:\Temp" -y >nul 2>&1
 
@@ -130,7 +140,6 @@ if errorlevel 1 (
     rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro" >nul 2>&1
     del /S /Q /F "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts\*.*" >nul 2>&1
     rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts" >nul 2>&1
-    rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
     "C:\windows\7z.exe" x "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Ajay_Start_Menu_Pro.7z" -o"C:\AJAY_PREFIX_PRO" -y >nul 2>&1
     echo msgbox "7-Zip Error: Failed to compress Start Menu files.", 16, "Error" > "%tmp%\7zerr.vbs"
     wscript //nologo "%tmp%\7zerr.vbs"
@@ -150,7 +159,6 @@ if errorlevel 1 (
     rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro" >nul 2>&1
     del /S /Q /F "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts\*.*" >nul 2>&1
     rmdir /S /Q "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Online_Scripts" >nul 2>&1
-    rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
     "C:\windows\7z.exe" x "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Ajay_Start_Menu_Pro.7z" -o"C:\AJAY_PREFIX_PRO" -y >nul 2>&1
     echo [ERROR] 7-Zip failed to extract Start Menu files to C:\AJAY_PREFIX_PRO
     echo msgbox "7-Zip Error: Failed to extract Start Menu files to destination.", 16, "Error" > "%tmp%\7zerr.vbs"
@@ -185,9 +193,6 @@ timeout /t 1 >nul 2>&1
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v a /d "AjayStartMenuPro.exe" /f >nul 2>&1
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v MRUList /d a /f >nul 2>&1
 
-rmdir /S /Q "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
-mkdir "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro" 2>nul
-
 :AfterXCopy2
 
 if exist "C:\windows\wfm.bat" (
@@ -221,7 +226,7 @@ if exist "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Del_Old_Start_Menu.vbs" start "" "C:\A
 reg query "HKEY_LOCAL_MACHINE\Software\Wine" >nul 2>&1
 if errorlevel 1 goto EndScript
 echo ----------------------------------------------------------
-echo [OPTIONAL STEP] Confirmation msg installing to ProgramData
+echo [OPTIONAL] Confirmation msg installing to Wine Start Menu
 echo ----------------------------------------------------------
 start "" "C:\Program Files (x86)\AutoIt3\AutoIt3_x64.exe" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Install2ProgramData.ajau3"
 goto EndScript
