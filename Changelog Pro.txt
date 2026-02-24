@@ -14,11 +14,17 @@
 - General bug fixes and stability enhancements.
 
 ==========================================================
+               ## [AJAY START MENU PRO] - 24 Feb 2026
+============================================================
+
+- Added a new app — SteamArc Ultimate — to handle all your Steam game save backups
+
+==========================================================
                ## [AJAY START MENU PRO] - 2 Feb 2026
 ============================================================
 
 - Added new app - Shell Extension Manager
-- Added new app - Ultimate Script Encryptor
+- Added new app - Ultimate Script Encryptor.bat
 
 ==========================================================
                ## [AJAY START MENU PRO] - 26 Jan 2026
