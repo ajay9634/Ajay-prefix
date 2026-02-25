@@ -21,7 +21,7 @@ if not exist "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\Local\Temp
 if not exist "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\LocalLow" mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\LocalLow"
 if not exist "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\Roaming" mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\Roaming"
 if not exist "%setupfolder%\Ajay_prefix\save_data\users\xuser\Saved Games" mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\Saved Games"
-
+if not exist "%setupfolder%\Ajay_prefix\save_data\users\xuser\Documents\My Games" mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\Documents\My Games"
 
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
