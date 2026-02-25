@@ -245,12 +245,6 @@ echo ==========================================================
 start /wait "" "C:\Program Files (x86)\AutoIt3\AutoIt3_x64.exe" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\start_menu_message.ajau3"
 if exist "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Del_Old_Start_Menu.vbs" start "" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Del_Old_Start_Menu.vbs"
 
-reg query "HKEY_LOCAL_MACHINE\Software\Wine" >nul 2>&1
-if errorlevel 1 goto EndScript
-echo ----------------------------------------------------------
-echo [OPTIONAL] Confirmation msg installing to Wine Start Menu
-echo ----------------------------------------------------------
-start "" "C:\Program Files (x86)\AutoIt3\AutoIt3_x64.exe" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Install2ProgramData.ajau3"
 goto EndScript
 
 :PackageMissing
