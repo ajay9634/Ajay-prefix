@@ -18,7 +18,10 @@ for /f "tokens=2,*" %%A in ('reg query "%RegistryKey%" /v %RegistryValue% 2^>nul
 
 if not exist "%setupfolder%\Ajay_prefix\save_data\users\Registry_backup" mkdir "%setupfolder%\Ajay_prefix\save_data\users\Registry_backup"
 if not exist "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\Local\Temp" mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\Local\Temp"
-if not exist "%setupfolder%\Ajay_prefix\save_data\users\xuser\Documents\My Games" mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\Documents\My Games"
+if not exist "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\LocalLow" mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\LocalLow"
+if not exist "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\Roaming" mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\AppData\Roaming"
+if not exist "%setupfolder%\Ajay_prefix\save_data\users\xuser\Saved Games" mkdir "%setupfolder%\Ajay_prefix\save_data\users\xuser\Saved Games"
+
 
 timeout /t 1 >nul 2>&1
 timeout /t 1 >nul 2>&1
