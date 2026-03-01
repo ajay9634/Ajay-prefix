@@ -166,7 +166,9 @@ If you only need to revert registry changes without removing the application:
 ## 📂 Move Game Save Data to Ajay Prefix Pro
 
 If you previously played games, move your save data as follows:  
-💾 `C:\Users\...` ➡️ `selected drive or folder:\Ajay_prefix\save_data\users\...`
+💾 `C:\Users\...` to `selected drive or folder:\Ajay_prefix\save_data\users\...`
+> [!NOTE]
+Move the three primary folders—AppData, Documents, and Saved Games — to the new location.
 
 ---
 
@@ -179,7 +181,7 @@ To sync save data across containers/emulators:
 - ➡️ Use the new **AjayAutosync** service app for automatic backup and restoration in Wine, which synchronizes files based on their timestamp.
 
 > [!NOTE]
-Avoid saving unnecessary folders or files in C:\Users\, as this will lead to excessively large backups. Most game saves are automatically redirected to the Ajay Prefix save path.
+Avoid keeping unnecessary folders or files in C:\Users\, as this will lead to excessively large backups. Most game saves are automatically redirected to the Ajay Prefix save path.
 
 ---
 
