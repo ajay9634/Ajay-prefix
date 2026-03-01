@@ -176,6 +176,10 @@ To sync save data across containers/emulators:
 
 - ➡️ Ensure all emulators use the same drive path or copy saves manually if needed.  
 - ➡️ Use the **Backup and Restore Tool** feature.
+- ➡️ Use the new **AjayAutosync** service app for automatic backup and restoration in Wine, which synchronizes files based on their timestamp.
+
+> [!NOTE]
+Avoid saving unnecessary folders or files in C:\Users\, as this will lead to excessively large backups. Most game saves are automatically redirected to the Ajay Prefix save path.
 
 ---
 
