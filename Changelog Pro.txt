@@ -14,10 +14,29 @@
 - General bug fixes and stability enhancements.
 
 ==========================================================
+               ## [AJAY START MENU PRO] - 1 March 2026
+============================================================
+
+- Added AutoSync service app for Wine (New) 
+- Fixed SymLink folders backup bug in C-Drive Backup Restore tool
+- Added timeout in Update_Check.bat
+- Updated check Prefix Pro status script with missing path critical error
+- Added auto launch status with Ajay Start Menu Pro viewer
+- Updated dxwrapper, wine mono and others versions info
+
+==========================================================
+               ## [AJAY START MENU PRO] - 25 Feb 2026
+============================================================
+
+- Updated Steamcmd downloader batch script
+- Updated Ajay Start Menu Pro Viewer
+
+==========================================================
                ## [AJAY START MENU PRO] - 24 Feb 2026
 ============================================================
 
-- Added a new app — SteamArc Ultimate — to handle all your Steam game save backups
+- Added new app - SteamArc Ultimate for backup game save of steam app
+- Added Steamcmd downloader batch script
 
 ==========================================================
                ## [AJAY START MENU PRO] - 2 Feb 2026
