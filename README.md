@@ -116,6 +116,7 @@ If you only need to revert registry changes without removing the application:
 - 🌐 **Broad Compatibility**: Supports various Wine versions (Winlator Official, Winlator Bionic) and Windows 11.
 - 🔄 **Shared Saves with Legacy Version**: Seamlessly shares save locations with Ajay Prefix v10.19 when using the main root drive.
 - ⚙️ **Customizable Data Paths**: Configure a **Save Data Folder** for game saves and an **Offline Cache Folder** for offline downloads of online components.
+- **AjayAutoSync Service**: Enable this service in wine . It is for automatic backup and restoration in Wine, which synchronizes files based on their timestamp.
 
 ---
 
