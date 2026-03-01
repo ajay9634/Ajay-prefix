@@ -116,7 +116,7 @@ If you only need to revert registry changes without removing the application:
 - 🌐 **Broad Compatibility**: Supports various Wine versions (Winlator Official, Winlator Bionic) and Windows 11.
 - 🔄 **Shared Saves with Legacy Version**: Seamlessly shares save locations with Ajay Prefix v10.19 when using the main root drive.
 - ⚙️ **Customizable Data Paths**: Configure a **Save Data Folder** for game saves and an **Offline Cache Folder** for offline downloads of online components.
-- 🔄 **AjayAutoSync Service**: Enable this service in wine . It is for automatic backup and restoration in Wine, which synchronizes files based on their timestamp. Note: It may not work in all Pc Emu.
+- 🔄 **AjayAutoSync Service**: Enable this service in wine . It is for automatic backup and restoration in Wine, which synchronizes files based on their timestamp. Note: It may not work in all Pc Emu. Read details below 👇.
 
 ---
 
@@ -179,7 +179,7 @@ To sync save data across containers/emulators:
 
 - ➡️ Ensure all emulators use the same drive path or copy saves manually if needed.  
 - ➡️ Use the **Backup and Restore Tool** feature.
-- ➡️ Use the new **AjayAutosync** service app for automatic backup and restoration in Wine, which synchronizes files based on their timestamp.
+- ➡️ Use the new **AjayAutosync** service app for automatic backup and restoration in Wine, which synchronizes files based on their timestamp. AjayAutoSync may prioritize newer timestamps over total play time. It may remove old save data even if it has more progress than a newer save. Do not enable this container for a recently started game unless you manually clear the old save data first. This process is complicated; do not turn it on unless you understand it properly.
 
 > [!NOTE]
 Avoid keeping unnecessary folders or files in C:\Users\, as this will lead to excessively large backups. Most game saves are automatically redirected to the Ajay Prefix save path.
