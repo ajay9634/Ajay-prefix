@@ -178,8 +178,8 @@ Move the three primary folders—AppData, Documents, and Saved Games — to the 
 To sync save data across containers/emulators:  
 
 - ➡️ Ensure all emulators use the same drive path or copy saves manually if needed.  
-- ➡️ Use the **Backup and Restore Tool** feature.
-- ➡️ Use the new **AjayAutosync** service app for automatic backup and restoration in Wine, which synchronizes files based on their timestamp. AjayAutoSync may prioritize newer timestamps over total play time. It may remove old save data even if it has more progress than a newer save. Do not enable this container for a recently started game unless you manually clear the old save data first. This process is complicated; do not turn it on unless you understand it properly.
+- ➡️ Use the **Backup and Restore Tool**. This is a manual process that forces a backup or restore without using timestamps. Manual verification is required to ensure you are backing up the latest save data.
+- ➡️ Use the new **AjayAutoSync** service app for automatic backup and restoration in Wine, which synchronizes files based on their timestamp. AjayAutoSync may prioritize newer timestamps over total play time. It may remove old save data even if it has more progress than a newer save. Do not enable this container for a recently started game unless you manually clear the old save data first. This process is complicated; do not turn it on unless you understand it properly.
 
 > [!NOTE]
 Avoid keeping unnecessary folders or files in C:\Users\, as this will lead to excessively large backups. Most game saves are automatically redirected to the Ajay Prefix save path.
