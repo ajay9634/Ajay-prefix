@@ -120,13 +120,13 @@ If you only need to revert registry changes without removing the application:
 
 ---
 
-# 🖇️ Quick Launch Shortcuts
+## 🖇️ Quick Launch Shortcuts
 
 Streamline your workflow by launching these utilities directly from the **Windows Run Dialog** or **Task Manager**.
 
 ---
 
-### 🚀 Available Commands
+#### 🚀 Available Commands
 
 | Application | Command | Action |
 | :--- | :--- | :--- |
@@ -139,20 +139,20 @@ Streamline your workflow by launching these utilities directly from the **Window
 
 ---
 
-### 🖥️ How to Launch
+#### 🖥️ How to Launch
 
-#### Method 1: Run Dialog
+##### Method 1: Run Dialog
 1. Press `Win + R` on your keyboard.
 2. Type the command (e.g., `Launcher.exe`) and hit **Enter**.
 
-#### Method 2: Task Manager
+##### Method 2: Task Manager
 1. Open **Task Manager**.
 2. Select **File** > **Run new task**.
 3. Type the command and click **OK**.
 
 ---
 
-### 🛠️ Customization
+#### 🛠️ Customization
 You can easily add custom app commands using the **App Paths Manager** app to register your own shortcuts.
 
 
