@@ -218,6 +218,11 @@ timeout /t 1 >nul 2>&1
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v a /d "AjayStartMenuPro.exe" /f >nul 2>&1
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU" /v MRUList /d a /f >nul 2>&1
 
+:: Adding some registry
+
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\AHP.exe" /ve /d "C:\AJAY_PREFIX_PRO\Ajay_Scripts\AjayHotkeysPro.bat" /f >nul 2>&1
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\TimeoutKill.exe" /ve /d "C:\AJAY_PREFIX_PRO\Ajay_Scripts\TimeoutKill.bat" /f >nul 2>&1
+
 :AfterXCopy2
 
 if exist "C:\windows\wfm.bat" (
