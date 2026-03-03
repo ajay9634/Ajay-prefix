@@ -1,0 +1,1 @@
+I have not included any malicious code; you are welcome to verify the scripts manually. If a password is required, please enter it. While the password is already included in the updater batch file, I have also provided it here in case anyone encounters issues. This is an open-source project.
