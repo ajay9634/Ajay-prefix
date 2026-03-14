@@ -43,10 +43,6 @@ Includes multiple fixes for enhanced gaming performance.
 
 ---
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=5000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1000&lines=📥+Download+Ajay+Prefix+v1.3)](https://github.com/ajay9634/Ajay-prefix/releases/tag/Ajay_Prefix_Pro_1.3)
-
----
-
 ## ⚙️ Installation of Ajay Prefix Pro v1.4
 ## 📦 Partial Automatic Installation
 
@@ -194,14 +190,6 @@ You can easily add custom app commands using the **App Paths Manager** app to re
 
 ---
 
-## 📺 Video Guides
-
-- [[Ajay Prefix Pro v1.2 Installation - Winlator official and bionic](https://youtu.be/vNVC-PNc3-o)]
-- [[Ajay Prefix Pro v1.2 Installation - Gamehub](https://youtu.be/6Qo_Yf9MIyg)]
-- [[Ajay Prefix Pro v1.3 Quick Installation - Gamehub](https://youtu.be/UtLBM3iZYgA?si=MpSenHXC6WzTnIKt)]
-- [[Winlator 11 | Symlink Tools | Ajay Prefix Pro v1.3 Installer](https://youtu.be/Xsg2g5ix-50)]
----
-
 ## 📂 Move Game Save Data to Ajay Prefix Pro
 
 If you previously played games, move your save data as follows:  
@@ -258,22 +246,11 @@ Avoid keeping unnecessary folders or files in C:\Users\, as this will lead to ex
 ![Screenshot_2025-10-21-11-19-57-209_com winlator](https://github.com/user-attachments/assets/ffaf374f-c034-4af5-b3eb-0cc9b0a73b5f)
 ![IMG_20251026_165606](https://github.com/user-attachments/assets/804dbc46-0a57-4e38-8216-649a1a9d433d)
 
----
-
-## 📖 Additional Help
-
-📘 Read `help.txt` in relevant folders.  
-🌐 [Ajay Prefix Wiki on GitHub](https://github.com/ajay9634/Ajay-prefix/wiki)
-
----
 
 ## 🔒 Is It Safe?
 
 ✅ Yes, all files are scanned and verified.  
 ⚠️ *If you have concerns about trustworthiness, please avoid installing.*
-
-## 🤧 False Positive Note
-[Click here](https://github.com/ajay9634/Ajay-prefix/blob/main/Ajay%20Prefix%20Pro%20%20README.md)
 
 ---
 
@@ -281,8 +258,6 @@ Avoid keeping unnecessary folders or files in C:\Users\, as this will lead to ex
 
 Development is progressing slowly due to a lack of necessary features to add, as well as limited feedback and user requests.
 You can help improve the project by reporting bugs or broken scripts in the issues section or on Discord.
-
-#### `Project archived for 6 months.`
 
 ---
 ## ⚙️ Environment Variables
@@ -333,35 +308,10 @@ vblank_mode=0   # set to 1 to fix tearing
 ZINK_DESCRIPTOR_POOL=1
 ZINK_USE_LOW_MEMORY_POOL=1
 ```
-
----
-
-## 📁 Necessary Components
-
-### ✅ [Steam Patch & Installer with Fonts](https://github.com/ajay9634/Ajay-prefix/releases/tag/Steam_Patch)  
-### ✅ [Box64 WCP for Winlator GLIBC](https://github.com/ajay9634/Ajay-prefix/releases/tag/Box64_wcp)  
-### ✅ [D3D WCP Files Collection](https://github.com/ajay9634/Ajay-prefix/releases/tag/D3d_wcp)  
-### ✅ [Turnip, Zink, Virgl WCP Collection](https://github.com/ajay9634/Ajay-prefix/releases/tag/Graphics_driver)  
-### ✅ [Turnip, Zink, Virgl EXE Collection](https://github.com/ajay9634/Ajay-prefix/releases/tag/graphics_driver_exe)  
-### ✅ [Wine WCP for Winlator GLIBC](https://github.com/ajay9634/Ajay-prefix/releases/tag/Wine_wcp)
-### ✅ [Box64 for Winlator 10+](https://github.com/ajay9634/Ajay-prefix/tree/Winlator-10-stuff/installable_components)
-
----
-
-## ⚠️ Support & Community
-
-💬 Need help? Join the Emuplay0 Discord group:  
-[![Emuplay0 Discord](https://img.shields.io/badge/Discord-Emuplay0-blue?style=social&logo=discord)](https://discord.gg/XpbEp3dWv3)
-
 ---
 
 ## 💲 Support the Project
 
-🙏 Subscribe to my YouTube channel and watch videos!  
-☕ Or donate on Ko-fi!  
-🙏 Please star this repository !
-
-[![YouTube](https://img.shields.io/badge/YouTube-Subscribe-red?style=social&logo=youtube)](https://youtube.com/@EMUPLAY0?si=TA9tOZx49eZa4OuN)  
 [![Ko-fi](https://img.shields.io/badge/Donate-Ko_fi-orange?style=social&logo=ko-fi)](https://ko-fi.com)
 
 ---
