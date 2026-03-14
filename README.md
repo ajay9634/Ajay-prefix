@@ -14,12 +14,6 @@ Read Wiki and FAQ - [Click Here](https://github.com/ajay9634/Ajay-prefix/wiki/%E
 
 ---
 
-## ⚡ Ajay Prefix 10.19 README
-
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=5000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1000&lines=📥+Ajay+Prefix+Pro+Readme)](https://github.com/ajay9634/Ajay-prefix/blob/main/README_OLD.md)
-
----
-
 ## 📋 Requirements
 
 - 🖥️ **Architecture:** 64-bit architecture (includes 32-bit compatibility).
