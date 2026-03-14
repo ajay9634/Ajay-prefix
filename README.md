@@ -10,7 +10,7 @@ Ajay Prefix Pro is compatible with PC emulators such as Mobox WOW64, Winlator, D
 
 ## 📚 Wiki and FAQ
 
-Read Wiki and FAQ - [Click Here](https://github.com/ajay9634/Ajay-prefix/wiki/%E2%9D%93FAQ-about-Ajay-Prefix)
+Read Wiki and FAQ for more details.
 
 ---
 
