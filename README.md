@@ -122,32 +122,6 @@ Streamline your workflow by launching these utilities directly from the **Window
 
 ---
 
-#### 🚀 Available Commands
-
-| Application | Command | Action |
-| :--- | :--- | :--- |
-| **Ajay Hotkeys Pro** | `AHKP.exe` | Open Ajay Hotkeys Pro |
-| **TimeoutKill** | `TimeoutKill.exe` | Open TimeoutKill Utility |
-| **Launcher** | `Launcher.exe` | Run Launcher Script |
-| **Backup** | `Backup.exe` | Run Backup Script |
-| **Launcher 2** | `Launcher2.exe` | Run Secondary Launcher |
-| **Ajay Start Menu Pro** | `AjayStartMenuPro.exe` | Run Ajay Start Menu Pro Viewer |
-
----
-
-#### 🖥️ How to Launch
-
-##### Method 1: Run Dialog
-1. Press `Win + R` on your keyboard.
-2. Type the command (e.g., `Launcher.exe`) and hit **Enter**.
-
-##### Method 2: Task Manager
-1. Open **Task Manager**.
-2. Select **File** > **Run new task**.
-3. Type the command and click **OK**.
-
----
-
 #### 🛠️ Customization
 You can easily add custom app commands using the **App Paths Manager** app to register your own shortcuts.
 
