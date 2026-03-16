@@ -59,6 +59,21 @@ Consult our [Wiki and FAQ](#) for detailed configuration guides, troubleshooting
 > **Save Migration:** After setup, manually move existing saves from `C:\Users\...` to your new designated **Save Data Folder** located at `selected_drive:\Ajay_prefix\save_data\users\...`.
 
 ---
+## 🗑️ Complete Removal Method
+
+To fully uninstall the Ajay Prefix Pro, please follow these steps in order:
+
+1. **Standard Uninstallation:** Run `Uninstaller.bat` to begin the removal process.
+
+---
+
+### 🔄 Restoring or Uninstalling Registry Only
+If you only need to revert registry changes without removing the application:
+
+* Navigate to: `C:\AJAY_PREFIX_PRO\backup\`
+* **Import** all registry keys located in this folder to revert your system settings.
+
+---
 
 ## ✨ Key Features
 
