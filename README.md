@@ -1,4 +1,4 @@
-l![logo](https://github.com/ajay9634/Ajay-prefix/blob/main/.github/logo.png)
+# ![logo](https://github.com/ajay9634/Ajay-prefix/blob/main/.github/logo.png)
 
 ---
 
@@ -6,228 +6,88 @@ l![logo](https://github.com/ajay9634/Ajay-prefix/blob/main/.github/logo.png)
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=6000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1200&height=200&lines=Welcome+to+Ajay+Prefix+Pro;Universal+Wine+Tools+and+Fixes;Game+Tweaks+%7C+Save+Redirection+%7C+Start+Menu)
 
-Ajay Prefix Pro is compatible with PC emulators such as Mobox WOW64, Winlator, Dark OS, MiceWine, Hangover (latest), GameHub aka GameFusion, and other 64 bit based emulators. It also supports Windows 11 and Linux Wine.
+**Ajay Prefix Pro** is a comprehensive utility suite designed for Wine-based environments. It is fully compatible with mobile PC emulators such as Mobox WOW64, Winlator, Dark OS, MiceWine, Hangover, and GameHub (GameFusion). It also provides robust support for native Linux Wine environments (Bottles, Lutris, etc.).
 
 ## 📚 Wiki and FAQ
-
-Read Wiki and FAQ for more details.
+Consult our [Wiki and FAQ](#) for detailed configuration guides, troubleshooting, and advanced tips.
 
 ---
 
 ## 📋 Requirements
 
-- 🖥️ **Architecture:** 64-bit architecture (includes 32-bit compatibility).
-- 🌐 **Internet:** Active connection required to download the latest Start Menu.
-- 💻 **Platform:** Any Wine-based PC emulator or Windows 11 (24H2 update).
-- 🔑 **Permissions:** Administrative privileges required for Windows 11.
-- 🐧 **Linux:** Native Wine support (also compatible via Bottles, Lutris, etc.).
+* 🖥️ **Architecture:** 64-bit architecture (includes 32-bit compatibility).
+* 🌐 **Internet:** Active connection required for Start Menu components and updates.
+* 💻 **Platform:** Any Wine-based PC emulator (Android/ARM).
+* 🐧 **Linux:** Native Wine 10+ recommended.
 
 ---
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=✨+What+is+Ajay+Prefix+Pro✨)
 
-✅ **Ajay Prefix Pro v1.4**  
+### ✅ Ajay Prefix Pro v1.6
 
-> *Ajay Prefix Pro = Game save redirection (any drive or folder:\Ajay_prefix\save_data) + Start Menu customization + Game fixes*
-
-Includes multiple fixes for enhanced gaming performance.
-
-> [!NOTE]
-> If you encounter issues, please report them in the Issues section.
+> **Core Functionality:** Game save redirection (`\Ajay_prefix\save_data`) + Start Menu customization + Universal game fixes.
+> 
+> **Redirected Folders:** `AppData`, `Documents`, and `Saved Games`.
 
 ---
 
-## ⚙️ Installation of Ajay Prefix Pro v1.4
-## 📦 Partial Automatic Installation
+## ⚙️ Installation Guide
 
-1. Just Run `Ajay_Prefix_Pro_v1.4_Installer_x64.exe`
-2. Click on last gui option - Install Ajay Prefix Pro
-3. Follow Manual Installation step from 4
+1.  📦 **Extract:** Unpack `Ajay_Prefix_Pro_v1.6_x64_offline.7z` using ZArchiver or a similar tool.
+2.  ⚙️ **Execute:** Run `Install Setup (for wine).bat`.
+3.  🔄 **Mode Selection:** Choose `Start Menu Only`, `Prefix Only`, or **Both (Recommended)**. (See *Choice Mode Help* below).
+4.  🗂️ **Configure Paths:** Select an **Offline Cache Folder** and a **Save Data Folder**.
+5.  💾 **Finalize:** Click **Save and Exit** and wait for the automated script to finish.
+6.  🔄 **Restart:** Restart the Wine server/container to apply changes.
+7.  ✔️ **Verify:** Check the installation status via the Start Menu Viewer.
 
-### 🛠️ Manual Installation
+---
 
-1. 📦 Extract `Ajay_Prefix_Pro_v1.4_x64` using ZArchiver or another archive tool.
-2. ⚙️ Run **Setup (for wine).bat**   OR **wfm2_auto_run.exe** in Emulator _OR_
-3. ⚙️ Run **Setup (Run as Admin for windows 11).bat** in Windows 11
-(If the admin permission issue persists, manually remove the admin check command from the batch file).
-4. 🗂️ Select an **Offline Cache Folder** for online components (any folder, subfolder, or root drive).
-5. 🗂️ Choose a **Save Data Folder** for game saves (any folder, subfolder, or root drive).
-6. 💾 Click **Save Paths** in the Folder Selector, then **Exit**.
-7. ✅ Wait for the automatic installation to complete. If successful, the latest Start Menu will be installed.
-8. 🔄 Restart Windows or your Wine environment.
-9. ✔️ Verify Ajay Prefix Pro status in the Start Menu Viewer.
+### 🛠️ Installation Help (Choice Mode)
 
-> [!TIP]
-> * Run **Setup (for wine).bat** to automatically enable hidden folders; otherwise, you must manually adjust the settings in **winecfg**.
+* **1. Start Menu Only:**
+    Choose this if you only want Start Menu dependencies. You **cannot** redirect game save paths, and all prefix-related tools will be unavailable.
+* **2. Prefix Only:**
+    Choose this for full access to all prefix tools and save redirection. You **cannot** install dependencies in this mode.
+* **3. Both (Recommended):**
+    The full experience. Provides access to the complete Start Menu, all dependencies, and all prefix tools.
 
+---
 > [!IMPORTANT]
-> - 🔐 **Manual Registry Backup Recommended**: Always back up your Windows registry before installation. While Wine containers can be recreated with minimal loss, the author is not responsible for registry issues.
-
-> [!IMPORTANT]
-> - 💾 **Post-Installation Save Migration**: After setup, manually move game saves from the C: drive to your designated **Save Data Folder**. On Windows 11, copy or move the AppData directory to prevent data loss.
-
-> [!CAUTION]
-> - 🚫 **Data Safety**: Do not delete the **Save Data Folder** or its associated root drive to prevent permanent data loss.
-> - 🚫 **OS Compatibility**: Do not install on Windows 10 or older versions; Windows 11 (24H2+) is required.
-> - 🚫 **Wine Version**: Do not install on outdated Wine versions on Linux; modern Wine 10+ is recommended.
-> - ☑️ **Troubleshooting**: If issues occur, run the provided batch script to uninstall. If the script fails, a manual registry restoration will be required.
-
-
-> [!NOTE]
-> Do not select internal drives (e.g., C:, E:, Z:) as the **Save Data Folder**.
-
----
-
-## 🗑️ Complete Removal Method
-
-To fully uninstall the Ajay Prefix Pro, please follow these steps in order:
-
-1. **Standard Uninstallation:** Run `Ajay.Prefix.Pro.v1.4.Uninstaller.bat` to begin the removal process.
-
-2. **Force Removal (Fallback):** If the standard uninstaller fails, run `Ajay.Prefix.Force.Uninstaller.v2.exe`. This will perform a deep clean and completely remove **Ajay Prefix v10.19** as well.
-
----
-
-### 🔄 Restoring or Uninstalling Registry Only
-If you only need to revert registry changes without removing the application:
-
-* Navigate to: `C:\AJAY_PREFIX_PRO\backup\`
-* **Import** all registry keys located in this folder to revert your system settings.
+> **Manual Registry Backup:** It is highly recommended to export your registry keys before installation. 
+> **Save Migration:** After setup, manually move existing saves from `C:\Users\...` to your new designated **Save Data Folder** located at `selected_drive:\Ajay_prefix\save_data\users\...`.
 
 ---
 
 ## ✨ Key Features
 
-- 💾 **Automatic First-Time Backup**: Creates a compact backup of the default registry at `C:\AJAY_PREFIX_PRO\Backup\`. Easily restore if needed (requires a fresh container).
-- ⚡ **Lightweight & Dependency-Free**: No offline dependencies—runs smoothly out of the box.
-- 🚀 **Quick Installation**: Simple, one-click setup process.
-- 📊 **Start Menu Integration**: Launch and manage via a dedicated Start Menu Viewer.
-- 🗂️ **Flexible Save Locations**: Choose any folder, subfolder, or root drive for saves and offline components.
-- 🌐 **Broad Compatibility**: Supports various Wine versions (Winlator Official, Winlator Bionic) and Windows 11.
-- 🔄 **Shared Saves with Legacy Version**: Seamlessly shares save locations with Ajay Prefix v10.19 when using the main root drive.
-- ⚙️ **Customizable Data Paths**: Configure a **Save Data Folder** for game saves and an **Offline Cache Folder** for offline downloads of online components.
-- 🔄 **AjayAutoSync Service**: Enable this service in wine . It is for automatic backup and restoration in Wine, which synchronizes files based on their timestamp. Note: It may not work in all Pc Emu. Read details below 👇.
+* 💾 **Auto-Backup:** Creates a default registry backup at `C:\AJAY_PREFIX_PRO\Backup\`.
+* 🚀 **Performance Tweaks:** Includes WineD3D, DXVK, VKD3D, and specialized registry optimizations.
+* 📦 **Essential Runtimes:** Pre-packed with VC Redist (All-in-One), XNA, PhysX, and Disk Tools.
+* 🔊 **Audio & Media:** XAudio2_9 Redist, FAudio, and Media Foundation codecs included.
+* 🔄 **Ajay Profile Hybridizer:** Dynamically redirects `%UserProfile%` and `%Public%` paths.
+* 🛠️ **Integrated Tools:** SymLink tools, Path2Exe, Ajay Hotkeys Pro, and GPU testing suites.
 
 ---
 
-## 🖇️ Quick Launch Shortcuts
+## 🔗 Data Synchronization
 
-Streamline your workflow by launching these utilities directly from the **Windows Run Dialog** or **Task Manager**.
-
----
-
-#### 🛠️ Customization
-You can easily add custom app commands using the **App Paths Manager** app to register your own shortcuts.
-
+* **Manual Sync:** Use the **Backup and Restore Tool** to force data migration across different containers.
+* **AjayAutoSync:** An automated service that syncs files based on timestamps. *Use with caution as it prioritizes newer file dates over total progress.*
+* **Hybridizer:** The preferred method for seamless profile redirection without manual file movement.
 
 ---
 
-![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=🚀+Features+of+Ajay+Prefix+Pro🚀)
+## ⚠️ Important Notices & Troubleshooting
 
-- 💾 **Game Save Redirection**
-- 📦 **Essential Runtime Files** like Official VC Redist , XNA , PhysX , Disk Tools etc Included in **Ajay Prefix Pro Apps Store** which is common for Wine and Windows 11
-- 💾 **Ajay_CDrive_Backup_Restore_Tool** – for backing up data from C drive if game save path is hard-coded
-- 📑 **Ajay_Registry_Export_Import_Tool** – for exporting current container registry and importing previous registry
-- 🔗 **App Paths Manager** – for managing quick command of apps which can be launched via Run or Task Manager new task
-- 🚀 **Multi App Launcher** – for managing quick access to your games (common across multiple containers)
-- 🎮 **WineD3D, DXVK, VKD3D & Useful Tweaks** for Wine
-- 🎮 **Some Winetricks and Other Fixes** for Wine
-- 🔊 **Audio Libraries (XAudio, FAudio, dsound)** for Wine
-- 🎨 Popular Wrappers Included (dgVoodoo, DXWrapper, etc.)
-- 🧪 Microsoft Sample Test Tools
-- 🖼️ GPU Test (DDRAW,DX8,DX9,DX10,DX11,DX12, Nglide & OpenGL)
-- 🎮 D3D GUI Installer for DXVK & VKD3D
-- ⚡ Some DXVK ARM64EC
-- 🌐 xlive fix Tools (xLiveRedist & xliveless)
-- 🌍 Multilingual Fonts with CJK included
-- 📦 Custom VC Redist All-in-One (Old & Latest Games)
-- 🍷 Wine-Mono Custom Version Installer
-- 🎼 DirectX Parts (Direct3D, Dmusic, Dplay, Dshow, etc.)
-- 🔊 Microsoft XAudio2_9+ Redist
-- 🎥 Media Foundation + Codecs by HoodedDeath
-- 🔍 3D-Analyze v2.36 app
-- ⌨️ Ajay Hotkeys Pro 1.2 script app
-- 🔧 Path2Exe Converter script app
-- 🔧 SymLink Tools 
-- ⏱️ TimeoutKill script app
-- 🛠️ WineD3D & DDraw Fixes
-- 🏎️ nGlide + 3dfx Wrapper
-- 📈 Performance & Compatibility Tools Pack
-
-- And Many more ..
+* 🚫 **Platform Restriction:** Do **NOT** install this on a native Windows OS. This is designed strictly for Wine/Emulators.
+* 🚫 **Data Safety:** Deleting your designated **Save Data Folder** will result in permanent loss of game progress.
+* 🚫 **System Integrity:** Do not remove files from `C:\AJAY_PREFIX_PRO` or `AjayPrefixConf.txt` in the Windows directory.
+* 📂 **Drive Selection:** Avoid using internal drives (Z:, E:, or C:) as the target for the **Save Data Folder**.
 
 ---
 
-## 📂 Move Game Save Data to Ajay Prefix Pro
-
-If you previously played games, move your save data as follows:  
-💾 `C:\Users\...` to `selected drive or folder:\Ajay_prefix\save_data\users\...`
-> [!NOTE]
-Move the three primary folders—AppData, Documents, and Saved Games — to the new location.
-
----
-
-## 🔗 Synchronize Save Data Across Containers
-
-To sync save data across containers/emulators:  
-
-- ➡️ Ensure all emulators use the same drive path or copy saves manually if needed.  
-- ➡️ Use the **Backup and Restore Tool**. This is a manual process that forces a backup or restore without using timestamps. Manual verification is required to ensure you are backing up the latest save data.
-- ➡️ Use the new **AjayAutoSync** service app for automatic backup and restoration in Wine, which synchronizes files based on their timestamp. AjayAutoSync may prioritize newer timestamps over total play time. It may remove old save data even if it has more progress than a newer save. Do not enable this container for a recently started game unless you manually clear the old save data first. This process is complicated; do not turn it on unless you understand it properly.
-
-> [!NOTE]
-Avoid keeping unnecessary folders or files in C:\Users\, as this will lead to excessively large backups. Most game saves are automatically redirected to the Ajay Prefix save path.
-
----
-
-## ⚠️ Notices & Troubleshooting
-
- - 🚫 **Cancel Installation**: To stop the process, close the CMD window before exiting the **Ajay Prefix Folder Selector**.
-
-- ✅ **Tested Platforms**: Verified on Winlator Official, Winlator forks, and Windows 11 with no issues.
-
-> [!CAUTION]
-> ### ⚠️ Post-Installation Warnings
-> 🚫 **Do Not Delete**: To prevent system instability or data loss, do not remove the following:
-> - **System Files**: `Ajay_Scripts` and `Ajay_Start_Menu_Pro` located in `C:\AJAY_PREFIX_PRO`.
-> - **Configuration**: `AjayPrefixConf.txt` or any other Ajay Prefix Pro files within `C:\Windows\`.
-> - **Save Data**: The designated **Save Data Folder**, as this will result in the loss of all game progress.
-
-> [!NOTE]
->Online components and Start Menu enhancements are in development (Update Scripts Pro and stay tuned).
----
-
-![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=⛔+Limitations)
-- 🌐 Requires Internet for Apps and Start Menu
-- ⚠️ May cause issues on some Emulators  
-- 💡 Some games may not be compatible  
-- 🚫 No backup for Steam saves in `C:\Program Files (x86)\Steam\`  
-- 📂 Game save path changed to `selected_drive or folder:\Ajay_prefix\save_data\users`  
-- 🔧 Games still using `C:\Users\` ➝ Use `Backup and Restore Drive C Users and ProgramData` feature
-
----
-## 📸 Screenshots
-
-![IMG_20251026_163151](https://github.com/user-attachments/assets/610f6657-a99b-425f-b0ad-fb7386672a12)
-![Screenshot_2025-10-21-11-18-56-633_com winlator](https://github.com/user-attachments/assets/37f819fe-79d5-44a9-ab5c-8058a29d3cf9)
-![Screenshot_2025-10-21-11-19-31-740_com winlator](https://github.com/user-attachments/assets/6a2053b3-d3f8-4f83-8d46-e4c3ba2246f9)
-![Screenshot_2025-10-21-11-19-57-209_com winlator](https://github.com/user-attachments/assets/ffaf374f-c034-4af5-b3eb-0cc9b0a73b5f)
-![IMG_20251026_165606](https://github.com/user-attachments/assets/804dbc46-0a57-4e38-8216-649a1a9d433d)
-
-
-## 🔒 Is It Safe?
-
-✅ Yes, all files are scanned and verified.  
-⚠️ *If you have concerns about trustworthiness, please avoid installing.*
-
----
-
-### ⏳ Current Status
-
-Development is progressing slowly due to a lack of necessary features to add, as well as limited feedback and user requests.
-You can help improve the project by reporting bugs or broken scripts in the issues section or on Discord.
-
----
 ## ⚙️ Environment Variables
 
 ### 🎮 VKD3D FPS HUD
@@ -296,6 +156,5 @@ ZINK_USE_LOW_MEMORY_POOL=1
 - WinRAR, 7z, wget, curl
 - Emuplay0 Testing Team
 - Autoit Software
-- Guide by ChatGPT , Grok etc
 
 ---
