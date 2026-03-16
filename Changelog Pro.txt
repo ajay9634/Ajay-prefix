@@ -1,17 +1,40 @@
 # Changelog
 
 ============================================================
-             ## [AJAY PREFIX PRO 1.3 RELEASE] - 29 Jan 2026
+             ## [AJAY PREFIX PRO 1.6 RELEASE] - 14 March 2026 (Last Release)
 ============================================================
 
-- Optimized all core Setup scripts and .ajau3 logic.
-- Switched default execution to AutoIt 64-bit.
-- Released 64-bit Installer for Android PC Emulators and Linux Wine where 32-bit apps fail or hang.
-- Added custom timeout script to resolve execution issues specific to Winlator Bionic.
-- Fixed original Shell Registry backup failures occurring in Winlator Bionic.
-- Added wfm2_auto_run clone.exe to facilitate creating desktop shortcuts within Gamehub and other Emu.
-- Improved the Script Updater core Script for better reliability.
-- General bug fixes and stability enhancements.
+- Fixed critical issue of Ajay prefix path (was typing error)
+- Added New Install mode - "Only Start Menu"
+- Updated Uninstaller
+- Recreated All Scripts without junk codes of wget for offline scripts
+- Repacked Resources files and fixed extraction path
+- Reduced size of Resources files
+- Updated Autoit and removed useless au3 examples
+- Updated VC 2022 dlls and Registry to 14.50.35719.0
+- Bug fixed
+
+
+Note: New Tool can divert path of %Public% and %UserProfile%.
+
+============================================================
+             ## [AJAY PREFIX PRO 1.5.1 RELEASE] - 8 March 2026
+============================================================
+
+- Added New Setup Tool - Ajay Profile Hybridizer
+- Updated Uninstaller 
+- Start Menu Organized 
+- Bugs fixed
+
+Note: New Tool can divert path of %Public% and %UserProfile%.
+
+============================================================
+             ## [AJAY PREFIX PRO 1.5 RELEASE] - 4 March 2026
+============================================================
+
+- Completely Repacked with Offline files
+- Bugs fixed
+- Removed online Scripts update
 
 ==========================================================
                ## [AJAY START MENU PRO] - 1 March 2026
