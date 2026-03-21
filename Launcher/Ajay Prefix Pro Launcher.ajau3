@@ -2,44 +2,67 @@
 #include <WindowsConstants.au3>
 #include <MsgBoxConstants.au3>
 #include <GuiListView.au3>
-#include <GUIScrollBars.au3> 
-#include <ScrollBarConstants.au3>
 #include <StaticConstants.au3>
+#include <Array.au3>
 
-; --- FULLSCREEN & STABILITY SETTINGS ---
+; --- 1. DYNAMIC RESOLUTION (85%) ---
 FileChangeDir(@ScriptDir) 
-Global $iW = @DesktopWidth
-Global $iH = @DesktopHeight
-Global $sIni = @ScriptDir & "\AjayPrefixProLauncherData.ini"
-Global $iStartupDelay = TimerInit() 
 
-; 1. MAIN PARENT WINDOW
-Global $hMain = GUICreate("Ajay Prefix Pro Launcher", $iW, $iH, 0, 0, $WS_POPUP)
+Global $iW = Int(@DesktopWidth * 0.85)
+Global $iH = Int(@DesktopHeight * 0.85) 
+
+Global $sIni = @ScriptDir & "\AjayPrefixProLauncherData.ini"
+
+; Scaling factor (Floor set to 1.0 to keep UI large)
+Global $f = $iW / 1024
+If $f < 1.0 Then $f = 1.0 
+
+Global $btnW = 115 * $f, $btnH = 32 * $f
+Global $icoSize = 48 * $f, $cellW = 120 * $f, $cellH = 115 * $f
+Global $fntLarge = 16 * $f, $fntMed = 10 * $f, $fntSmall = 9 * $f
+
+Local $iTopHeight = 85 * $f
+Local $iSecondRowY = 45 * $f
+
+; --- PAGINATION GLOBALS ---
+Global $iCurrentPage = 1
+Global $iItemsPerPage = 20 
+Global $iTotalPages = 1
+
+; --- 2. MAIN PARENT WINDOW ---
+Global $hMain = GUICreate("Ajay Prefix Pro Launcher", $iW, $iH, -1, -1, BitOR($GUI_SS_DEFAULT_GUI, $WS_MINIMIZEBOX))
 GUISetBkColor(0x121212, $hMain) 
 
-; --- APP TITLE (Moved slightly to make room) ---
-Local $lblTitle = GUICtrlCreateLabel("Ajay Prefix Pro Launcher", 370, 10, $iW - 850, 40, $SS_CENTER)
-GUICtrlSetFont($lblTitle, 18, 800, 0, "Arial Black") 
+; Dynamic Title Width to prevent button overlap
+Local $iLeftButtonX = $iW - ($btnW * 3 + 45 * $f)
+Local $iTitleWidth = $iLeftButtonX - (20 * $f)
+
+Global $lblTitle = GUICtrlCreateLabel("Ajay Prefix Pro Launcher", 10 * $f, 10 * $f, $iTitleWidth, 30 * $f, $SS_LEFTNOWORDWRAP)
+GUICtrlSetFont($lblTitle, 12 * $f, 800, 0, "Arial Black") 
 GUICtrlSetColor($lblTitle, 0xBB86FC) 
 
-; --- TOP MENU CONTROLS ---
-Global $btnAddNew = GUICtrlCreateButton("Add New Game", 10, 10, 110, 30)
-GUICtrlSetBkColor($btnAddNew, 0x2E7D32)
-GUICtrlSetColor($btnAddNew, 0xFFFFFF)
+; Top Row Buttons
+Global $btnAddNew = GUICtrlCreateButton("Add New Game", $iW - ($btnW * 3 + 35 * $f), 10 * $f, $btnW, $btnH)
+GUICtrlSetFont(-1, $fntSmall, 800)
+GUICtrlSetBkColor(-1, 0x2E7D32)
+GUICtrlSetColor(-1, 0xFFFFFF)
 
-Global $btnManage = GUICtrlCreateButton("Launcher Tools", 130, 10, 110, 30)
-GUICtrlSetBkColor($btnManage, 0x1565C0)
-GUICtrlSetColor($btnManage, 0xFFFFFF)
+Global $btnManage = GUICtrlCreateButton("Launcher Tools", $iW - ($btnW * 2 + 25 * $f), 10 * $f, $btnW, $btnH)
+GUICtrlSetFont(-1, $fntSmall, 800)
+GUICtrlSetBkColor(-1, 0x1565C0)
+GUICtrlSetColor(-1, 0xFFFFFF)
 
+Global $btnAjay = GUICtrlCreateButton("Ajay Tools", $iW - ($btnW + 15 * $f), 10 * $f, $btnW, $btnH)
+GUICtrlSetFont(-1, $fntSmall, 800)
+GUICtrlSetBkColor(-1, 0x6A1B9A)
+GUICtrlSetColor(-1, 0xFFFFFF)
+
+; Menus (All original tools preserved)
 Global $menuManage = GUICtrlCreateContextMenu($btnManage)
-Global $optSort = GUICtrlCreateMenuItem("Sort Alphabetically", $menuManage)
+Global $optSort = GUICtrlCreateMenuItem("Refresh", $menuManage)
 Global $optRemoveMulti = GUICtrlCreateMenuItem("Select & Remove Multiple", $menuManage)
 Global $optRemoveAll = GUICtrlCreateMenuItem("Remove All Games", $menuManage)
 Global $optResetIni = GUICtrlCreateMenuItem("Reset/Delete INI File", $menuManage)
-
-Global $btnAjay = GUICtrlCreateButton("Ajay Prefix Tools", 250, 10, 110, 30)
-GUICtrlSetBkColor($btnAjay, 0x6A1B9A)
-GUICtrlSetColor($btnAjay, 0xFFFFFF)
 
 Global $menuAjay = GUICtrlCreateContextMenu($btnAjay)
 Global $mTask  = GUICtrlCreateMenuItem("Task Manager", $menuAjay)
@@ -49,38 +72,45 @@ Global $mWfm   = GUICtrlCreateMenuItem("Wfm2", $menuAjay)
 Global $mExpl  = GUICtrlCreateMenuItem("Explorer", $menuAjay)
 Global $mNote  = GUICtrlCreateMenuItem("Notepad", $menuAjay)
 Global $mStart = GUICtrlCreateMenuItem("AjayStartMenuPro", $menuAjay)
-Global $mAhkp  = GUICtrlCreateMenuItem("Ajay Hotkeys Pro", $menuAjay)
+Global $mAhkp = GUICtrlCreateMenuItem("Ajay Hotkeys Pro", $menuAjay)
 
-; --- AUTO-CLOSE (Position Fixed to avoid overlap) ---
-Local $iAutoCloseVal = Int(IniRead($sIni, "Settings", "AutoClose", "4")) ; Default 4 = Unchecked
-Global $chkAutoClose = GUICtrlCreateCheckbox("Auto-Close Launcher", $iW - 510, 15, 170, 30)
+; Second Row
+Local $iAutoCloseVal = Int(IniRead($sIni, "Settings", "AutoClose", "4"))
+Global $chkAutoClose = GUICtrlCreateCheckbox("Auto-Exit on Launch", 20 * $f, $iSecondRowY, 180 * $f, 30 * $f)
 GUICtrlSetState($chkAutoClose, $iAutoCloseVal)
 GUICtrlSetColor($chkAutoClose, 0x03DAC6)
-GUICtrlSetFont($chkAutoClose, 9, 800)
+GUICtrlSetFont($chkAutoClose, $fntSmall, 800)
 
-; Search
-Local $lblSearch = GUICtrlCreateLabel("Search:", $iW - 320, 18, 50, 20)
-GUICtrlSetColor($lblSearch, 0xBB86FC) 
-Global $inpSearch = GUICtrlCreateInput("", $iW - 270, 15, 200, 22)
+Global $inpSearch = GUICtrlCreateInput("", $iW - (200 * $f), $iSecondRowY, 180 * $f, 25 * $f)
+GUICtrlSetFont(-1, $fntMed)
 GUICtrlSetBkColor($inpSearch, 0x333333)
 GUICtrlSetColor($inpSearch, 0xFFFFFF)
-
-; Exit
-Global $btnExit = GUICtrlCreateButton("X", $iW - 40, 10, 30, 30)
-GUICtrlSetBkColor(-1, 0xCC0000)
+Global $lblSearch = GUICtrlCreateLabel("Search:", $iW - (260 * $f), $iSecondRowY + 5 * $f, 50 * $f, 20 * $f, $SS_RIGHT)
 GUICtrlSetColor(-1, 0xFFFFFF)
 
-; 2. THE CHILD WINDOW (The Scrollable Area)
-Global $hScrollChild = GUICreate("", $iW, $iH - 60, 0, 60, $WS_CHILD, $WS_EX_CONTROLPARENT, $hMain)
+; --- 3. NAVIGATION ---
+Global $btnPrev = GUICtrlCreateButton("< PREVIOUS", ($iW/2) - 160 * $f, $iH - 55 * $f, 110 * $f, 40 * $f)
+GUICtrlSetFont(-1, $fntSmall, 800)
+GUICtrlSetBkColor(-1, 0x880E4F) 
+GUICtrlSetColor(-1, 0xFFFFFF)
+
+Global $lblPage = GUICtrlCreateLabel("Page 1 / 1", ($iW/2) - 40 * $f, $iH - 45 * $f, 100 * $f, 30 * $f, $SS_CENTER)
+GUICtrlSetFont(-1, $fntMed, 800)
+GUICtrlSetColor(-1, 0x03DAC6)
+
+Global $btnNext = GUICtrlCreateButton("NEXT PAGE >", ($iW/2) + 70 * $f, $iH - 55 * $f, 110 * $f, 40 * $f)
+GUICtrlSetFont(-1, $fntSmall, 800)
+GUICtrlSetBkColor(-1, 0x4A148C) 
+GUICtrlSetColor(-1, 0xFFFFFF)
+
+; --- 4. CONTENT AREA ---
+Global $hScrollChild = GUICreate("", $iW - (20 * $f), $iH - $iTopHeight - 80 * $f, 10 * $f, $iTopHeight, BitOR($WS_CHILD, $WS_VISIBLE, $WS_CLIPSIBLINGS), -1, $hMain)
 GUISetBkColor(0x1E1E1E, $hScrollChild) 
-GUISetState(@SW_SHOW, $hScrollChild)
 
-GUIRegisterMsg($WM_VSCROLL, "WM_VSCROLL")
-GUIRegisterMsg($WM_MOUSEWHEEL, "WM_MOUSEWHEEL")
-
-Global $aIcons[500], $aPaths[500], $aIniSections[500], $aLabels[500], $aNames[500]
-Global $aEditPath[500], $aEditIcon[500], $aEditName[500], $aDelete[500], $aMenus[500], $aRun[500]
-Global $iTotal = 0
+Global $aIcons[500], $aLabels[500], $aPaths[500], $aIniSections[500], $aNames[500], $aMenus[500]
+Global $aRun[500], $aDelete[500], $aRename[500], $aEditPath[500], $aEditIcon[500]
+Global $iTotalOnPage = 0
+Global $sLastSearch = ""
 
 _Refresh()
 GUISetState(@SW_SHOW, $hMain)
@@ -88,7 +118,14 @@ GUISetState(@SW_SHOW, $hMain)
 While 1
     $msg = GUIGetMsg()
     
-    ; --- MANUAL DOUBLE CLICK DETECTION ---
+    Local $sCurrSearch = GUICtrlRead($inpSearch)
+    If $sCurrSearch <> $sLastSearch Then
+        $sLastSearch = $sCurrSearch
+        $iCurrentPage = 1 
+        _Refresh($sCurrSearch)
+    EndIf
+
+    ; Manual Double Click detection
     Local $aCursor = GUIGetCursorInfo($hScrollChild)
     If Not @error And $aCursor[2] = 1 And $aCursor[4] > 0 Then 
         Local $tDbl = TimerInit()
@@ -99,197 +136,65 @@ While 1
         While TimerDiff($tCheck) < 250
             If BitAnd(GUIGetCursorInfo($hScrollChild)[2], 1) Then
                 _HandleManualDoubleClick($aCursor[4])
+                _CheckAutoExit()
                 ExitLoop
             EndIf
         WEnd
     EndIf
 
-    ; Process logic after 1.5s to prevent startup glitches
-    If TimerDiff($iStartupDelay) > 1500 Then
-        Switch $msg
-            Case $GUI_EVENT_CLOSE, $btnExit
-                Exit
-            Case $chkAutoClose
-                IniWrite($sIni, "Settings", "AutoClose", GUICtrlRead($chkAutoClose))
-            Case $inpSearch
+    Switch $msg
+        Case $GUI_EVENT_CLOSE
+            Exit
+        Case $btnPrev
+            If $iCurrentPage > 1 Then
+                $iCurrentPage -= 1
                 _Refresh(GUICtrlRead($inpSearch))
-            Case $btnAddNew
-                _AddNewGame()
-            Case $btnManage, $btnAjay
-                ControlClick($hMain, "", $msg, "secondary")
-            Case $optSort
-                _Refresh("", True)
-            Case $optRemoveMulti
-                _RemoveMultipleGUI()
-            Case $optRemoveAll
-                If _ConfirmDeletePopup("ALL GAMES") = $IDYES Then
-                    Local $sections = IniReadSectionNames($sIni)
+            EndIf
+        Case $btnNext
+            If $iCurrentPage < $iTotalPages Then
+                $iCurrentPage += 1
+                _Refresh(GUICtrlRead($inpSearch))
+            Endif
+        Case $chkAutoClose
+            IniWrite($sIni, "Settings", "AutoClose", GUICtrlRead($chkAutoClose))
+        Case $btnAddNew
+            _AddNewGame()
+        Case $btnManage, $btnAjay
+            ControlClick($hMain, "", $msg, "secondary")
+        Case $optSort
+            _Refresh("", True)
+        Case $optRemoveMulti
+            _RemoveMultipleGUI()
+        Case $optRemoveAll
+            If _ConfirmDeletePopup("ALL GAMES") = $IDYES Then
+                Local $sections = IniReadSectionNames($sIni)
+                If Not @error Then
                     For $i = 1 To $sections[0]
                         If StringInStr($sections[$i], "Game_") Then IniDelete($sIni, $sections[$i])
                     Next
-                    _Refresh()
                 EndIf
-            Case $optResetIni
-                If _ConfirmDeletePopup("INI FILE") = $IDYES Then
-                    FileDelete($sIni)
-                    _Refresh()
-                EndIf
-            Case $mTask To $mAhkp
-                _HandleAjayTools($msg)
-                _CheckAutoExit()
-            Case Else
-                If _HandleIconClicks($msg) Then _CheckAutoExit()
-        EndSwitch
-    EndIf
+                _Refresh()
+            EndIf
+        Case $optResetIni
+            If MsgBox(36, "Reset", "Delete INI file and exit?") = 6 Then
+                FileDelete($sIni)
+                Exit
+            EndIf
+        Case Else
+            If _HandleIconClicks($msg) Then _CheckAutoExit()
+            _HandleAjayTools($msg)
+    EndSwitch
 WEnd
 
 ; --- FUNCTIONS ---
 
-Func _CheckAutoExit()
-    If GUICtrlRead($chkAutoClose) = $GUI_CHECKED Then Exit
-EndFunc
-
-Func _HandleManualDoubleClick($ctrlID)
-    If $ctrlID <= 0 Then Return 
-    For $i = 0 To $iTotal - 1
-        If $ctrlID = $aIcons[$i] Or $ctrlID = $aLabels[$i] Then
-            _DirectLaunch($i)
-            _CheckAutoExit()
-            Return
-        EndIf
-    Next
-EndFunc
-
-Func _DirectLaunch($idx)
-    Local $sFile = $aPaths[$idx]
-    Local $sDir = _GetFolder($sFile)
-    Run('"' & $sFile & '"', $sDir)
-    If @error Then ShellExecute($sFile, "", $sDir)
-EndFunc
-
-Func _ConfirmDeletePopup($sText)
-    GUISetState(@SW_DISABLE, $hMain)
-    Local $hPop = GUICreate("Confirm", 320, 140, -1, -1, BitOR($WS_CAPTION, $WS_POPUP), $WS_EX_TOPMOST, $hMain)
-    GUISetBkColor(0x212121, $hPop)
-    GUICtrlCreateLabel("Remove " & $sText & "?", 10, 30, 300, 40, $SS_CENTER)
-    GUICtrlSetFont(-1, 11, 800)
-    GUICtrlSetColor(-1, 0xFFFFFF)
-    Local $btnY = GUICtrlCreateButton("YES", 60, 90, 80, 30)
-    Local $btnN = GUICtrlCreateButton("NO", 180, 90, 80, 30)
-    GUISetState(@SW_SHOW, $hPop)
-    Local $iRet = $IDNO
-    While 1
-        Local $m = GUIGetMsg()
-        If $m = $btnY Then
-            $iRet = $IDYES
-            ExitLoop
-        ElseIf $m = $btnN Or $m = $GUI_EVENT_CLOSE Then
-            ExitLoop
-        EndIf
-    WEnd
-    GUIDelete($hPop)
-    GUISetState(@SW_ENABLE, $hMain)
-    WinActivate($hMain)
-    Return $iRet
-EndFunc
-
-Func _Refresh($sFilter = "", $bSort = False)
-    For $i = 0 To $iTotal - 1
-        GUICtrlDelete($aIcons[$i])
-        GUICtrlDelete($aLabels[$i])
-        GUICtrlDelete($aMenus[$i])
-    Next
-    $iTotal = 0
-    Local $sections = IniReadSectionNames($sIni)
-    If @error Then Return
-    
-    If $bSort Then
-        For $i = 1 To $sections[0]
-            For $j = $i + 1 To $sections[0]
-                Local $n1 = IniRead($sIni, $sections[$i], "Name", "")
-                Local $n2 = IniRead($sIni, $sections[$j], "Name", "")
-                if StringCompare($n1, $n2) > 0 Then
-                    Local $tmp = $sections[$i]
-                    $sections[$i] = $sections[$j]
-                    $sections[$j] = $tmp
-                EndIf
-            Next
-        Next
+Func _LaunchFile($sPath)
+    Local $sDir = _GetFolder($sPath)
+    If StringRegExp($sPath, "(?i)\.(bat|cmd)$") Then
+        Run(@ComSpec & ' /c "' & $sPath & '"', $sDir)
+    Else
+        Run('"' & $sPath & '"', $sDir)
     EndIf
-
-    Local $x = 30, $y = 20
-    GUISwitch($hScrollChild)
-    For $i = 1 To $sections[0]
-        If StringInStr($sections[$i], "Game_") Then
-            Local $nm = IniRead($sIni, $sections[$i], "Name", "Unknown")
-            If $sFilter <> "" And Not StringInStr(StringLower($nm), StringLower($sFilter)) Then ContinueLoop
-            Local $p = IniRead($sIni, $sections[$i], "Path", "")
-            Local $ic = IniRead($sIni, $sections[$i], "Icon", $p)
-            
-            Local $sFinalIcon = $ic
-            Local $iIconIndex = -1
-            If Not FileExists($ic) Or StringInStr($ic, ".bat") Or StringInStr($ic, ".cmd") Then
-                $sFinalIcon = "shell32.dll"
-                $iIconIndex = 3 
-            EndIf
-
-            $aIcons[$iTotal] = GUICtrlCreateIcon($sFinalIcon, $iIconIndex, $x + 16, $y, 48, 48)
-            $aLabels[$iTotal] = GUICtrlCreateLabel($nm, $x, $y + 52, 85, 45, $SS_CENTER) 
-            GUICtrlSetColor(-1, 0x03DAC6)
-            
-            $aNames[$iTotal] = $nm
-            $aIniSections[$iTotal] = $sections[$i]
-            $aPaths[$iTotal] = $p
-            
-            $aMenus[$iTotal] = GUICtrlCreateContextMenu($aIcons[$iTotal])
-            $aRun[$iTotal] = GUICtrlCreateMenuItem("Run Game", $aMenus[$iTotal])
-            GUICtrlCreateMenuItem("", $aMenus[$iTotal]) 
-            $aEditName[$iTotal] = GUICtrlCreateMenuItem("Rename Label", $aMenus[$iTotal])
-            $aEditPath[$iTotal] = GUICtrlCreateMenuItem("Edit Path", $aMenus[$iTotal])
-            $aEditIcon[$iTotal] = GUICtrlCreateMenuItem("Edit Icon", $aMenus[$iTotal])
-            $aDelete[$iTotal] = GUICtrlCreateMenuItem("Remove Game", $aMenus[$iTotal])
-            
-            $x += 120 
-            If $x > ($iW - 140) Then 
-                $x = 30
-                $y += 110 
-            EndIf
-            $iTotal += 1
-        EndIf
-    Next
-    _GUIScrollBars_Init($hScrollChild)
-    _GUIScrollBars_SetScrollInfoMax($hScrollChild, $SB_VERT, $y + 60)
-    GUISwitch($hMain)
-EndFunc
-
-Func _HandleIconClicks($msg)
-    If $msg <= 0 Then Return False
-    For $i = 0 To $iTotal - 1
-        Select
-            Case $msg = $aRun[$i]
-                _DirectLaunch($i)
-                Return True
-            Case $msg = $aEditName[$i]
-                Local $sNew = InputBox("Rename", "New name:", $aNames[$i], "", -1, -1, -1, -1, 0, $hMain)
-                If Not @error And $sNew <> "" Then _UpdateIni($aIniSections[$i], "Name", $sNew)
-                Return False
-            Case $msg = $aEditPath[$i]
-                Local $p = FileOpenDialog("Select", _GetFolder($aPaths[$i]), "Executables (*.exe;*.bat;*.cmd)", 1, "", $hMain)
-                If Not @error Then _UpdateIni($aIniSections[$i], "Path", $p)
-                Return False
-            Case $msg = $aEditIcon[$i]
-                Local $ico = FileOpenDialog("Icon", _GetFolder($aPaths[$i]), "Icons (*.ico;*.exe)", 1, "", $hMain)
-                If Not @error Then _UpdateIni($aIniSections[$i], "Icon", $ico)
-                Return False
-            Case $msg = $aDelete[$i]
-                If _ConfirmDeletePopup($aNames[$i]) = $IDYES Then
-                    IniDelete($sIni, $aIniSections[$i])
-                    _Refresh()
-                EndIf
-                Return False
-        EndSelect
-    Next
-    Return False
 EndFunc
 
 Func _HandleAjayTools($id)
@@ -315,45 +220,197 @@ Func _HandleAjayTools($id)
     If $sCmd <> "" Then Run(@ComSpec & ' /c start "" "' & $sCmd & '"', "", @SW_HIDE)
 EndFunc
 
+Func _Refresh($sFilter = "", $bUnused = False)
+    For $i = 0 To 499
+        If $aIcons[$i] Then GUICtrlDelete($aIcons[$i])
+        If $aLabels[$i] Then GUICtrlDelete($aLabels[$i])
+        If $aMenus[$i] Then GUICtrlDelete($aMenus[$i])
+        $aIcons[$i] = 0
+    Next
+    $iTotalOnPage = 0
+    Local $sections = IniReadSectionNames($sIni)
+    If @error Then Return
+
+    Local $cols = Int(($iW - 40 * $f) / ($cellW + 15 * $f))
+    Local $rows = Int(($iH - $iTopHeight - 120 * $f) / ($cellH + 15 * $f))
+    If $rows < 1 Then $rows = 1
+    $iItemsPerPage = $cols * $rows
+
+    Local $aList[1][2], $count = 0
+    For $i = 1 To $sections[0]
+        If StringInStr($sections[$i], "Game_") Then
+            Local $nm = IniRead($sIni, $sections[$i], "Name", "Unknown")
+            If $sFilter <> "" And Not StringInStr(StringLower($nm), StringLower($sFilter)) Then ContinueLoop
+            $count += 1
+            ReDim $aList[$count + 1][2]
+            $aList[$count][0] = $nm
+            $aList[$count][1] = $sections[$i]
+        EndIf
+    Next
+
+    If $count > 1 Then _ArraySort($aList, 0, 1)
+    $iTotalPages = Ceiling($count / $iItemsPerPage)
+    If $iTotalPages < 1 Then $iTotalPages = 1
+    GUICtrlSetData($lblPage, "Page " & $iCurrentPage & " / " & $iTotalPages)
+
+    Local $startIdx = (($iCurrentPage - 1) * $iItemsPerPage) + 1
+    Local $endIdx = $startIdx + $iItemsPerPage - 1
+    If $endIdx > $count Then $endIdx = $count
+
+    Local $x = 20 * $f, $y = 20 * $f
+    GUISwitch($hScrollChild)
+    For $i = $startIdx To $endIdx
+        Local $sec = $aList[$i][1], $nm = $aList[$i][0]
+        Local $p = IniRead($sIni, $sec, "Path", ""), $ip = IniRead($sIni, $sec, "Icon", $p)
+        
+        Local $fIco = $ip, $iIdx = -1
+        
+        ; AUTO ICON DETECTION (DLL for Scripts)
+        If StringRegExp($p, "(?i)\.(bat|cmd)$") Then
+            $fIco = "shell32.dll"
+            $iIdx = 24 ; Script gear icon
+        ElseIf Not FileExists($ip) Then
+            $fIco = "shell32.dll"
+            $iIdx = 2 ; Generic exe icon
+        EndIf
+        
+        $aIcons[$iTotalOnPage] = GUICtrlCreateIcon($fIco, $iIdx, $x + (($cellW - $icoSize)/2), $y, $icoSize, $icoSize)
+        $aLabels[$iTotalOnPage] = GUICtrlCreateLabel($nm, $x, $y + $icoSize + 5 * $f, $cellW, 45 * $f, $SS_CENTER) 
+        GUICtrlSetFont(-1, $fntMed, 600)
+        GUICtrlSetColor(-1, 0x03DAC6)
+        
+        $aPaths[$iTotalOnPage] = $p
+        $aNames[$iTotalOnPage] = $nm
+        $aIniSections[$iTotalOnPage] = $sec
+        
+        $aMenus[$iTotalOnPage] = GUICtrlCreateContextMenu($aIcons[$iTotalOnPage])
+        $aRun[$iTotalOnPage] = GUICtrlCreateMenuItem("Run Game/Script", $aMenus[$iTotalOnPage])
+        GUICtrlCreateMenuItem("", $aMenus[$iTotalOnPage])
+        $aRename[$iTotalOnPage] = GUICtrlCreateMenuItem("Rename", $aMenus[$iTotalOnPage])
+        $aEditPath[$iTotalOnPage] = GUICtrlCreateMenuItem("Change Path", $aMenus[$iTotalOnPage])
+        $aEditIcon[$iTotalOnPage] = GUICtrlCreateMenuItem("Change Icon", $aMenus[$iTotalOnPage])
+        GUICtrlCreateMenuItem("", $aMenus[$iTotalOnPage])
+        $aDelete[$iTotalOnPage] = GUICtrlCreateMenuItem("Remove", $aMenus[$iTotalOnPage])
+
+        $x += $cellW + 15 * $f
+        If $x > ($iW - $cellW - 40 * $f) Then 
+            $x = 20 * $f
+            $y += $cellH + 15 * $f
+        EndIf
+        $iTotalOnPage += 1
+    Next
+    GUISwitch($hMain)
+EndFunc
+
+Func _HandleIconClicks($msg)
+    For $i = 0 To $iTotalOnPage - 1
+        Select
+            Case $msg = $aRun[$i]
+                _LaunchFile($aPaths[$i])
+                Return True
+            Case $msg = $aRename[$i]
+                Local $newN = InputBox("Rename", "Enter new name:", $aNames[$i], "", 250, 130, -1, -1, 0, $hMain)
+                If Not @error And $newN <> "" Then
+                    IniWrite($sIni, $aIniSections[$i], "Name", $newN)
+                    _Refresh(GUICtrlRead($inpSearch))
+                EndIf
+            Case $msg = $aEditPath[$i]
+                Local $newP = FileOpenDialog("Select File", @ProgramFilesDir, "Executables (*.exe;*.bat;*.cmd)", 9, "", 0)
+                If Not @error Then
+                    If StringRegExp($newP, "(?i)\.lnk$") Then
+                        MsgBox(16, "Blocked", "Shortcut (.lnk) games are blocked.")
+                    Else
+                        IniWrite($sIni, $aIniSections[$i], "Path", $newP)
+                        _Refresh(GUICtrlRead($inpSearch))
+                    EndIf
+                EndIf
+            Case $msg = $aEditIcon[$i]
+                Local $newI = FileOpenDialog("Select Icon", @ProgramFilesDir, "Icons (*.exe;*.ico)", 9, "", 0)
+                If Not @error Then
+                    If StringRegExp($newI, "(?i)\.lnk$") Then
+                        MsgBox(16, "Blocked", "Shortcut (.lnk) icons are blocked.")
+                    Else
+                        IniWrite($sIni, $aIniSections[$i], "Icon", $newI)
+                        _Refresh(GUICtrlRead($inpSearch))
+                    EndIf
+                EndIf
+            Case $msg = $aDelete[$i]
+                If _ConfirmDeletePopup($aNames[$i]) = $IDYES Then
+                    IniDelete($sIni, $aIniSections[$i])
+                    _Refresh(GUICtrlRead($inpSearch))
+                EndIf
+        EndSelect
+    Next
+    Return False
+EndFunc
+
+Func _ConfirmDeletePopup($sText)
+    Local $hPop = GUICreate("Confirm", 300, 120, -1, -1, $WS_CAPTION, -1, $hMain)
+    GUICtrlCreateLabel("Remove " & $sText & "?", 10, 20, 280, 40, $SS_CENTER)
+    Local $btnY = GUICtrlCreateButton("YES", 50, 70, 80, 30)
+    Local $btnN = GUICtrlCreateButton("NO", 170, 70, 80, 30)
+    GUISetState(@SW_SHOW, $hPop)
+    
+    Local $iReturn = $IDNO
+    While 1
+        Local $m = GUIGetMsg()
+        If $m = $btnY Then
+            $iReturn = $IDYES
+            ExitLoop
+        ElseIf $m = $btnN Or $m = $GUI_EVENT_CLOSE Then
+            $iReturn = $IDNO
+            ExitLoop
+        EndIf
+    WEnd
+    
+    GUIDelete($hPop)
+    Return $iReturn
+EndFunc
+
+
 Func _RemoveMultipleGUI()
     Local $hSub = GUICreate("Remove Multiple", 320, 420, -1, -1, -1, -1, $hMain)
-    Local $idList = GUICtrlCreateListView("Game Name|INI", 10, 10, 300, 330, $LVS_REPORT)
+    Local $idList = GUICtrlCreateListView("Name|INI", 10, 10, 300, 330, $LVS_REPORT)
     _GUICtrlListView_SetExtendedListViewStyle($idList, BitOR($LVS_EX_CHECKBOXES, $LVS_EX_FULLROWSELECT))
-    For $i = 0 To $iTotal - 1
-        GUICtrlCreateListViewItem($aNames[$i] & "|" & $aIniSections[$i], $idList)
-    Next
-    _GUICtrlListView_SetColumnWidth($idList, 1, 0)
-    Local $btnDel = GUICtrlCreateButton("Delete", 110, 350, 100, 30)
+    Local $secs = IniReadSectionNames($sIni)
+    If Not @error Then
+        For $i = 1 To $secs[0]
+            If StringInStr($secs[$i], "Game_") Then GUICtrlCreateListViewItem(IniRead($sIni, $secs[$i], "Name", "???") & "|" & $secs[$i], $idList)
+        Next
+    EndIf
+    Local $btnD = GUICtrlCreateButton("Delete Selected", 110, 350, 100, 30)
     GUISetState(@SW_SHOW, $hSub)
     While 1
         Local $m = GUIGetMsg()
         If $m = $GUI_EVENT_CLOSE Then ExitLoop
-        If $m = $btnDel Then
+        If $m = $btnD Then
             For $i = 0 To _GUICtrlListView_GetItemCount($idList) - 1
                 If _GUICtrlListView_GetItemChecked($idList, $i) Then IniDelete($sIni, _GUICtrlListView_GetItemText($idList, $i, 1))
             Next
-            GUIDelete($hSub)
             _Refresh()
-            Return
+            ExitLoop
         EndIf
     WEnd
     GUIDelete($hSub)
 EndFunc
 
-Func _UpdateIni($sec, $key, $val)
-    IniWrite($sIni, $sec, $key, $val)
+Func _AddNewGame()
+    Local $file = FileOpenDialog("Select Game", @ProgramFilesDir, "Executables (*.exe;*.bat;*.cmd)", 9, "", 0)
+    If @error Then Return
+    
+    ; Block shortcut files for Games
+    If StringRegExp($file, "(?i)\.lnk$") Then
+        MsgBox(16, "Blocked", "Shortcut (.lnk) files are not allowed for games.")
+        Return
+    EndIf
+    
+    Local $id = 1
+    While IniRead($sIni, "Game_" & $id, "Path", "EMPTY") <> "EMPTY"
+        $id += 1
+    WEnd
+    IniWrite($sIni, "Game_" & $id, "Path", $file)
+    IniWrite($sIni, "Game_" & $id, "Name", StringRegExpReplace($file, ".*\\", ""))
     _Refresh()
-EndFunc
-
-Func WM_VSCROLL($hWnd, $Msg, $wParam, $lParam)
-    _GUIScrollBars_WM_VSCROLL($hWnd, $Msg, $wParam, $lParam)
-    Return $GUI_RUNDEFMSG
-EndFunc
-
-Func WM_MOUSEWHEEL($hWnd, $Msg, $wParam, $lParam)
-    Local $iDelta = BitShift($wParam, 16)
-    _GUIScrollBars_SetScrollInfoPos($hScrollChild, $SB_VERT, _GUIScrollBars_GetScrollInfoPos($hScrollChild, $SB_VERT) + ($iDelta > 0 ? -60 : 60))
-    Return $GUI_RUNDEFMSG
 EndFunc
 
 Func _GetFolder($sFull)
@@ -361,16 +418,15 @@ Func _GetFolder($sFull)
     Return ($iPos > 0) ? StringLeft($sFull, $iPos) : @DesktopDir
 EndFunc
 
-Func _AddNewGame()
-    Local $exe = FileOpenDialog("Select Game", @DesktopDir, "Executables (*.exe;*.bat;*.cmd)", 1, "", $hMain)
-    If @error Then Return
-    Local $name = StringRegExpReplace($exe, ".*\\", "") 
-    $name = StringLeft($name, StringInStr($name, ".", 0, -1) - 1)
-    Local $id = 1
-    While IniRead($sIni, "Game_" & $id, "Path", "EMPTY") <> "EMPTY"
-        $id += 1
-    WEnd
-    IniWrite($sIni, "Game_" & $id, "Path", $exe)
-    IniWrite($sIni, "Game_" & $id, "Name", $name)
-    _Refresh()
+Func _CheckAutoExit()
+    If GUICtrlRead($chkAutoClose) = $GUI_CHECKED Then Exit
+EndFunc
+
+Func _HandleManualDoubleClick($ctrlID)
+    For $i = 0 To $iTotalOnPage - 1
+        If $ctrlID = $aIcons[$i] Or $ctrlID = $aLabels[$i] Then
+            _LaunchFile($aPaths[$i])
+            Return
+        EndIf
+    Next
 EndFunc
