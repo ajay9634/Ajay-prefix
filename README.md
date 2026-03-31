@@ -9,7 +9,7 @@
 **Ajay Prefix Pro** is a comprehensive utility suite designed for Wine-based environments. It is fully compatible with mobile PC emulators such as Mobox WOW64, Winlator, Dark OS, MiceWine, Hangover, and GameHub (GameFusion). It also provides robust support for native Linux Wine environments (Bottles, Lutris, etc.).
 
 ## 📚 Wiki and FAQ
-Consult our [Wiki and FAQ](#) for detailed configuration guides, troubleshooting, and advanced tips.
+Consult our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for detailed configuration guides, troubleshooting, and advanced tips.
 
 ---
 
