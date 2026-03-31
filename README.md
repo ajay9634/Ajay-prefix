@@ -59,6 +59,16 @@ Consult our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for det
 > **Save Migration:** After setup, manually move existing saves from `C:\Users\...` to your new designated **Save Data Folder** located at `selected_drive:\Ajay_prefix\save_data\users\...`.
 
 ---
+### 📤 How to Transfer Game Save Data from the C Drive to a New Location
+
+First, check the Documents location by selecting **"Check Ajay Prefix Pro Status."** Transfer the documents from the C drive to the following path: `save_data\users\Ajay\`. Additionally, transfer the **"AppData"** and **"Saved Games"** folders to this same location.
+
+If the game still fails to detect your save data, it may be using the public folder; in this case, transfer the files to `save_data\users\Public\`. If the data is still not detected, apply the **Hybridizer app setup**. This advanced setup redirects hardcoded `%userprofile%` and `%public%` paths to `save_data\users2\`, which is highly effective if supported.
+
+If you prefer not to use the Hybridizer setup, you can use the **Backup Restore app**; however, a backup must be created after every gameplay session. To avoid manual backups, enable the **AjayAutoSync Service**, which automatically creates a timestamped backup whenever you start the game or container.
+
+---
+
 ## 🗑️ Complete Removal Method
 
 To fully uninstall the Ajay Prefix Pro, please follow these steps in order:
