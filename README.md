@@ -171,15 +171,17 @@ ZINK_USE_LOW_MEMORY_POOL=1
 
 ## 👨‍💻 Developer & Credits
 
-👨‍🔧 **Ajay9634 (Emuplay0)**
+👨‍🔧 **Ajay9634 (Emuplay0)** and Emuplay0 Testing Team
 
 📦 **Third-Party Sources**:  
 - Winlator, MoBox
-- DXVK, WineD3D
-- Microsoft, WineHQ
+- DXVK, WineD3D, VKD3D and other d3d dlls
+- Microsoft, WineHQ , Nvidia
 - Open-source projects
 - WinRAR, 7z, wget, curl
-- Emuplay0 Testing Team
 - Autoit Software
-
+- Dgvoodoo2 , Dxwrapper , Nglide etc
+- Explorer++ , Anyburn , Winbin2iso
+- Adobe Flashplayer , Kron4ek FAudio
+- Winetricks Components
 ---
