@@ -175,13 +175,13 @@ ZINK_USE_LOW_MEMORY_POOL=1
 
 📦 **Third-Party Sources**:  
 - Winlator, MoBox
-- DXVK, WineD3D, VKD3D and other d3d dlls
-- Microsoft, WineHQ , Nvidia
-- Open-source projects
-- WinRAR, 7z, wget, curl
 - Autoit Software
+- DXVK, WineD3D, VKD3D and other d3d dlls
+- Microsoft, WineHQ and Nvidia Tools
+- WinRAR, 7z, wget, curl
 - Dgvoodoo2 , Dxwrapper , Nglide etc
 - Explorer++ , Anyburn , Winbin2iso
 - Adobe Flashplayer , Kron4ek FAudio
 - Winetricks Components
+- and other Open-source projects
 ---
