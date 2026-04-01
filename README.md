@@ -63,7 +63,7 @@ Consult our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for det
 
 First, check the Documents location by selecting **"Check Ajay Prefix Pro Status."** Transfer the documents from the C drive to the following path: `save_data\users\Ajay\`. Additionally, transfer the **"AppData"** and **"Saved Games"** folders to this same location. Transfer the Public documents from the C drive to the following path: `save_data\users\Public\`.
 
-If the game still fails to detect your save data, it may be using the hardcoded public folder and Documents folder; in this case, apply the **Hybridizer app setup**. This advanced setup redirects hardcoded `%userprofile%` and `%public%` paths to `save_data\users2\`, which is highly effective if supported.
+If the game still fails to detect your save data, it may be using the hardcoded public folder and Documents folder; in this case, apply the **Hybridizer app setup**. This advanced setup redirects hardcoded `%userprofile%` and `%public%` paths to `save_data\users2\`, which is highly effective if supported. [Read More](https://github.com/ajay9634/Ajay-prefix/wiki/(4)-About-%22Ajay-Profile-Hybridizer%22)
 
 If you prefer not to use the Hybridizer setup, you can use the **Backup Restore app**; however, a backup must be created after every gameplay session. To avoid manual backups, enable the **AjayAutoSync Service**, which automatically creates a timestamped backup whenever you start the game or container.
 
