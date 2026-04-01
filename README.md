@@ -177,10 +177,10 @@ ZINK_USE_LOW_MEMORY_POOL=1
 - Winlator, MoBox
 - Autoit Software
 - DXVK, WineD3D, VKD3D and other d3d dlls
-- Microsoft, WineHQ and Nvidia Tools
+- Microsoft, gog , Steam , WineHQ and Nvidia Tools
 - WinRAR, 7z, wget, curl
 - Dgvoodoo2 , Dxwrapper , Nglide etc
-- Explorer++ , Anyburn , Winbin2iso
+- Explorer++ , Anyburn , Winbin2iso , OpenAL , VulkanRT
 - Adobe Flashplayer , Kron4ek FAudio
 - Winetricks Components
 - and other Open-source projects
