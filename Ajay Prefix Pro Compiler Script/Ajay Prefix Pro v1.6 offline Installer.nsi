@@ -1,5 +1,5 @@
 ; ---------------------------------------------------------
-; Ajay Prefix Pro v1.6 offline Installer - Header Optimized
+; Ajay Prefix Pro v1.6 offline Installer - License Button
 ; ---------------------------------------------------------
 
 SetCompressor zlib
@@ -14,9 +14,7 @@ SetCompressor zlib
 Name "Ajay Prefix Pro v1.6 offline"
 OutFile "Ajay Prefix Pro v1.6 offline Installer.exe"
 
-; --- Icon Configuration ---
 !define MUI_ICON "icon.ico"
-
 RequestExecutionLevel admin
 InstallDir "C:\" 
 
@@ -27,31 +25,37 @@ Var OptionRun
 Var OptionLauncher
 Var OptionWFM
 Var OptionInstall
+Var OptionAutoExit
+Var BtnLicense
 Var FontSubtitle
 Var FontOptions
 
 ; --------------------------------
 ; Modern UI Pages
-; Define the header text for the custom page
-!define MUI_PAGE_HEADER_TEXT "Ajay Prefix Pro v1.6 offline"
-!define MUI_PAGE_HEADER_SUBTEXT "Select an action below to proceed."
-
 Page custom OptionsPage OptionsPageLeave 
 !insertmacro MUI_PAGE_INSTFILES 
 
 !insertmacro MUI_LANGUAGE "English"
 
 ; --------------------------------
+; Function to Open License File
+; --------------------------------
+Function OnClickLicense
+    ; Extract license.txt to a temporary folder so it can be viewed
+    InitPluginsDir
+    File /oname=$PLUGINSDIR\license.txt "license.txt"
+    ExecShell "open" "$PLUGINSDIR\license.txt"
+FunctionEnd
+
+; --------------------------------
 ; Custom Menu Page
+; --------------------------------
 Function OptionsPage
-  ; Change "Cancel" button to "Exit"
+  ; Button Label Fixes
   GetDlgItem $0 $HWNDPARENT 2
   SendMessage $0 ${WM_SETTEXT} 0 "STR:Exit"
-
-  ; Change "Next" button to "Execute"
   GetDlgItem $0 $HWNDPARENT 1
   SendMessage $0 ${WM_SETTEXT} 0 "STR:Execute"
-
   SendMessage $HWNDPARENT ${WM_SETTEXT} 0 "STR:Ajay Prefix Pro v1.6 offline Setup"
 
   nsDialogs::Create 1018
@@ -61,21 +65,18 @@ Function OptionsPage
     Abort
   ${EndIf}
 
-  ; --- Pro UI Styling ---
   CreateFont $FontSubtitle "Segoe UI" 10 400
   CreateFont $FontOptions "Segoe UI" 10 400
 
-  ; --- Header Section (Moved up to Y=0 to close gap) ---
   ${NSD_CreateLabel} 0 0 100% 25u "Select an action and click Execute.$\r$\nSelect Exit when finished."
   Pop $0
   SendMessage $0 ${WM_SETFONT} $FontSubtitle 1
 
-  ; --- Visual Separator ---
   ${NSD_CreateLabel} 0 28u 100% 1u ""
   Pop $0
   ${NSD_AddStyle} $0 ${SS_ETCHEDHORZ}
 
-  ; --- Radio Options (Shifted up since title is now in Header) ---
+  ; --- Radio Options ---
   ${NSD_CreateRadioButton} 10u 38u 90% 14u "Run Ajay Start Menu Pro Viewer"
   Pop $OptionRun
   SendMessage $OptionRun ${WM_SETFONT} $FontOptions 1
@@ -93,14 +94,31 @@ Function OptionsPage
   Pop $OptionInstall
   SendMessage $OptionInstall ${WM_SETFONT} $FontOptions 1
 
+  ; --- Bottom Controls ---
+  ${NSD_CreateCheckBox} 10u 110u 60% 14u "Auto exit after 2 seconds"
+  Pop $OptionAutoExit
+  SendMessage $OptionAutoExit ${WM_SETFONT} $FontOptions 1
+  ${NSD_Check} $OptionAutoExit
+
+  ${NSD_CreateButton} 70% 108u 28% 16u "View License"
+  Pop $BtnLicense
+  ${NSD_OnClick} $BtnLicense OnClickLicense
+
   nsDialogs::Show
 FunctionEnd
 
 Function OptionsPageLeave
+  ${NSD_GetState} $OptionAutoExit $1 
+
+  ; Handle Run Options
   ${NSD_GetState} $OptionRun $0
   ${If} $0 == ${BST_CHECKED}
-    IfFileExists "C:\AJAY_PREFIX_PRO\Ajay_Scripts\AjayStartMenuPro.bat" 0 +3
+    IfFileExists "C:\AJAY_PREFIX_PRO\Ajay_Scripts\AjayStartMenuPro.bat" 0 +6
       ExecShell "open" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\AjayStartMenuPro.bat"
+      ${If} $1 == ${BST_CHECKED}
+        Sleep 2000
+        Quit
+      ${EndIf}
       Abort 
     MessageBox MB_OK|MB_ICONEXCLAMATION "Viewer not found!"
     Abort
@@ -108,24 +126,36 @@ Function OptionsPageLeave
 
   ${NSD_GetState} $OptionLauncher $0
   ${If} $0 == ${BST_CHECKED}
-    IfFileExists "C:\AJAY_PREFIX_PRO\Ajay_Scripts\ProLauncher.bat" 0 +3
+    IfFileExists "C:\AJAY_PREFIX_PRO\Ajay_Scripts\ProLauncher.bat" 0 +6
       ExecShell "open" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\ProLauncher.bat"
+      ${If} $1 == ${BST_CHECKED}
+        Sleep 2000
+        Quit
+      ${EndIf}
       Abort 
-    MessageBox MB_OK|MB_ICONEXCLAMATION "Ajay Prefix Pro Launcher not found!"
+    MessageBox MB_OK|MB_ICONEXCLAMATION "Launcher not found!"
     Abort 
   ${EndIf}
 
   ${NSD_GetState} $OptionWFM $0
   ${If} $0 == ${BST_CHECKED}
-    IfFileExists "C:\AJAY_PREFIX_PRO\Ajay_Scripts\wfm2.bat" 0 +3
+    IfFileExists "C:\AJAY_PREFIX_PRO\Ajay_Scripts\wfm2.bat" 0 +6
       ExecShell "open" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\wfm2.bat"
+      ${If} $1 == ${BST_CHECKED}
+        Sleep 2000
+        Quit
+      ${EndIf}
       Abort 
     MessageBox MB_OK|MB_ICONEXCLAMATION "wfm2.bat not found!"
     Abort
   ${EndIf}
 
+  ; Handle Install Option
   ${NSD_GetState} $OptionInstall $0
   ${If} $0 == ${BST_CHECKED}
+    ; Ask for confirmation if installing
+    MessageBox MB_YESNO|MB_ICONQUESTION "By clicking Yes, you agree to the terms in license.txt. Proceed with installation?" IDYES +2
+    Abort
     Return 
   ${EndIf}
   Abort
@@ -136,7 +166,6 @@ FunctionEnd
 Section "Main"
   SetDetailsPrint textonly
   DetailPrint "Installing Ajay Prefix Pro..."
-  
   SetOutPath "C:\"
   File /r "Setup\*.*"
   
@@ -144,4 +173,5 @@ Section "Main"
     ExecWait '"C:\windows\System32\cmd.exe" /c "C:\temp\Setup.bat"'
     Goto +2
   MessageBox MB_OK|MB_ICONEXCLAMATION "Setup.bat not found!"
-SectionEnd
+    SectionEnd
+    
