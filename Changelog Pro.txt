@@ -1,6 +1,16 @@
 # Changelog
 
 ============================================================
+             ## [AJAY PREFIX PRO 1.6 EXE RELEASE] - 9 April 2026 (Last Release)
+============================================================
+
+- Released Installer.exe
+- Updated all options
+- Added Ajay Prefix Pro Launcher as an option
+
+(You can add multiple games after restarting the container; configuration and app data will be saved in the %AppData% folder.)
+
+============================================================
              ## [AJAY PREFIX PRO 1.6 RELEASE] - 14 March 2026 (Last Release)
 ============================================================
 
