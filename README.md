@@ -175,7 +175,7 @@ ZINK_USE_LOW_MEMORY_POOL=1
 
 📦 **Third-Party Sources**:  
 - Winlator, MoBox
-- Autoit Software
+- Autoit Software and [nsis 64 bit](https://github.com/negrutiu/nsis)
 - DXVK, WineD3D, VKD3D and other d3d dlls
 - Microsoft, gog , Steam , WineHQ and Nvidia Tools
 - WinRAR, 7z, wget, curl
