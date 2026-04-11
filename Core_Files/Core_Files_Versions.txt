@@ -1,2 +1,2 @@
 curl=8.19.0
-wget=1.21.4
+wget=a46e3aa0154ceb8dda4336b97cce4440
