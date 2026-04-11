@@ -42,6 +42,9 @@ Consult our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for det
 6.  🔄 **Restart:** Restart the Wine server/container to apply changes.
 7.  ✔️ **Verify:** Check the installation status via the Start Menu Viewer.
 
+> [!IMPORTANT]
+> **Change user folder name:** If you were using an older Ajay Prefix, after installing the latest Ajay Prefix v1.6, you must rename the "xuser" folder to "Ajay". This is located in: `Ajay_prefix\save_data\users\`
+
 ---
 
 ### 🛠️ Installation Help (Choice Mode)
