@@ -1,0 +1,221 @@
+#include <GUIConstantsEx.au3>
+#include <WindowsConstants.au3>
+#include <EditConstants.au3>
+#include <Constants.au3>
+#include <File.au3>
+
+#RequireAdmin
+
+; --- Configuration & Colors ---
+Global Const $sTitle = "Ajay Prefix Pro v1.6 Scripts Updater"
+Global Const $sDevName = "Ajay9634 aka Emuplay0"
+Global Const $sVersion = " v1.0"
+Global Const $sTempDir = "C:\windows\temp"
+Global Const $sSevenZip = @WindowsDir & "\7z.exe"
+Global $sSetupFolder = ""
+Global $sSaveDataFolder = ""
+
+; Pro Blue Palette
+Global $cMainBlue = 0x003399     ; Deep Cobalt
+Global $cLightBlue = 0x0055FF    ; Bright Header
+Global $cGreen    = 0x28A745     ; Success Green
+Global $cWhite    = 0xFFFFFF     ; Pure White
+Global $cConsole  = 0x001A33     ; Very Dark Navy Console
+Global $cBtnSecondary = 0x0044CC ; Lighter Blue for side button
+
+; --- ENVIRONMENT CHECK ---
+Func LoadConfig()
+    Local $sConfFile = @WindowsDir & "\AjayPrefixConf.txt"
+    If Not FileExists($sConfFile) Then
+        MsgBox(16, "Fatal Error", "Configuration file 'AjayPrefixConf.txt' not found.")
+        Exit
+    EndIf
+    Local $sContent = FileRead($sConfFile)
+    
+    Local $aSetup = StringRegExp($sContent, "(?i)SetupFolder=(.*)", 3)
+    If Not @error Then 
+        Local $sVal = StringStripWS($aSetup[0], 3)
+        If $sVal == "" Or StringUpper($sVal) == "NUL" Then
+            $sSetupFolder = $sVal
+        Else
+            $sSetupFolder = $sVal & "\Ajay_prefix"
+        EndIf
+    EndIf
+    
+    Local $aSaveData = StringRegExp($sContent, "(?i)SaveDataFolder=(.*)", 3)
+    If Not @error Then 
+        Local $sVal = StringStripWS($aSaveData[0], 3)
+        If $sVal == "" Or StringUpper($sVal) == "NUL" Then
+            $sSaveDataFolder = $sVal
+        Else
+            $sSaveDataFolder = $sVal & "\Ajay_prefix"
+        EndIf
+    EndIf
+    
+    If Not FileExists($sSevenZip) Then
+        MsgBox(16, "System Error", "7z.exe missing from Windows directory.")
+        Exit
+    EndIf
+EndFunc
+
+Func Cleanup()
+    DirRemove($sTempDir & "\Scripts_Extracted", 1)
+    FileDelete($sTempDir & "\Scripts.zip")
+EndFunc
+
+Func GetWildcardFile($sPattern)
+    Local $sFolder = StringLeft($sPattern, StringInStr($sPattern, "\", 0, -1))
+    Local $sFilePart = StringTrimLeft($sPattern, StringInStr($sPattern, "\", 0, -1))
+    Local $aList = _FileListToArray($sFolder, $sFilePart, 1)
+    If @error Then Return ""
+    Return $sFolder & $aList[1]
+EndFunc
+
+LoadConfig()
+Cleanup()
+
+; --- UI CONSTRUCTION ---
+Global $hGUI = GUICreate($sTitle, 600, 520)
+GUISetBkColor($cMainBlue)
+
+; Header Section
+GUICtrlCreateLabel("", 0, 0, 600, 75)
+GUICtrlSetBkColor(-1, $cLightBlue)
+GUICtrlSetState(-1, $GUI_DISABLE)
+
+GUICtrlCreateLabel("AJAY PREFIX PRO", 25, 12, 400, 25)
+GUICtrlSetFont(-1, 16, 800, 0, "Segoe UI")
+GUICtrlSetColor(-1, $cWhite)
+GUICtrlSetBkColor(-1, $cLightBlue)
+
+GUICtrlCreateLabel("ONLINE SCRIPTS UPDATER | " & $sVersion, 26, 38, 400, 18)
+GUICtrlSetFont(-1, 8, 600, 0, "Segoe UI")
+GUICtrlSetColor(-1, 0xCCE6FF)
+GUICtrlSetBkColor(-1, $cLightBlue)
+
+GUICtrlCreateLabel("Dev: " & $sDevName, 26, 54, 400, 15)
+GUICtrlSetFont(-1, 7, 400, 2, "Segoe UI") 
+GUICtrlSetColor(-1, $cWhite)
+GUICtrlSetBkColor(-1, $cLightBlue)
+
+; Target Info
+GUICtrlCreateLabel("SETUP FOLDER:", 30, 85, 260, 15)
+GUICtrlSetFont(-1, 7, 800, 0, "Segoe UI")
+GUICtrlSetColor(-1, 0x99CCFF)
+
+GUICtrlCreateLabel($sSetupFolder, 30, 100, 260, 20)
+GUICtrlSetFont(-1, 8, 400, 0, "Consolas")
+GUICtrlSetColor(-1, $cWhite)
+
+GUICtrlCreateLabel("SAVE DATA FOLDER:", 310, 85, 260, 15)
+GUICtrlSetFont(-1, 7, 800, 0, "Segoe UI")
+GUICtrlSetColor(-1, 0x99CCFF)
+
+GUICtrlCreateLabel($sSaveDataFolder, 310, 100, 260, 20)
+GUICtrlSetFont(-1, 8, 400, 0, "Consolas")
+GUICtrlSetColor(-1, $cWhite)
+
+; Console Area
+Global $idConsole = GUICtrlCreateEdit("", 25, 145, 550, 275, BitOR($ES_READONLY, $WS_VSCROLL, $ES_AUTOVSCROLL))
+GUICtrlSetBkColor(-1, $cConsole)
+GUICtrlSetColor(-1, 0x00FFCC) 
+GUICtrlSetFont(-1, 9, 400, 0, "Consolas")
+
+; --- BUTTONS ---
+Global $idBtnCurrent = GUICtrlCreateLabel("INSTALLED LOG", 25, 445, 160, 45, BitOR(0x01, 0x0200)) 
+GUICtrlSetBkColor(-1, $cBtnSecondary)
+GUICtrlSetColor(-1, $cWhite)
+GUICtrlSetFont(-1, 10, 700, 0, "Segoe UI")
+GUICtrlSetCursor(-1, 0)
+
+Global $idBtnUpdate = GUICtrlCreateLabel("DEPLOY UPDATES", 195, 445, 380, 45, BitOR(0x01, 0x0200)) 
+GUICtrlSetBkColor(-1, $cGreen)
+GUICtrlSetColor(-1, $cWhite)
+GUICtrlSetFont(-1, 11, 800, 0, "Segoe UI")
+GUICtrlSetCursor(-1, 0)
+
+GUISetState(@SW_SHOW)
+
+; --- LOGIC ---
+Func LogMsg($sText)
+    ; Removed live timestamp per request
+    GUICtrlSetData($idConsole, GUICtrlRead($idConsole) & $sText & @CRLF)
+    DllCall("user32.dll", "lresult", "SendMessageW", "hwnd", GUICtrlGetHandle($idConsole), "uint", 0x00B6, "wparam", 0, "lparam", 100)
+EndFunc
+
+; --- MAIN LOOP ---
+While 1
+    Local $nMsg = GUIGetMsg()
+    Switch $nMsg
+        Case $GUI_EVENT_CLOSE
+            Cleanup()
+            Exit
+            
+        Case $idBtnCurrent
+            Local $sCurrentPath = GetWildcardFile("C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro\A. Online Components\Online_Changelog*.txt")
+            If FileExists($sCurrentPath) Then
+                ShellExecute($sCurrentPath)
+            Else
+                MsgBox(48, "Notice", "Installed Changelog not found at source.")
+            EndIf
+
+        Case $idBtnUpdate
+            GUICtrlSetState($idBtnUpdate, $GUI_DISABLE)
+            GUICtrlSetBkColor($idBtnUpdate, 0x1E7E34) 
+            RunUpdate()
+            GUICtrlSetState($idBtnUpdate, $GUI_ENABLE)
+            GUICtrlSetBkColor($idBtnUpdate, $cGreen)
+    EndSwitch
+WEnd
+
+Func RunUpdate()
+    GUICtrlSetData($idConsole, "")
+    
+    ; Start Timer
+    Local $hTimer = TimerInit()
+    
+    Local $sZip = $sTempDir & "\Scripts.zip"
+    Local $sExt = $sTempDir & "\Scripts_Extracted"
+    Local $sUrl = "https://www.dropbox.com/scl/fo/yu8qosdhuvn3v59et5itc/AD8Lz3dlJVr9rKdcFxwQgwo?rlkey=nnbi0djzm34urc645mrxeuesn&st=wxi3ot54&dl=1"
+    
+    LogMsg("Connecting to Dropbox Repository...")
+    RunWait('curl -L -o "' & $sZip & '" "' & $sUrl & '"', "", @SW_HIDE)
+    
+    If Not FileExists($sZip) Or FileGetSize($sZip) < 1000 Then
+        LogMsg("CRITICAL: Update package could not be verified.")
+        Return
+    EndIf
+    
+    LogMsg("Extraction in progress...")
+    RunWait('"' & $sSevenZip & '" x "' & $sZip & '" -o"' & $sExt & '" -y', "", @SW_HIDE)
+    
+    Local $sBatPath = $sExt & "\Ajay_Start_Menu_Pro_Updater.bat"
+    If FileExists($sBatPath) Then
+        LogMsg("Executing Native Processor...")
+        LogMsg("-----------------------------------------------------------------")
+        
+        Local $iPID = Run('"' & $sBatPath & '"', $sExt, @SW_HIDE, $STDOUT_CHILD)
+        Local $sOutput = ""
+        While 1
+            $sOutput = StdoutRead($iPID)
+            If @error Then ExitLoop
+            if $sOutput <> "" Then 
+                GUICtrlSetData($idConsole, GUICtrlRead($idConsole) & $sOutput)
+                DllCall("user32.dll", "lresult", "SendMessageW", "hwnd", GUICtrlGetHandle($idConsole), "uint", 0x00B6, "wparam", 0, "lparam", 100)
+            EndIf
+            Sleep(10)
+        WEnd
+        
+        LogMsg("-----------------------------------------------------------------")
+        LogMsg("Finalizing local filesystem...")
+        Cleanup() 
+        
+        ; Calculate and show time taken in seconds
+        Local $fDiff = TimerDiff($hTimer) / 1000 ; Convert ms to seconds
+        LogMsg("COMPLETE: All scripts are now up to date.")
+        LogMsg("Total processing time: " & Round($fDiff, 2) & " seconds.")
+    Else
+        LogMsg("ERROR: Ajay_Start_Menu_Pro_Updater.bat was not found.")
+        Cleanup()
+    EndIf
+EndFunc
