@@ -1,7 +1,7 @@
 # Changelog
 
 ============================================================
-             ## [AJAY PREFIX PRO 1.6 RELEASE] - 13 April 2026 (Last Release)
+       ## [AJAY PREFIX PRO 1.6 RELEASE] - 13 April 2026 (Last Release)
 ============================================================
 
 - Released the Ajay_Prefix_Pro_v1.6_Scripts_Updater.exe
@@ -10,7 +10,7 @@
 (For more details, read the "Choice Mode" section on the main GitHub README page.)
 
 ============================================================
-             ## [AJAY PREFIX PRO 1.6 EXE RELEASE] - 9 April 2026 (Last Release)
+        ## [AJAY PREFIX PRO 1.6 EXE RELEASE] - 9 April 2026
 ============================================================
 
 - Released Installer.exe
@@ -20,7 +20,7 @@
 (You can add multiple games after restarting the container; configuration and app data will be saved in the %AppData% folder.)
 
 ============================================================
-             ## [AJAY PREFIX PRO 1.6 RELEASE] - 14 March 2026 (Last Release)
+             ## [AJAY PREFIX PRO 1.6 RELEASE] - 14 March 2026
 ============================================================
 
 - Fixed critical issue of Ajay prefix path (was typing error)
