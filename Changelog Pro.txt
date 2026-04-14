@@ -1,6 +1,15 @@
 # Changelog
 
 ============================================================
+             ## [AJAY PREFIX PRO 1.6 RELEASE] - 13 April 2026 (Last Release)
+============================================================
+
+- Released the Ajay_Prefix_Pro_v1.6_Scripts_Updater.exe
+- Released the Prefix_only mode installer.exe. It redirects AppData, Documents, Saved Games, etc., and does not contain any dependencies.
+
+(For more details, read the "Choice Mode" section on the main GitHub README page.)
+
+============================================================
              ## [AJAY PREFIX PRO 1.6 EXE RELEASE] - 9 April 2026 (Last Release)
 ============================================================
 
