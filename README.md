@@ -4,8 +4,15 @@
 
 ## ⚡ Ajay Prefix Pro
 
-![Typing SVG](https://readme-typing-svg.herokuapp.com?size=45&duration=6000&pause=3000&color=36BCF7&center=true&vCenter=true&width=1200&height=200&lines=Welcome+to+Ajay+Prefix+Pro;Universal+Wine+Tools+and+Fixes;Game+Tweaks+%7C+Save+Redirection+%7C+Start+Menu)
+[![Version](https://img.shields.io/badge/Version-1.6_Offline-36BCF7?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix)
+  [![Platform](https://img.shields.io/badge/Platform-Android_PC_Emu_|_Linux_Wine-F76D36?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix)
 
+  <img src="https://readme-typing-svg.herokuapp.com?size=35&duration=4000&pause=2000&color=36BCF7&center=true&vCenter=true&width=1000&height=100&lines=Welcome+to+Ajay+Prefix+Pro;Universal+Wine+Tools+and+Fixes;Game+Tweaks+%7C+Save+Redirection+%7C+Start+Menu" alt="Typing SVG" />
+</div>
+
+---
+
+### 📖 Introduction
 **Ajay Prefix Pro** is a comprehensive utility suite designed for Wine-based environments. It is fully compatible with mobile PC emulators such as Mobox WOW64, Winlator, Dark OS, MiceWine, Hangover, and GameHub (GameFusion). It also provides robust support for native Linux Wine environments (Bottles, Lutris, etc.).
 
 ## 📚 Wiki and FAQ
