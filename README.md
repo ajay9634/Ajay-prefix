@@ -4,7 +4,7 @@
 
 ## ⚡ Ajay Prefix Pro
 
-[![Version](https://img.shields.io/badge/Version-1.6_Offline-36BCF7?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix)
+[![Version](https://img.shields.io/badge/Version-1.6_Offline-36BCF7?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix/releases/tag/v1.6_offline)
   [![Platform](https://img.shields.io/badge/Platform-PC_Emu_on_Android_|_Linux_Wine-F76D36?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix)
   [![Discord](https://img.shields.io/badge/Community-Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://dsc.gg/emuplay0)
 
@@ -26,7 +26,7 @@ Consult our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for det
 * 🖥️ **Architecture:** 64-bit architecture (includes 32-bit compatibility).
 * 🌐 **Internet:** Active connection required for Start Menu components and updates.
 * 💻 **Platform:** Any Wine-based PC emulator (Android/ARM).
-* 🐧 **Linux:** Native Wine 10+ recommended.
+* 🐧 **Linux:** Native Wine 8+ recommended.
 
 ---
 
