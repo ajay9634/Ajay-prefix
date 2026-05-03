@@ -5,7 +5,7 @@
 ## ⚡ Ajay Prefix Pro
 
 [![Version](https://img.shields.io/badge/Version-1.6_Offline-36BCF7?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix)
-  [![Platform](https://img.shields.io/badge/Platform-Android_PC_Emu_|_Linux_Wine-F76D36?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix)
+  [![Platform](https://img.shields.io/badge/Platform-PC_Emu_on_Android_|_Linux_Wine-F76D36?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix)
 
   <img src="https://readme-typing-svg.herokuapp.com?size=35&duration=4000&pause=2000&color=36BCF7&center=true&vCenter=true&width=1000&height=100&lines=Welcome+to+Ajay+Prefix+Pro;Universal+Wine+Tools+and+Fixes;Game+Tweaks+%7C+Save+Redirection+%7C+Start+Menu" alt="Typing SVG" />
 </div>
