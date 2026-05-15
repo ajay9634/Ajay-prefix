@@ -40,7 +40,7 @@ Global $iItemsPerPage = 20
 Global $iTotalPages = 1
 
 ; --- 2. MAIN PARENT WINDOW ---
-Global $hMain = GUICreate("Ajay Prefix Pro Launcher", $iW, $iH, -1, -1, BitOR($GUI_SS_DEFAULT_GUI, $WS_MINIMIZEBOX))
+Global $hMain = GUICreate("Ajay Prefix Pro Launcher v1.3", $iW, $iH, -1, -1, BitOR($GUI_SS_DEFAULT_GUI, $WS_MINIMIZEBOX))
 GUISetBkColor(0x121212, $hMain) 
 
 Local $iLeftButtonX = $iW - ($btnW * 3 + 45 * $f)
@@ -142,15 +142,15 @@ While 1
         _Refresh($sCurrSearch)
     EndIf
 
-    ; Double Click Detection
+    ; Double Click Detection (300ms sensitivity)
     Local $aCursor = GUIGetCursorInfo($hScrollChild)
     If Not @error And $aCursor[2] = 1 And $aCursor[4] > 0 Then 
         Local $tDbl = TimerInit()
         While BitAnd(GUIGetCursorInfo($hScrollChild)[2], 1)
-            If TimerDiff($tDbl) > 400 Then ExitLoop
+            If TimerDiff($tDbl) > 300 Then ExitLoop
         WEnd
         Local $tCheck = TimerInit()
-        While TimerDiff($tCheck) < 250
+        While TimerDiff($tCheck) < 300
             If BitAnd(GUIGetCursorInfo($hScrollChild)[2], 1) Then
                 _HandleManualDoubleClick($aCursor[4])
                 _CheckAutoExit()
@@ -357,20 +357,29 @@ Func _HandleIconClicks($msg)
             Case $msg = $aEditPath[$i]
                 Local $nP = FileOpenDialog("Select Path", @ProgramFilesDir, "Executables (*.exe;*.bat;*.cmd)", 1)
                 If Not @error Then
-                    IniWrite($sIni, $aIniSections[$i], "Path", $nP)
-                    _Refresh()
+                    If StringRegExp($nP, "(?i)\.lnk$") Then
+                        MsgBox($MB_ICONERROR, "Error", "Shortcuts (.lnk) are not accepted. Please select the direct executable.")
+                    Else
+                        IniWrite($sIni, $aIniSections[$i], "Path", $nP)
+                        _Refresh()
+                    EndIf
                 EndIf
             Case $msg = $aEditIcon[$i]
-                Local $nI = FileOpenDialog("Select Icon", @ProgramFilesDir, "Icons (*.exe;*.ico;*.dll)", 1)
+                Local $nI = FileOpenDialog("Select Icon", @ProgramFilesDir, "Icons (*.exe;*.ico)", 1)
                 If Not @error Then
-                    IniWrite($sIni, $aIniSections[$i], "Icon", $nI)
-                    _Refresh()
+                    ; REJECT .lnk ON ICON CHANGE
+                    If StringRegExp($nI, "(?i)\.lnk$") Then
+                        MsgBox($MB_ICONERROR, "Error", "Shortcuts (.lnk) cannot be used as icon sources. Please select an exe, ico .")
+                    Else
+                        IniWrite($sIni, $aIniSections[$i], "Icon", $nI)
+                        _Refresh()
+                    EndIf
                 EndIf
             Case $msg = $aDelete[$i]
                 If _ConfirmDeletePopup($aNames[$i]) = $IDYES Then
                     IniDelete($sIni, $aIniSections[$i])
                     _Refresh()
-                EndIf
+                Endif
         EndSelect
     Next
     Return False
@@ -434,7 +443,7 @@ Func _RemoveMultipleGUI()
     _GUICtrlListView_SetExtendedListViewStyle($idList, BitOR($LVS_EX_CHECKBOXES, $LVS_EX_FULLROWSELECT))
     Local $secs = IniReadSectionNames($sIni)
     If Not @error Then
-        For $i = 1 To $secs[0]
+        for $i = 1 To $secs[0]
             If StringInStr($secs[$i], "Game_") Then GUICtrlCreateListViewItem(IniRead($sIni, $secs[$i], "Name", "???") & "|" & $secs[$i], $idList)
         Next
     EndIf
@@ -455,7 +464,6 @@ Func _RemoveMultipleGUI()
 EndFunc
 
 Func _AddNewGame()
-    ; Guard: Ensure a profile is selected before adding
     If $sActiveProfile = "" Then 
         $sActiveProfile = "Default"
         $sIni = @ScriptDir & "\Default.ini"
@@ -463,14 +471,11 @@ Func _AddNewGame()
         _LoadProfilesToCombo()
     EndIf
 
-    ; Strict Filter: Only exe, bat, cmd
     Local $file = FileOpenDialog("Select Game", @ProgramFilesDir, "Executables (*.exe;*.bat;*.cmd)", 1)
     If @error Then Return
     
-    ; Extra guard: Manually block .lnk files
-    Local $sExt = StringLower(StringRight($file, 4))
-    If $sExt = ".lnk" Then
-        MsgBox($MB_ICONERROR, "Error", "Shortcuts (.lnk) are not allowed. Select the original .exe, .bat, or .cmd.")
+    If StringRegExp($file, "(?i)\.lnk$") Then
+        MsgBox($MB_ICONERROR, "Error", "Shortcuts (.lnk) are not accepted. Please select the direct executable.")
         Return
     EndIf
 
