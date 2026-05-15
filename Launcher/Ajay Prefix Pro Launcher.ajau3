@@ -16,6 +16,7 @@ Global $iH = Int(@DesktopHeight * 0.85)
 ; --- PROFILE & INI LOGIC ---
 Global $sSettingsIni = @ScriptDir & "\LauncherSettings.ini"
 Global $sActiveProfile = IniRead($sSettingsIni, "Settings", "LastProfile", "Default")
+If $sActiveProfile = "" Then $sActiveProfile = "Default"
 Global $sIni = @ScriptDir & "\" & $sActiveProfile & ".ini" 
 
 ; Scaling factor
@@ -39,7 +40,7 @@ Global $iItemsPerPage = 20
 Global $iTotalPages = 1
 
 ; --- 2. MAIN PARENT WINDOW ---
-Global $hMain = GUICreate("Ajay Prefix Pro Launcher v1.3", $iW, $iH, -1, -1, BitOR($GUI_SS_DEFAULT_GUI, $WS_MINIMIZEBOX))
+Global $hMain = GUICreate("Ajay Prefix Pro Launcher", $iW, $iH, -1, -1, BitOR($GUI_SS_DEFAULT_GUI, $WS_MINIMIZEBOX))
 GUISetBkColor(0x121212, $hMain) 
 
 Local $iLeftButtonX = $iW - ($btnW * 3 + 45 * $f)
@@ -164,6 +165,7 @@ While 1
             
         Case $cmbProfile
             $sActiveProfile = GUICtrlRead($cmbProfile)
+            If $sActiveProfile = "" Then $sActiveProfile = "Default"
             $sIni = @ScriptDir & "\" & $sActiveProfile & ".ini"
             IniWrite($sSettingsIni, "Settings", "LastProfile", $sActiveProfile)
             $iCurrentPage = 1
@@ -210,13 +212,17 @@ While 1
                     For $i = 1 To $sections[0]
                         If StringInStr($sections[$i], "Game_") Then IniDelete($sIni, $sections[$i])
                     Next
-                EndIf
+                Endif
                 _Refresh()
             EndIf
         Case $optResetIni
-            If MsgBox($MB_YESNO, "Reset", "Delete current profile INI [" & $sActiveProfile & ".ini] and exit?") = $IDYES Then
+            If MsgBox($MB_YESNO, "Reset", "Delete current profile [" & $sActiveProfile & "] and switch to Default?") = $IDYES Then
                 FileDelete($sIni)
-                Exit
+                $sActiveProfile = "Default"
+                $sIni = @ScriptDir & "\Default.ini"
+                IniWrite($sSettingsIni, "Settings", "LastProfile", "Default")
+                _LoadProfilesToCombo()
+                _Refresh()
             EndIf
 
         Case Else
@@ -416,7 +422,7 @@ Func _ConfirmDeletePopup($sText)
             ExitLoop
         ElseIf $m = $btnN Or $m = $GUI_EVENT_CLOSE Then
             ExitLoop
-        EndIf
+        Endif
     WEnd
     GUIDelete($hPop)
     Return $iReturn
@@ -449,8 +455,25 @@ Func _RemoveMultipleGUI()
 EndFunc
 
 Func _AddNewGame()
+    ; Guard: Ensure a profile is selected before adding
+    If $sActiveProfile = "" Then 
+        $sActiveProfile = "Default"
+        $sIni = @ScriptDir & "\Default.ini"
+        IniWrite($sSettingsIni, "Settings", "LastProfile", "Default")
+        _LoadProfilesToCombo()
+    EndIf
+
+    ; Strict Filter: Only exe, bat, cmd
     Local $file = FileOpenDialog("Select Game", @ProgramFilesDir, "Executables (*.exe;*.bat;*.cmd)", 1)
     If @error Then Return
+    
+    ; Extra guard: Manually block .lnk files
+    Local $sExt = StringLower(StringRight($file, 4))
+    If $sExt = ".lnk" Then
+        MsgBox($MB_ICONERROR, "Error", "Shortcuts (.lnk) are not allowed. Select the original .exe, .bat, or .cmd.")
+        Return
+    EndIf
+
     Local $id = 1
     While IniRead($sIni, "Game_" & $id, "Path", "EMPTY") <> "EMPTY"
         $id += 1
