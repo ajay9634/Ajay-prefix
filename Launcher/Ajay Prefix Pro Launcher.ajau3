@@ -26,9 +26,8 @@ If $f < 1.0 Then $f = 1.0
 Global $btnW = 115 * $f, $btnH = 32 * $f
 Global $icoSize = 48 * $f
 
-; BASE sizes
 Global $baseCellW = 120 * $f
-Global $baseCellH = 115 * $f
+Global $baseCellH = 135 * $f 
 Global $fntLarge = 16 * $f, $fntMed = 10 * $f, $fntSmall = 9 * $f
 
 Local $iTopHeight = 85 * $f
@@ -50,7 +49,7 @@ Global $lblTitle = GUICtrlCreateLabel("Ajay Prefix Pro Launcher", 10 * $f, 10 * 
 GUICtrlSetFont($lblTitle, 12 * $f, 800, 0, "Arial Black") 
 GUICtrlSetColor($lblTitle, 0xBB86FC) 
 
-; Buttons
+; Top Row Buttons
 Global $btnAddNew = GUICtrlCreateButton("Add New Game", $iW - ($btnW * 3 + 35 * $f), 10 * $f, $btnW, $btnH)
 GUICtrlSetFont(-1, $fntSmall, 800)
 GUICtrlSetBkColor(-1, 0x2E7D32)
@@ -97,11 +96,17 @@ Global $cmbProfile = GUICtrlCreateCombo($sActiveProfile, 240 * $f, $iSecondRowY,
 Global $btnNewProf = GUICtrlCreateButton("+", 385 * $f, $iSecondRowY, 30 * $f, 25 * $f)
 _LoadProfilesToCombo()
 
-Global $inpSearch = GUICtrlCreateInput("", $iW - (200 * $f), $iSecondRowY, 180 * $f, 25 * $f)
+; SEARCH BAR
+Local $iSearchStartX = 440 * $f
+Global $lblSearch = GUICtrlCreateLabel("Search:", $iSearchStartX, $iSecondRowY + 5 * $f, 50 * $f, 20 * $f)
+GUICtrlSetColor(-1, 0xFFFFFF)
+Global $inpSearch = GUICtrlCreateInput("", $iSearchStartX + 55 * $f, $iSecondRowY, 150 * $f, 25 * $f)
 GUICtrlSetFont(-1, $fntMed)
 GUICtrlSetBkColor($inpSearch, 0x333333)
 GUICtrlSetColor($inpSearch, 0xFFFFFF)
-Global $lblSearch = GUICtrlCreateLabel("Search:", $iW - (260 * $f), $iSecondRowY + 5 * $f, 50 * $f, 20 * $f, $SS_RIGHT)
+Global $btnClearSearch = GUICtrlCreateButton("X", $iSearchStartX + 210 * $f, $iSecondRowY, 25 * $f, 25 * $f)
+GUICtrlSetFont(-1, $fntSmall, 800)
+GUICtrlSetBkColor(-1, 0xB71C1C)
 GUICtrlSetColor(-1, 0xFFFFFF)
 
 ; Navigation
@@ -125,7 +130,7 @@ Global $hScrollChild = GUICreate("", $iW - (20 * $f), $iH - $iTopHeight - $iFoot
 GUISetBkColor(0x1E1E1E, $hScrollChild) 
 
 Global $aIcons[500], $aLabels[500], $aPaths[500], $aIniSections[500], $aNames[500], $aMenus[500]
-Global $aRun[500], $aDelete[500], $aRename[500], $aEditPath[500], $aEditIcon[500]
+Global $aRunBtn[500], $aRunMenu[500], $aDelete[500], $aRename[500], $aEditPath[500], $aEditIcon[500]
 Global $iTotalOnPage = 0
 Global $sLastSearch = ""
 
@@ -142,34 +147,23 @@ While 1
         _Refresh($sCurrSearch)
     EndIf
 
-    ; Double Click Detection (300ms sensitivity)
-    Local $aCursor = GUIGetCursorInfo($hScrollChild)
-    If Not @error And $aCursor[2] = 1 And $aCursor[4] > 0 Then 
-        Local $tDbl = TimerInit()
-        While BitAnd(GUIGetCursorInfo($hScrollChild)[2], 1)
-            If TimerDiff($tDbl) > 300 Then ExitLoop
-        WEnd
-        Local $tCheck = TimerInit()
-        While TimerDiff($tCheck) < 300
-            If BitAnd(GUIGetCursorInfo($hScrollChild)[2], 1) Then
-                _HandleManualDoubleClick($aCursor[4])
-                _CheckAutoExit()
-                ExitLoop
-            EndIf
-        WEnd
-    EndIf
-
     Switch $msg
         Case $GUI_EVENT_CLOSE
             Exit
             
+        Case $btnClearSearch
+            GUICtrlSetData($inpSearch, "")
+            GUICtrlSetState($inpSearch, $GUI_FOCUS)
+            $iCurrentPage = 1
+            _Refresh("")
+
         Case $cmbProfile
             $sActiveProfile = GUICtrlRead($cmbProfile)
             If $sActiveProfile = "" Then $sActiveProfile = "Default"
             $sIni = @ScriptDir & "\" & $sActiveProfile & ".ini"
             IniWrite($sSettingsIni, "Settings", "LastProfile", $sActiveProfile)
             $iCurrentPage = 1
-            _Refresh()
+            _Refresh(GUICtrlRead($inpSearch)) 
             
         Case $btnNewProf
             Local $nProf = InputBox("New Profile", "Enter new profile name:", "")
@@ -180,7 +174,7 @@ While 1
                 IniDelete($sIni, "Game_0")
                 IniWrite($sSettingsIni, "Settings", "LastProfile", $sActiveProfile)
                 _LoadProfilesToCombo()
-                _Refresh()
+                _Refresh(GUICtrlRead($inpSearch))
             EndIf
 
         Case $btnPrev
@@ -198,11 +192,10 @@ While 1
 
         Case $btnManage
             ControlClick($hMain, "", $btnManage, "secondary")
-        Case $btnAjay
-            ControlClick($hMain, "", $btnAjay, "secondary")
-
+            
+        ; --- RESTORED LAUNCHER TOOLS LOGIC ---
         Case $optSort
-            _Refresh("", True)
+            _Refresh(GUICtrlRead($inpSearch))
         Case $optRemoveMulti
             _RemoveMultipleGUI()
         Case $optRemoveAll
@@ -216,7 +209,7 @@ While 1
                 _Refresh()
             EndIf
         Case $optResetIni
-            If MsgBox($MB_YESNO, "Reset", "Delete current profile [" & $sActiveProfile & "] and switch to Default?") = $IDYES Then
+            If MsgBox($MB_YESNO, "Reset", "Delete profile [" & $sActiveProfile & "]?") = $IDYES Then
                 FileDelete($sIni)
                 $sActiveProfile = "Default"
                 $sIni = @ScriptDir & "\Default.ini"
@@ -224,12 +217,18 @@ While 1
                 _LoadProfilesToCombo()
                 _Refresh()
             EndIf
+        ; ------------------------------------
+
+        Case $btnAjay
+            ControlClick($hMain, "", $btnAjay, "secondary")
 
         Case Else
             _HandleAjayTools($msg)
             If _HandleIconClicks($msg) Then _CheckAutoExit()
     EndSwitch
 WEnd
+
+; ... [_LoadProfilesToCombo, _Refresh, _HandleIconClicks, etc. remain unchanged] ...
 
 Func _LoadProfilesToCombo()
     Local $aFiles = _FileListToArray(@ScriptDir, "*.ini", 1)
@@ -249,6 +248,7 @@ Func _Refresh($sFilter = "", $bUnused = False)
     For $i = 0 To 499
         If $aIcons[$i] Then GUICtrlDelete($aIcons[$i])
         If $aLabels[$i] Then GUICtrlDelete($aLabels[$i])
+        If $aRunBtn[$i] Then GUICtrlDelete($aRunBtn[$i])
         If $aMenus[$i] Then GUICtrlDelete($aMenus[$i])
         $aIcons[$i] = 0
     Next
@@ -313,18 +313,25 @@ Func _Refresh($sFilter = "", $bUnused = False)
             $iIdx = 2
         EndIf
         
-        $aIcons[$iTotalOnPage] = GUICtrlCreateIcon($fIco, $iIdx, $x + (($dynamicCellW - $icoSize)/2), $y + ($dynamicCellH*0.1), $icoSize, $icoSize)
+        $aIcons[$iTotalOnPage] = GUICtrlCreateIcon($fIco, $iIdx, $x + (($dynamicCellW - $icoSize)/2), $y + ($dynamicCellH*0.05), $icoSize, $icoSize)
+        
         Local $currentFontSize = $fntMed
-        If StringLen($nm) > 22 Then $currentFontSize = $fntSmall
-        $aLabels[$iTotalOnPage] = GUICtrlCreateLabel($nm, $x + 2, $y + ($dynamicCellH*0.55), $dynamicCellW - 4, $dynamicCellH*0.4, $SS_CENTER) 
+        If StringLen($nm) > 20 Then $currentFontSize = $fntSmall
+        $aLabels[$iTotalOnPage] = GUICtrlCreateLabel($nm, $x + 2, $y + ($dynamicCellH*0.40), $dynamicCellW - 4, $dynamicCellH*0.25, $SS_CENTER) 
         GUICtrlSetFont(-1, $currentFontSize, 600)
         GUICtrlSetColor(-1, 0x03DAC6)
         
+        $aRunBtn[$iTotalOnPage] = GUICtrlCreateButton("RUN", $x + ($dynamicCellW*0.25), $y + ($dynamicCellH*0.68), $dynamicCellW*0.5, 22 * $f)
+        GUICtrlSetFont(-1, $fntSmall, 800)
+        GUICtrlSetBkColor(-1, 0xBB86FC)
+        GUICtrlSetColor(-1, 0x000000)
+
         $aPaths[$iTotalOnPage] = $p
         $aNames[$iTotalOnPage] = $nm
         $aIniSections[$iTotalOnPage] = $sec
+        
         $aMenus[$iTotalOnPage] = GUICtrlCreateContextMenu($aIcons[$iTotalOnPage])
-        $aRun[$iTotalOnPage] = GUICtrlCreateMenuItem("Run Game", $aMenus[$iTotalOnPage])
+        $aRunMenu[$iTotalOnPage] = GUICtrlCreateMenuItem("Run Game", $aMenus[$iTotalOnPage])
         GUICtrlCreateMenuItem("", $aMenus[$iTotalOnPage])
         $aRename[$iTotalOnPage] = GUICtrlCreateMenuItem("Rename", $aMenus[$iTotalOnPage])
         $aEditPath[$iTotalOnPage] = GUICtrlCreateMenuItem("Change Path", $aMenus[$iTotalOnPage])
@@ -345,7 +352,7 @@ EndFunc
 Func _HandleIconClicks($msg)
     For $i = 0 To $iTotalOnPage - 1
         Select
-            Case $msg = $aRun[$i]
+            Case $msg = $aRunBtn[$i] Or $msg = $aRunMenu[$i]
                 _LaunchFile($aPaths[$i])
                 Return True
             Case $msg = $aRename[$i]
@@ -358,27 +365,26 @@ Func _HandleIconClicks($msg)
                 Local $nP = FileOpenDialog("Select Path", @ProgramFilesDir, "Executables (*.exe;*.bat;*.cmd)", 1)
                 If Not @error Then
                     If StringRegExp($nP, "(?i)\.lnk$") Then
-                        MsgBox($MB_ICONERROR, "Error", "Shortcuts (.lnk) are not accepted. Please select the direct executable.")
+                        MsgBox($MB_ICONERROR, "Error", "Shortcuts (.lnk) are not accepted.")
                     Else
                         IniWrite($sIni, $aIniSections[$i], "Path", $nP)
-                        _Refresh()
+                        _Refresh(GUICtrlRead($inpSearch))
                     EndIf
                 EndIf
             Case $msg = $aEditIcon[$i]
                 Local $nI = FileOpenDialog("Select Icon", @ProgramFilesDir, "Icons (*.exe;*.ico)", 1)
                 If Not @error Then
-                    ; REJECT .lnk ON ICON CHANGE
                     If StringRegExp($nI, "(?i)\.lnk$") Then
-                        MsgBox($MB_ICONERROR, "Error", "Shortcuts (.lnk) cannot be used as icon sources. Please select an exe, ico .")
+                        MsgBox($MB_ICONERROR, "Error", "Shortcuts (.lnk) cannot be used as icons.")
                     Else
                         IniWrite($sIni, $aIniSections[$i], "Icon", $nI)
-                        _Refresh()
+                        _Refresh(GUICtrlRead($inpSearch))
                     EndIf
                 EndIf
             Case $msg = $aDelete[$i]
                 If _ConfirmDeletePopup($aNames[$i]) = $IDYES Then
                     IniDelete($sIni, $aIniSections[$i])
-                    _Refresh()
+                    _Refresh(GUICtrlRead($inpSearch))
                 Endif
         EndSelect
     Next
@@ -456,7 +462,7 @@ Func _RemoveMultipleGUI()
             For $i = 0 To _GUICtrlListView_GetItemCount($idList) - 1
                 if _GUICtrlListView_GetItemChecked($idList, $i) Then IniDelete($sIni, _GUICtrlListView_GetItemText($idList, $i, 1))
             Next
-            _Refresh()
+            _Refresh(GUICtrlRead($inpSearch))
             ExitLoop
         EndIf
     WEnd
@@ -475,7 +481,7 @@ Func _AddNewGame()
     If @error Then Return
     
     If StringRegExp($file, "(?i)\.lnk$") Then
-        MsgBox($MB_ICONERROR, "Error", "Shortcuts (.lnk) are not accepted. Please select the direct executable.")
+        MsgBox($MB_ICONERROR, "Error", "Shortcuts (.lnk) are not accepted.")
         Return
     EndIf
 
@@ -485,7 +491,7 @@ Func _AddNewGame()
     WEnd
     IniWrite($sIni, "Game_" & $id, "Path", $file)
     IniWrite($sIni, "Game_" & $id, "Name", StringRegExpReplace($file, ".*\\", ""))
-    _Refresh()
+    _Refresh(GUICtrlRead($inpSearch))
 EndFunc
 
 Func _GetFolder($sFull)
@@ -495,13 +501,4 @@ EndFunc
 
 Func _CheckAutoExit()
     If GUICtrlRead($chkAutoClose) = $GUI_CHECKED Then Exit
-EndFunc
-
-Func _HandleManualDoubleClick($ctrlID)
-    For $i = 0 To $iTotalOnPage - 1
-        If $ctrlID = $aIcons[$i] Or $ctrlID = $aLabels[$i] Then
-            _LaunchFile($aPaths[$i])
-            Return
-        Endif
-    Next
 EndFunc
