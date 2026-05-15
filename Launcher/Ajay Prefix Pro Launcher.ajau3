@@ -4,6 +4,8 @@
 #include <GuiListView.au3>
 #include <StaticConstants.au3>
 #include <Array.au3>
+#include <ComboConstants.au3>
+#include <File.au3>
 
 ; --- 1. DYNAMIC RESOLUTION (85%) ---
 FileChangeDir(@ScriptDir) 
@@ -11,7 +13,10 @@ FileChangeDir(@ScriptDir)
 Global $iW = Int(@DesktopWidth * 0.85)
 Global $iH = Int(@DesktopHeight * 0.85) 
 
-Global $sIni = @ScriptDir & "\AjayPrefixProLauncherData.ini"
+; --- PROFILE & INI LOGIC ---
+Global $sSettingsIni = @ScriptDir & "\LauncherSettings.ini"
+Global $sActiveProfile = IniRead($sSettingsIni, "Settings", "LastProfile", "Default")
+Global $sIni = @ScriptDir & "\" & $sActiveProfile & ".ini" 
 
 ; Scaling factor
 Global $f = $iW / 1024
@@ -34,7 +39,7 @@ Global $iItemsPerPage = 20
 Global $iTotalPages = 1
 
 ; --- 2. MAIN PARENT WINDOW ---
-Global $hMain = GUICreate("Ajay Prefix Pro Launcher", $iW, $iH, -1, -1, BitOR($GUI_SS_DEFAULT_GUI, $WS_MINIMIZEBOX))
+Global $hMain = GUICreate("Ajay Prefix Pro Launcher v1.3", $iW, $iH, -1, -1, BitOR($GUI_SS_DEFAULT_GUI, $WS_MINIMIZEBOX))
 GUISetBkColor(0x121212, $hMain) 
 
 Local $iLeftButtonX = $iW - ($btnW * 3 + 45 * $f)
@@ -64,8 +69,8 @@ GUICtrlSetColor(-1, 0xFFFFFF)
 Global $menuManage = GUICtrlCreateContextMenu($btnManage)
 Global $optSort = GUICtrlCreateMenuItem("Refresh", $menuManage)
 Global $optRemoveMulti = GUICtrlCreateMenuItem("Select & Remove Multiple", $menuManage)
-Global $optRemoveAll = GUICtrlCreateMenuItem("Remove All Games", $menuManage)
-Global $optResetIni = GUICtrlCreateMenuItem("Reset/Delete INI File", $menuManage)
+Global $optRemoveAll = GUICtrlCreateMenuItem("Clear Current Profile", $menuManage)
+Global $optResetIni = GUICtrlCreateMenuItem("Delete Current Profile File", $menuManage)
 
 Global $menuAjay = GUICtrlCreateContextMenu($btnAjay)
 Global $mTask  = GUICtrlCreateMenuItem("Task Manager", $menuAjay)
@@ -78,11 +83,18 @@ Global $mStart = GUICtrlCreateMenuItem("AjayStartMenuPro", $menuAjay)
 Global $mAhkp = GUICtrlCreateMenuItem("Ajay Hotkeys Pro", $menuAjay)
 
 ; --- UI Controls ---
-Local $iAutoCloseVal = Int(IniRead($sIni, "Settings", "AutoClose", "4"))
-Global $chkAutoClose = GUICtrlCreateCheckbox("Auto-Exit on Launch", 20 * $f, $iSecondRowY, 180 * $f, 30 * $f)
+Local $iAutoCloseVal = Int(IniRead($sSettingsIni, "Settings", "AutoClose", "4"))
+Global $chkAutoClose = GUICtrlCreateCheckbox("Auto-Exit on Launch", 20 * $f, $iSecondRowY, 160 * $f, 30 * $f)
 GUICtrlSetState($chkAutoClose, $iAutoCloseVal)
 GUICtrlSetColor($chkAutoClose, 0x03DAC6)
 GUICtrlSetFont($chkAutoClose, $fntSmall, 800)
+
+; PROFILE SWITCHER
+Global $lblProf = GUICtrlCreateLabel("Profile:", 185 * $f, $iSecondRowY + 5 * $f, 50 * $f, 20 * $f, $SS_RIGHT)
+GUICtrlSetColor(-1, 0xFFFFFF)
+Global $cmbProfile = GUICtrlCreateCombo($sActiveProfile, 240 * $f, $iSecondRowY, 140 * $f, 25 * $f, $CBS_DROPDOWNLIST)
+Global $btnNewProf = GUICtrlCreateButton("+", 385 * $f, $iSecondRowY, 30 * $f, 25 * $f)
+_LoadProfilesToCombo()
 
 Global $inpSearch = GUICtrlCreateInput("", $iW - (200 * $f), $iSecondRowY, 180 * $f, 25 * $f)
 GUICtrlSetFont(-1, $fntMed)
@@ -106,7 +118,7 @@ GUICtrlSetFont(-1, $fntSmall, 800)
 GUICtrlSetBkColor(-1, 0x4A148C) 
 GUICtrlSetColor(-1, 0xFFFFFF)
 
-; Content Area - Added ClipSiblings and ensured correct hierarchy
+; Content Area
 Local $iFooterHeight = 70 * $f
 Global $hScrollChild = GUICreate("", $iW - (20 * $f), $iH - $iTopHeight - $iFooterHeight, 10 * $f, $iTopHeight, BitOR($WS_CHILD, $WS_VISIBLE, $WS_CLIPSIBLINGS), -1, $hMain)
 GUISetBkColor(0x1E1E1E, $hScrollChild) 
@@ -149,6 +161,26 @@ While 1
     Switch $msg
         Case $GUI_EVENT_CLOSE
             Exit
+            
+        Case $cmbProfile
+            $sActiveProfile = GUICtrlRead($cmbProfile)
+            $sIni = @ScriptDir & "\" & $sActiveProfile & ".ini"
+            IniWrite($sSettingsIni, "Settings", "LastProfile", $sActiveProfile)
+            $iCurrentPage = 1
+            _Refresh()
+            
+        Case $btnNewProf
+            Local $nProf = InputBox("New Profile", "Enter new profile name:", "")
+            If Not @error And $nProf <> "" Then
+                $sActiveProfile = $nProf
+                $sIni = @ScriptDir & "\" & $sActiveProfile & ".ini"
+                IniWrite($sIni, "Game_0", "Name", "Init") 
+                IniDelete($sIni, "Game_0")
+                IniWrite($sSettingsIni, "Settings", "LastProfile", $sActiveProfile)
+                _LoadProfilesToCombo()
+                _Refresh()
+            EndIf
+
         Case $btnPrev
             If $iCurrentPage > 1 Then
                 $iCurrentPage -= 1
@@ -162,19 +194,17 @@ While 1
         Case $btnAddNew
             _AddNewGame()
 
-        ; Trigger Menus on Button Click (Fix for Child Window overlap)
         Case $btnManage
             ControlClick($hMain, "", $btnManage, "secondary")
         Case $btnAjay
             ControlClick($hMain, "", $btnAjay, "secondary")
 
-        ; --- MENU ACTIONS ---
         Case $optSort
             _Refresh("", True)
         Case $optRemoveMulti
             _RemoveMultipleGUI()
         Case $optRemoveAll
-            If _ConfirmDeletePopup("ALL GAMES") = $IDYES Then
+            If _ConfirmDeletePopup("ALL GAMES in this profile") = $IDYES Then
                 Local $sections = IniReadSectionNames($sIni)
                 If Not @error Then
                     For $i = 1 To $sections[0]
@@ -184,20 +214,30 @@ While 1
                 _Refresh()
             EndIf
         Case $optResetIni
-            If MsgBox($MB_YESNO, "Reset", "Delete INI file and exit?") = $IDYES Then
+            If MsgBox($MB_YESNO, "Reset", "Delete current profile INI [" & $sActiveProfile & ".ini] and exit?") = $IDYES Then
                 FileDelete($sIni)
                 Exit
             EndIf
 
         Case Else
-            ; Process Ajay Tools (Notepad, Wine, etc)
             _HandleAjayTools($msg)
-            ; Process Game Icon clicks (Rename, Delete, Run)
             If _HandleIconClicks($msg) Then _CheckAutoExit()
     EndSwitch
 WEnd
 
-; --- FUNCTIONS ---
+Func _LoadProfilesToCombo()
+    Local $aFiles = _FileListToArray(@ScriptDir, "*.ini", 1)
+    Local $sList = ""
+    If Not @error Then
+        For $i = 1 To $aFiles[0]
+            Local $pName = StringTrimRight($aFiles[$i], 4)
+            If $pName = "LauncherSettings" Then ContinueLoop 
+            $sList &= $pName & "|"
+        Next
+    EndIf
+    If Not StringInStr($sList, "Default|") Then $sList = "Default|" & $sList
+    GUICtrlSetData($cmbProfile, "|" & $sList, $sActiveProfile)
+EndFunc
 
 Func _Refresh($sFilter = "", $bUnused = False)
     For $i = 0 To 499
@@ -217,12 +257,11 @@ Func _Refresh($sFilter = "", $bUnused = False)
     
     Local $cols = Int($areaW / ($baseCellW + $iPadding))
     Local $rows = Int($areaH / ($baseCellH + $iPadding))
-    If $rows < 1 Then $rows = 1
     If $cols < 1 Then $cols = 1
+    If $rows < 1 Then $rows = 1
     
     Local $dynamicCellW = ($areaW / $cols) - $iPadding
     Local $dynamicCellH = ($areaH / $rows) - $iPadding
-    
     $iItemsPerPage = $cols * $rows
 
     Local $aList[1][2], $count = 0
@@ -250,23 +289,27 @@ Func _Refresh($sFilter = "", $bUnused = False)
     GUISwitch($hScrollChild)
     For $i = $startIdx To $endIdx
         Local $sec = $aList[$i][1], $nm = $aList[$i][0]
-        Local $p = IniRead($sIni, $sec, "Path", ""), $ip = IniRead($sIni, $sec, "Icon", $p)
+        Local $p = IniRead($sIni, $sec, "Path", ""), $ip = IniRead($sIni, $sec, "Icon", "")
         Local $fIco = $ip, $iIdx = -1
               
-        ; AUTO ICON DETECTION (DLL for Scripts)
-        If StringRegExp($p, "(?i)\.(bat|cmd)$") Then
+        If $ip = "" Or $ip = $p Then
+            If StringRegExp($p, "(?i)\.(bat|cmd)$") Then
+                $fIco = "shell32.dll"
+                $iIdx = 3 
+            Else
+                $fIco = $p 
+                $iIdx = -1
+            EndIf
+        EndIf
+
+        If Not FileExists($fIco) And $fIco <> "shell32.dll" Then
             $fIco = "shell32.dll"
-            $iIdx = 3 ; Script gear icon
-        ElseIf Not FileExists($ip) Then
-            $fIco = "shell32.dll"
-            $iIdx = 2 ; Generic exe icon
+            $iIdx = 2
         EndIf
         
         $aIcons[$iTotalOnPage] = GUICtrlCreateIcon($fIco, $iIdx, $x + (($dynamicCellW - $icoSize)/2), $y + ($dynamicCellH*0.1), $icoSize, $icoSize)
-        
         Local $currentFontSize = $fntMed
         If StringLen($nm) > 22 Then $currentFontSize = $fntSmall
-        
         $aLabels[$iTotalOnPage] = GUICtrlCreateLabel($nm, $x + 2, $y + ($dynamicCellH*0.55), $dynamicCellW - 4, $dynamicCellH*0.4, $SS_CENTER) 
         GUICtrlSetFont(-1, $currentFontSize, 600)
         GUICtrlSetColor(-1, 0x03DAC6)
@@ -274,7 +317,6 @@ Func _Refresh($sFilter = "", $bUnused = False)
         $aPaths[$iTotalOnPage] = $p
         $aNames[$iTotalOnPage] = $nm
         $aIniSections[$iTotalOnPage] = $sec
-        
         $aMenus[$iTotalOnPage] = GUICtrlCreateContextMenu($aIcons[$iTotalOnPage])
         $aRun[$iTotalOnPage] = GUICtrlCreateMenuItem("Run Game", $aMenus[$iTotalOnPage])
         GUICtrlCreateMenuItem("", $aMenus[$iTotalOnPage])
