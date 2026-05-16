@@ -1,23 +1,23 @@
 # Changelog
 
 ============================================================
-       ## [AJAY PREFIX PRO 1.6 RELEASE] - 13 April 2026 (Last Release)
+             ## [AJAY PREFIX PRO 1.7 RELEASE] - 15 May 2026
 ============================================================
 
-- Released the Ajay_Prefix_Pro_v1.6_Scripts_Updater.exe
-- Released the Prefix_only mode installer.exe. It redirects AppData, Documents, Saved Games, etc., and does not contain any dependencies.
+- Updated dgVoodoo2 scripts
+- Updated App Paths Manager registry
+- Added 7-Zip and Notepad extension registries as optional
+- Reduced installation time
+- Fixed the command for removing downloaded temporary files
+- Removed double confirmation in installer.exe
+- Added updated Ajay Prefix Pro Launcher v1.3
+- Added D3D7-to-Vulkan (D7VK) scripts (old to latest)
+- Fixed Notepad registry to apply for only Start Menu choice
+- Added recommendation for Hybridizer Registry Apply to redirect hardcoded paths
+- Updated versions of Mono and other online components
+- Updated Ajay Start Menu Pro Viewer with fixed icons and bug fixes
+- Added Custom Sync Service Manager, it allows to backup custom folder location.
 
-(For more details, read the "Choice Mode" section on the main GitHub README page.)
-
-============================================================
-        ## [AJAY PREFIX PRO 1.6 EXE RELEASE] - 9 April 2026
-============================================================
-
-- Released Installer.exe
-- Updated all options
-- Added Ajay Prefix Pro Launcher as an option
-
-(You can add multiple games after restarting the container; configuration and app data will be saved in the %AppData% folder.)
 
 ============================================================
              ## [AJAY PREFIX PRO 1.6 RELEASE] - 14 March 2026
