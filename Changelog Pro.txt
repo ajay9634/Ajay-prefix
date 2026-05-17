@@ -1,9 +1,12 @@
 # Changelog
 
 ============================================================
-             ## [AJAY PREFIX PRO 1.7 RELEASE] - 15 May 2026
+             ## [AJAY PREFIX PRO 1.7.1 RELEASE] - 17 May 2026
 ============================================================
 
+- Updated Uninstaller
+- Updated Hybridizer app to fix Local Appdata Registry (Now Correct location - Ajay_prefix\save_data\users\Ajay\AppData\Local)
+- Added Custom Sync Service Manager to backup custom location
 - Updated dgVoodoo2 scripts
 - Updated App Paths Manager registry
 - Added 7-Zip and Notepad extension registries as optional
@@ -11,13 +14,13 @@
 - Fixed the command for removing downloaded temporary files
 - Removed double confirmation in installer.exe
 - Added updated Ajay Prefix Pro Launcher v1.3
-- Added D3D7-to-Vulkan (D7VK) scripts (old to latest)
+- Added D7VK scripts (old to latest)
 - Fixed Notepad registry to apply for only Start Menu choice
 - Added recommendation for Hybridizer Registry Apply to redirect hardcoded paths
 - Updated versions of Mono and other online components
-- Updated Ajay Start Menu Pro Viewer with fixed icons and bug fixes
-- Added Custom Sync Service Manager, it allows to backup custom folder location.
+- Updated Ajay Start Menu Pro Viewer with icons and bug fixes
 
+Note: If you were using the old Hybridizer, you should move the Local folder from "Ajay_prefix\save_data\user2\%username%\AppData\Local" to "Ajay_prefix\save_data\users\Ajay\AppData\Local" after reapplying Hybridizer.
 
 ============================================================
              ## [AJAY PREFIX PRO 1.6 RELEASE] - 14 March 2026
