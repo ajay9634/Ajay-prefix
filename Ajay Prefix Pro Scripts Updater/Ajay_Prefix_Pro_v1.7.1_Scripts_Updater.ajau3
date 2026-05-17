@@ -7,7 +7,7 @@
 #RequireAdmin
 
 ; --- Configuration & Colors ---
-Global Const $sTitle = "Ajay Prefix Pro v1.6 Scripts Updater"
+Global Const $sTitle = "Ajay Prefix Pro v1.7.1 Scripts Updater"
 Global Const $sDevName = "Ajay9634 aka Emuplay0"
 Global Const $sVersion = " v1.0"
 Global Const $sTempDir = "C:\windows\temp"
