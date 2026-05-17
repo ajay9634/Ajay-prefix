@@ -1,0 +1,301 @@
+#RequireAdmin ; Forces Administrator elevation to modify HKLM and container settings
+#NoTrayIcon
+#include <GUIConstantsEx.au3>
+#include <WindowsConstants.au3>
+#include <EditConstants.au3>
+
+; --- 1. CONFIGURATION & CONSTANTS ---
+Local $sBackupDir = "C:\AJAY_PREFIX_PRO\Backup\"
+Local $sMainDir = "C:\AJAY_PREFIX_PRO"
+Local $sMainSub = "C:\AJAY_PREFIX_PRO\Ajay_Scripts"
+Local $sMainSub2 = "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro"
+Local $sWinDir = @WindowsDir
+Local $sProgFilesX86 = @ProgramFilesDir
+Local $sProgramData = @AppDataCommonDir
+
+Dim $aBackupFiles[6] = [ _
+    "HKCU_ShellFolders.reg", _
+    "HKCU_UserShellFolders.reg", _
+    "HKLM_ShellFolders.reg", _
+    "HKLM_UserShellFolders.reg", _
+    "HKLM_WOW6432Node_ShellFolders.reg", _
+    "HKLM_WOW6432Node_UserShellFolders.reg" _
+]
+
+; Global reference for our visible log box
+Global $hLogEdit
+
+; --- 2. CONFIRMATION DIALOG ---
+Local $iConfirm = MsgBox(4 + 32 + 262144, "Ajay Prefix Pro Uninstaller", _
+    "Please ensure AutoIt is closed before proceeding." & @CRLF & @CRLF & _
+    "Are you sure you want to uninstall Ajay Prefix Pro and restore system settings?")
+If $iConfirm <> 6 Then Exit 
+
+; Close any active AutoIt instances that might lock scripts/files
+ProcessClose("autoit3.exe")
+ProcessClose("autoit3_x64.exe")
+
+; --- CREATE VISIBLE LOG WINDOW ---
+Local $hGui = GUICreate("Ajay Uninstaller - Execution Log", 600, 400, -1, -1, BitOR($WS_OVERLAPPEDWINDOW, $WS_VISIBLE))
+; ADDED $WS_VSCROLL -> Forces the scrollbar handle to show immediately
+$hLogEdit = GUICtrlCreateEdit("", 10, 10, 580, 380, BitOR($ES_MULTILINE, $ES_AUTOVSCROLL, $ES_READONLY, $WS_VSCROLL))
+GUICtrlSetFont($hLogEdit, 9, 400, 0, "Courier New") 
+_Log("--> [LOG] Initialization successful. Admin privileges secured.")
+
+; --- 3. ENVIRONMENT & CONTAINER PROFILE CHECK ---
+Local $sProfileListKey = "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList"
+Local $bProfileActive = True
+
+While $bProfileActive
+    Local $sProfilesDir = RegRead($sProfileListKey, "ProfilesDirectory")
+    Local $sPublicDir = RegRead($sProfileListKey, "Public")
+
+    If StringInStr($sProfilesDir, "Ajay_prefix") Or StringInStr($sPublicDir, "Ajay_prefix") Then
+        _Log("--> [LOG] Active profile locks found matching registry signatures.")
+        MsgBox(16 + 4096, "Status", "Notice: Please Uninstall or Reset Drive C Profile Registry then restart the container.")
+        
+        If FileExists("C:\Program Files (x86)\AutoIt3\AutoIt3_x64.exe") Then
+            _Log("--> [LOG] Executing Profile Hybridizer sequence...")
+            RunWait('"C:\Program Files (x86)\AutoIt3\AutoIt3_x64.exe" "C:\AJAY_PREFIX_PRO\Ajay_Scripts\Ajay_Profile_Hybridizer.ajau3"')
+        EndIf
+        Sleep(2000)
+    Else
+        $bProfileActive = False 
+    EndIf
+WEnd
+
+If StringInStr(@UserProfileDir, "Ajay_prefix") Or StringInStr(@HomeDrive & "\Users\Public", "Ajay_prefix") Then
+    _Log("--> [LOG] Ajay_prefix environment footprint detected. Halting for manual reboot.")
+    MsgBox(48, "Ajay Hybridizer", "Ajay_prefix detected in the active environment. Please restart the container to apply changes.")
+    GUIDelete($hGui)
+    Exit
+EndIf
+
+; --- 4. IMPORT REGISTRY BACKUPS VIA NATIVE ENGINE & CORRUPTION CHECK ---
+Local $bImportSuccess = True
+Local $bBackupCorrupted = False
+
+For $i = 0 To UBound($aBackupFiles) - 1
+    If Not FileExists($sBackupDir & $aBackupFiles[$i]) Then 
+        _Log("--> [WARNING] Missing backup file asset: " & $aBackupFiles[$i])
+        $bImportSuccess = False
+    EndIf
+Next
+
+If $bImportSuccess Then
+    For $i = 0 To UBound($aBackupFiles) - 1
+        _Log("--> [PROCESSING] Reading: " & $aBackupFiles[$i])
+        Local $hFile = FileOpen($sBackupDir & $aBackupFiles[$i], 0)
+        If $hFile = -1 Then
+            $bImportSuccess = False
+            _Log("--> [ERROR] Failed to open: " & $aBackupFiles[$i])
+            ContinueLoop
+        EndIf
+        
+        Local $sCurrentKey = ""
+        While 1
+            Local $sLine = FileReadLine($hFile)
+            If @error = -1 Then ExitLoop
+            
+            $sLine = StringStripWS($sLine, 3)
+            If $sLine = "" Or StringLeft($sLine, 1) = ";" Or StringLeft($sLine, 2) = "Win" Then ContinueLoop
+            
+            ; Parse Key Header Block
+            If StringLeft($sLine, 1) = "[" And StringRight($sLine, 1) = "]" Then
+                $sCurrentKey = StringMid($sLine, 2, StringLen($sLine) - 2)
+                ContinueLoop
+            EndIf
+            
+            ; Safe Array Handling for Value Splits
+            If $sCurrentKey <> "" And StringInStr($sLine, "=") Then
+                Local $aSplit = StringSplit($sLine, "=", 2)
+                
+                If UBound($aSplit) < 2 Then ContinueLoop 
+                
+                Local $sValueName = StringReplace($aSplit[0], '"', '')
+                Local $sValueData = StringReplace($aSplit[1], '"', '')
+                $sValueData = StringReplace($sValueData, '\\', '\') 
+                
+                ; CRITICAL CORRUPTION TRACER
+                If StringInStr($sValueData, "Ajay_prefix") Then
+                    _Log("--> [CRITICAL CORRUPTION FOUND] Key: " & $sCurrentKey & " contains 'Ajay_prefix'")
+                    $bBackupCorrupted = True
+                    $bImportSuccess = False
+                    FileClose($hFile)
+                    ExitLoop 2 
+                EndIf
+                
+                Local $sType = "REG_SZ"
+                If StringInStr($sValueData, "%") Then $sType = "REG_EXPAND_SZ"
+                
+                RegWrite($sCurrentKey, $sValueName, $sType, $sValueData)
+            EndIf
+        WEnd
+        FileClose($hFile)
+    Next
+EndIf
+
+; --- 5. VERIFICATION & FALLBACK TRIPPERS ---
+Local $sVerifiedPath = RegRead("HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders", "Personal")
+
+If $bBackupCorrupted Then
+    _Log("--> [ALERT] Corrupted backup files handled. Forcing standard system layout.")
+    MsgBox(48 + 262144, "Notice", "Switching to force uninstall because backup is corrupted.")
+    _ForceResetDefaults()
+
+ElseIf Not $bImportSuccess Or StringInStr($sVerifiedPath, "Ajay_prefix") Or $sVerifiedPath = "" Then
+    _Log("--> [ALERT] General validation test dropped or empty keys found. Querying hard reset.")
+    Local $iForce = MsgBox(4 + 32 + 262144, "Ajay Prefix Pro Force Uninstaller", _
+        "Backup files were missing or rejected by the registry engine." & @CRLF & @CRLF & _
+        "Do you want to FORCE rewrite default system shell paths?")
+    If $iForce <> 6 Then 
+        GUIDelete($hGui)
+        Exit
+    EndIf
+    _ForceResetDefaults()
+EndIf
+
+; --- 6. REGISTRY CLEANUP (App Keys) ---
+_Log("--> [CLEANUP] Deleting setup specific application keys...")
+Dim $aKeysToDelete[11] = [ _
+    "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Launcher.exe", _
+    "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Backup.exe", _
+    "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Launcher2.exe", _
+    "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\AjayStartMenuPro.exe", _
+    "HKCR\7-Zip.archive", _
+    "HKCU\Software\7-Zip", _
+    "HKCU\Software\7-Zip-Zstandard", _
+    "HKCR\txtfile", _
+    "HKCU\Software\Explorer++", _
+    "HKCR\.ajau3", _
+    "HKCR\AjAutoItScript" _
+]
+
+For $i = 0 To UBound($aKeysToDelete) - 1
+    RegDelete($aKeysToDelete[$i])
+Next
+
+; --- 7. DETAILED FILE REMOVAL PROCESS WITH TRACKING ---
+_Log("--> [CLEANUP] Flushing file footprints from system directories...")
+Dim $aFilesToDelete[24] = [ _
+    "AjayPrefixConf.txt", "wfm2.exe", "7za.exe", "7-zip.chm", "7-zip32.dll", _
+    "7-zip.dll", "lz5.dll", "lz4.dll", "flzma2.dll", "lizard.dll", "7zCon.sfx", _
+    "7z.sfx", "7z.exe", "7z1.exe", "7zG.exe", "7zxa.dll", "zstd.dll", "7zFM.exe", _
+    "brotli.dll", "7za.dll", "7z.dll", "Explorer++.exe", "descript.ion", "timeout.exe" _
+]
+
+Local $sFullPath = ""
+For $i = 0 To UBound($aFilesToDelete) - 1
+    $sFullPath = $sWinDir & "\" & $aFilesToDelete[$i]
+    If FileExists($sFullPath) Then
+        FileSetAttrib($sFullPath, "-RASH") 
+        If FileDelete($sFullPath) Then
+            _Log("    [DELETED] File: " & $sFullPath)
+        Else
+            _Log("    [FAILED] File locked by OS: " & $sFullPath)
+        EndIf
+    Else
+        _Log("    [SKIPPED] File not present: " & $aFilesToDelete[$i])
+    EndIf
+Next
+
+; --- DETAILED SHORTCUT PURGE ROUTINE ---
+_Log("--> [CLEANUP] Targeting Start Menu shortcuts...")
+Local $sTargetLnk = $sProgramData & "\Microsoft\Windows\Start Menu\Ajay_Start_Menu_Pro_Viewer.lnk"
+If FileExists($sTargetLnk) Then
+    FileSetAttrib($sTargetLnk, "-RASH")
+    If FileDelete($sTargetLnk) Then
+        _Log("    [DELETED] Shortcut: " & $sTargetLnk)
+    Else
+        _Log("    [FAILED] Shortcut locked: " & $sTargetLnk)
+    EndIf
+Else
+    _Log("    [SKIPPED] Shortcut not present: Ajay_Start_Menu_Pro_Viewer.lnk")
+EndIf
+
+; --- DETAILED FOLDER REMOVAL PROCESS WITH TRACKING ---
+_Log("--> [CLEANUP] Purging directories...")
+Dim $aFoldersToRemove[7] = [ _
+    $sWinDir & "\Lang", _
+    $sProgramData & "\Microsoft\Windows\Start Menu\Ajay Start Menu Pro", _
+    "C:\temp", _
+    $sMainSub, _
+    $sMainSub2, _
+    $sMainDir, _
+    $sProgFilesX86 & "\UHARC CMD" _
+]
+
+For $i = 0 To UBound($aFoldersToRemove) - 1
+    If FileExists($aFoldersToRemove[$i]) Then
+        If DirRemove($aFoldersToRemove[$i], 1) Then
+            _Log("    [DELETED] Folder: " & $aFoldersToRemove[$i])
+        Else
+            _Log("    [FAILED] Folder locked: " & $aFoldersToRemove[$i])
+        EndIf
+    Else
+        _Log("    [SKIPPED] Folder not present: " & $aFoldersToRemove[$i])
+    EndIf
+Next
+
+; --- 8. POST-CLEANUP OPERATIONS & SUCCESS ---
+Local $sCleanerExe = $sProgFilesX86 & "\AutoIt3\Ajay_Prefix_Pro_Cleaner.exe"
+If FileExists($sCleanerExe) Then
+    _Log("--> [ENGINE] Starting secondary cleaner executable module...")
+    RunWait('"' & $sCleanerExe & '"')
+Else
+    _Log("--> [INFO] Secondary clean executable not found.")
+EndIf
+
+ProcessClose("autoit3.exe")
+ProcessClose("autoit3_x64.exe")
+
+; Final folder removal for AutoIt environment path
+Local $sAutoItDir = $sProgFilesX86 & "\AutoIt3"
+If FileExists($sAutoItDir) Then
+    DirRemove($sAutoItDir, 1)
+    _Log("    [DELETED] Folder: " & $sAutoItDir)
+EndIf
+
+_Log("--> [SUCCESS] Maintenance window finished cleanly.")
+MsgBox(64, "Success", "Ajay Prefix Pro has been successfully uninstalled.")
+GUIDelete($hGui)
+Exit
+
+; --- CUSTOM LOGGER WRAPPER ---
+Func _Log($sMessage)
+    GUICtrlSetData($hLogEdit, GUICtrlRead($hLogEdit) & $sMessage & @CRLF)
+    ; Auto-scroll to the bottom as logs compile
+    DllCall("user32.dll", "int", "SendMessage", "hwnd", GUICtrlGetHandle($hLogEdit), "int", $EM_LINESCROLL, "int", 0, "int", 100)
+EndFunc
+
+; --- DEFAULT INJECTION VALUES ---
+Func _ForceResetDefaults()
+    _Log("--> [ENGINE] Forcing default directory configurations into User / Machine environments.")
+    Local $sHKCU_SF = "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders"
+    Local $sHKCU_USF = "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
+    Local $sHKLM_USF = "HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
+    Local $sHKLM_SF = "HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders"
+    Local $sWow_USF = "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
+    Local $sWow_SF = "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders"
+
+    RegWrite($sHKCU_SF, "AppData", "REG_EXPAND_SZ", @UserProfileDir & "\AppData\Roaming")
+    RegWrite($sHKCU_SF, "Local AppData", "REG_EXPAND_SZ", @UserProfileDir & "\AppData\Local")
+    RegWrite($sHKCU_SF, "Personal", "REG_EXPAND_SZ", @UserProfileDir & "\Documents")
+    RegWrite($sHKCU_SF, "{4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4}", "REG_EXPAND_SZ", @UserProfileDir & "\Saved Games")
+    RegWrite($sHKCU_SF, "{A520A1A4-1780-4FF6-BD18-167343C5AF16}", "REG_EXPAND_SZ", @UserProfileDir & "\AppData\LocalLow")
+
+    RegWrite($sHKCU_USF, "AppData", "REG_EXPAND_SZ", "%USERPROFILE%\AppData\Roaming")
+    RegWrite($sHKCU_USF, "Local AppData", "REG_EXPAND_SZ", "%USERPROFILE%\AppData\Local")
+    RegWrite($sHKCU_USF, "Personal", "REG_EXPAND_SZ", "%USERPROFILE%\Documents")
+    RegWrite($sHKCU_USF, "{4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4}", "REG_EXPAND_SZ", "%USERPROFILE%\Saved Games")
+    RegWrite($sHKCU_USF, "{A520A1A4-1780-4FF6-BD18-167343C5AF16}", "REG_EXPAND_SZ", "%USERPROFILE%\AppData\LocalLow")
+
+    RegWrite($sHKLM_USF, "Common AppData", "REG_EXPAND_SZ", "%ProgramData%")
+    RegWrite($sHKLM_USF, "Common Documents", "REG_EXPAND_SZ", "%Public%\Documents")
+    RegWrite($sHKLM_SF, "Common Documents", "REG_EXPAND_SZ", @HomeDrive & "\Users\Public\Documents")
+
+    RegWrite($sWow_USF, "Common AppData", "REG_EXPAND_SZ", "%ProgramData%")
+    RegWrite($sWow_USF, "Common Documents", "REG_EXPAND_SZ", "%Public%\Documents")
+    RegWrite($sWow_SF, "Common Documents", "REG_EXPAND_SZ", @HomeDrive & "\Users\Public\Documents")
+EndFunc
+
