@@ -4,7 +4,7 @@
 
 ## ⚡ Ajay Prefix Pro
 
-[![Version](https://img.shields.io/badge/Version-1.7_Offline-36BCF7?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix/releases/tag/v1.7_offline)
+[![Version](https://img.shields.io/badge/Version-1.7.1_Offline-36BCF7?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix/releases/tag/v1.7.1_offline)
   [![Platform](https://img.shields.io/badge/Platform-PC_Emu_on_Android_|_Linux_Wine-F76D36?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix)
   [![Discord](https://img.shields.io/badge/Community-Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://dsc.gg/emuplay0)
 
@@ -32,7 +32,7 @@ Consult our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for det
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=✨+What+is+Ajay+Prefix+Pro✨)
 
-### ✅ Ajay Prefix Pro v1.7
+### ✅ Ajay Prefix Pro v1.7.1
 
 > **Core Functionality:** Game save redirection (`\Ajay_prefix\save_data`) + Start Menu customization + Universal game fixes.
 > 
@@ -42,7 +42,7 @@ Consult our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for det
 
 ## ⚙️ Installation Guide
 
-1.  📦 **Extract:** Unpack `Ajay_Prefix_Pro_v1.6_x64_offline.7z` using ZArchiver or a similar tool.
+1.  📦 **Extract:** Unpack `Ajay_Prefix_Pro_v1.7.1_x64_offline.7z` using ZArchiver or a similar tool.
 2.  ⚙️ **Execute:** Run `Install Setup (for wine).bat`.
 3.  🔄 **Mode Selection:** Choose `Start Menu Only`, `Prefix Only`, or **Both (Recommended)**. (See *Choice Mode Help* below).
 4.  🗂️ **Configure Paths:** Select an **Offline Cache Folder** and a **Save Data Folder**.
@@ -84,7 +84,7 @@ If you prefer not to use the Hybridizer setup, you can use the **Backup Restore 
 
 To fully uninstall the Ajay Prefix Pro, please follow these steps in order:
 
-1. **Standard Uninstallation:** Run `Uninstaller.bat` to begin the removal process.
+1. **Standard Uninstallation:** Run `Uninstaller.exe` to begin the removal process.
 2. **Uninstall option in Ajay Prefix Pro Viewer:** Click on + icon or option to see Uninstall option in Ajay Prefix Pro Viewer.
 
 ---
