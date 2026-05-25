@@ -2,7 +2,15 @@
 #include <ProgressConstants.au3>
 #include <WindowsConstants.au3>
 #include <MsgBoxConstants.au3>
-#include <EditConstants.au3>
+
+; --- Smart Manual Definitions (Prevents "Redeclare" errors) ---
+If Not IsDeclared("DS_MODALFRAME") Then Global Const $DS_MODALFRAME = 0x80
+If Not IsDeclared("WS_EX_TOPMOST") Then Global Const $WS_EX_TOPMOST = 0x00000008
+If Not IsDeclared("ES_AUTOVSCROLL") Then Global Const $ES_AUTOVSCROLL = 0x0040
+If Not IsDeclared("ES_MULTILINE") Then Global Const $ES_MULTILINE = 0x0004
+If Not IsDeclared("ES_READONLY") Then Global Const $ES_READONLY = 0x0800
+If Not IsDeclared("WS_VSCROLL") Then Global Const $WS_VSCROLL = 0x00200000
+If Not IsDeclared("FC_OVERWRITE") Then Global Const $FC_OVERWRITE = 1
 
 ; --- Configuration ---
 Local $sSFURL = "https://sourceforge.net/projects/ajay-prefix/files/v1.7.1_offline/"
@@ -16,10 +24,9 @@ Local $hGUI = GUICreate("Ajay Prefix Pro v1.7.1 Downloader", 470, 420)
 GUICtrlCreateLabel("Detected Remote Packages (SourceForge):", 20, 20, 250, 20)
 Local $idPackage = GUICtrlCreateCombo("", 20, 40, 430, 20)
 
-; 2. What is Ajay Prefix? (Information Panel with Internal Scrollbar)
+; 2. What is Ajay Prefix? (Information Panel)
 GUICtrlCreateGroup("What is Ajay Prefix Pro?", 20, 75, 430, 140)
 
-; README content - Exact text from source
 Local $sDescription = "Ajay Prefix Pro is a comprehensive utility suite designed for Wine-based environments." & @CRLF & _
                       "It is fully compatible with mobile PC emulators such as Mobox WOW64, Winlator, Dark OS, MiceWine, Hangover, and GameHub (GameFusion)." & @CRLF & @CRLF & _
                       "Core Functionality: Game save redirection (\Ajay_prefix\save_data) + Start Menu customization + Universal game fixes." & @CRLF & @CRLF & _
@@ -54,28 +61,22 @@ Local $idStatus = GUICtrlCreateLabel("Status: Syncing with SourceForge...", 20, 
 
 GUISetState(@SW_SHOW, $hGUI)
 
-; --- Initial Data Fetch ---
 _FetchSFPackages()
 
-; --- Main Event Loop ---
 While 1
     Switch GUIGetMsg()
         Case $GUI_EVENT_CLOSE
             Exit
-            
         Case $idBtnBrowse
             Local $sSelectedDir = FileSelectFolder("Select Destination Directory", "", 1 + 2, @ScriptDir)
             If Not @error Then GUICtrlSetData($idPathInput, $sSelectedDir)
-            
         Case $idBtnGitHub
             ShellExecute($sGitHubHome)
-            
         Case $idBtnDownload
             _StartDownloadProcess()
     EndSwitch
 WEnd
 
-; --- Core Network Functions ---
 Func _FetchSFPackages()
     GUICtrlSetData($idStatus, "Status: Fetching package list...")
     Local $bData = InetRead($sSFURL, 1)
@@ -109,22 +110,31 @@ Func _StartDownloadProcess()
     Local $sPackage = GUICtrlRead($idPackage)
     Local $sDest = GUICtrlRead($idPathInput)
     If $sPackage = "" Then
-        MsgBox($MB_ICONWARNING, "Selection Required", "Please select a valid installation package from the list.")
+        MsgBox($MB_ICONWARNING, "Selection Required", "Please select a package.")
         Return
     EndIf
     
     If StringRight($sDest, 1) <> "\" Then $sDest &= "\"
     Local $sSavePath = $sDest & $sPackage
+    Local $sTempPath = $sDest & "temp_download.exe"
 
-    ; Check if the target file is already downloaded and valid
     If FileExists($sSavePath) And FileGetSize($sSavePath) > 5000 Then
-        GUICtrlSetData($idStatus, "Status: Local package found. Running...")
-        GUICtrlSetData($idProgress, 100)
-        ShellExecute($sSavePath, "", $sDest)
-        Return
+        Local $sAction = _CustomChoicePopup($sPackage)
+        If $sAction = "Run" Then
+            GUICtrlSetData($idStatus, "Status: Running local package...")
+            GUICtrlSetData($idProgress, 100)
+            ShellExecute($sSavePath, "", $sDest)
+            Return
+        ElseIf $sAction = "Delete" Then
+            FileDelete($sSavePath)
+            GUICtrlSetData($idStatus, "Status: Local file deleted.")
+            GUICtrlSetData($idProgress, 0)
+            Return 
+        Else 
+            Return
+        EndIf
     EndIf
-    
-    ; Updated advisory message block pulled directly from your exact README specifications
+
     Local $iConfirm = MsgBox($MB_YESNO + $MB_ICONINFORMATION, "Pre-Installation Advisory", _
         "Before proceeding, please understand this tool on the README:" & @CRLF & @CRLF & _
         "Core Functionality: Game save redirection (\Ajay_prefix\save_data) + Start Menu customization + Universal game fixes." & @CRLF & @CRLF & _
@@ -132,12 +142,13 @@ Func _StartDownloadProcess()
         "Do you want to begin downloading " & $sPackage & "?")
     If $iConfirm <> 6 Then Return 
     
-    Local $sUrl = $sSFDownloadBase & $sPackage & "/download"
+    If FileExists($sTempPath) Then FileDelete($sTempPath)
     
+    Local $sUrl = $sSFDownloadBase & $sPackage & "/download"
     GUICtrlSetState($idBtnDownload, $GUI_DISABLE)
     GUICtrlSetData($idStatus, "Status: Downloading " & $sPackage & "...")
     
-    Local $hDownload = InetGet($sUrl, $sSavePath, 1, 1)
+    Local $hDownload = InetGet($sUrl, $sTempPath, 1, 1)
     Do
         Local $aData = InetGetInfo($hDownload)
         If $aData[1] > 0 Then GUICtrlSetData($idProgress, Int(($aData[0] / $aData[1]) * 100))
@@ -145,12 +156,44 @@ Func _StartDownloadProcess()
     Until InetGetInfo($hDownload, 2)
     InetClose($hDownload)
     
-    If FileGetSize($sSavePath) > 5000 Then
+    If FileGetSize($sTempPath) > 5000 Then
+        FileMove($sTempPath, $sSavePath, $FC_OVERWRITE)
         GUICtrlSetData($idStatus, "Status: Deploying package installer...")
         ShellExecute($sSavePath, "", $sDest)
     Else
         GUICtrlSetData($idStatus, "Status: Error - Download failed.")
-        FileDelete($sSavePath)
+        If FileExists($sTempPath) Then FileDelete($sTempPath)
     EndIf
+    
     GUICtrlSetState($idBtnDownload, $GUI_ENABLE)
+EndFunc
+
+Func _CustomChoicePopup($sFileName)
+    Local $hPopup = GUICreate("File Already Exists", 320, 150, -1, -1, $DS_MODALFRAME, $WS_EX_TOPMOST, $hGUI)
+    GUICtrlCreateLabel("The package is already downloaded:" & @CRLF & $sFileName, 20, 20, 280, 40)
+    
+    Local $idRun = GUICtrlCreateButton("Run", 20, 80, 80, 30)
+    Local $idDelete = GUICtrlCreateButton("Delete", 120, 80, 80, 30)
+    Local $idCancel = GUICtrlCreateButton("Cancel", 220, 80, 80, 30)
+    
+    GUISetState(@SW_SHOW, $hPopup)
+    Local $sResult = "Cancel"
+    
+    While 1
+        Local $nMsg = GUIGetMsg()
+        Select
+            Case $nMsg = $GUI_EVENT_CLOSE Or $nMsg = $idCancel
+                $sResult = "Cancel"
+                ExitLoop
+            Case $nMsg = $idRun
+                $sResult = "Run"
+                ExitLoop
+            Case $nMsg = $idDelete
+                $sResult = "Delete"
+                ExitLoop
+        EndSelect
+    WEnd
+    
+    GUIDelete($hPopup)
+    Return $sResult
 EndFunc
