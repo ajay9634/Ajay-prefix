@@ -125,6 +125,12 @@ If you only need to revert registry changes without removing the application:
 
 ---
 
+## 📊 Current Status (Archived)
+
+The Ajay Prefix Pro Offline version has reached its peak. There is no reason to release any new versions. You can get the latest scripts using the Scripts Updater Tool from SourceForge or by asking in the Emuplay0 Discord server.
+
+---
+
 ## ⚙️ Environment Variables
 
 ### 🎮 VKD3D FPS HUD
