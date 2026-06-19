@@ -1,4 +1,16 @@
 # Changelog
+============================================================
+             ## [AJAY PREFIX PRO 1.8 RELEASE] - 19 June 2026
+============================================================
+
+- Removed Sync Services apps
+- Updated Hybridizer app to v1.2 and fixed bugs.
+- Added AppData and Common AppData Redirection Manager Tools.
+- Added Game Registry import/export tools, allowing you to export your installed GOG games' registry data.
+- Added "Universal Installer Profile Manager" to assist with multi-game installations.
+- Updated the Common AppData path to save_data\users\ProgramData (previously save_data\users\Public\AppData).
+- Added an "Advanced Redirection" option in the GUI setup. You can now select which specific paths (AppData, Common AppData, and Profile) to redirect; all are enabled by default. The "Profile" option refers to the Hybridizer app itself. Deselecting AppData may be useful for games with heavy caching, such as Kingdoms of Amalur: Reckoning.
+- bugs fixed
 
 ============================================================
              ## [AJAY PREFIX PRO 1.7.1 RELEASE] - 17 May 2026
