@@ -4,7 +4,7 @@
 
 ## ⚡ Ajay Prefix Pro
 
-[![Version](https://img.shields.io/badge/Version-1.7.1_Offline-36BCF7?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix/releases/tag/v1.7.1_offline)
+[![Version](https://img.shields.io/badge/Version-1.8_Offline-36BCF7?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix/releases/tag/v1.8_offline)
   [![Platform](https://img.shields.io/badge/Platform-PC_Emu_on_Android_|_Linux_Wine-F76D36?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix)
   [![Discord](https://img.shields.io/badge/Community-Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://dsc.gg/emuplay0)
 
@@ -32,7 +32,7 @@ Consult our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for det
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=✨+What+is+Ajay+Prefix+Pro✨)
 
-### ✅ Ajay Prefix Pro v1.7.1
+### ✅ Ajay Prefix Pro v1.8
 
 > **Core Functionality:** Game save redirection (`\Ajay_prefix\save_data`) + Start Menu customization + Universal game fixes.
 > 
@@ -42,24 +42,25 @@ Consult our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for det
 
 ## ⚙️ Installation Guide
 
-1.  📦 **Extract:** Unpack `Ajay_Prefix_Pro_v1.7.1_x64_offline.7z` using ZArchiver or a similar tool.
+1.  📦 **Extract:** Unpack `Ajay_Prefix_Pro_v1.8_x64_offline.7z` using ZArchiver or a similar tool.
 2.  ⚙️ **Execute:** Run `Install Setup (for wine).bat`.
 3.  🔄 **Mode Selection:** Choose `Start Menu Only`, `Prefix Only`, or **Both (Recommended)**. (See *Choice Mode Help* below).
 4.  🗂️ **Configure Paths:** Select an **Offline Cache Folder** and a **Save Data Folder**.
-5.  💾 **Finalize:** Click **Save and Exit** and wait for the automated script to finish.
-6.  🔄 **Restart:** Restart the Wine server/container to apply changes.
-7.  ✔️ **Verify:** Check the installation status via the Start Menu Viewer.
+5. ⚙️ **Advanced Redirection:** Under this section, enable all options as recommended.
+6.  💾 **Finalize:** Click **Save and Exit** and wait for the automated script to finish.
+7.  🔄 **Restart:** Restart the Wine server/container to apply changes.
+8.  ✔️ **Verify:** Check the installation status via the Start Menu Viewer.
 
 > [!IMPORTANT]
-> **Change user folder name:** If you were using an older Ajay Prefix, after installing the latest Ajay Prefix v1.7.1, you must rename the "xuser" folder to "Ajay". This is located in: `Ajay_prefix\save_data\users\`
+> **Change user folder name:** If you were using an older Ajay Prefix, after installing the latest Ajay Prefix v1.8, you must rename the "xuser" folder to "Ajay". This is located in: `Ajay_prefix\save_data\users\`
 
 ---
 
 ### 🛠️ Installation Help (Choice Mode)
 
-* **1. Start Menu Only:**
+* **1. Only Start Menu:**
     Choose this if you only want Start Menu dependencies. You **cannot** redirect game save paths, and all prefix-related tools will be unavailable.
-* **2. Prefix Only:**
+* **2. Only Prefix:**
     Choose this for full access to all prefix tools and save redirection. You **cannot** install dependencies in this mode.
 * **3. Both (Recommended):**
     The full experience. Provides access to the complete Start Menu, all dependencies, and all prefix tools.
@@ -74,9 +75,9 @@ Consult our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for det
 
 First, check the Documents location by selecting **"Check Ajay Prefix Pro Status."** Transfer the documents from the C drive to the following path: `save_data\users\Ajay\`. Additionally, transfer the **"AppData"** and **"Saved Games"** folders to this same location. Transfer the Public documents from the C drive to the following path: `save_data\users\Public\`.
 
-If the game still fails to detect your save data, it may be using the hardcoded public folder and Documents folder; in this case, apply the **Hybridizer app setup**. This advanced setup redirects hardcoded `%userprofile%` and `%public%` paths to `save_data\users2\`, which is highly effective if supported. [Read More](https://github.com/ajay9634/Ajay-prefix/wiki/(4)-About-%22Ajay-Profile-Hybridizer%22)
+If Common AppData is redirected, transfer common save data and configurations from `C:\ProgramData` to `save_data\users\ProgramData`.
 
-If you prefer not to use the Hybridizer setup, you can use the **Backup Restore app**; however, a backup must be created after every gameplay session. To avoid manual backups, enable the **AjayAutoSync Service**, which automatically creates a timestamped backup whenever you start the game or container.
+If the game still fails to detect your save data, it may be using the hardcoded public folder and Documents folder; in this case, apply the **Hybridizer app setup**. This advanced setup redirects hardcoded `%userprofile%` and `%public%` paths to `save_data\users2\`, which is highly effective if supported. [Read More](https://github.com/ajay9634/Ajay-prefix/wiki/(4)-About-%22Ajay-Profile-Hybridizer%22)
 
 ---
 
@@ -110,9 +111,8 @@ If you only need to revert registry changes without removing the application:
 
 ## 🔗 Data Synchronization
 
-* **Manual Sync:** Use the **Backup and Restore Tool** to force data migration across different containers.
-* **AjayAutoSync:** An automated service that syncs files based on timestamps. *Use with caution as it prioritizes newer file dates over total progress.*
-* **Hybridizer:** The preferred method for seamless profile redirection without manual file movement.
+* **Manual Sync:** Use the **Backup and Restore Tool** to force data migration across different containers. It will not be necessary in Ajay Prefix Pro v1.8, as 99% of save paths are redirected automatically.
+* **Hybridizer App or Profile Option:** The preferred method for seamless %userprofile% and %public% redirection without manual file movement. It is useful for hardcoded paths; apply it as default.
 
 ---
 
