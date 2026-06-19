@@ -1,0 +1,23 @@
+AJAY PREFIX PRO - ALL-IN-ONE LICENSE v1.0
+
+Copyright (c) 2026 Ajay9634
+
+1. OWNERSHIP & PROTECTION
+The Batch (.bat) and AutoIt (.au3) scripts, including the Save Redirection logic and Ajay Prefix Pro Viewer app, are the proprietary intellectual property of Ajay9634.
+
+2. PERMITTED USE
+You are granted permission to use and modify these scripts for personal, non-commercial purposes within Wine/Emulator environments.
+
+3. RESTRICTIONS
+- REDISTRIBUTION: You may NOT re-upload, mirror, or redistribute these scripts or the modified package without written permission.
+- COMMERCIAL USE: You may NOT use these scripts for any commercial gain.
+- ATTRIBUTION: You may NOT claim ownership of the scripts or logic provided in this repository.
+
+4. THIRD-PARTY RESOURCES & DOWNLOADS
+- Included resources (PhysX, D3D, VC Redist, etc.) and external files fetched via downloader (DXVK, VKD3D, Wine Mono) are property of their respective owners and are governed by their original licenses.
+- This license applies ONLY to the custom scripts authored by Ajay9634.
+
+5. DISCLAIMER
+This software is provided "AS IS". The author is not responsible for any system damage, registry issues, or data loss. Use at your own risk.
+
+All rights reserved.
