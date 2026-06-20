@@ -36,7 +36,8 @@ Consult our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for det
 
 > **Core Functionality:** Game save redirection (`\Ajay_prefix\save_data`) + Start Menu customization + Universal game fixes.
 > 
-> **Redirected Folders:** `AppData`, `Documents`, and `Saved Games`.
+> **Redirected Core Folders:** `Documents`, and `Saved Games` and `LocalLow`.
+> **Redirected Advanced Folders:** ,`AppData` , `Common AppData` and `Profile`.
 
 ---
 
