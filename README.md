@@ -44,7 +44,7 @@ Consult our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for det
 
 1.  📦 **Extract:** Unpack `Ajay_Prefix_Pro_v1.8_x64_offline.7z` using ZArchiver or a similar tool.
 2.  ⚙️ **Execute:** Run `Install Setup (for wine).bat`.
-3.  🔄 **Mode Selection:** Choose `Start Menu Only`, `Prefix Only`, or **Both (Recommended)**. (See *Choice Mode Help* below).
+3.  🔄 **Mode Selection:** Choose `Only Start Menu`, `Only Prefix`, or **Both (Recommended)**. (See *Choice Mode Help* below).
 4.  🗂️ **Configure Paths:** Select an **Offline Cache Folder** and a **Save Data Folder**.
 5. ⚙️ **Advanced Redirection:** Under this section, enable all options as recommended.
 6.  💾 **Finalize:** Click **Save and Exit** and wait for the automated script to finish.
