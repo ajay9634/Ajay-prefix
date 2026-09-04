@@ -5,6 +5,7 @@
 ## ⚡ Ajay Prefix Pro
 
 [![Version](https://img.shields.io/badge/Version-1.8_Offline-36BCF7?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix/releases/tag/v1.8_offline)
+[![Last Update](https://img.shields.io/badge/Last_Update-4_September_2026-E3A008?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix/releases/tag/v1.8_offline)
   [![Platform](https://img.shields.io/badge/Platform-PC_Emu_on_Android_|_Linux_Wine-F76D36?style=for-the-badge)](https://github.com/ajay9634/Ajay-prefix)
   [![Discord](https://img.shields.io/badge/Community-Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://dsc.gg/emuplay0)
 
