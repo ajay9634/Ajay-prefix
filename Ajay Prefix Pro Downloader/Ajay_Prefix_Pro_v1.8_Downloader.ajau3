@@ -2,8 +2,24 @@
 #include <ProgressConstants.au3>
 #include <WindowsConstants.au3>
 #include <MsgBoxConstants.au3>
+#include <StaticConstants.au3>
+#include <GuiEdit.au3>
+#include <StaticConstants.au3>
+; --- Theme and Style Settings ---
+DllCall("UxTheme.dll", "int", "SetThemeAppProperties", "int", 0)
 
-; --- Smart Manual Definitions (Prevents "Redeclare" errors) ---
+Global Const $CLR_BG_MAIN        = 0xF0F8FF
+Global Const $CLR_BG_HEADER      = 0x2C3E50
+Global Const $CLR_TXT_HEADER     = 0xFFFFFF
+Global Const $CLR_BG_INFO        = 0xFFFAF0
+Global Const $CLR_TXT_INFO        = 0x191970
+Global Const $CLR_BG_BTN_MAIN    = 0x3498DB
+Global Const $CLR_TXT_BTN_MAIN   = 0xFFFFFF
+Global Const $CLR_BG_BTN_SUB     = 0xBDC3C7
+Global Const $CLR_TXT_BTN_SUB     = 0x333333
+Global Const $CLR_TXT_GENERAL    = 0x333333
+
+; --- Smart Manual Definitions ---
 If Not IsDeclared("DS_MODALFRAME") Then Global Const $DS_MODALFRAME = 0x80
 If Not IsDeclared("WS_EX_TOPMOST") Then Global Const $WS_EX_TOPMOST = 0x00000008
 If Not IsDeclared("ES_AUTOVSCROLL") Then Global Const $ES_AUTOVSCROLL = 0x0040
@@ -18,46 +34,83 @@ Local $sSFDownloadBase = "https://sourceforge.net/projects/ajay-prefix/files/v1.
 Local $sGitHubHome = "https://github.com/ajay9634/Ajay-prefix"
 
 ; --- GUI Setup ---
-Local $hGUI = GUICreate("Ajay Prefix Pro v1.8 Downloader", 470, 420)
+Local $hGUI = GUICreate("Ajay Prefix Pro v1.8 Downloader", 500, 480)
+GUISetBkColor($CLR_BG_MAIN)
 
-; 1. Package Selection Section
-GUICtrlCreateLabel("Detected Remote Packages (SourceForge):", 20, 20, 250, 20)
-Local $idPackage = GUICtrlCreateCombo("", 20, 40, 430, 20)
+; Header
+; Use BitOR to combine horizontal and vertical centering
+Local $idHeader = GUICtrlCreateLabel("AJAY PREFIX PRO v1.8 DOWNLOADER", 0, 0, 500, 50, BitOR($SS_CENTER, $SS_CENTERIMAGE))
 
-; 2. What is Ajay Prefix? (Information Panel)
-GUICtrlCreateGroup("What is Ajay Prefix Pro?", 20, 75, 430, 140)
+GUICtrlSetBkColor($idHeader, $CLR_BG_HEADER)
+GUICtrlSetColor($idHeader, $CLR_TXT_HEADER)
+GUICtrlSetFont($idHeader, 12, 800, 0, "Segoe UI")
+
+; 1. Package Selection
+Local $idPkgLabel = GUICtrlCreateLabel("Detected Remote Packages (SourceForge):", 20, 60, 460, 25)
+GUICtrlSetFont($idPkgLabel, 12, 400)
+Local $idPackage = GUICtrlCreateCombo("", 20, 85, 460, 30)
+GUICtrlSetFont($idPackage, 12, 400)
+
+; 2. Info Panel
+Local $idGroupInfo = GUICtrlCreateGroup(" About Ajay Prefix Pro ", 20, 120, 460, 170)
+GUICtrlSetFont($idGroupInfo, 12, 600)
 
 Local $sDescription = "Ajay Prefix Pro is a comprehensive utility suite designed for Wine-based environments." & @CRLF & _
                       "It is fully compatible with mobile PC emulators such as Mobox WOW64, Winlator, Dark OS, MiceWine, Hangover, and GameHub (GameFusion)." & @CRLF & @CRLF & _
                       "Core Functionality: Game save redirection (\Ajay_prefix\save_data) + Start Menu customization + Universal game fixes." & @CRLF & @CRLF & _
-                      "Redirected Folders: AppData, Documents, and Saved Games." & @CRLF & @CRLF & _
-                      "Installation Guide Choice Mode:" & @CRLF & _
-                      "1. Start Menu Only: Choose this if you only want Start Menu dependencies. You cannot redirect game save paths, and all prefix-related tools will be unavailable." & @CRLF & _
-                      "2. Prefix Only: Choose this for full access to all prefix tools and save redirection. You cannot install dependencies in this mode." & @CRLF & _
+                      "Redirected Core Folders: Documents, Saved Games and LocalLow." & @CRLF & _
+                      "Redirected Advanced Folders: AppData, Common AppData and Profile." & @CRLF & @CRLF & _
+                      "============================================" & @CRLF & _
+                      "Installation Guide Choice Mode:" & @CRLF & @CRLF & _
+                      "1. Only Start Menu: Choose this if you only want Start Menu dependencies. You cannot redirect game save paths, and all prefix-related tools will be unavailable." & @CRLF & _
+                      "2. Only Prefix: Choose this for full access to all prefix tools and save redirection. You cannot install dependencies in this mode." & @CRLF & _
                       "3. Both (Recommended): The full experience. Provides access to the complete Start Menu, all dependencies, and all prefix tools." & @CRLF & @CRLF & _
                       "Important: If you were using an older Ajay Prefix, after installing the latest Ajay Prefix v1.8, you must rename the 'xuser' folder to 'Ajay'. This is located in: Ajay_prefix\save_data\users\" & @CRLF & @CRLF & _
+                      "============================================" & @CRLF & _
                       "Key Features:" & @CRLF & _
                       "- Auto-Backup: Creates a default registry backup at C:\AJAY_PREFIX_PRO\Backup\." & @CRLF & _
                       "- Performance Tweaks: Includes WineD3D, DXVK, VKD3D, and specialized registry optimizations." & @CRLF & _
                       "- Essential Runtimes: Pre-packed with VC Redist (All-in-One), XNA, PhysX, and Disk Tools." & @CRLF & _
-                      "- Ajay Profile Hybridizer: Dynamically redirects %UserProfile% and %Public% paths."
+                      "- Ajay Profile Hybridizer: Dynamically redirects %UserProfile% and %Public% paths." & @CRLF & @CRLF & _
+                      "============================================" & @CRLF & _
+                      "Which package should I run?" & @CRLF & @CRLF & _
+"- Scripts Updater: Do not run this if you have not installed Ajay Prefix Pro. It updates all current Start Menu items to the latest version and provides new online Start Menu items not available in the offline version. Size: ~1.11 MB." & @CRLF & _
+"- Offline Installer: This is the full version including the Prefix and all dependencies. Size: ~700 MB." & @CRLF & _
+"- Only Prefix: This is a lite version containing only the Prefix without any dependencies. Size: ~30.72 MB." & @CRLF & _
+"- Shortcut: This is a shortcut for the Ajay Prefix Pro launcher. If Ajay Prefix Pro is installed, you can use this app to launch your games in any PC emulation container. Size: ~1.02 MB."
 
-Local $idInfoBox = GUICtrlCreateEdit($sDescription, 32, 95, 405, 110, BitOR($ES_READONLY, $WS_VSCROLL, $ES_MULTILINE, $ES_AUTOVSCROLL))
-GUICtrlSetBkColor($idInfoBox, 0xF5F5F5) 
+                      "============================================"
+
+Local $idInfoBox = GUICtrlCreateEdit($sDescription, 35, 140, 430, 140, BitOR($ES_READONLY, $WS_VSCROLL, $ES_MULTILINE, $ES_AUTOVSCROLL))
+GUICtrlSetFont($idInfoBox, 12, 400)
+GUICtrlSetBkColor($idInfoBox, $CLR_BG_INFO)
+GUICtrlSetColor($idInfoBox, $CLR_TXT_INFO)
+_GUICtrlEdit_LineScroll($idInfoBox, 0, -1000)
 GUICtrlCreateGroup("", -99, -99, 1, 1)
 
-; 3. Path & Installation Setup
-GUICtrlCreateLabel("Installation/Download Path:", 20, 230, 200, 20)
-Local $idPathInput = GUICtrlCreateInput(@ScriptDir, 20, 250, 330, 20)
-Local $idBtnBrowse = GUICtrlCreateButton("Browse...", 360, 248, 90, 24)
+; 3. Path
+Local $idPathLabel = GUICtrlCreateLabel("Installation/Download Path:", 20, 300, 460, 25)
+GUICtrlSetFont($idPathLabel, 12, 400)
+Local $idPathInput = GUICtrlCreateInput(@ScriptDir, 20, 325, 340, 30)
+GUICtrlSetFont($idPathInput, 12, 400)
+Local $idBtnBrowse = GUICtrlCreateButton("Browse...", 370, 324, 110, 32)
+GUICtrlSetFont($idBtnBrowse, 12, 600)
+GUICtrlSetBkColor($idBtnBrowse, $CLR_BG_BTN_SUB)
 
-; 4. Operational Buttons
-Local $idBtnDownload = GUICtrlCreateButton("Download and Run Selected EXE", 105, 290, 260, 45)
-Local $idBtnGitHub = GUICtrlCreateButton("Open GitHub (Wiki and Documentation)", 105, 345, 260, 30)
+; 4. Buttons
+Local $idBtnDownload = GUICtrlCreateButton("Download and Run EXE", 120, 370, 260, 50)
+GUICtrlSetFont($idBtnDownload, 12, 700)
+GUICtrlSetBkColor($idBtnDownload, $CLR_BG_BTN_MAIN)
+GUICtrlSetColor($idBtnDownload, $CLR_TXT_BTN_MAIN)
 
-; 5. Status & Progress Tracking
-Local $idProgress = GUICtrlCreateProgress(20, 390, 430, 12)
-Local $idStatus = GUICtrlCreateLabel("Status: Syncing with SourceForge...", 20, 403, 430, 15)
+Local $idBtnGitHub = GUICtrlCreateButton("Wiki and Documentation)", 120, 430, 260, 35)
+GUICtrlSetFont($idBtnGitHub, 12, 600)
+GUICtrlSetBkColor($idBtnGitHub, $CLR_BG_BTN_SUB)
+
+; 5. Progress
+Local $idProgress = GUICtrlCreateProgress(20, 470, 460, 10)
+Local $idStatus = GUICtrlCreateLabel("Status: Syncing with SourceForge...", 20, 485, 460, 20)
+GUICtrlSetFont($idStatus, 12, 400)
 
 GUISetState(@SW_SHOW, $hGUI)
 
@@ -136,11 +189,10 @@ Func _StartDownloadProcess()
     EndIf
 
     Local $iConfirm = MsgBox($MB_YESNO + $MB_ICONINFORMATION, "Pre-Installation Advisory", _
-        "Before proceeding, please understand this tool on the README:" & @CRLF & @CRLF & _
-        "Core Functionality: Game save redirection (\Ajay_prefix\save_data) + Start Menu customization + Universal game fixes." & @CRLF & @CRLF & _
-        "Redirected Folders: AppData, Documents, and Saved Games." & @CRLF & @CRLF & _
-        "Do you want to begin downloading " & $sPackage & "?")
-    If $iConfirm <> 6 Then Return 
+        "Please read the information about Ajay Prefix Pro before proceeding with the download." & @CRLF & @CRLF & _
+"Would you like to begin downloading " & $sPackage & "?")
+    If $iConfirm <> 6 Then Return
+
     
     If FileExists($sTempPath) Then FileDelete($sTempPath)
     
@@ -170,11 +222,13 @@ EndFunc
 
 Func _CustomChoicePopup($sFileName)
     Local $hPopup = GUICreate("File Already Exists", 320, 150, -1, -1, $DS_MODALFRAME, $WS_EX_TOPMOST, $hGUI)
-    GUICtrlCreateLabel("The package is already downloaded:" & @CRLF & $sFileName, 20, 20, 280, 40)
+    GUISetBkColor($CLR_BG_MAIN, $hPopup)
+    Local $idLabel = GUICtrlCreateLabel("Already downloaded:" & @CRLF & $sFileName, 20, 20, 280, 50)
+    GUICtrlSetFont($idLabel, 12, 400)
     
-    Local $idRun = GUICtrlCreateButton("Run", 20, 80, 80, 30)
-    Local $idDelete = GUICtrlCreateButton("Delete", 120, 80, 80, 30)
-    Local $idCancel = GUICtrlCreateButton("Cancel", 220, 80, 80, 30)
+    Local $idRun = GUICtrlCreateButton("Run", 20, 90, 80, 40)
+    Local $idDelete = GUICtrlCreateButton("Delete", 120, 90, 80, 40)
+    Local $idCancel = GUICtrlCreateButton("Cancel", 220, 90, 80, 40)
     
     GUISetState(@SW_SHOW, $hPopup)
     Local $sResult = "Cancel"
