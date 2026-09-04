@@ -1,7 +1,16 @@
 # Changelog
 ============================================================
-             ## [AJAY PREFIX PRO 1.8 RELEASE] - 19 June 2026
+             ## [AJAY PREFIX PRO 1.8 RELEASE] - 4 September 2026
 ============================================================
+## Changelog (4 September 2026)
+
+- Fixed theme of Readme Pro
+- Fixed theme of `Universal Installer Profile Manager`
+- Fixed theme of `SteamArc_Ultimate`
+- Added warning to `Ajay_Registry_Export_Import_Tool.ajau3`
+- Updated version_list of dxvk , vkd3d, wined3d etc
+
+## Changelog (19 June 2026)
 
 - Removed Sync Services apps
 - Updated Hybridizer app to v1.2 and fixed bugs.
