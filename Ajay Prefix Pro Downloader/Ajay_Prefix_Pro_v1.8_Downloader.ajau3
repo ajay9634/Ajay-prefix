@@ -4,7 +4,10 @@
 #include <MsgBoxConstants.au3>
 #include <StaticConstants.au3>
 #include <GuiEdit.au3>
-#include <StaticConstants.au3>
+#include <WinAPI.au3>
+#include <ListViewConstants.au3>
+#include <GuiListView.au3>
+
 ; --- Theme and Style Settings ---
 DllCall("UxTheme.dll", "int", "SetThemeAppProperties", "int", 0)
 
@@ -34,13 +37,11 @@ Local $sSFDownloadBase = "https://sourceforge.net/projects/ajay-prefix/files/v1.
 Local $sGitHubHome = "https://github.com/ajay9634/Ajay-prefix"
 
 ; --- GUI Setup ---
-Local $hGUI = GUICreate("Ajay Prefix Pro v1.8 Downloader", 500, 480)
+Local $hGUI = GUICreate("Ajay Prefix Pro v1.8 Downloader", 500, 520)
 GUISetBkColor($CLR_BG_MAIN)
 
 ; Header
-; Use BitOR to combine horizontal and vertical centering
 Local $idHeader = GUICtrlCreateLabel("AJAY PREFIX PRO v1.8 DOWNLOADER", 0, 0, 500, 50, BitOR($SS_CENTER, $SS_CENTERIMAGE))
-
 GUICtrlSetBkColor($idHeader, $CLR_BG_HEADER)
 GUICtrlSetColor($idHeader, $CLR_TXT_HEADER)
 GUICtrlSetFont($idHeader, 12, 800, 0, "Segoe UI")
@@ -77,8 +78,7 @@ Local $sDescription = "Ajay Prefix Pro is a comprehensive utility suite designed
 "- Scripts Updater: Do not run this if you have not installed Ajay Prefix Pro. It updates all current Start Menu items to the latest version and provides new online Start Menu items not available in the offline version. Size: ~1.11 MB." & @CRLF & _
 "- Offline Installer: This is the full version including the Prefix and all dependencies. Size: ~700 MB." & @CRLF & _
 "- Only Prefix: This is a lite version containing only the Prefix without any dependencies. Size: ~30.72 MB." & @CRLF & _
-"- Shortcut: This is a shortcut for the Ajay Prefix Pro launcher. If Ajay Prefix Pro is installed, you can use this app to launch your games in any PC emulation container. Size: ~1.02 MB."
-
+"- Shortcut: This is a shortcut for the Ajay Prefix Pro launcher. If Ajay Prefix Pro is installed, you can use this app to launch your games in any PC emulation container. Size: ~1.02 MB." & @CRLF & _
                       "============================================"
 
 Local $idInfoBox = GUICtrlCreateEdit($sDescription, 35, 140, 430, 140, BitOR($ES_READONLY, $WS_VSCROLL, $ES_MULTILINE, $ES_AUTOVSCROLL))
@@ -98,19 +98,24 @@ GUICtrlSetFont($idBtnBrowse, 12, 600)
 GUICtrlSetBkColor($idBtnBrowse, $CLR_BG_BTN_SUB)
 
 ; 4. Buttons
-Local $idBtnDownload = GUICtrlCreateButton("Download and Run EXE", 120, 370, 260, 50)
+Local $idBtnDownload = GUICtrlCreateButton("Download and Run EXE", 20, 370, 460, 45)
 GUICtrlSetFont($idBtnDownload, 12, 700)
 GUICtrlSetBkColor($idBtnDownload, $CLR_BG_BTN_MAIN)
 GUICtrlSetColor($idBtnDownload, $CLR_TXT_BTN_MAIN)
 
-Local $idBtnGitHub = GUICtrlCreateButton("Wiki and Documentation)", 120, 430, 260, 35)
-GUICtrlSetFont($idBtnGitHub, 12, 600)
+Local $idBtnStatus = GUICtrlCreateButton("Ajay Prefix Pro Status", 20, 422, 225, 35)
+GUICtrlSetFont($idBtnStatus, 10, 700)
+GUICtrlSetBkColor($idBtnStatus, 0x27AE60)
+GUICtrlSetColor($idBtnStatus, 0xFFFFFF)
+
+Local $idBtnGitHub = GUICtrlCreateButton("Wiki & Documentation", 255, 422, 225, 35)
+GUICtrlSetFont($idBtnGitHub, 10, 600)
 GUICtrlSetBkColor($idBtnGitHub, $CLR_BG_BTN_SUB)
 
 ; 5. Progress
-Local $idProgress = GUICtrlCreateProgress(20, 470, 460, 10)
-Local $idStatus = GUICtrlCreateLabel("Status: Syncing with SourceForge...", 20, 485, 460, 20)
-GUICtrlSetFont($idStatus, 12, 400)
+Local $idProgress = GUICtrlCreateProgress(20, 467, 460, 10)
+Local $idStatus = GUICtrlCreateLabel("Status: Syncing with SourceForge...", 20, 482, 460, 20)
+GUICtrlSetFont($idStatus, 11, 400)
 
 GUISetState(@SW_SHOW, $hGUI)
 
@@ -125,11 +130,280 @@ While 1
             If Not @error Then GUICtrlSetData($idPathInput, $sSelectedDir)
         Case $idBtnGitHub
             ShellExecute($sGitHubHome)
+        Case $idBtnStatus
+            _ShowDiagnosticsWindow()
         Case $idBtnDownload
             _StartDownloadProcess()
     EndSwitch
 WEnd
 
+; --- Path Status Checker ---
+Func _CheckPathStatus($sFolderPath)
+    If $sFolderPath == "" Then Return "N/A"
+    If FileExists($sFolderPath) Then Return "EXISTS"
+    Return "NOT FOUND"
+EndFunc
+
+; --- Repair Single Path with Main Drive Validation ---
+Func _RepairSinglePath($sFolderPath)
+    If $sFolderPath == "" Or $sFolderPath == "N/A" Then Return False
+    
+    If Not FileExists($sFolderPath) Then
+        Local $sDrive = StringLeft($sFolderPath, 3)
+        
+        ; Check if the root drive exists
+        If Not FileExists($sDrive) Then
+            MsgBox($MB_ICONERROR + $MB_TOPMOST, "Missing Main Drive Error", _
+                "ERROR: Cannot repair path because the target main drive is missing or unmounted!" & @CRLF & @CRLF & _
+                "Target Drive: " & $sDrive & @CRLF & _
+                "Target Path: " & $sFolderPath & @CRLF & @CRLF & _
+                "Please mount drive " & $sDrive & " and try again.")
+            Return False
+        EndIf
+        
+        If DirCreate($sFolderPath) = 1 Then
+            Return True
+        Else
+            MsgBox($MB_ICONERROR + $MB_TOPMOST, "Path Creation Error", "Failed to create directory: " & $sFolderPath)
+            Return False
+        EndIf
+    EndIf
+    
+    Return True
+EndFunc
+
+; --- Batch Path Repair Engine (Includes Drive Verification Alert) ---
+Func _RepairAllMissingPaths($aLVHandles)
+    Local $iRepairedCount = 0, $iFailedCount = 0
+    Local $sMissingDrives = ""
+
+    For $hLV In $aLVHandles
+        Local $iCount = _GUICtrlListView_GetItemCount($hLV)
+        For $i = 0 To $iCount - 1
+            Local $sStatus = _GUICtrlListView_GetItemText($hLV, $i, 2)
+            If $sStatus == "NOT FOUND" Then
+                Local $sTargetFolder = _GUICtrlListView_GetItemText($hLV, $i, 1)
+                If $sTargetFolder <> "" And $sTargetFolder <> "N/A" Then
+                    Local $sDrive = StringLeft($sTargetFolder, 3)
+                    
+                    ; Check root drive availability
+                    If Not FileExists($sDrive) Then
+                        If Not StringInStr($sMissingDrives, $sDrive) Then
+                            $sMissingDrives &= $sDrive & " "
+                        EndIf
+                        $iFailedCount += 1
+                    Else
+                        If DirCreate($sTargetFolder) = 1 Then
+                            _GUICtrlListView_SetItemText($hLV, $i, "EXISTS", 2)
+                            $iRepairedCount += 1
+                        Else
+                            $iFailedCount += 1
+                        EndIf
+                    EndIf
+                EndIf
+            EndIf
+        Next
+    Next
+
+    ; Display missing drive MsgBox alert if drives could not be found
+    If $sMissingDrives <> "" Then
+        MsgBox($MB_ICONERROR + $MB_TOPMOST, "Missing Main Drive Error", _
+            "CRITICAL: Repair incomplete because one or more main drives are missing or unmounted!" & @CRLF & @CRLF & _
+            "Unmounted Drive(s): " & $sMissingDrives & @CRLF & @CRLF & _
+            "Please mount the missing drive(s) in your emulator or container to resolve these paths.")
+    EndIf
+
+    MsgBox($MB_ICONINFORMATION + $MB_TOPMOST, "Batch Repair Summary", _
+        "Local Path Repair Results:" & @CRLF & @CRLF & _
+        "Successfully Repaired: " & $iRepairedCount & " path(s)" & @CRLF & _
+        "Failed / Missing Drives: " & $iFailedCount & " path(s)")
+EndFunc
+
+; --- Diagnostics Window Function ---
+Func _ShowDiagnosticsWindow()
+    Local $sWinDir = EnvGet("WINDIR")
+    Local $sApppData = EnvGet("ApppData")
+    Local $sSetupFolder = "", $sSaveDataFolder = ""
+
+    If $sApppData == "1" Or $sApppData == "0" Then
+        MsgBox($MB_ICONWARNING + $MB_TOPMOST, "Restart Warning", "It looks like you haven't restarted this container yet. A restart is necessary to update environment variables.")
+    EndIf
+
+    Local $sCleanerPath = "C:\AJAY_PREFIX_PRO\AJAY_SCRIPTS\Script_Version_Cleaner.ajau3"
+    If FileExists("C:\Program Files (x86)\AutoIt3\AutoIt3.exe") And FileExists($sCleanerPath) Then
+        RunWait('"C:\Program Files (x86)\AutoIt3\AutoIt3.exe" "' & $sCleanerPath & '"')
+    EndIf
+
+    Local $sConfigFile = $sWinDir & "\AjayPrefixConf.txt"
+    If FileExists($sConfigFile) Then
+        $sSetupFolder = IniRead($sConfigFile, "SetupFolder", "SetupFolder", "")
+        If $sSetupFolder == "" Then $sSetupFolder = _ReadConfigValue($sConfigFile, "SetupFolder=")
+        
+        $sSaveDataFolder = IniRead($sConfigFile, "SaveDataFolder", "SaveDataFolder", "")
+        If $sSaveDataFolder == "" Then $sSaveDataFolder = _ReadConfigValue($sConfigFile, "SaveDataFolder=")
+    EndIf
+
+    Local $sHKCU_Shell = "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders"
+    Local $sHKCU_UserShell = "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
+    Local $sHKLM_UserShell = "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
+
+    Local $sCurrentPath = RegRead($sHKCU_Shell, "Personal")
+    Local $sSavedGamesPath = RegRead($sHKCU_UserShell, "{4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4}")
+    Local $sLocalLowPath = RegRead($sHKCU_UserShell, "{A520A1A4-1780-4FF6-BD18-167343C5AF16}")
+    Local $sCommonAppData = RegRead($sHKLM_UserShell, "Common AppData")
+
+    Local $sExpectedData = $sSaveDataFolder & "\Ajay_prefix\save_data\users\Ajay\Documents"
+
+    Local $bRegistryOk = ($sCurrentPath == $sExpectedData)
+    Local $bFolderExists = FileExists($sExpectedData)
+    Local $sDriveRoot = StringLeft($sExpectedData, 3)
+
+    ; Prompt Status Message Box
+    If Not $bRegistryOk Then
+        MsgBox($MB_ICONWARNING + $MB_TOPMOST, "Status", "Error: User Registry does not match expected path, Reinstall Ajay Prefix Pro")
+    ElseIf Not $bFolderExists Then
+        Local $iRepPrompt = MsgBox($MB_YESNO + $MB_ICONWARNING + $MB_TOPMOST, "Critical Path Missing", "CRITICAL: Save location - " & $sExpectedData & " - was not found!" & @CRLF & @CRLF & "Would you like to automatically create and repair this path now?")
+        If $iRepPrompt = $IDYES Then
+            _RepairSinglePath($sExpectedData)
+            $bFolderExists = FileExists($sExpectedData)
+        EndIf
+    Else
+        MsgBox($MB_ICONINFORMATION + $MB_TOPMOST, "Status", "Congratulations, Core Registries and Local Save Drive Paths are OK. Recheck status after Restart.")
+    EndIf
+
+    Local $hDiagGUI = GUICreate("Ajay Prefix Pro - Path Diagnostics", 780, 550, -1, -1, BitOR($WS_MINIMIZEBOX, $WS_CAPTION, $WS_POPUP, $WS_SYSMENU), $WS_EX_TOPMOST, $hGUI)
+    GUISetBkColor(0x0F172A)
+
+    Local $hHeaderBg = GUICtrlCreateLabel("", 0, 0, 780, 55)
+    GUICtrlSetBkColor($hHeaderBg, 0x1E293B)
+
+    Local $hTitle = GUICtrlCreateLabel("AJAY PREFIX PRO DIAGNOSTICS", 20, 14, 400, 26)
+    GUICtrlSetFont($hTitle, 12, 800, 0, "Segoe UI")
+    GUICtrlSetColor($hTitle, 0x38BDF8)
+    GUICtrlSetBkColor($hTitle, -1)
+
+    ; Combined Status Banner
+    Local $sStatusText = "● STATUS: UNKNOWN"
+    Local $iStatusColor = 0xF87171
+
+    If Not $bRegistryOk Then
+        $sStatusText = "● REGISTRY: MISMATCH"
+        $iStatusColor = 0xF87171
+    ElseIf Not $bFolderExists Then
+        $sStatusText = "● CRITICAL: DRIVE MISSING"
+        $iStatusColor = 0xF87171
+    Else
+        $sStatusText = "● CORE & DRIVE: OK"
+        $iStatusColor = 0x4ADE80
+    EndIf
+
+    Local $hLblStatus = GUICtrlCreateLabel($sStatusText, 500, 16, 250, 24, 1)
+    GUICtrlSetFont($hLblStatus, 9, 800, 0, "Segoe UI")
+    GUICtrlSetColor($hLblStatus, $iStatusColor)
+    GUICtrlSetBkColor($hLblStatus, -1)
+
+    Local $hTabBtn1 = GUICtrlCreateButton("Core & Advanced", 20, 65, 150, 32)
+    Local $hTabBtn2 = GUICtrlCreateButton("Environment Paths", 175, 65, 150, 32)
+    Local $hTabBtn3 = GUICtrlCreateButton("Shell Registry Folders", 330, 65, 160, 32)
+
+    _StyleTabButton($hTabBtn1, True)
+    _StyleTabButton($hTabBtn2, False)
+    _StyleTabButton($hTabBtn3, False)
+
+    ; VIEW 1: Core & Advanced
+    Local $hLV_Core = GUICtrlCreateListView("Path Description|Value Path|Local Drive Status", 20, 102, 740, 385, BitOR($LVS_REPORT, $LVS_SINGLESEL))
+    _ApplyListViewTheme($hLV_Core)
+    _AddSectionHeader3Col($hLV_Core, ">>> CORE PREFIX PATHS <<<")
+    _AddLVItem3Col($hLV_Core, "Current Documents Path", $sCurrentPath, _CheckPathStatus($sCurrentPath))
+    _AddLVItem3Col($hLV_Core, "Expected Documents Path", $sExpectedData, _CheckPathStatus($sExpectedData))
+    _AddLVItem3Col($hLV_Core, "Current Saved Games Path", $sSavedGamesPath, _CheckPathStatus($sSavedGamesPath))
+    _AddLVItem3Col($hLV_Core, "Current LocalLow Path", $sLocalLowPath, _CheckPathStatus($sLocalLowPath))
+    _AddBlankRow3Col($hLV_Core)
+    _AddSectionHeader3Col($hLV_Core, ">>> ADVANCED SYSTEM PATHS <<<")
+    _AddLVItem3Col($hLV_Core, "Username", EnvGet("USERNAME"), "N/A")
+    _AddLVItem3Col($hLV_Core, "UserProfile", EnvGet("USERPROFILE"), _CheckPathStatus(EnvGet("USERPROFILE")))
+    _AddLVItem3Col($hLV_Core, "Public Folder", EnvGet("PUBLIC"), _CheckPathStatus(EnvGet("PUBLIC")))
+    _AddLVItem3Col($hLV_Core, "APPDATA", EnvGet("APPDATA"), _CheckPathStatus(EnvGet("APPDATA")))
+    _AddLVItem3Col($hLV_Core, "LOCALAPPDATA", EnvGet("LOCALAPPDATA"), _CheckPathStatus(EnvGet("LOCALAPPDATA")))
+    _AddLVItem3Col($hLV_Core, "Common AppData", $sCommonAppData, _CheckPathStatus($sCommonAppData))
+    _SetColumnWidths3Col($hLV_Core, 240, 360, 130)
+
+    ; VIEW 2: Environment
+    Local $hLV_Env = GUICtrlCreateListView("Variable Name|Mapped System Path|Local Drive Status", 20, 102, 740, 385, BitOR($LVS_REPORT, $LVS_SINGLESEL))
+    _ApplyListViewTheme($hLV_Env)
+    GUICtrlSetState($hLV_Env, $GUI_HIDE)
+    _AddSectionHeader3Col($hLV_Env, ">>> USER ENVIRONMENT PATHS <<<")
+    _AddLVItem3Col($hLV_Env, "%APPDATA%", EnvGet("APPDATA"), _CheckPathStatus(EnvGet("APPDATA")))
+    _AddLVItem3Col($hLV_Env, "%LOCALAPPDATA%", EnvGet("LOCALAPPDATA"), _CheckPathStatus(EnvGet("LOCALAPPDATA")))
+    _AddLVItem3Col($hLV_Env, "%USERPROFILE%", EnvGet("USERPROFILE"), _CheckPathStatus(EnvGet("USERPROFILE")))
+    _AddLVItem3Col($hLV_Env, "%HOMEPATH%", EnvGet("HOMEPATH"), _CheckPathStatus(EnvGet("HOMEDRIVE") & EnvGet("HOMEPATH")))
+    _AddLVItem3Col($hLV_Env, "%HOMEDRIVE%", EnvGet("HOMEDRIVE"), _CheckPathStatus(EnvGet("HOMEDRIVE") & "\"))
+    _AddLVItem3Col($hLV_Env, "%TEMP%", EnvGet("TEMP"), _CheckPathStatus(EnvGet("TEMP")))
+    _AddLVItem3Col($hLV_Env, "%TMP%", EnvGet("TMP"), _CheckPathStatus(EnvGet("TMP")))
+    _AddLVItem3Col($hLV_Env, "Desktop", EnvGet("USERPROFILE") & "\Desktop", _CheckPathStatus(EnvGet("USERPROFILE") & "\Desktop"))
+    _AddLVItem3Col($hLV_Env, "Documents", EnvGet("USERPROFILE") & "\Documents", _CheckPathStatus(EnvGet("USERPROFILE") & "\Documents"))
+    _AddLVItem3Col($hLV_Env, "Downloads", EnvGet("USERPROFILE") & "\Downloads", _CheckPathStatus(EnvGet("USERPROFILE") & "\Downloads"))
+    _AddBlankRow3Col($hLV_Env)
+    _AddSectionHeader3Col($hLV_Env, ">>> SYSTEM WIDE PATHS <<<")
+    _AddLVItem3Col($hLV_Env, "%WINDIR%", EnvGet("WINDIR"), _CheckPathStatus(EnvGet("WINDIR")))
+    _AddLVItem3Col($hLV_Env, "%SYSTEMROOT%", EnvGet("SYSTEMROOT"), _CheckPathStatus(EnvGet("SYSTEMROOT")))
+    _AddLVItem3Col($hLV_Env, "%PROGRAMFILES%", EnvGet("PROGRAMFILES"), _CheckPathStatus(EnvGet("PROGRAMFILES")))
+    _AddLVItem3Col($hLV_Env, "%PROGRAMFILES(X86)%", EnvGet("PROGRAMFILES(X86)"), _CheckPathStatus(EnvGet("PROGRAMFILES(X86)")))
+    _AddLVItem3Col($hLV_Env, "%COMMONPROGRAMFILES%", EnvGet("COMMONPROGRAMFILES"), _CheckPathStatus(EnvGet("COMMONPROGRAMFILES")))
+    _AddLVItem3Col($hLV_Env, "%SYSTEMDRIVE%", EnvGet("SYSTEMDRIVE"), _CheckPathStatus(EnvGet("SYSTEMDRIVE") & "\"))
+    _AddLVItem3Col($hLV_Env, "%ALLUSERSPROFILE%", EnvGet("ALLUSERSPROFILE"), _CheckPathStatus(EnvGet("ALLUSERSPROFILE")))
+    _SetColumnWidths3Col($hLV_Env, 240, 360, 130)
+
+    ; VIEW 3: Registry Shell Folders
+    Local $hLV_Reg = GUICtrlCreateListView("Registry Key / Category|Value Data Path|Local Drive Status", 20, 102, 740, 385, BitOR($LVS_REPORT, $LVS_SINGLESEL))
+    _ApplyListViewTheme($hLV_Reg)
+    GUICtrlSetState($hLV_Reg, $GUI_HIDE)
+    _AddSectionHeader3Col($hLV_Reg, ">>> HKCU USER SHELL FOLDERS <<<")
+    _PopulateRegistryLV3Col($hLV_Reg, "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders")
+    _AddBlankRow3Col($hLV_Reg)
+    _AddSectionHeader3Col($hLV_Reg, ">>> HKLM SYSTEM SHELL FOLDERS <<<")
+    _PopulateRegistryLV3Col($hLV_Reg, "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders")
+    _AddBlankRow3Col($hLV_Reg)
+    _AddSectionHeader3Col($hLV_Reg, ">>> HKLM WOW6432NODE SHELL FOLDERS <<<")
+    _PopulateRegistryLV3Col($hLV_Reg, "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders")
+    _SetColumnWidths3Col($hLV_Reg, 250, 350, 130)
+
+    ; Array of ListViews for Batch Repair Function
+    Local $aLVList[3] = [$hLV_Core, $hLV_Env, $hLV_Reg]
+
+    ; Manual Action Controls
+    Local $hBtnRepairAll = GUICtrlCreateButton("Repair All Missing Local Paths", 20, 500, 220, 34)
+    GUICtrlSetFont($hBtnRepairAll, 9, 700, 0, "Segoe UI")
+    GUICtrlSetBkColor($hBtnRepairAll, 0x0284C7)
+    GUICtrlSetColor($hBtnRepairAll, 0xFFFFFF)
+
+    Local $hBtnClose = GUICtrlCreateButton("Close Status", 620, 500, 140, 34)
+    GUICtrlSetFont($hBtnClose, 9, 700, 0, "Segoe UI")
+    GUICtrlSetBkColor($hBtnClose, 0x2563EB)
+    GUICtrlSetColor($hBtnClose, 0xFFFFFF)
+
+    GUISetState(@SW_SHOW, $hDiagGUI)
+
+    While 1
+        Local $nDiagMsg = GUIGetMsg()
+        Switch $nDiagMsg
+            Case $GUI_EVENT_CLOSE, $hBtnClose
+                ExitLoop
+            Case $hBtnRepairAll
+                _RepairAllMissingPaths($aLVList)
+            Case $hTabBtn1
+                _SwitchTab($hLV_Core, $hLV_Env, $hLV_Reg, $hTabBtn1, $hTabBtn2, $hTabBtn3)
+            Case $hTabBtn2
+                _SwitchTab($hLV_Env, $hLV_Core, $hLV_Reg, $hTabBtn2, $hTabBtn1, $hTabBtn3)
+            Case $hTabBtn3
+                _SwitchTab($hLV_Reg, $hLV_Core, $hLV_Env, $hTabBtn3, $hTabBtn1, $hTabBtn2)
+        EndSwitch
+    WEnd
+
+    GUIDelete($hDiagGUI)
+EndFunc
+
+; --- Downloader Core Functions ---
 Func _FetchSFPackages()
     GUICtrlSetData($idStatus, "Status: Fetching package list...")
     Local $bData = InetRead($sSFURL, 1)
@@ -190,10 +464,9 @@ Func _StartDownloadProcess()
 
     Local $iConfirm = MsgBox($MB_YESNO + $MB_ICONINFORMATION, "Pre-Installation Advisory", _
         "Please read the information about Ajay Prefix Pro before proceeding with the download." & @CRLF & @CRLF & _
-"Would you like to begin downloading " & $sPackage & "?")
+        "Would you like to begin downloading " & $sPackage & "?")
     If $iConfirm <> 6 Then Return
 
-    
     If FileExists($sTempPath) Then FileDelete($sTempPath)
     
     Local $sUrl = $sSFDownloadBase & $sPackage & "/download"
@@ -221,14 +494,48 @@ Func _StartDownloadProcess()
 EndFunc
 
 Func _CustomChoicePopup($sFileName)
-    Local $hPopup = GUICreate("File Already Exists", 320, 150, -1, -1, $DS_MODALFRAME, $WS_EX_TOPMOST, $hGUI)
-    GUISetBkColor($CLR_BG_MAIN, $hPopup)
-    Local $idLabel = GUICtrlCreateLabel("Already downloaded:" & @CRLF & $sFileName, 20, 20, 280, 50)
-    GUICtrlSetFont($idLabel, 12, 400)
+    Local $sHeader = "Already downloaded:"
+    Local $sText = $sHeader & @CRLF & $sFileName
+
+    Local $iLine1Len = StringLen($sHeader)
+    Local $iLine2Len = StringLen($sFileName)
+    Local $iMaxChars = ($iLine1Len > $iLine2Len) ? $iLine1Len : $iLine2Len
     
-    Local $idRun = GUICtrlCreateButton("Run", 20, 90, 80, 40)
-    Local $idDelete = GUICtrlCreateButton("Delete", 120, 90, 80, 40)
-    Local $idCancel = GUICtrlCreateButton("Cancel", 220, 90, 80, 40)
+    Local $iMeasuredWidth = Int($iMaxChars * 9.5) + 40
+    Local $iMinGuiWidth = 310
+    Local $iGuiWidth = ($iMeasuredWidth > $iMinGuiWidth) ? $iMeasuredWidth : $iMinGuiWidth
+    
+    Local $iLabelWidth = $iGuiWidth - 40
+    Local $iGuiHeight = 150
+    
+    Local $hPopup = GUICreate("File Already Exists", $iGuiWidth, $iGuiHeight, -1, -1, $DS_MODALFRAME, $WS_EX_TOPMOST, $hGUI)
+    GUISetBkColor($CLR_BG_MAIN, $hPopup)
+    
+    Local $idLabel = GUICtrlCreateLabel($sText, 20, 15, $iLabelWidth, 55)
+    GUICtrlSetFont($idLabel, 11, 400, 0, "Segoe UI")
+    GUICtrlSetColor($idLabel, $CLR_TXT_GENERAL)
+    GUICtrlSetBkColor($idLabel, $CLR_BG_MAIN)
+    
+    Local $iBtnW = 80
+    Local $iBtnGap = 15
+    Local $iTotalBtnW = ($iBtnW * 3) + ($iBtnGap * 2)
+    Local $iStartXP = Int(($iGuiWidth - $iTotalBtnW) / 2)
+    Local $iBtnY = 90
+    
+    Local $idRun = GUICtrlCreateButton("Run", $iStartXP, $iBtnY, $iBtnW, 35)
+    GUICtrlSetFont($idRun, 11, 600, 0, "Segoe UI")
+    GUICtrlSetBkColor($idRun, $CLR_BG_BTN_MAIN)
+    GUICtrlSetColor($idRun, $CLR_TXT_BTN_MAIN)
+
+    Local $idDelete = GUICtrlCreateButton("Delete", $iStartXP + $iBtnW + $iBtnGap, $iBtnY, $iBtnW, 35)
+    GUICtrlSetFont($idDelete, 11, 600, 0, "Segoe UI")
+    GUICtrlSetBkColor($idDelete, $CLR_BG_BTN_SUB)
+    GUICtrlSetColor($idDelete, $CLR_TXT_BTN_SUB)
+
+    Local $idCancel = GUICtrlCreateButton("Cancel", $iStartXP + ($iBtnW + $iBtnGap) * 2, $iBtnY, $iBtnW, 35)
+    GUICtrlSetFont($idCancel, 11, 600, 0, "Segoe UI")
+    GUICtrlSetBkColor($idCancel, $CLR_BG_BTN_SUB)
+    GUICtrlSetColor($idCancel, $CLR_TXT_BTN_SUB)
     
     GUISetState(@SW_SHOW, $hPopup)
     Local $sResult = "Cancel"
@@ -249,5 +556,92 @@ Func _CustomChoicePopup($sFileName)
     WEnd
     
     GUIDelete($hPopup)
+    Return $sResult
+EndFunc
+
+; --- ListView & UI Helpers (3 Columns) ---
+Func _SetColumnWidths3Col($hLV, $iCol1Width, $iCol2Width, $iCol3Width)
+    _GUICtrlListView_SetColumnWidth($hLV, 0, $iCol1Width)
+    _GUICtrlListView_SetColumnWidth($hLV, 1, $iCol2Width)
+    _GUICtrlListView_SetColumnWidth($hLV, 2, $iCol3Width)
+EndFunc
+
+Func _AddSectionHeader3Col($hListView, $sHeaderTitle)
+    GUICtrlCreateListViewItem($sHeaderTitle & "|=========================================================|=======", $hListView)
+EndFunc
+
+Func _AddBlankRow3Col($hListView)
+    GUICtrlCreateListViewItem(" | | ", $hListView)
+EndFunc
+
+Func _StyleTabButton($hBtn, $bActive)
+    GUICtrlSetFont($hBtn, 9, 700, 0, "Segoe UI")
+    If $bActive Then
+        GUICtrlSetBkColor($hBtn, 0x2563EB)
+        GUICtrlSetColor($hBtn, 0xFFFFFF)
+    Else
+        GUICtrlSetBkColor($hBtn, 0x1E293B)
+        GUICtrlSetColor($hBtn, 0x94A3B8)
+    EndIf
+EndFunc
+
+Func _SwitchTab($hShowLV, $hHideLV1, $hHideLV2, $hActiveBtn, $hInactBtn1, $hInactBtn2)
+    GUICtrlSetState($hHideLV1, $GUI_HIDE)
+    GUICtrlSetState($hHideLV2, $GUI_HIDE)
+    GUICtrlSetState($hShowLV, $GUI_SHOW)
+    
+    _StyleTabButton($hActiveBtn, True)
+    _StyleTabButton($hInactBtn1, False)
+    _StyleTabButton($hInactBtn2, False)
+EndFunc
+
+Func _ApplyListViewTheme($hLV)
+    GUICtrlSetBkColor($hLV, 0x1E293B)
+    GUICtrlSetColor($hLV, 0xF8FAFC)
+    GUICtrlSetFont($hLV, 9, 600, 0, "Segoe UI")
+EndFunc
+
+Func _AddLVItem3Col($hListView, $sCol1, $sCol2, $sCol3)
+    GUICtrlCreateListViewItem($sCol1 & "|" & $sCol2 & "|" & $sCol3, $hListView)
+EndFunc
+
+Func _PopulateRegistryLV3Col($hListView, $sRegKey)
+    Local $i = 1, $sValName, $sValData
+    While 1
+        $sValName = RegEnumVal($sRegKey, $i)
+        If @error Then ExitLoop
+        
+        If StringInStr($sValName, "WineVistaPaths") Or StringInStr($sValName, "_Wine") Then
+            $i += 1
+            ContinueLoop
+        EndIf
+        
+        $sValData = RegRead($sRegKey, $sValName)
+        Local $sExistsStatus = "N/A"
+        
+        If StringLen($sValData) > 2 And (StringInStr($sValData, ":\") Or StringLeft($sValData, 1) == "\") Then
+            $sExistsStatus = _CheckPathStatus($sValData)
+        EndIf
+
+        _AddLVItem3Col($hListView, $sValName, $sValData, $sExistsStatus)
+        $i += 1
+    WEnd
+EndFunc
+
+Func _ReadConfigValue($sFilePath, $sSearchPattern)
+    Local $hFile = FileOpen($sFilePath, 0)
+    If $hFile = -1 Then Return ""
+    
+    Local $sLine = "", $sResult = ""
+    While 1
+        $sLine = FileReadLine($hFile)
+        If @error Then ExitLoop
+        If StringInStr($sLine, $sSearchPattern) Then
+            Local $aSplit = StringSplit($sLine, "=")
+            If $aSplit[0] >= 2 Then $sResult = StringStripWS($aSplit[2], 3)
+            ExitLoop
+        EndIf
+    WEnd
+    FileClose($hFile)
     Return $sResult
 EndFunc
