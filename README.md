@@ -18,7 +18,7 @@
 **Ajay Prefix Pro** is a comprehensive utility suite designed for Wine-based environments. It is fully compatible with mobile PC emulators such as Mobox WOW64, Winlator, Dark OS, MiceWine, Hangover, and GameHub (GameFusion). It also provides robust support for native Linux Wine environments (Bottles, Lutris, etc.).
 
 ## 📚 Wiki and FAQ
-Consult our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for detailed configuration guides, troubleshooting, and advanced tips.
+Read our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for detailed configuration guides, troubleshooting, and advanced tips.
 
 ---
 
@@ -37,8 +37,8 @@ Consult our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for det
 
 > **Core Functionality:** Game save redirection (`\Ajay_prefix\save_data`) + Start Menu customization + Universal game fixes.
 > 
-> **Redirected Core Folders:** `Documents`, and `Saved Games` and `LocalLow`.
-> **Redirected Advanced Folders:** ,`AppData` , `Common AppData` and `Profile`.
+> **Redirected Core Paths:** `Documents`, and `Saved Games` and `LocalLow`.
+> **Redirected Advanced Paths:** ,`AppData` , `Common AppData` and `Profile`.
 
 ---
 
@@ -80,6 +80,36 @@ First, check the Documents location by selecting **"Check Ajay Prefix Pro Status
 If Common AppData is redirected, transfer common save data and configurations from `C:\ProgramData` to `save_data\users\ProgramData`.
 
 If the game still fails to detect your save data, it may be using the hardcoded public folder and Documents folder; in this case, apply the **Hybridizer app setup**. This advanced setup redirects hardcoded `%userprofile%` and `%public%` paths to `save_data\users2\`, which is highly effective if supported. [Read More](https://github.com/ajay9634/Ajay-prefix/wiki/(4)-About-%22Ajay-Profile-Hybridizer%22)
+
+---
+### 📤 How to Sync `save_data` Using `Syncthing`
+
+First, add your device in Syncthing by following the instructions on the official Syncthing website.
+
+#### Linux / Wine Setup (Easiest Method)
+* **If you installed Ajay Prefix on Wine in Linux:** Simply select the main root folder `"Ajay_prefix\save_data"` in Syncthing. No additional subfolders need to be added.
+
+---
+
+#### Windows Setup
+If you are syncing to a Windows host, there are two ways to configure your folders:
+1. **Option 1:** Add each individual game folder from `AppData`, `Documents`, etc.
+2. **Option 2:** Add the entire root folder of `AppData`, `Documents`, etc.
+
+**Folder Mapping:**
+Sync these source folders or subfolders to their respective target paths:
+
+* `"Ajay_prefix\save_data\users\Ajay\AppData"` ➡️ `"C:\Users\<Username>\AppData"`
+* `"Ajay_prefix\save_data\users\Ajay\Documents"` ➡️ `"C:\Users\<Username>\Documents"`
+* `"Ajay_prefix\save_data\users\Ajay\Saved Games"` ➡️ `"C:\Users\<Username>\Saved Games"`
+* `"Ajay_prefix\save_data\users\ProgramData"` ➡️ `"C:\ProgramData"`
+* `"Ajay_prefix\save_data\users\Public\Documents"` ➡️ `"C:\Users\Public\Documents"`
+
+> **Important Note:** Windows PCs contain additional system files and extra data in directories like `AppData` and `ProgramData`. In these cases, you should sync specific game save folders rather than the entire main directory.
+
+#### Additional Save Directories
+* If you find extra save data in `"Ajay_prefix\save_data\users2\xuser or steamuser\AppData"`, sync those specific game save folders to `"C:\Users\<Username>\AppData"`.
+* The same applies if you find save data in `"Ajay_prefix\save_data\users2\Public"`.
 
 ---
 
