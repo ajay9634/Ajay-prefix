@@ -1,0 +1,594 @@
+#RequireAdmin ; Forces Administrator elevation to modify HKLM and container settings
+#NoTrayIcon
+#include <GUIConstantsEx.au3>
+#include <WindowsConstants.au3>
+#include <EditConstants.au3>
+#include <WinAPISys.au3>
+#include <FileConstants.au3>
+
+; --- SELF-REPLICATION CHECK (Run from %Temp% if executed elsewhere) ---
+Local $sCurrentScriptPath = @ScriptFullPath
+Local $sScriptFileName = @ScriptName
+Local $sTempDestination = @TempDir & "\" & $sScriptFileName
+
+If StringLower(@ScriptDir) <> StringLower(@TempDir) Then
+    If FileCopy($sCurrentScriptPath, $sTempDestination, $FC_OVERWRITE) Then
+        Run('"' & $sTempDestination & '"')
+        Exit
+    EndIf
+EndIf
+
+; --- 1. CONFIGURATION & CONSTANTS ---
+Local $sMainDir = "C:\AJAY_PREFIX_PRO"
+Local $sMainSub = "C:\AJAY_PREFIX_PRO\Ajay_Scripts"
+Local $sMainSub2 = "C:\AJAY_PREFIX_PRO\Ajay_Start_Menu_Pro"
+Local $sWinDir = @WindowsDir
+Local $sProgramData = @AppDataCommonDir
+Local $sBackupDir = "C:\AJAY_PREFIX_PRO\Backup\"
+
+; Registry Key Strings for Silent C-Drive Restoration
+Local $regProfileList = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList"
+Local $regShellCU = "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
+Local $regShellFolders = "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders"
+
+; Media & Cache Paths
+Local $fDownloads     = "C:\Users\" & @UserName & "\Downloads"
+Local $fMusic         = "C:\Users\" & @UserName & "\Music"
+Local $fPictures      = "C:\Users\" & @UserName & "\Pictures"
+Local $fVideos        = "C:\Users\" & @UserName & "\Videos"
+Local $fHistory       = "C:\Users\" & @UserName & "\AppData\Local\Microsoft\Windows\History"
+Local $fNetCache      = "C:\Users\" & @UserName & "\AppData\Local\Microsoft\Windows\INetCache"
+Local $fNetCookies    = "C:\Users\" & @UserName & "\AppData\Local\Microsoft\Windows\INetCookies"
+
+Local $cDefaultProfiles = "C:\Users"
+Local $cDefaultPublic   = "C:\Users\Public"
+
+; LOCKED TO C: DRIVE (Global & User)
+Local $cFixedUserDesktop   = "C:\Users\" & @UserName & "\Desktop"
+Local $cFixedPublicDesktop = "C:\Users\Public\Desktop"
+Local $cFixedStartMenu     = "C:\Users\" & @UserName & "\AppData\Roaming\Microsoft\Windows\Start Menu"
+Local $cFixedPrograms      = "C:\Users\" & @UserName & "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs"
+Local $cFixedStartUp       = "C:\Users\" & @UserName & "\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\StartUp"
+Local $cFixedPubStartMenu  = "C:\ProgramData\Microsoft\Windows\Start Menu"
+Local $cFixedPubPrograms   = "C:\ProgramData\Microsoft\Windows\Start Menu\Programs"
+
+; FORCE LOCK TO C: DRIVE FOR SYSTEM-WIDE MEDIA
+Local $cFixedPubMusic      = "C:\Users\Public\Music"
+Local $cFixedPubPictures   = "C:\Users\Public\Pictures"
+Local $cFixedPubVideos     = "C:\Users\Public\Videos"
+
+Dim $aBackupFiles[6] = [ _
+    "HKCU_ShellFolders.reg", _
+    "HKCU_UserShellFolders.reg", _
+    "HKLM_ShellFolders.reg", _
+    "HKLM_UserShellFolders.reg", _
+    "HKLM_WOW6432Node_ShellFolders.reg", _
+    "HKLM_WOW6432Node_UserShellFolders.reg" _
+]
+
+; Global references for our visible log box and control buttons
+Global $hLogEdit, $btnExport, $btnClose
+
+; --- 2. CONFIRMATION DIALOG ---
+Local $iConfirm = MsgBox(4 + 32 + 262144, "Ajay Prefix Pro Uninstaller", _
+    "Please ensure AutoIt and 7-Zip are closed before proceeding." & @CRLF & @CRLF & _
+    "Are you sure you want to uninstall Ajay Prefix Pro and restore system settings?")
+If $iConfirm <> 6 Then Exit 
+
+; Terminate target processes to prevent file locks
+ProcessClose("autoit3.exe")
+ProcessClose("autoit3_x64.exe")
+ProcessClose("7z.exe")
+
+; --- CREATE VISIBLE LOG WINDOW WITH EXPORT & CLOSE BUTTONS ---
+Local $hGui = GUICreate("Ajay Uninstaller - Execution Log", 600, 450, -1, -1, BitOR($WS_OVERLAPPEDWINDOW, $WS_VISIBLE))
+$hLogEdit = GUICtrlCreateEdit("", 10, 10, 580, 345, BitOR($ES_MULTILINE, $ES_AUTOVSCROLL, $ES_READONLY, $WS_VSCROLL))
+GUICtrlSetFont($hLogEdit, 9, 400, 0, "Courier New") 
+
+$btnExport = GUICtrlCreateButton("Export Logs", 10, 365, 140, 35)
+$btnClose = GUICtrlCreateButton("Close", 450, 365, 140, 35)
+GUICtrlSetState($btnClose, $GUI_DISABLE) ; Disabled until uninstallation finishes
+
+GUISetState(@SW_SHOW)
+_Log("--> [LOG] Initialization successful. Admin privileges secured.")
+
+; --- 3. ENVIRONMENT & CONTAINER PROFILE CHECK ---
+Local $sProfileListKey = "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList"
+Local $bProfileActive = True
+
+While $bProfileActive
+    Local $sProfilesDir = RegRead($sProfileListKey, "ProfilesDirectory")
+    Local $sPublicDir = RegRead($sProfileListKey, "Public")
+
+    If StringInStr($sProfilesDir, "Ajay_prefix") Or StringInStr($sPublicDir, "Ajay_prefix") Then
+        _Log("--> [LOG] Active profile locks found matching registry signatures.")
+        _Log("--> [LOG] Executing internal silent complete C-Drive registry restoration...")
+        
+        ExecuteSilentRestoreWithStrictSequence($cDefaultProfiles, $cDefaultPublic)
+        
+        Sleep(2000)
+    Else
+        $bProfileActive = False 
+    EndIf
+WEnd
+
+; --- HELPER FUNCTION FOR STRICT MULTI-KEY REGISTRY VERIFICATION ---
+Func _VerifyRestoredRegistry()
+    Local $sPersonal = RegRead("HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders", "Personal")
+    Local $sCommonAppData = RegRead("HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders", "Common AppData")
+    Local $sWowCommonAppData = RegRead("HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders", "Common AppData")
+    
+    If StringInStr($sPersonal, "Ajay_prefix") Or $sPersonal = "" Or _
+       StringInStr($sCommonAppData, "Ajay_prefix") Or $sCommonAppData = "" Or _
+       StringInStr($sWowCommonAppData, "Ajay_prefix") Or $sWowCommonAppData = "" Then
+        Return False
+    EndIf
+    Return True
+EndFunc
+
+; --- 4. IMPORT REGISTRY BACKUPS & RESTORATION (Controlled via 3+2-second-sleep sequence) ---
+Local $bImportSuccess = True
+Local $bBackupCorrupted = False
+
+For $i = 0 To UBound($aBackupFiles) - 1
+    If Not FileExists($sBackupDir & $aBackupFiles[$i]) Then 
+        _Log("--> [WARNING] Missing backup file asset: " & $aBackupFiles[$i])
+        $bImportSuccess = False
+    EndIf
+Next
+
+If $bImportSuccess Then
+    Local $bBackupRestoredOK = False
+    
+    For $bCycle = 1 To 2
+        _Log("--> [LOG] Registry Backup Restoration Phase " & $bCycle & "...")
+        
+        For $iLoopCount = 1 To 3
+            $bBackupCorrupted = False
+
+            For $i = 0 To UBound($aBackupFiles) - 1
+                Local $hFile = FileOpen($sBackupDir & $aBackupFiles[$i], 0)
+                If $hFile = -1 Then
+                    $bImportSuccess = False
+                    ContinueLoop
+                EndIf
+                
+                Local $sCurrentKey = ""
+                While 1
+                    Local $sLine = FileReadLine($hFile)
+                    If @error = -1 Then ExitLoop
+                    
+                    $sLine = StringStripWS($sLine, 3)
+                    If $sLine = "" Or StringLeft($sLine, 1) = ";" Or StringLeft($sLine, 2) = "Win" Then ContinueLoop
+                    
+                    If StringLeft($sLine, 1) = "[" And StringRight($sLine, 1) = "]" Then
+                        $sCurrentKey = StringMid($sLine, 2, StringLen($sLine) - 2)
+                        ContinueLoop
+                    EndIf
+                    
+                    If $sCurrentKey <> "" And StringInStr($sLine, "=") Then
+                        Local $aSplit = StringSplit($sLine, "=", 2)
+                        If UBound($aSplit) < 2 Then ContinueLoop 
+                        
+                        Local $sValueName = StringReplace($aSplit[0], '"', '')
+                        Local $sValueData = StringReplace($aSplit[1], '"', '')
+                        $sValueData = StringReplace($sValueData, '\\', '\') 
+                        
+                        If StringInStr($sValueData, "Ajay_prefix") Then
+                            $bBackupCorrupted = True
+                            $bImportSuccess = False
+                            FileClose($hFile)
+                            ExitLoop 2 
+                        EndIf
+                        
+                        Local $sType = "REG_SZ"
+                        If StringInStr($sValueData, "%") Then $sType = "REG_EXPAND_SZ"
+                        
+                        RegWrite($sCurrentKey, $sValueName, $sType, $sValueData)
+                    EndIf
+                WEnd
+                FileClose($hFile)
+            Next
+
+            ExecuteSilentRestoreWithStrictSequence($cDefaultProfiles, $cDefaultPublic)
+            
+            If $iLoopCount < 3 Then Sleep(2000)
+        Next
+
+        If Not $bBackupCorrupted And _VerifyRestoredRegistry() Then
+            $bBackupRestoredOK = True
+            _Log("--> [SUCCESS] Backup registry restoration verified successfully.")
+            ExitLoop
+        Else
+            _Log("--> [WARNING] Registry verification unpassed after sequence. Retrying sequence...")
+            Sleep(2000)
+        EndIf
+    Next
+
+    If Not $bBackupRestoredOK Then
+        _Log("--> [ALERT] Backup restoration failed after full sequence. Switching to fallback force reset method...")
+        $bImportSuccess = False
+    EndIf
+EndIf
+
+; --- 5. FALLBACK METHOD (Strict Sequence) ---
+If Not $bImportSuccess Or $bBackupCorrupted Or Not _VerifyRestoredRegistry() Then
+    Local $bFallbackOK = False
+    
+    For $bCycle = 1 To 2
+        _Log("--> [LOG] Fallback Force Reset Phase " & $bCycle & "...")
+        
+        For $iFallbackLoop = 1 To 3
+            _ForceResetDefaultsWithStrictSequence()
+            ExecuteSilentRestoreWithStrictSequence($cDefaultProfiles, $cDefaultPublic)
+            If $iFallbackLoop < 3 Then Sleep(2000)
+        Next
+
+        If _VerifyRestoredRegistry() Then
+            $bFallbackOK = True
+            _Log("--> [SUCCESS] Fallback force reset verified and succeeded.")
+            ExitLoop
+        Else
+            _Log("--> [WARNING] Fallback verification unpassed. Retrying sequence...")
+            Sleep(2000)
+        EndIf
+    Next
+
+    If Not $bFallbackOK Then
+        MsgBox(16, "Critical Error", "Error: Failed to restore default system registry settings after full attempts.")
+        _Log("--> [CRITICAL ERROR] Registry write validation failed completely.")
+    EndIf
+EndIf
+
+; --- 6. REGISTRY CLEANUP (App Keys with Strict Sequence) ---
+_Log("--> [CLEANUP] Deleting setup specific application keys...")
+Dim $aKeysToDelete[19] = [ _
+    "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Launcher.exe", _
+    "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Backup.exe", _
+    "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\Launcher2.exe", _
+    "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\AjayStartMenuPro.exe", _
+    "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\AHKP.exe", _
+    "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\ApLauncher.exe", _
+    "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\ApLauncher2.exe", _
+    "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\TimeoutKill.exe", _
+    "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\AHKP.exe", _
+    "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\ApLauncher.exe", _
+    "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\ApLauncher2.exe", _
+    "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\App Paths\TimeoutKill.exe", _
+    "HKCR\7-Zip.archive", _
+    "HKCU\Software\7-Zip", _
+    "HKCU\Software\7-Zip-Zstandard", _
+    "HKCR\txtfile", _
+    "HKCU\Software\Explorer++", _
+    "HKCR\.ajau3", _
+    "HKCR\AjAutoItScript" _
+]
+
+Local $bRegDeleteSuccess = False
+For $bCycle = 1 To 2
+    _Log("--> [CLEANUP] Registry Key Deletion Phase " & $bCycle & "...")
+    
+    For $iRegLoop = 1 To 3
+        For $i = 0 To UBound($aKeysToDelete) - 1
+            RegDelete($aKeysToDelete[$i])
+        Next
+        RegDelete("HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU", "a")
+        RegDelete("HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU", "MRUList")
+        
+        If $iRegLoop < 3 Then Sleep(2000)
+    Next
+
+    Local $bStillExists = False
+    For $i = 0 To UBound($aKeysToDelete) - 1
+        Local $sCheckVal = RegRead($aKeysToDelete[$i], "")
+        If @error = 0 Then 
+            $bStillExists = True
+            ExitLoop
+        EndIf
+    Next
+
+    If Not $bStillExists Then
+        $bRegDeleteSuccess = True
+        _Log("--> [SUCCESS] All application registry keys successfully purged.")
+        ExitLoop
+    Else
+        _Log("--> [WARNING] Some registry keys still persist. Retrying phase...")
+        Sleep(2000)
+    EndIf
+Next
+
+If Not $bRegDeleteSuccess Then
+    MsgBox(16, "Registry Deletion Error", "Error: Failed to delete target application registry keys after full retry sequence.")
+    _Log("--> [ERROR] Registry deletion failed completely.")
+EndIf
+
+; --- 7. DETAILED FILE REMOVAL PROCESS WITH TRACKING ---
+_Log("--> [CLEANUP] Flushing file footprints from system directories...")
+Dim $aFilesToDelete[24] = [ _
+    "AjayPrefixConf.txt", "wfm2.exe", "7za.exe", "7-zip.chm", "7-zip32.dll", _
+    "7-zip.dll", "lz5.dll", "lz4.dll", "flzma2.dll", "lizard.dll", "7zCon.sfx", _
+    "7z.sfx", "7z.exe", "7z1.exe", "7zG.exe", "7zxa.dll", "zstd.dll", "7zFM.exe", _
+    "brotli.dll", "7za.dll", "7z.dll", "Explorer++.exe", "descript.ion", "timeout.exe" _
+]
+
+Local $sFullPath = ""
+For $i = 0 To UBound($aFilesToDelete) - 1
+    $sFullPath = $sWinDir & "\" & $aFilesToDelete[$i]
+    If FileExists($sFullPath) Then
+        FileSetAttrib($sFullPath, "-RASH") 
+        If FileDelete($sFullPath) Then
+            _Log("    [DELETED] File: " & $sFullPath)
+        Else
+            _Log("    [FAILED] File locked by OS: " & $sFullPath)
+        EndIf
+    Else
+        _Log("    [SKIPPED] File not present: " & $aFilesToDelete[$i])
+    EndIf
+Next
+
+; --- EXCLUSIVE FORCED SHORTCUT PURGE (ProgramData Start Menu) ---
+_Log("--> [CLEANUP] Targeting specific Start Menu shortcut...")
+Local $sTargetLnk = "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay_Start_Menu_Pro_Viewer.lnk"
+Local $bShortcutDeleted = False
+
+If FileExists($sTargetLnk) Then
+    For $attempt = 1 To 3
+        FileSetAttrib($sTargetLnk, "-RASH")
+        If FileDelete($sTargetLnk) Then
+            _Log("    [DELETED] Shortcut on attempt " & $attempt & ": " & $sTargetLnk)
+            $bShortcutDeleted = True
+            ExitLoop
+        Else
+            _Log("    [FAILED] Shortcut locked on attempt " & $attempt & ". Retrying...")
+            Sleep(500)
+        EndIf
+    Next
+    If Not $bShortcutDeleted Then
+        _Log("    [CRITICAL] Could not delete shortcut after 3 attempts: " & $sTargetLnk)
+    EndIf
+Else
+    _Log("    [SKIPPED] Shortcut not present at fix path: " & $sTargetLnk)
+EndIf
+
+; --- FORCED START MENU FOLDERS CLEANUP (3 LOCATIONS) ---
+_Log("--> [CLEANUP] Purging Start Menu Pro target folders from all 3 locations...")
+Local $sStartMenuFolder1 = "C:\Users\" & @UserName & "\AppData\Roaming\Microsoft\Windows\Start Menu\Ajay Start Menu Pro"
+Local $sStartMenuFolder2 = "C:\ProgramData\Microsoft\Windows\Start Menu\Ajay Start Menu Pro"
+Local $sStartMenuFolder3 = $sProgramData & "\Microsoft\Windows\Start Menu\Ajay Start Menu Pro"
+
+If FileExists($sStartMenuFolder1) Then
+    DirRemove($sStartMenuFolder1, 1)
+    _Log("    [DELETED] Start Menu Folder 1: " & $sStartMenuFolder1)
+EndIf
+
+If FileExists($sStartMenuFolder2) Then
+    DirRemove($sStartMenuFolder2, 1)
+    _Log("    [DELETED] Start Menu Folder 2: " & $sStartMenuFolder2)
+EndIf
+
+If FileExists($sStartMenuFolder3) And $sStartMenuFolder3 <> $sStartMenuFolder2 Then
+    DirRemove($sStartMenuFolder3, 1)
+    _Log("    [DELETED] Start Menu Folder 3: " & $sStartMenuFolder3)
+EndIf
+
+; --- DETAILED FOLDER REMOVAL PROCESS WITH TRACKING ---
+_Log("--> [CLEANUP] Purging directories...")
+Dim $aFoldersToRemove[8] = [ _
+    $sWinDir & "\Lang", _
+    "C:\temp", _
+    $sMainSub, _
+    $sMainSub2, _
+    "C:\AJAY_PREFIX_PRO\Steam Apps (Optional)", _
+    "C:\AJAY_PREFIX_PRO\steamapps", _
+    "C:\Program Files (x86)\UHARC CMD", _
+    "C:\Program Files (x86)\AutoIt3" _
+]
+
+For $i = 0 To UBound($aFoldersToRemove) - 1
+    If FileExists($aFoldersToRemove[$i]) Then
+        If DirRemove($aFoldersToRemove[$i], 1) Then
+            _Log("    [DELETED] Folder: " & $aFoldersToRemove[$i])
+        Else
+            _Log("    [FAILED] Folder locked: " & $aFoldersToRemove[$i])
+        EndIf
+    Else
+        _Log("    [SKIPPED] Folder not present: " & $aFoldersToRemove[$i])
+    EndIf
+Next
+
+; --- FINALLY REMOVE MAIN INSTALLATION DIRECTORY WITH NATIVE AUTOIT LOOP & WINE BATCH FALLBACK ---
+_Log("--> [CLEANUP] Attempting root directory removal: " & $sMainDir)
+
+Local $bMainDeleted = False
+For $iFolderAttempt = 1 To 5
+    If Not FileExists($sMainDir) Then
+        $bMainDeleted = True
+        ExitLoop
+    EndIf
+    
+    _Log("--> [CLEANUP] Deletion attempt " & $iFolderAttempt & " of 5 for: " & $sMainDir)
+    FileSetAttrib($sMainDir & "\*.*", "-RASH", 1) ; Replaced undefined $FS_REC with raw integer flag 1
+    DirRemove($sMainDir, 1)
+    
+    If FileExists($sMainDir) Then
+        Sleep(2000)
+    Else
+        $bMainDeleted = True
+        ExitLoop
+    EndIf
+Next
+
+If Not $bMainDeleted Then
+    _Log("--> [CRITICAL] Root folder locked. Spawning Wine-compatible batch fallback with native timeout...")
+    Local $sBatchPath = @TempDir & "\AjayPrefixCleanup.bat"
+    Local $hBat = FileOpen($sBatchPath, $FO_OVERWRITE)
+    If $hBat <> -1 Then
+        FileWrite($hBat, '@echo off' & @CRLF)
+        FileWrite($hBat, ':loop' & @CRLF)
+        FileWrite($hBat, 'timeout /t 2 /nobreak > nul' & @CRLF)
+        FileWrite($hBat, 'attrib -r -h -s /s /d "C:\AJAY_PREFIX_PRO\*.*"' & @CRLF)
+        FileWrite($hBat, 'rd /s /q "C:\AJAY_PREFIX_PRO"' & @CRLF)
+        FileWrite($hBat, 'if exist "C:\AJAY_PREFIX_PRO" goto loop' & @CRLF)
+        FileWrite($hBat, 'del /f /q "%~f0"' & @CRLF)
+        FileClose($hBat)
+        Run('"' & $sBatchPath & '"', "", @SW_HIDE)
+        _Log("--> [SUCCESS] Wine-compatible cleanup batch script deployed successfully.")
+    EndIf
+EndIf
+
+; --- POST-CLEANUP CHECK & INSTRUCTION LOG ---
+Sleep(1500)
+If FileExists($sMainDir) Then
+    _Log("--> [INSTRUCTION] Run this uninstaller again to complete wipe that folder.")
+Else
+    _Log("--> [SUCCESS] Root directory C:\AJAY_PREFIX_PRO deleted successfully.")
+EndIf
+
+; --- 8. POST-CLEANUP OPERATIONS & SUCCESS ---
+ProcessClose("autoit3.exe")
+ProcessClose("autoit3_x64.exe")
+ProcessClose("7z.exe")
+
+_Log("--> [SUCCESS] Maintenance window finished cleanly.")
+MsgBox(64, "Success", "Ajay Prefix Pro has been successfully uninstalled.")
+
+; --- MOVED AJAY_PREFIX HYBRID CHECK TO THE LAST STEP ---
+If StringInStr(@UserProfileDir, "Ajay_prefix") Or StringInStr(@HomeDrive & "\Users\Public", "Ajay_prefix") Then
+    _Log("--> [LOG] Ajay_prefix environment footprint detected on final step.")
+    MsgBox(48, "Ajay Hybridizer", "Ajay_prefix detected in the active environment. Please restart the container to apply changes.")
+EndIf
+
+GUICtrlSetState($btnClose, $GUI_ENABLE)
+
+While 1
+    Switch GUIGetMsg()
+        Case $GUI_EVENT_CLOSE, $btnClose
+            CleanAndExit()
+    EndSwitch
+WEnd
+
+; --- CUSTOM LOGGER WRAPPER ---
+Func _Log($sMessage)
+    GUICtrlSetData($hLogEdit, GUICtrlRead($hLogEdit) & $sMessage & @CRLF)
+    DllCall("user32.dll", "int", "SendMessage", "hwnd", GUICtrlGetHandle($hLogEdit), "int", $EM_LINESCROLL, "int", 0, "int", 100)
+EndFunc
+
+; --- SELF-CLEANING EXIT FUNCTION ---
+Func CleanAndExit()
+    If StringLower(@ScriptDir) = StringLower(@TempDir) Then
+        Run(@ComSpec & ' /c del /f /q "' & @ScriptFullPath & '"', @TempDir, @SW_HIDE)
+    EndIf
+    GUIDelete($hGui)
+    Exit
+EndFunc
+
+; --- EXPORT LOGS TO TEXT FUNCTION ---
+Func ExportLogs()
+    Local $sFolder = FileSelectFolder("Choose location to save the log file", "", 0, "", $hGui)
+    If @error Then Return
+    
+    Local $sFilePath = $sFolder & "\Ajay_Uninstaller_Log_" & @YEAR & @MON & @MDAY & "_" & @HOUR & @MIN & @SEC & ".txt"
+    Local $hFileOpen = FileOpen($sFilePath, $FO_OVERWRITE)
+    
+    If $hFileOpen = -1 Then
+        MsgBox(16, "Error", "Failed to create log file at the specified location.")
+        Return
+    EndIf
+    
+    FileWrite($hFileOpen, GUICtrlRead($hLogEdit))
+    FileClose($hFileOpen)
+    MsgBox(64, "Export Successful", "Logs successfully saved to:" & @CRLF & $sFilePath)
+EndFunc
+
+; --- FULL ORIGINAL RESTORE LOGIC WITH STRICT 2-SECOND SLEEP SEQUENCES ---
+Func ExecuteSilentRestoreWithStrictSequence($rootPath, $publicPath)
+    For $rLoop = 1 To 3
+        RegDelete($regShellCU, "Common Desktop")
+        RegDelete($regShellCU, "Common Start Menu")
+        RegDelete($regShellCU, "Common Programs")
+
+        RegWrite($regProfileList, "ProfilesDirectory", "REG_EXPAND_SZ", $rootPath)
+        RegWrite($regProfileList, "Public", "REG_EXPAND_SZ", $publicPath)
+        
+        RegWrite($regShellCU, "Desktop", "REG_EXPAND_SZ", $cFixedUserDesktop)
+        RegWrite($regShellCU, "Start Menu", "REG_EXPAND_SZ", $cFixedStartMenu)
+        RegWrite($regShellCU, "Programs", "REG_EXPAND_SZ", $cFixedPrograms)
+        RegWrite($regShellCU, "Startup", "REG_EXPAND_SZ", $cFixedStartUp)
+
+        RegWrite($regShellFolders, "Desktop", "REG_SZ", $cFixedUserDesktop)
+        RegWrite($regShellFolders, "Start Menu", "REG_SZ", $cFixedStartMenu)
+        RegWrite($regShellFolders, "Programs", "REG_SZ", $cFixedPrograms)
+        RegWrite($regShellFolders, "Startup", "REG_SZ", $cFixedStartUp)
+
+        Local $nodes[2] = ["HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer", _
+                           "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer"]
+
+        For $node In $nodes
+            RegWrite($node & "\User Shell Folders", "Common Desktop", "REG_EXPAND_SZ", $cFixedPublicDesktop)
+            RegWrite($node & "\User Shell Folders", "Common Start Menu", "REG_EXPAND_SZ", $cFixedPubStartMenu)
+            RegWrite($node & "\User Shell Folders", "Common Programs", "REG_EXPAND_SZ", $cFixedPubPrograms)
+            
+            RegWrite($node & "\User Shell Folders", "Common Music", "REG_EXPAND_SZ", $cFixedPubMusic)
+            RegWrite($node & "\User Shell Folders", "Common Pictures", "REG_EXPAND_SZ", $cFixedPubPictures)
+            RegWrite($node & "\User Shell Folders", "Common Video", "REG_EXPAND_SZ", $cFixedPubVideos)
+            RegWrite($node & "\User Shell Folders", "Common Favorites", "REG_EXPAND_SZ", $cFixedPubMusic) 
+            
+            RegWrite($node & "\User Shell Folders", "CommonMusic", "REG_EXPAND_SZ", $cFixedPubMusic)
+            RegWrite($node & "\User Shell Folders", "CommonPictures", "REG_EXPAND_SZ", $cFixedPubPictures)
+            RegWrite($node & "\User Shell Folders", "CommonVideos", "REG_EXPAND_SZ", $cFixedPubVideos)
+            RegWrite($node & "\User Shell Folders", "CommonVideo", "REG_EXPAND_SZ", $cFixedPubVideos)
+            
+            RegWrite($node & "\Shell Folders", "Common Desktop", "REG_SZ", $cFixedPublicDesktop)
+            RegWrite($node & "\Shell Folders", "Common Start Menu", "REG_SZ", $cFixedPubStartMenu)
+            RegWrite($node & "\Shell Folders", "Common Programs", "REG_SZ", $cFixedPubPrograms)
+            
+            RegWrite($node & "\Shell Folders", "Common Music", "REG_SZ", $cFixedPubMusic)
+            RegWrite($node & "\Shell Folders", "Common Pictures", "REG_SZ", $cFixedPubPictures)
+            RegWrite($node & "\Shell Folders", "Common Video", "REG_SZ", $cFixedPubVideos)
+            RegWrite($node & "\Shell Folders", "Common Favorites", "REG_SZ", $cFixedPubMusic)
+
+            RegWrite($node & "\Shell Folders", "CommonMusic", "REG_SZ", $cFixedPubMusic)
+            RegWrite($node & "\Shell Folders", "CommonPictures", "REG_SZ", $cFixedPubPictures)
+            RegWrite($node & "\Shell Folders", "CommonVideos", "REG_SZ", $cFixedPubVideos)
+            RegWrite($node & "\Shell Folders", "CommonVideo", "REG_SZ", $cFixedPubVideos)
+        Next
+
+        If $rLoop < 3 Then Sleep(2000)
+    Next
+EndFunc
+
+; --- DEFAULT INJECTION VALUES WITH STRICT 2-SECOND SLEEP SEQUENCES ---
+Func _ForceResetDefaultsWithStrictSequence()
+    For $rLoop = 1 To 3
+        Local $sHKCU_SF = "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders"
+        Local $sHKCU_USF = "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
+        Local $sHKLM_USF = "HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
+        Local $sHKLM_SF = "HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders"
+        Local $sWow_USF = "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
+        Local $sWow_SF = "HKLM\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders"
+
+        RegWrite($sHKCU_SF, "AppData", "REG_SZ", "C:\Users\" & @UserName & "\AppData\Roaming")
+        RegWrite($sHKCU_SF, "Local AppData", "REG_SZ", "C:\Users\" & @UserName & "\AppData\Local")
+        RegWrite($sHKCU_SF, "Personal", "REG_SZ", "C:\Users\" & @UserName & "\Documents")
+        RegWrite($sHKCU_SF, "{4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4}", "REG_SZ", "C:\Users\" & @UserName & "\Saved Games")
+        RegWrite($sHKCU_SF, "{A520A1A4-1780-4FF6-BD18-167343C5AF16}", "REG_SZ", "C:\Users\" & @UserName & "\AppData\LocalLow")
+
+        RegWrite($sHKCU_USF, "AppData", "REG_SZ", "C:\Users\" & @UserName & "\AppData\Roaming")
+        RegWrite($sHKCU_USF, "Local AppData", "REG_SZ", "C:\Users\" & @UserName & "\AppData\Local")
+        RegWrite($sHKCU_USF, "Personal", "REG_SZ", "C:\Users\" & @UserName & "\Documents")
+        RegWrite($sHKCU_USF, "{4C5C32FF-BB9D-43B0-B5B4-2D72E54EAAA4}", "REG_SZ", "C:\Users\" & @UserName & "\Saved Games")
+        RegWrite($sHKCU_USF, "{A520A1A4-1780-4FF6-BD18-167343C5AF16}", "REG_SZ", "C:\Users\" & @UserName & "\AppData\LocalLow")
+
+        RegWrite($sHKLM_USF, "Common AppData", "REG_SZ", "C:\ProgramData")
+        RegWrite($sHKLM_USF, "Common Documents", "REG_SZ", "C:\Users\Public\Documents")
+        RegWrite($sHKLM_SF, "Common Documents", "REG_SZ", "C:\Users\Public\Documents")
+        RegWrite($sHKLM_SF, "Common AppData", "REG_SZ", "C:\ProgramData")
+
+        RegWrite($sWow_USF, "Common AppData", "REG_SZ", "C:\ProgramData")
+        RegWrite($sWow_USF, "Common Documents", "REG_SZ", "C:\Users\Public\Documents")
+        RegWrite($sWow_SF, "Common Documents", "REG_SZ", "C:\Users\Public\Documents")
+        RegWrite($sWow_SF, "Common AppData", "REG_SZ", "C:\ProgramData")
+
+        If $rLoop < 3 Then Sleep(2000)
+    Next
+EndFunc
