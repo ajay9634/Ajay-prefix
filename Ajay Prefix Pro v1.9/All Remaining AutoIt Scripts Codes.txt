@@ -1,1 +1,1 @@
-The remaining AutoIt script sources are available in the Ajay_Prefix_Pro_v1.9_x64_offline.zip release bundle. Extract the files and open the AutoIt (.au3) and batch scripts in any text editor to view the source code under license.
+The Scripts Updater and Ajay Prefix Pro v1.9 Downloader scripts are on SourceForge as `Scripts_Backup.tar.gz`, while the remaining AutoIt (`.au3`) and batch sources are in `Ajay_Prefix_Pro_v1.9_x64_offline.zip` and can be viewed in any text editor.
