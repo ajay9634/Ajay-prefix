@@ -121,7 +121,7 @@ Function OptionsPage
   SendMessage $0 ${WM_SETTEXT} 0 "STR:Exit"
   GetDlgItem $0 $HWNDPARENT 1
   SendMessage $0 ${WM_SETTEXT} 0 "STR:Execute"
-  SendMessage $HWNDPARENT ${WM_SETTEXT} 0 "STR:Ajay Prefix Pro v1.9 (Only Prefix) Setup"
+  SendMessage $HWNDPARENT ${WM_SETTEXT} 0 "STR:Ajay Prefix Pro v1.9 Offline Installer"
 
   nsDialogs::Create 1018
   Pop $Dialog
