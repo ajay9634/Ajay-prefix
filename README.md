@@ -33,7 +33,7 @@ Read our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for detail
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?size=60&pause=2000&color=F76D36&center=true&vCenter=true&width=1000&height=150&lines=✨+What+is+Ajay+Prefix+Pro✨)
 
-### ✅ Ajay Prefix Pro v1.9
+### ✅ Ajay Prefix Pro v1.9 (The Last Release)
 
 > **Core Functionality:** Game save redirection (`\Ajay_prefix\save_data`) + Start Menu customization + Universal game fixes.
 > 
@@ -159,7 +159,7 @@ If you only need to revert registry changes without removing the application:
 
 ## 📊 Current Status (Archived)
 
-The Ajay Prefix Pro Offline version has reached its peak. There is no reason to release any new versions. You can get the latest scripts using the Scripts Updater Tool from SourceForge or by asking in the Emuplay0 Discord server.
+The Ajay Prefix Pro v1.9 Offline version has reached its peak. There is no reason to release any new versions. You can get the latest scripts using the Scripts Updater Tool from SourceForge or by asking in the Emuplay0 Discord server.
 
 ---
 
