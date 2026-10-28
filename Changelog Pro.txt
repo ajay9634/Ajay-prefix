@@ -1,4 +1,44 @@
 # Changelog
+
+============================================================
+             ## [AJAY PREFIX PRO 1.9 RELEASE] - 28 October 2026
+============================================================
+
+## Big Update of Ajay Prefix Pro
+
+### Core Improvements
+
+- Updated all scripts with an exit option (useful in forced full-screen mode).
+- Converted Ajay Prefix Registry Script codes (`Reg Add`) to AutoIt (`RegWrite`) for better performance.
+- Improved the setup process with error handling.
+- Improved the startup confirmation message (converted codes to AutoIt).
+- Added auto-cleanup if the user cancels setup before clicking "Save and Apply."
+- Updated the Ajay Prefix Status batch script; it will show an error if the container is not restarted.
+- Added the Ajay Prefix Status GUI script; it is similar to the batch script but more advanced, featuring the ability to repair missing folders within the `SaveData` folder path.
+- Updated Readme Pro script; it will show tabs according to the installed choice.
+- Added custom configuration support for the `Ajay_Prefix_Pro_v1.9_x64_offline.zip` installer. After extraction, go to the `.Setup_Files` folder (which may be hidden in Android file managers), edit `Setup.conf` with valid values, and save it. Then, launch `Install Setup (for wine).cmd`.
+- Improved installer (exe).
+- Improved uninstaller (exe).
+
+### Additional Improvements to Installer Setup Functions
+
+- Added Wine detection immediately so it won't extract packages or show GUI options unless running under Wine.
+- Automatically detects whether Ajay Prefix options exist in the Ajay Prefix folder -- displays or hides options accordingly.
+- The setup will now automatically exit if the exit option is checked.
+- Removed the top banner that was causing a white screen issue when using the dark theme.
+- Automatically detects whether the Scripts Updater shortcut (Update Scripts Pro v1.9.lnk) exists in Ajay Start Menu Pro. If it exists, it will be shown in the Installer options. This shortcut will become available after updating scripts for the first time via the Script Updater app.
+- Added a Start Menu shortcut for the "Check Ajay Prefix Status" batch script.
+- Resolved various general bugs and improved overall stability.
+
+### Additional Improvements to Uninstaller Setup Functions
+
+- Added a 3-pass registry apply loop with a 3-second interval.
+- Added a default C: drive restore registry as a fallback if the backup registries are not found or are corrupted.
+- Added automatic force removal.
+- If `C:\AJAY_PREFIX_PRO` is locked and cannot be removed, instructions will be displayed on how to remove it manually.
+- Added an environment check; if Ajay is detected in the current environment, instructions will be displayed on how to restart the container.
+- This Uninstaller will also work with Ajay Prefix Pro v1.8 Offline.
+
 ============================================================
              ## [AJAY PREFIX PRO 1.8 RELEASE] - 4 September 2026
 ============================================================
