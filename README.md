@@ -54,7 +54,7 @@ Read our [Wiki and FAQ](https://github.com/ajay9634/Ajay-prefix/wiki) for detail
 8.  ✔️ **Verify:** Check the installation status via the Start Menu Viewer.
 
 > [!IMPORTANT]
-> **Change user folder name:** If you were using an older Ajay Prefix, after installing the latest Ajay Prefix v1.9, you must rename the "xuser" folder to "Ajay". This is located in: `Ajay_prefix\save_data\users\`
+> **Change user folder name:** If you were using an older than Ajay Prefix v1.7 , after installing the latest Ajay Prefix v1.8 or 1.9 , you must rename the "xuser" folder to "Ajay". This is located in: `Ajay_prefix\save_data\users\`
 
 ---
 
