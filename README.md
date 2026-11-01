@@ -87,10 +87,10 @@ If the game still fails to detect your save data, it may be using the hardcoded 
 When you install a Steam game on a secondary drive or SD card (e.g., D:\SteamLibrary or E:\Games), Steam stores the game installation files (steamapps/common/...) directly on that drive. However, when the game runs, it calls Windows system environment variables (such as %APPDATA%, %LOCALAPPDATA%, and %USERPROFILE%\Documents). 
 
 These paths are modified by Ajay Prefix Pro, redirecting saves to:
-\Ajay_prefix\save_data\users\Ajay\
+`\Ajay_prefix\save_data\users\Ajay\`
 
 If you do not move the game to a secondary drive or SD card, it may default to using:
-<SteamClient>\userdata\
+`Steam\userdata\`
 
 This default path is not synced or backed up by Ajay Prefix Pro.
 
