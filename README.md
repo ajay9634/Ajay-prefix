@@ -82,6 +82,19 @@ If Common AppData is redirected, transfer common save data and configurations fr
 If the game still fails to detect your save data, it may be using the hardcoded public folder and Documents folder; in this case, apply the **Hybridizer app setup**. This advanced setup redirects hardcoded `%userprofile%` and `%public%` paths to `save_data\users2\`, which is highly effective if supported. [Read More](https://github.com/ajay9634/Ajay-prefix/wiki/(4)-About-%22Ajay-Profile-Hybridizer%22)
 
 ---
+### 📝 Secondary Paths in Steam
+
+When you install a Steam game on a secondary drive or SD card (e.g., D:\SteamLibrary or E:\Games), Steam stores the game installation files (steamapps/common/...) directly on that drive. However, when the game runs, it calls Windows system environment variables (such as %APPDATA%, %LOCALAPPDATA%, and %USERPROFILE%\Documents). 
+
+These paths are modified by Ajay Prefix Pro, redirecting saves to:
+\Ajay_prefix\save_data\users\Ajay\
+
+If you do not move the game to a secondary drive or SD card, it may default to using:
+<SteamClient>\userdata\
+
+This default path is not synced or backed up by Ajay Prefix Pro.
+
+---
 ### 📤 How to Sync `save_data` Using `Syncthing`
 
 First, add your device in Syncthing by following the instructions on the official Syncthing website.
